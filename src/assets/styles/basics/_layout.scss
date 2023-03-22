@@ -40,3 +40,12 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
 }
+
+.app-main{
+        border: solid 1px black;
+        height: 100dvh;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 0.25fr 1fr;
+        grid-template-rows: 120px 1fr 120px 0.5fr;
+}
