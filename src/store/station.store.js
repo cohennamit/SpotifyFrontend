@@ -29,10 +29,15 @@ export function getActionAddStationMsg(stationId) {
 
 export const stationStore = {
     state: {
-        stations: []
+        stations: [],
+        labels: stationService.getLabels(),
+        filterBy: {
+            label: ''
+        }
     },
     getters: {
         stations({ stations }) { return stations },
+        labels({ labels }) { return labels }
     },
     mutations: {
         setStations(state, { stations }) {
@@ -53,6 +58,10 @@ export const stationStore = {
             if (!station.msgs) station.msgs = []
             station.msgs.push(msg)
         },
+        setLabel(state, { label }) {
+            state.filterBy.label = label
+            
+        }
     },
     actions: {
         async addStation(context, { station }) {
@@ -75,7 +84,7 @@ export const stationStore = {
                 throw err
             }
         },
-        async loadStations(context) {
+        async loadStations(context, {filterBy}) {
             try {
                 const stations = await stationService.query()
                 context.commit({ type: 'setStations', stations })
