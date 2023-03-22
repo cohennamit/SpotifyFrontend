@@ -2,7 +2,9 @@
     <section class="main-nav">
         <h1 class="logo">Logo</h1>
         <section class="nav">
+            <div class="icon" v-html="getSvg('home')"></div>
             <RouterLink to="/station">Home</RouterLink>
+            <div class="icon" v-html="getSvg('search')"></div>
             <RouterLink to="/search">Search</RouterLink>
             <RouterLink to="/test">Your Library</RouterLink>
         </section>
@@ -24,6 +26,7 @@
 </template>
 
 <script>
+import { svgService } from '../services/svg.service.js';
 export default {
     name: '',
     data() {
@@ -32,7 +35,9 @@ export default {
         }
     },
     methods: {
-
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        }
     },
     computed: {
 
