@@ -1,12 +1,15 @@
 * {
     box-sizing: border-box;
+    color: $clr6;
 }
 
 ::selection {
     background-color: $clr1;
     color: $clr6;
 }
-
+html,body,#app{
+    height: 100%;
+}
 html {
     font-family: montserrat;
     line-height: 1.6;
@@ -29,9 +32,9 @@ section, main, footer {
     padding: 5px;
 }
 
-// img {
-//     width: 100%;
-// }
+img {
+    width: 100%;
+}
 
 p {
     margin: 0 0 1em;
@@ -42,6 +45,6 @@ a {
     text-decoration: none;
 }
 a:hover {
-    text-decoration: underline;
+    // text-decoration: underline;
 }
 

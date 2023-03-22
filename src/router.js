@@ -6,6 +6,7 @@ import StationIndex from './views/StationIndex.vue'
 import ReviewIndex from './views/ReviewIndex.vue'
 import LoginSignup from './views/LoginSignup.vue'
 import UserDetails from './views/UserDetails.vue'
+import SearchPage from './views/SearchPage.vue'
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path: '/user/:id',
     name: 'UserDetails',
     component: UserDetails
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: SearchPage
   }
 ]
 
