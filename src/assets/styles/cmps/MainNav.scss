@@ -1,0 +1,63 @@
+$primary-color: #fff;
+$secondary-color: #aaa;
+
+.main-nav {
+    width: 150px;
+    background-color: black;
+    color: rgb(224, 224, 224);
+    margin-block-end: 0px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+
+    a {
+        color: rgb(215, 215, 215);
+        font-size: 0.7rem;
+
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.user-playlists {
+    a {
+        color: rgb(170, 170, 170);
+        font-size: 0.7rem;
+    }
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.nav {
+    display: grid;
+}
+
+.create-playlist-btn,
+.install-btn {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: 0.7rem;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    &.create-playlist-btn {
+        text-align: left;
+    }
+}
+
+hr {
+    border-color: rgb(20, 20, 20);
+}
+
+.playlist-links {
+    display: grid;
+
+    .playlist-link:hover {
+        cursor: default;
+        color: white;
+    }
+}
