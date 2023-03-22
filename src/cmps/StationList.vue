@@ -1,9 +1,20 @@
-<template></template>
-<StationList v-if="stations" :stations="stations" @removed="removeStation" :class="'station-list'" />
+<template>
+  <StationPreview
+    class="station-list"
+    v-for="station in stations"
+    :key="station._id"
+    :station="station"
+  />
+</template>
 
 <script>
+import StationPreview from '../cmps/StationPreview.vue';
 export default {
-  name: '',
+  name: 'StationList',
+  props: {
+    stations: Array,
+    default: [],
+  },
   data() {
     return {};
   },
@@ -11,7 +22,7 @@ export default {
   computed: {},
   created() {},
   components: {
-    ToyList,
+    StationPreview,
   },
 };
 </script>
