@@ -1,12 +1,12 @@
 <template>
   <section class="genre-list" >
     <div class="label-container" v-for="label in labels">
-      <routerlink :label="label" :to= "`/genre/${label}`"  >
-            <img :src="label.imgUrl" alt="" />
+      <!-- <RouterLink :label="label" :to= "`/genre/${label}`"  > -->
+            <img :src="label.imgUrl"  />
             <span>
               {{ label.name }}
             </span>
-      </routerlink>
+      <!-- </RouterLink> -->
         </div>
   </section>
 </template> 
