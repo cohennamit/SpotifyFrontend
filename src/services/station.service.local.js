@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+import { storageService } from './async-storage.service.js';
+import { utilService } from './util.service.js';
+import { userService } from './user.service.js';
 
-const STORAGE_KEY = 'station'
+const STORAGE_KEY = 'station';
 
 export const stationService = {
   query,
@@ -12,8 +12,8 @@ export const stationService = {
   getEmptyStation,
   addStationMsg,
   getLabels,
-}
-window.cs = stationService
+};
+window.cs = stationService;
 
 async function query(filterBy = { txt: '', listencount: 0 }) {
   var stations = await storageService.query(STORAGE_KEY)
@@ -21,108 +21,101 @@ async function query(filterBy = { txt: '', listencount: 0 }) {
   // return _filterStations(filterBy,stations)
  
 }
-function _filterStations(filterBy,stations){
+function _filterStations(filterBy, stations) {
+  console.log('stations: ', stations);
   // const {labels,txt,listencount} = filterBy
-  // let filteredStations
-  // //Filter By Txt
-  // if (filterBy.txt) {
-  //   const regex = new RegExp(filterBy.txt, 'i')
-  //   stations = stations.filter(
-  //     (station) => regex.test(station.title) || regex.test(station.description)
-  //   )
-  // }
-  // //Filter By Listen Count
-  // if (filterBy.listencount) {
-  //   stations = stations.filter((station) => station.listencount <= filterBy.listencount)
-  // }
-  //  // Filter By Labels
-  // if (filterBy.labels.length) {
-  //   filterBy.labels.map((lab) => {
-  //     return (filteredStations = filteredStations.filter((station) => station.labels.includes(lab)))
-  //   })
-  // }
-  // return stations
+  let filteredStations;
+  //Filter By Txt
+  if (filterBy.txt) {
+    const regex = new RegExp(filterBy.txt, 'i');
+    stations = stations.filter(
+      (station) => regex.test(station.title) || regex.test(station.description)
+    );
+  }
+  //Filter By Listen Count
+  if (filterBy.listencount) {
+    stations = stations.filter((station) => station.listencount <= filterBy.listencount);
+  }
+  // Filter By Labels
+  if (filterBy.labels.length) {
+    filterBy.labels.map((lab) => {
+      return (filteredStations = filteredStations.filter((station) => station.labels.includes(lab)));
+    });
+  }
+  return stations;
 }
 function getById(stationId) {
-  return storageService.get(STORAGE_KEY, stationId)
- }
+  return storageService.get(STORAGE_KEY, stationId);
+}
 
 async function remove(stationId) {
-  await storageService.remove(STORAGE_KEY, stationId)
+  await storageService.remove(STORAGE_KEY, stationId);
 }
 
 async function save(station) {
-  var savedStation
+  var savedStation;
   if (station._id) {
-    savedStation = await storageService.put(STORAGE_KEY, station)
+    savedStation = await storageService.put(STORAGE_KEY, station);
   } else {
     // Later, owner is set by the backend
-    station.owner = userService.getLoggedinUser()
-    savedStation = await storageService.post(STORAGE_KEY, station)
+    station.owner = userService.getLoggedinUser();
+    savedStation = await storageService.post(STORAGE_KEY, station);
   }
-  return savedStation
+  return savedStation;
 }
 
 async function addStationMsg(stationId, txt) {
   // Later, this is all done by the backend
-  const station = await getById(stationId)
-  if (!station.msgs) station.msgs = []
+  const station = await getById(stationId);
+  if (!station.msgs) station.msgs = [];
 
   const msg = {
     id: utilService.makeId(),
     by: userService.getLoggedinUser(),
     txt,
-  }
-  station.msgs.push(msg)
-  await storageService.put(STORAGE_KEY, station)
+  };
+  station.msgs.push(msg);
+  await storageService.put(STORAGE_KEY, station);
 
-  return msg
+  return msg;
 }
 
 function getEmptyStation() {
   return {
     title: 'Susita-' + (Date.now() % 1000),
     listencount: utilService.getRandomIntInclusive(1000, 9000),
-  }
+  };
 }
 
 (async () => {
   await storageService.post(STORAGE_KEY, {
     title: 'Michael Jackson',
     listencount: 420,
-    label: [
-      'Pop',
-      'Dance/Electronic',
-
-    ],
+    label: ['Pop', 'Dance/Electronic'],
     imgUrl: 'https://source.unsplash.com/random/?cats&4',
     createdAt: Date.now(),
-  })
+  });
   await storageService.post(STORAGE_KEY, {
     title: 'Shakira',
     listencount: 21,
-    labels: [
-      'Pop'
-    ],
+    labels: ['Pop'],
     imgUrl: 'https://source.unsplash.com/random/?cats&4',
     createdAt: Date.now(),
-  })
+  });
   await storageService.post(STORAGE_KEY, {
     title: 'Biggy',
     listencount: 221,
-    labels: [
-      'Rap'
-    ],
+    labels: ['Rap'],
     imgUrl: 'https://source.unsplash.com/random/?cats&4',
     createdAt: Date.now(),
-  })
+  });
   await storageService.post(STORAGE_KEY, {
     title: 'Flock of seagulls',
     listencount: 2221,
     createdAt: Date.now(),
     imgUrl: 'https://source.unsplash.com/random/?cats&4',
-  })
-})()
+  });
+})();
 
 // TEST DATA
 // ; (async () => {
@@ -142,11 +135,11 @@ function getLabels() {
     },
     {
       name: 'Latino',
-      imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477166/Spotify/latino_najwkb.jpg',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477166/Spotify/latino_najwkb.jpg',
     },
     {
       name: 'Rock',
-      imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477163/Spotify/Rock_cdizyt.jpg',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477163/Spotify/Rock_cdizyt.jpg',
     },
     {
       name: 'Rap',
@@ -154,12 +147,13 @@ function getLabels() {
     },
     {
       name: 'K-Pop',
-      imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679478366/Spotify/K-Pop_lfh88n.jpg',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679478366/Spotify/K-Pop_lfh88n.jpg',
     },
     {
-      name:'Dance/Electronic',
-      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679491299/Spotify/DanceElectroincs_b5sonr.jpg'
-    }
+      name: 'Dance/Electronic',
+      imgUrl:
+        'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679491299/Spotify/DanceElectroincs_b5sonr.jpg',
+    },
     // 'Hip-Hop',
     // 'Rock',
     // 'Latin',
@@ -182,5 +176,5 @@ function getLabels() {
     // 'Instrumental',
     // 'Summer',
     // 'Fresh Finds'
-  ]
+  ];
 }
