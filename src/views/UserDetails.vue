@@ -1,8 +1,11 @@
 <template>
   <section v-if="user">
-    <h1>User Details - {{ user.fullname }}</h1>
-    <h2 v-if="isMe">Its me</h2>
-    <h3>{{ user.username }} score: {{ user.score }}</h3>
+    <h1>User Details - Fullname {{ user.fullname }}</h1>
+    <h3>Nickname - {{ user.username }}</h3>
+    <section v-if="isMe">
+      <h4>Its me</h4>
+      <RouterLink to="/login">Logout</RouterLink>
+    </section>
     <img style="max-width: 200px;" :src="user.imgUrl" />
     <ul>
       <li v-for="review in user.givenReviews" :key="review._id">
@@ -36,8 +39,8 @@ export default {
   watch: {
     userId: {
       handler() {
-        if(this.userId){
-            this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId })
+        if (this.userId) {
+          this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId })
         }
       },
       immediate: true,
@@ -54,5 +57,7 @@ export default {
       return this.userId === this.$store.getters.loggedinUser._id
     },
   },
+  methods: {
+  }
 }
 </script>
