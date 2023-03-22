@@ -71,32 +71,36 @@ function getEmptyStation() {
   };
 }
 
-// (async () => {
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Michael Jackson',
-//     listencount: 420,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Shakira',
-//     listencount: 21,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Biggy',
-//     listencount: 221,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Flock of seagulls',
-//     listencount: 2221,
-//     createdAt: Date.now(),
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
-//   });
-// })();
+(async () => {
+  await storageService.post(STORAGE_KEY, {
+    title: 'Michael Jackson',
+    listencount: 420,
+    label: [
+        'Pop',
+        
+    ],
+    imgUrl: 'https://source.unsplash.com/random/?cats&4',
+    createdAt: Date.now(),
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Shakira',
+    listencount: 21,
+    imgUrl: 'https://source.unsplash.com/random/?cats&4',
+    createdAt: Date.now(),
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Biggy',
+    listencount: 221,
+    imgUrl: 'https://source.unsplash.com/random/?cats&4',
+    createdAt: Date.now(),
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Flock of seagulls',
+    listencount: 2221,
+    createdAt: Date.now(),
+    imgUrl: 'https://source.unsplash.com/random/?cats&4',
+  });
+})();
 
 // TEST DATA
 // ; (async () => {

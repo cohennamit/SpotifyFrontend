@@ -1,5 +1,4 @@
 <template>
-    <h1>SEARCH PAGE</h1>
     <section>
         <article class="genre-list">
             <a class="label-container" v-for="label in labels">
