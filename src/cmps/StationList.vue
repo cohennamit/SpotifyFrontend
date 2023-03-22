@@ -8,12 +8,7 @@
     <h1>button</h1>
   </article>
   <article class="station-list">
-    <StationPreview
-      class="station-preview"
-      v-for="station in stations"
-      :key="station._id"
-      :station="station"
-    />
+    <StationPreview v-for="station in stations" :key="station._id" :station="station" />
   </article>
 </template>
 
