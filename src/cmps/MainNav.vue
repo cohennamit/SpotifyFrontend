@@ -2,11 +2,18 @@
     <section class="main-nav">
         <h1 class="logo">Logo</h1>
         <section class="nav">
-            <div class="icon" v-html="getSvg('home')"></div>
-            <RouterLink to="/station">Home</RouterLink>
-            <div class="icon" v-html="getSvg('search')"></div>
-            <RouterLink to="/search">Search</RouterLink>
-            <RouterLink to="/test">Your Library</RouterLink>
+
+            <RouterLink to="/station">
+                <div class="icon" v-html="getSvg('home')"></div> Home
+            </RouterLink>
+
+            <RouterLink to="/search">
+                <div class="icon" v-html="getSvg('search')"></div> Search
+            </RouterLink>
+
+            <RouterLink to="/test">
+                <div class="icon" v-html="getSvg('library')"></div> Your Library
+            </RouterLink>
         </section>
         <section class="actions">
             <button class="create-playlist-btn">Create Playlist</button>
@@ -21,7 +28,10 @@
                 <RouterLink to="/test">My Playlist #4</RouterLink>
             </section>
         </section>
-        <button class="install-btn">Install App</button>
+
+        <button class="install-btn">
+            <div class="icon" v-html="getSvg('install')"></div> Install App
+        </button>
     </section>
 </template>
 
