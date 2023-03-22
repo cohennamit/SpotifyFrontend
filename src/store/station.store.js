@@ -30,23 +30,23 @@ export function getActionAddStationMsg(stationId) {
 
 export const stationStore = {
   state: {
-    stations: [],
     isFilterShown: false,
     labels: stationService.getLabels(),
     filterBy: {
-      labels: [],
+      labels: '',
       sort: 'name',
     },
+    labels: stationService.getLabels(),
   },
   getters: {
+    stations({ stations }) {
+      return stations;
+    },
     isFilterShown({ isFilterShown }) {
       return isFilterShown;
     },
     labels({ labels }) {
       return labels;
-    },
-    stations({ stations }) {
-      return stations;
     },
   },
   mutations: {
