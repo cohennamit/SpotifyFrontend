@@ -7,9 +7,13 @@
     background-color: $clr1;
     color: $clr6;
 }
-html,body,#app{
+
+html,
+body,
+#app {
     height: 100%;
 }
+
 html {
     font-family: montserrat;
     line-height: 1.6;
@@ -17,6 +21,7 @@ html {
 }
 
 body {
+    background-color: rgb(22, 22, 22);
     font-size: rem(18px);
     margin: 0;
     background-color: darkslategrey;

@@ -1,21 +1,22 @@
 <template>
     <section class="main-nav">
-        <h1>Logo</h1>
+        <h1 class="logo">Logo</h1>
         <section class="nav">
-            <a href="test">Home</a>
-            <a href="test">Search</a>
-            <a href="test">Your Library</a>
+            <RouterLink to="/station">Home</RouterLink>
+            <RouterLink to="/search">Search</RouterLink>
+            <RouterLink to="/test">Your Library</RouterLink>
         </section>
         <section class="actions">
             <button class="create-playlist-btn">Create Playlist</button>
-            <a href="test">Liked Songs</a>
+            <RouterLink to="/test">Liked Songs</RouterLink>
         </section>
         <hr />
         <section class="user-playlists">
             <section class="playlist-links">
-                <a class="playlist-link" href="test">My Playlist #1</a>
-                <a class="playlist-link" href="test">My Playlist #2</a>
-                <a class="playlist-link" href="test">My Playlist #3</a>
+                <RouterLink to="/test">My Playlist #1</RouterLink>
+                <RouterLink to="/test">My Playlist #2</RouterLink>
+                <RouterLink to="/test">My Playlist #3</RouterLink>
+                <RouterLink to="/test">My Playlist #4</RouterLink>
             </section>
         </section>
         <button class="install-btn">Install App</button>
