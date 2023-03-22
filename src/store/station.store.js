@@ -34,7 +34,6 @@ export const stationStore = {
     filterBy: {
       labels: [],
       sort: 'name',
-      inStock: false,
     },
   },
   getters: {

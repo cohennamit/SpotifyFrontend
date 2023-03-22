@@ -1,23 +1,9 @@
 .station-list {
 
-	font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif),sans-serif;
-
-
-    margin: auto;
-    border-radius: var(--br-m);
-    // min-width: 26em;
-    height: 88dvh;
-    width: 100%;
+    grid-gap: var(--grid-gap);
     display: grid;
-    justify-content: space-evenly;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(213px, 1fr));
-    gap: 24px;
-    padding: 0 32px;
-    // grid-template-rows: repeat(auto-fill,minmax(184px,1fr));
-	font-size: 24px;
-
-	
+    grid-template-columns: repeat(auto-fill,minmax(0,1fr));
+    min-width: var(--min-container-width);
 }
 .station-list-top-content-container {
 	// border: 1px solid black;
