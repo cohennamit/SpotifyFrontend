@@ -48,4 +48,5 @@
         display: grid;
         grid-template-columns: 0.25fr 1fr;
         grid-template-rows: 120px 1fr 120px 0.5fr;
+        overflow: hidden;
 }
