@@ -2,7 +2,7 @@
   <section class="station-preview">
     <img v-if="station.imgUrl" :src="station.imgUrl" />
     <p>{{ station.title }}</p>
-    <p>Listen Count : {{ station.listencount?.toLocaleString() }}</p>
+    <!-- <p>Listen Count : {{ station.listencount?.toLocaleString() }}</p> -->
     <!-- <button @click="removeStation(station._id)">x</button>
     <button @click="updateStation(station)">Update</button>
     <hr />

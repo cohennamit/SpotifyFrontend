@@ -1,3 +1,4 @@
+import { storageService } from '../services/async-storage.service';
 import { stationService } from '../services/station.service.local';
 // import { stationService } from '../services/station.service'
 
@@ -31,6 +32,7 @@ export const stationStore = {
   state: {
     stations: [],
     isFilterShown: false,
+    labels: stationService.getLabels(),
     filterBy: {
       labels: [],
       sort: 'name',
@@ -39,6 +41,9 @@ export const stationStore = {
   getters: {
     isFilterShown({ isFilterShown }) {
       return isFilterShown;
+    },
+    labels({ labels }) {
+      return labels;
     },
     stations({ stations }) {
       return stations;
@@ -91,9 +96,10 @@ export const stationStore = {
         throw err;
       }
     },
-    async loadStations(context) {
+    async loadStations(context, { filterBy }) {
       try {
-        const stations = await stationService.query();
+        const stations = await stationService.query(filterBy);
+        console.log('stations: ', stations);
         context.commit({ type: 'setStations', stations });
       } catch (err) {
         console.log('stationStore: Error in loadStations', err);
