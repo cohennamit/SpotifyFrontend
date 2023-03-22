@@ -1,48 +1,54 @@
 <template>
-    <section class="main-nav">
-        <h1>Logo</h1>
-        <section class="nav">
-            <a href="test">Home</a>
-            <a href="test">Search</a>
-            <a href="test">Your Library</a>
-        </section>
-        <section class="actions">
-            <button class="create-playlist-btn">Create Playlist</button>
-            <a href="test">Liked Songs</a>
-        </section>
-        <hr />
-        <section class="user-playlists">
-            <section class="playlist-links">
-                <a class="playlist-link" href="test">My Playlist #1</a>
-                <a class="playlist-link" href="test">My Playlist #2</a>
-                <a class="playlist-link" href="test">My Playlist #3</a>
-            </section>
-        </section>
-        <button class="install-btn">Install App</button>
+  <section class="main-nav">
+    <h1 class="logo">Logo</h1>
+    <section class="nav">
+      <div class="icon" v-html="getSvg('home')"></div>
+      <!-- <RouterLink to="/station">Home</RouterLink> -->
+      <router-link
+        @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
+        to="/station"
+        >Home
+      </router-link>
+      <div class="icon" v-html="getSvg('search')"></div>
+      <!-- <RouterLink to="/search">Search</RouterLink> -->
+      <RouterLink @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })" to="/search"
+        >Search
+      </RouterLink>
+      <RouterLink to="/test">Your Library</RouterLink>
     </section>
+    <section class="actions">
+      <button class="create-playlist-btn">Create Playlist</button>
+      <RouterLink to="/test">Liked Songs</RouterLink>
+    </section>
+    <hr />
+    <section class="user-playlists">
+      <section class="playlist-links">
+        <RouterLink to="/test">My Playlist #1</RouterLink>
+        <RouterLink to="/test">My Playlist #2</RouterLink>
+        <RouterLink to="/test">My Playlist #3</RouterLink>
+        <RouterLink to="/test">My Playlist #4</RouterLink>
+      </section>
+    </section>
+    <button class="install-btn">Install App</button>
+  </section>
 </template>
 
 <script>
+import { svgService } from '../services/svg.service.js';
 export default {
-    name: '',
-    data() {
-        return {
-
-        }
+  name: '',
+  data() {
+    return {};
+  },
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName);
     },
-    methods: {
-
-    },
-    computed: {
-
-    },
-    created() {
-
-    },
-    components: {
-
-    },
-}
+  },
+  computed: {},
+  created() {},
+  components: {},
+};
 </script>
 
 <style></style>

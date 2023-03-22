@@ -1,16 +1,35 @@
 .station-list {
-    // grid-column: 1 / -1;
-    border: 1px solid black;
-    max-width: 238px;
+
+	font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,var(--fallback-fonts,sans-serif),sans-serif;
+
+
+    margin: auto;
+    border-radius: var(--br-m);
+    // min-width: 26em;
+    height: 88dvh;
+    width: 100%;
+    display: grid;
+    justify-content: space-evenly;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(213px, 1fr));
+    gap: 24px;
+    padding: 0 32px;
+    // grid-template-rows: repeat(auto-fill,minmax(184px,1fr));
+	font-size: 24px;
+
+	
+}
+.station-list-top-content-container {
+	// border: 1px solid black;
+	grid-column: 1 / -1;
 	align-items: center;
-	display: grid column;
-	grid-template-columns: repeat(auto fill, minmax(360px, 1fr));
-	// grid-auto-rows: auto;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(360px, 1fr));
+	grid-auto-rows: auto;
 	margin-block-end: 7em;
 	min-height: 220px;
-	text-align: center;
+	text-align: ltr;
 	* {
-        // margin: auto;
 		padding: 0.5em;
 		height: 4em;
 		margin: 1em;
@@ -20,5 +39,6 @@
 		&:hover {
 			background-color: var(--clr5);
 		}
-	}}
+	}
+}
 

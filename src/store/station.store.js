@@ -1,43 +1,38 @@
-import { stationService } from '../services/station.service.local'
+import { stationService } from '../services/station.service.local';
 // import { stationService } from '../services/station.service'
 
 export function getActionRemoveStation(stationId) {
-    return {
-        type: 'removeStation',
-        stationId
-    }
+  return {
+    type: 'removeStation',
+    stationId,
+  };
 }
 export function getActionAddStation(station) {
-    return {
-        type: 'addStation',
-        station
-    }
+  return {
+    type: 'addStation',
+    station,
+  };
 }
 export function getActionUpdateStation(station) {
-    return {
-        type: 'updateStation',
-        station
-    }
+  return {
+    type: 'updateStation',
+    station,
+  };
 }
 export function getActionAddStationMsg(stationId) {
-    return {
-        type: 'addStationMsg',
-        stationId,
-        txt: 'Stam txt'
-    }
+  return {
+    type: 'addStationMsg',
+    stationId,
+    txt: 'Stam txt',
+  };
 }
 
 export const stationStore = {
     state: {
-        stations: [],
-        labels: stationService.getLabels(),
-        filterBy: {
-            label: ''
-        }
+        stations: []
     },
     getters: {
         stations({ stations }) { return stations },
-        labels({ labels }) { return labels }
     },
     mutations: {
         setStations(state, { stations }) {
@@ -58,10 +53,6 @@ export const stationStore = {
             if (!station.msgs) station.msgs = []
             station.msgs.push(msg)
         },
-        setLabel(state, { label }) {
-            state.filterBy.label = label
-            
-        }
     },
     actions: {
         async addStation(context, { station }) {
@@ -84,7 +75,7 @@ export const stationStore = {
                 throw err
             }
         },
-        async loadStations(context, {filterBy}) {
+        async loadStations(context) {
             try {
                 const stations = await stationService.query()
                 context.commit({ type: 'setStations', stations })
@@ -111,6 +102,4 @@ export const stationStore = {
                 throw err
             }
         },
-
-    }
-}
+      }}

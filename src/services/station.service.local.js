@@ -124,9 +124,9 @@ function getEmptyStation() {
 })()
 
 // TEST DATA
-//  (async () => {
-//     await storageService.post(STORAGE_KEY, { title: 'Michael Jackson', listencount: 420 })
-//     await storageService.post(STORAGE_KEY, { title: 'Shakira', listencount: 21 })
+// ; (async () => {
+//   await storageService.post(STORAGE_KEY, { title: 'Michael Jackson', listencount: 420 })
+//   await storageService.post(STORAGE_KEY, { title: 'Shakira', listencount: 21 })
 // })()
 
 function getLabels() {

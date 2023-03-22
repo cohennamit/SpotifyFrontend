@@ -10,9 +10,15 @@ $secondary-color: #aaa;
     padding-inline-end: 20px;
     grid-row: 1 / 5;
 
+    .logo {
+        margin-block-start: 15px;
+        margin-block-end: 30px;
+    }
+
     a {
         color: rgb(215, 215, 215);
         font-size: 0.7rem;
+        margin-block-end: 15px;
 
         &:hover {
             color: white;
@@ -47,6 +53,7 @@ button:hover {
 
     &.create-playlist-btn {
         text-align: left;
+        margin-block-end: 15px;
     }
 }
 
@@ -61,4 +68,12 @@ hr {
         cursor: default;
         color: white;
     }
+}
+
+.playlist-links:last-child {
+    margin-block-end: 210px;
+}
+
+.icon {
+    fill: white;
 }

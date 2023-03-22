@@ -1,15 +1,39 @@
 .header {
+    max-height: 70px;
     background-color: rgb(33, 33, 33);
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
+    .search-input {
+        width: 350px;
+        height: 40px;
+        color: black;
+        border-radius: 25px;
+        border: none;
+        padding: 20px;
+    }
+
+    .login-btn {
+        margin-inline-end: 20px;
+        display: grid;
+        align-content: center;
+        text-align: center;
+        background-color: black;
+        border-radius: 50px;
+        height: 35px;
+        width: 110px;
+    }
+
     .loggedin-user {
+        margin-inline-end: 20px;
         display: flex;
         gap: 5px;
         align-items: center;
         justify-content: space-around;
         background-color: black;
-        width: 100px;
+        height: 35px;
+        width: 110px;
         padding: 2px 8px;
         border-radius: 1em;
         align-self: center;
@@ -23,6 +47,7 @@
         }
 
         img {
+            margin-inline-start: -10px;
             width: 2em;
             height: 2em;
             border-radius: 50%;
@@ -59,4 +84,8 @@
     width: 35px;
     border-radius: 50%;
     background-color: rgb(10, 10, 10);
+}
+
+.header-right {
+    display: flex;
 }
