@@ -1,25 +1,20 @@
 .genre-list {
-    margin: auto;
-    border-radius: var(--br-m);
-    // min-width: 26em;
-    height: 88dvh;
-    width: 100%;
+	padding: 0 32px;
+    grid-row: span 2;
     display: grid;
-    justify-content: space-evenly;
-    grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 230px));
-    gap: 24px;
-    padding: 0 32px;
-    grid-template-rows: repeat(auto-fill,minmax(175px,230px));
-	font-size: 24px;
+    grid-gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(0, 214px));
+	height: auto;
+	overflow: scroll;
+	overflow-x: hidden;
 }
 .label-container{
 	background-color: green;
-	width: 100%;
+	width: 220px;
 	border-radius: 8px;
 	position: relative;
 	overflow: hidden;
-	// height: 200px;
+	height: 220px;
 	cursor: pointer;
 	img{
 		right: 0;

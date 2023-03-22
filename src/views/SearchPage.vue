@@ -1,13 +1,13 @@
 <template>
-  <section class="genre-list" >
-    <div class="label-container" v-for="label in labels">
-      <!-- <RouterLink :label="label" :to= "`/genre/${label}`"  > -->
-            <img :src="label.imgUrl"  />
-            <span>
-              {{ label.name }}
-            </span>
-      <!-- </RouterLink> -->
-        </div>
+  <section class="genre-list">
+
+  <div class="label-container" v-for="label in labels" @click="setLabel(label)">
+
+        <img :src="label.imgUrl"  />
+        <span>
+          {{ label.name }}
+        </span>
+  </div>
   </section>
 </template> 
 
@@ -23,12 +23,12 @@ export default {
   methods: {
     setLabel(label) {
       console.log(label)
-      // this.$router.push(`/genre/${this.label}`)
+      this.$router.push(`/genre/${label.name}`)
     },
   },
   computed: {
     labels() {
-     return this.$store.getters.labels
+      return this.$store.getters.labels
     }
   },
   created() { },

@@ -17,30 +17,31 @@ window.cs = stationService
 
 async function query(filterBy = { txt: '', listencount: 0 }) {
   var stations = await storageService.query(STORAGE_KEY)
-  return _filterStations(filterBy,stations)
+  return stations
+  // return _filterStations(filterBy,stations)
  
 }
 function _filterStations(filterBy,stations){
   // const {labels,txt,listencount} = filterBy
-  let filteredStations
-  //Filter By Txt
-  if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    stations = stations.filter(
-      (station) => regex.test(station.title) || regex.test(station.description)
-    )
-  }
-  //Filter By Listen Count
-  if (filterBy.listencount) {
-    stations = stations.filter((station) => station.listencount <= filterBy.listencount)
-  }
-   // Filter By Labels
-  if (filterBy.labels.length) {
-    filterBy.labels.map((lab) => {
-      return (filteredStations = filteredStations.filter((station) => station.labels.includes(lab)))
-    })
-  }
-  return stations
+  // let filteredStations
+  // //Filter By Txt
+  // if (filterBy.txt) {
+  //   const regex = new RegExp(filterBy.txt, 'i')
+  //   stations = stations.filter(
+  //     (station) => regex.test(station.title) || regex.test(station.description)
+  //   )
+  // }
+  // //Filter By Listen Count
+  // if (filterBy.listencount) {
+  //   stations = stations.filter((station) => station.listencount <= filterBy.listencount)
+  // }
+  //  // Filter By Labels
+  // if (filterBy.labels.length) {
+  //   filterBy.labels.map((lab) => {
+  //     return (filteredStations = filteredStations.filter((station) => station.labels.includes(lab)))
+  //   })
+  // }
+  // return stations
 }
 function getById(stationId) {
   return storageService.get(STORAGE_KEY, stationId)
@@ -136,7 +137,7 @@ function getLabels() {
       imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477156/Spotify/Pop_uaqlpr.jpg',
     },
     {
-      name: 'Mood Booster',
+      name: 'Mood-Booster',
       imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477174/Spotify/moodbooster_esxfs6.jpg',
     },
     {

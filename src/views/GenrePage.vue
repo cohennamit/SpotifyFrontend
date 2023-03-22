@@ -8,8 +8,8 @@ export default {
 name: 'Genre Page',
 props:{
     label:{
-        type: String,
-        required: true
+        type: Object,
+        // required: true
     }
 },
 data() {
