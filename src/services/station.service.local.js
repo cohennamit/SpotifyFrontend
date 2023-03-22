@@ -97,3 +97,9 @@ function getEmptyStation() {
 //     imgUrl: 'https://source.unsplash.com/random/?cats&4',
 //   });
 // })();
+
+// TEST DATA
+// ; (async () => {
+//     await storageService.post(STORAGE_KEY, { title: 'Michael Jackson', listencount: 420 })
+//     await storageService.post(STORAGE_KEY, { title: 'Shakira', listencount: 21 })
+// })()
