@@ -1,13 +1,13 @@
 <template>
-  <div class="container home">
-    <main class="stations-app">
+  <div>
+    <main class="station-list">
       <StationList v-if="stations" :stations="stations" />
     </main>
-    <form @submit.prevent="addStation()">
+    <!-- <form @submit.prevent="addStation()">
       <h2>Add station</h2>
       <input type="text" v-model="stationToAdd.title" />
       <button>Save</button>
-    </form>
+    </form> -->
   </div>
 </template>
 

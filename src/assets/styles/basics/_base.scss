@@ -19,6 +19,7 @@ html {
 body {
     font-size: rem(18px);
     margin: 0;
+    background-color: darkslategrey;
 }
 
 h1,
@@ -33,11 +34,11 @@ h6 {
 }
 
 
-section,
-main,
-footer {
-    padding: 5px;
-}
+// section,
+// main,
+// footer {
+//     padding: 5px;
+// }
 
 img {
     width: 100%;
