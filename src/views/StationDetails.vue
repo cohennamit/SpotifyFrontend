@@ -1,22 +1,25 @@
 <template>
     <section class="station-details">
         <StationHeader :station="station" />
-        <!-- <SongList> </SongList> -->
+        <article class="station-details-body">
+            <div @click="toggleStationOptions" class="icon" v-html="getSvg('playlistOptions')"></div>
+            <ul v-if="isOptionsShown">
+                <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
+                <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
+            </ul>
+        </article>
+        <SongList :station="station"/>
+        <h1>THIS IS DR DRE NELL'S SPOT</h1>
     </section>
-    <article class="station-details-body">
-        <div @click="toggleStationOptions" class="icon" v-html="getSvg('playlistOptions')"></div>
-        <ul v-if="isOptionsShown">
-            <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
-            <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
-        </ul>
-    </article>
 </template>
 
 <script>
 //TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
 import { stationService } from '../services/station.service.local.js'
 import { svgService } from '../services/svg.service.js'
+
 import  StationHeader  from '../cmps/StationHeader.vue'
+import SongList from '../cmps/SongList.vue'
 export default {
     name: '',
     data() {
@@ -52,6 +55,7 @@ export default {
     },
     components: {
         StationHeader,
+        SongList,
     },
 
 }

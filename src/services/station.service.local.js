@@ -90,31 +90,36 @@ function getEmptyStation() {
   }
 }
 
-// (async () => {
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Jericho Jackson Mix',
-//     listencount: 420,
-//     label: ['Pop', 'Dance/Electronic'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
-//     createdAt: Date.now(),
-//     songs: [
-//       {
-//         id: "s1001",
-//         title: "The Meters - Cissy Strut",
-//         url: "youtube/song.mp4",
-//         imgUrl: "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
-//         addedBy: '{minimal-user}',
-//         addedAt: 162521765262
-//       },
-//       {
-//         id: "mUkfiLjooxs",
-//         title: "The JB's - Pass The Peas",
-//         url: "youtube/song.mp4",
-//         imgUrl: "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
-//         addedBy: {}
-//       },
-//     ],
-//   });
+(async () => {
+  await storageService.post(STORAGE_KEY, {
+    title: 'Jericho Jackson Mix',
+    listencount: 420,
+    label: ['Pop', 'Dance/Electronic'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
+    createdAt: Date.now(),
+    songs: [
+      {
+        id: "s1001",
+        title: "Music For a Sushi Restaurant",
+        album: "Harry's House",
+        artist: "Harry Styles" ,
+        url: "youtube/song.mp4",
+        imgUrl: "https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg",
+        addedBy: '{minimal-user}',
+        addedAt:  new Date()
+      },
+      {
+        id: "mUkfiLjooxs",
+        title: "Pass The Peas",
+        album:"Food For Thought",
+        artist: "The JB's",
+        url: "youtube/song.mp4",
+        imgUrl: "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
+        addedBy: {},
+        addedAt: new Date()
+      },
+    ],
+  });
 //   await storageService.post(STORAGE_KEY, {
 //     title: 'Dave Pad Mix',
 //     listencount: 21,
@@ -189,7 +194,7 @@ function getEmptyStation() {
 //     createdAt: Date.now(),
 //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
 //   });
-// })();
+})();
 
 // TEST DATA
 // ; (async () => {
