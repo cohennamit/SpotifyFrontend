@@ -2,7 +2,7 @@
 .station-list-top-content-container {
 	padding-inline-start: 12px;
 	padding-inline-end: 6px;
-	background-color: #181818;
+	// background-color: #181818;
 	grid-column: 1 / -1;
 	align-items: center;
 	display: grid;
@@ -12,18 +12,17 @@
 	min-height: 220px;
 	text-align: ltr;
 	.top-content{
-		display: flex;
-		align-items: center;
-		background-color: #292929b3;
-       border-radius: 8px;
-       height: 64px;
+	  display: flex;
+	  align-items: center;
+	  background-color: #292929b3;
+      border-radius: 8px;
+      height: 64px;
 	}
-	
 	h1{
 		align-self: start;
 	}
 	img {
-margin-inline-start:-11px ;
+    margin-inline-start:-11px ;
 	width: 72px;
 	}
 	* {
@@ -38,7 +37,7 @@ margin-inline-start:-11px ;
 }
 
 .station-list {
-	background-color: #181818;
+	// background-color: #181818;
     display: grid;
 	gap: 24px;
 	column-gap: 1.5em;

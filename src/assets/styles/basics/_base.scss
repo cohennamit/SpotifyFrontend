@@ -23,7 +23,10 @@ html {
 body {
     font-size: rem(18px);
     margin: 0;
-    background-color: #181818;
+    // background-color: #181818;
+    background-image: linear-gradient(0deg,#121212 70%,#220e47 );
+    overflow: hidden;
+
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -6,7 +6,7 @@
         <button title="Go Forward" class="header-nav-btn">&gt;</button>
       </section>
       <section>
-        <StationFilter v-if="isFilterShown" @setFilter="setFilter" />
+        <StationFilter v-if="isFilterShown.isFilterShown" @setFilter="setFilter" />
       </section>
     </section>
     <section class="loggedin-user" v-if="loggedInUser">

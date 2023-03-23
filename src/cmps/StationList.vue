@@ -16,11 +16,11 @@
       <h1>All the Brilliant Things</h1>
     </article>
     <article class="top-content">
-      <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/17_awapkm.jpg" alt="" />
+      <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg" alt="" />
       <h1>Jericho Jackson</h1>
     </article>
     <article class="top-content">
-      <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg" alt="" />
+      <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/17_awapkm.jpg" alt="" />
       <h1>DJ Muggs</h1>
     </article>
     <article class="top-content">
