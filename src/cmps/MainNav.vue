@@ -14,7 +14,7 @@
             </RouterLink>
         </section>
         <section class="actions">
-            <button class="create-playlist-btn">Create Playlist</button>
+            <button @click="onCreateStation" class="create-playlist-btn">Create Playlist</button>
             <RouterLink to="/">Liked Songs</RouterLink>
         </section>
         <hr />
@@ -34,6 +34,7 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
+import {stationService} from '../services/station.service.local.js'
 export default {
     name: '',
     data() {
@@ -43,6 +44,10 @@ export default {
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
+        onCreateStation(){
+           const newStation =  stationService.getEmptyStation()
+            this.$store.dispatch({type: 'addStation', newStation})
+        }
     },
     computed: {},
     created() { },

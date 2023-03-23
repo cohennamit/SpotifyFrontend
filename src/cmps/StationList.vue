@@ -32,9 +32,9 @@
       <h1>Super Tecmo Bo</h1>
     </article>
   </section>
-  <article class="station-list">
+  <ul class="station-list">
     <StationPreview v-for="station in stations" :key="station._id" :station="station" />
-  </article>
+  </ul>
 </template>
 
 <script>

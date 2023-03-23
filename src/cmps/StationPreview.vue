@@ -1,7 +1,8 @@
 <template>
-  <section class="station-preview">
+  <section @click="goToDetails" class="station-preview">
     <img v-if="station.imgUrl" :src="station.imgUrl" />
     <p>{{ station.title }}</p>
+
     <!-- <p>Listen Count : {{ station.listencount?.toLocaleString() }}</p> -->
     <!-- <button @click="removeStation(station._id)">x</button>
     <button @click="updateStation(station)">Update</button>
@@ -26,6 +27,9 @@ export default {
     return {};
   },
   methods: {
+    goToDetails(){
+      this.$router.push(`/station/${this.station._id}`)
+    },
     async removeStation(stationId) {
       try {
         await this.$store.dispatch(getActionRemoveStation(stationId));

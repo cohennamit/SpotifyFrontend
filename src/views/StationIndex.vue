@@ -31,7 +31,6 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch({ type: 'loadStations' });
   },
   methods: {
     async addStation() {

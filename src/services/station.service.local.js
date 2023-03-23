@@ -52,6 +52,7 @@ async function remove(stationId) {
 }
 
 async function save(station) {
+  console.log(station)
   var savedStation;
   if (station._id) {
     savedStation = await storageService.put(STORAGE_KEY, station);
@@ -80,10 +81,13 @@ async function addStationMsg(stationId, txt) {
 }
 
 function getEmptyStation() {
+  //TODO: ADD COUNTER 
   return {
-    title: 'Susita-' + (Date.now() % 1000),
-    listencount: utilService.getRandomIntInclusive(1000, 9000),
-  };
+    title: `My Playlist #`,
+    imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',
+    songs: [],
+    isAddedByUser: true
+  }
 }
 
 // (async () => {
@@ -93,6 +97,23 @@ function getEmptyStation() {
 //     label: ['Pop', 'Dance/Electronic'],
 //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
 //     createdAt: Date.now(),
+//     songs: [
+//       {
+//         id: "s1001",
+//         title: "The Meters - Cissy Strut",
+//         url: "youtube/song.mp4",
+//         imgUrl: "https://i.ytimg.com/vi/4_iC0MyIykM/mqdefault.jpg",
+//         addedBy: '{minimal-user}',
+//         addedAt: 162521765262
+//       },
+//       {
+//         id: "mUkfiLjooxs",
+//         title: "The JB's - Pass The Peas",
+//         url: "youtube/song.mp4",
+//         imgUrl: "https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg",
+//         addedBy: {}
+//       },
+//     ],
 //   });
 //   await storageService.post(STORAGE_KEY, {
 //     title: 'Dave Pad Mix',
