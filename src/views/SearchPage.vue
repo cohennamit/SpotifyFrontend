@@ -24,10 +24,12 @@ export default {
     setLabel(label) {
       console.log(label)
       this.$router.push(`/genre/${label.name}`)
+      this.$router.push(`/genre/${label.name}`)
     },
   },
   computed: {
     labels() {
+      return this.$store.getters.labels
       return this.$store.getters.labels
     }
   },

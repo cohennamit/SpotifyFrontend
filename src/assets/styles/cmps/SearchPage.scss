@@ -2,8 +2,7 @@
 	padding: 0 32px;
 
 }
-.genres-list	{
-	grid-row: span 2;
+.genres-list{
     display: grid;
     gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(0,180px));
