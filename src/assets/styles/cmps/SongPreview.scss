@@ -1,0 +1,32 @@
+.song-preview{
+    display:grid;
+    grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr);
+    padding-inline: 16px;
+    grid-gap: 16px;
+    font-size: 16px;
+    align-items: center;
+    height: 56px;
+    p{
+        margin: 0;
+    }
+    div:first-of-type{
+        display: flex;
+        align-items: center;
+    }
+    span:first-of-type{
+        // align-self: center;
+    }
+    &-img{
+        img{
+            object-fit:cover ;
+            object-position: center center;
+        }
+        width: 40px;
+        height: 40px;
+        margin-inline-end: 16px;
+    }
+    &-name{
+        display: flex;
+        flex-direction: column;
+    }
+}

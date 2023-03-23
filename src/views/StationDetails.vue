@@ -1,7 +1,6 @@
 <template>
   <section class="station-details">
     <StationHeader :station="station" />
-    <!-- <SongList> </SongList> -->
     <article class="station-details-body">
       <div @click="toggleStationOptions" class="icon" v-html="getSvg('playlistOptions')"></div>
       <ul v-if="isOptionsShown">
@@ -9,6 +8,7 @@
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
     </article>
+    <SongList :station="station" />
     <SongFilter />
   </section>
 </template>
@@ -17,8 +17,11 @@
 //TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
 import { stationService } from '../services/station.service.local.js';
 import { svgService } from '../services/svg.service.js';
+
 import StationHeader from '../cmps/StationHeader.vue';
+import SongList from '../cmps/SongList.vue';
 import SongFilter from '../cmps/SongFilter.vue';
+
 export default {
   name: '',
   data() {
@@ -39,7 +42,6 @@ export default {
       this.$router.push('/station');
     },
   },
-  computed: {},
   async created() {
     const { stationId } = this.$route.params;
     // console.log('create',stationId)
@@ -52,6 +54,7 @@ export default {
   },
   components: {
     StationHeader,
+    SongList,
     SongFilter,
   },
 };

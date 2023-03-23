@@ -1,12 +1,23 @@
 <template>
-<section class="song-list">
-
+<section
+ class="song-list">
+ <SongPreview
+    v-for="(song,index) in station.songs"
+    :song="song"
+    :index="index"       
+     />
 </section>
 </template>
 
-<script>
+<script>    
+import SongPreview from './SongPreview.vue'
 export default {
-name: '',
+name: 'Song List',
+props:{
+    station:{
+        type: Object
+    }
+},
 data() {
 return {
 
@@ -22,11 +33,8 @@ created() {
 
 },
 components: {
-
+SongPreview
 },
 }
 </script>
 
-<style>
-
-</style>
