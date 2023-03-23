@@ -7,7 +7,7 @@ import ReviewIndex from './views/ReviewIndex.vue'
 import LoginSignup from './views/LoginSignup.vue'
 import UserDetails from './views/UserDetails.vue'
 import SearchPage from './views/SearchPage.vue'
-import GenrePage from './views/GenrePage.vue'
+import GenreDetails from './views/GenreDetails.vue'
 
 const routes = [
   {
@@ -48,7 +48,7 @@ const routes = [
   {
     path: '/genre/:label',
     name: 'genre',
-    component: GenrePage
+    component: GenreDetails
 
   }
 

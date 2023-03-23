@@ -89,9 +89,9 @@ export const stationStore = {
         throw err
       }
     },
-    async loadStations(context) {
+    async loadStations(context,{filterBy}) {
       try {
-        const stations = await stationService.query()
+        const stations = await stationService.query(filterBy)
         context.commit({ type: 'setStations', stations })
       } catch (err) {
         console.log('stationStore: Error in loadStations', err)

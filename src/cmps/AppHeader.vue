@@ -1,31 +1,47 @@
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">
-        <span role="img" aria-label="logo">🙏</span>
-        <h1>Heloooooo</h1>
-        <h2>AmitCohen</h2>
-      </RouterLink>
-      <RouterLink to="/station">Stations</RouterLink>
-      <RouterLink to="/review">Reviews</RouterLink>
-      <RouterLink to="/chat">Chat</RouterLink>
-      <RouterLink to="/login">Login / Signup</RouterLink>
-    </nav>
+  <section class="header">
+    <section class="header-right">
+      <section class="header-buttons">
+        <button title="Go Back" class="header-nav-btn">&lt;</button>
+        <button title="Go Forward" class="header-nav-btn">&gt;</button>
+      </section>
+      <section>
+        <StationFilter v-if="isFilterShown" @setFilter="setFilter" />
+      </section>
+    </section>
     <section class="loggedin-user" v-if="loggedInUser">
+      <img :src="loggedInUser.imgUrl" />
       <RouterLink :to="`/user/${loggedInUser._id}`">
         {{ loggedInUser.fullname }}
       </RouterLink>
-      <span>{{ loggedInUser.score.toLocaleString() }}</span>
-      <img :src="loggedInUser.imgUrl" />
     </section>
-  </header>
+    <section v-else>
+      <section class="login-btn">
+        <RouterLink to="/login">Login</RouterLink>
+      </section>
+    </section>
+  </section>
 </template>
+
 <script>
+import StationFilter from './StationFilter.vue';
+
 export default {
   computed: {
+    isFilterShown() {
+      return this.$store.getters.isFilterShown;
+    },
     loggedInUser() {
       return this.$store.getters.loggedinUser;
     },
+  },
+  methods: {
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'loadToys', filterBy });
+    },
+  },
+  components: {
+    StationFilter,
   },
 };
 </script>
