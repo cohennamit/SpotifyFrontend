@@ -1,0 +1,23 @@
+.song-filter{
+    *{
+        margin-inline-start: 0.3em;
+        width: 365px;
+    }
+    input {
+        color: black;
+    }
+    img{
+        width: 60px;
+        align-self: flex-start;
+    }
+    ul{
+        padding-inline-start: 0;
+    }
+    li {
+        display: flex;
+        align-items: center;
+    }
+    h6{
+margin-block-start: 0em;
+    }
+}
