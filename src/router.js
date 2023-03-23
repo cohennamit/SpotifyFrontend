@@ -8,6 +8,7 @@ import LoginSignup from './views/LoginSignup.vue'
 import UserDetails from './views/UserDetails.vue'
 import SearchPage from './views/SearchPage.vue'
 import GenreDetails from './views/GenreDetails.vue'
+import StationDetails from './views/StationDetails.vue'
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/station',
     name: 'StationIndex',
     component: StationIndex
+  },
+  {
+    path: '/station/:stationId',
+    name: 'StationDetails',
+    component: StationDetails
   },
   {
     path: '/review',
@@ -49,8 +55,7 @@ const routes = [
     path: '/genre/:label',
     name: 'genre',
     component: GenreDetails
-
-  }
+  },
 
 ]
 

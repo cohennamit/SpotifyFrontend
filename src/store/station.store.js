@@ -30,6 +30,7 @@ export function getActionAddStationMsg(stationId) {
 
 export const stationStore = {
   state: {
+    stations:[],
     isFilterShown: false,
     labels: stationService.getLabels(),
     filterBy: {
@@ -67,7 +68,10 @@ export const stationStore = {
       state.stations.splice(idx, 1, station);
     },
     removeStation(state, { stationId }) {
-      state.stations = state.stations.filter((station) => station._id !== stationId);
+      // state.stations = state.stations.filter((station) => station._id !== stationId);
+      const idx = state.stations.findIndex(station => station._id === stationId)
+      console.log(idx)
+      state.stations.splice(idx, 1)
     },
     addStationMsg(state, { stationId, msg }) {
       const station = state.stations.find((station) => station._id === stationId);
@@ -76,11 +80,11 @@ export const stationStore = {
     },
   },
   actions: {
-    async addStation(context, { station }) {
+    async addStation(context,  {newStation} ) {
       try {
-        station = await stationService.save(station);
-        context.commit(getActionAddStation(station));
-        return station;
+        newStation = await stationService.save(newStation);
+        context.commit(getActionAddStation(newStation));
+        return newStation;
       } catch (err) {
         console.log('stationStore: Error in addStation', err);
         throw err;
@@ -99,7 +103,6 @@ export const stationStore = {
     async loadStations(context, { filterBy }) {
       try {
         const stations = await stationService.query(filterBy);
-        console.log('stations: ', stations);
         context.commit({ type: 'setStations', stations });
       } catch (err) {
         console.log('stationStore: Error in loadStations', err);
@@ -110,6 +113,7 @@ export const stationStore = {
       try {
         await stationService.remove(stationId);
         context.commit(getActionRemoveStation(stationId));
+        // context.dispatch({type:'loadStations', filterBy:context.state.filterBy})
       } catch (err) {
         console.log('stationStore: Error in removeStation', err);
         throw err;

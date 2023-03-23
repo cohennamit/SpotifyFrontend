@@ -1,17 +1,45 @@
-header {
-    background-color: $clr5;
-    padding: 10px;
+.header {
+    max-height: 70px;
+    background-color: rgb(33, 33, 33);
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
+    .search-input {
+        width: 350px;
+        height: 40px;
+        color: black;
+        border-radius: 25px;
+        border: none;
+        padding: 20px;
+    }
+
+    .login-btn {
+        margin-inline-end: 20px;
+        display: grid;
+        align-content: center;
+        text-align: center;
+        background-color: black;
+        border-radius: 50px;
+        height: 35px;
+        width: 110px;
+    }
+
     .loggedin-user {
-        background-color: $clr1;
+        margin-inline-end: 20px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        justify-content: space-around;
+        background-color: black;
+        height: 35px;
+        width: 110px;
         padding: 2px 8px;
         border-radius: 1em;
-        align-self: flex-end;
-        color: whitesmoke;
+        align-self: center;
 
         span {
+            color: whitesmoke;
             background-color: $clr2;
             padding: 4px;
             margin: 10px;
@@ -19,9 +47,18 @@ header {
         }
 
         img {
+            margin-inline-start: -10px;
             width: 2em;
             height: 2em;
             border-radius: 50%;
+        }
+
+        a {
+            color: whitesmoke;
+        }
+
+        a:hover {
+            text-decoration: none;
         }
     }
 
@@ -39,5 +76,16 @@ header {
     nav .active {
         color: $clr1;
     }
+}
 
+
+.header-nav-btn {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: rgb(10, 10, 10);
+}
+
+.header-right {
+    display: flex;
 }
