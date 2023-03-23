@@ -1,13 +1,24 @@
 .station-preview{
-    border: 1px solid black;
-    width:250px;
-    height: 250px;
+    background-color: #292929b3;
+    padding: 2em;
+    transition: 300ms;
+        text-align: center;
+        margin: 2em 2em 2em 1em;
+        padding: 1em;
+       width: 218px;
+       height: 310px;
+       border-radius: 8px;
+   
 	img {
+        border-radius: 8px;
+
         margin: auto;
         height: 180px;
         width: 180px;
     }
-    
-	
+	&:hover{
+        background-color: #292929;
+   
+    }
     
 }

@@ -1,9 +1,8 @@
 <template>
   <section>
     <main class="app-main">
-      <!-- <AppHeader /> -->
       <MainNav />
-      <AppHeader2 />
+      <AppHeader />
       <RouterView />
       <AppFooter />
       <UserMsg />
@@ -16,7 +15,6 @@ import { userService } from './services/user.service';
 import { store } from './store/store';
 
 import AppHeader from './cmps/AppHeader.vue';
-import AppHeader2 from './cmps/AppHeader2.vue';
 import MainNav from './cmps/MainNav.vue';
 import AppFooter from './cmps/AppFooter.vue';
 import UserMsg from './cmps/UserMsg.vue';
@@ -29,7 +27,6 @@ export default {
   },
   components: {
     AppHeader,
-    AppHeader2,
     MainNav,
     AppFooter,
     UserMsg,

@@ -4,6 +4,7 @@
       <li v-for="station in stations" :key="station._id">
         <p>
           <img v-if="station.imgUrl" :src="station.imgUrl" />
+          <!-- {{ station.imgUrl }} -->
           {{ station.title }}
         </p>
         <p>Listen Count : {{ station.listencount?.toLocaleString() }}</p>

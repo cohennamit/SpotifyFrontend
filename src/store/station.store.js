@@ -1,3 +1,4 @@
+import { storageService } from '../services/async-storage.service';
 import { stationService } from '../services/station.service.local';
 // import { stationService } from '../services/station.service'
 
@@ -29,20 +30,23 @@ export function getActionAddStationMsg(stationId) {
 
 export const stationStore = {
   state: {
-    stations: [],
     isFilterShown: false,
+    labels: stationService.getLabels(),
     filterBy: {
-      labels: [],
+      labels: '',
       sort: 'name',
-      inStock: false,
     },
+    labels: stationService.getLabels(),
   },
   getters: {
+    stations({ stations }) {
+      return stations;
+    },
     isFilterShown({ isFilterShown }) {
       return isFilterShown;
     },
-    stations({ stations }) {
-      return stations;
+    labels({ labels }) {
+      return labels;
     },
   },
   mutations: {
@@ -92,9 +96,10 @@ export const stationStore = {
         throw err;
       }
     },
-    async loadStations(context) {
+    async loadStations(context, { filterBy }) {
       try {
-        const stations = await stationService.query();
+        const stations = await stationService.query(filterBy);
+        console.log('stations: ', stations);
         context.commit({ type: 'setStations', stations });
       } catch (err) {
         console.log('stationStore: Error in loadStations', err);

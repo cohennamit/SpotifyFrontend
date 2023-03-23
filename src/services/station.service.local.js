@@ -11,23 +11,38 @@ export const stationService = {
   remove,
   getEmptyStation,
   addStationMsg,
+  getLabels,
 };
 window.cs = stationService;
 
 async function query(filterBy = { txt: '', listencount: 0 }) {
   var stations = await storageService.query(STORAGE_KEY);
+  return stations;
+  // return _filterStations(filterBy,stations)
+}
+function _filterStations(filterBy, stations) {
+  console.log('stations: ', stations);
+  // const {labels,txt,listencount} = filterBy
+  let filteredStations;
+  //Filter By Txt
   if (filterBy.txt) {
     const regex = new RegExp(filterBy.txt, 'i');
     stations = stations.filter(
       (station) => regex.test(station.title) || regex.test(station.description)
     );
   }
+  //Filter By Listen Count
   if (filterBy.listencount) {
     stations = stations.filter((station) => station.listencount <= filterBy.listencount);
   }
+  // Filter By Labels
+  if (filterBy.labels.length) {
+    filterBy.labels.map((lab) => {
+      return (filteredStations = filteredStations.filter((station) => station.labels.includes(lab)));
+    });
+  }
   return stations;
 }
-
 function getById(stationId) {
   return storageService.get(STORAGE_KEY, stationId);
 }
@@ -73,28 +88,85 @@ function getEmptyStation() {
 
 // (async () => {
 //   await storageService.post(STORAGE_KEY, {
-//     title: 'Michael Jackson',
+//     title: 'Jericho Jackson Mix',
 //     listencount: 420,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
 //     createdAt: Date.now(),
 //   });
 //   await storageService.post(STORAGE_KEY, {
-//     title: 'Shakira',
+//     title: 'Dave Pad Mix',
 //     listencount: 21,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
 //     createdAt: Date.now(),
 //   });
 //   await storageService.post(STORAGE_KEY, {
-//     title: 'Biggy',
+//     title: 'Chill Mix',
 //     listencount: 221,
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
 //     createdAt: Date.now(),
 //   });
 //   await storageService.post(STORAGE_KEY, {
-//     title: 'Flock of seagulls',
+//     title: 'Happy Mix',
 //     listencount: 2221,
 //     createdAt: Date.now(),
-//     imgUrl: 'https://source.unsplash.com/random/?cats&4',
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: '2010s Mix',
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: '2000s Mix',
+//     listencount: 21,
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 1',
+//     listencount: 221,
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 2',
+//     listencount: 2221,
+//     createdAt: Date.now(),
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 3',
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 4',
+//     listencount: 21,
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 5',
+//     listencount: 221,
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 6',
+//     listencount: 2221,
+//     createdAt: Date.now(),
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
 //   });
 // })();
 
@@ -103,3 +175,60 @@ function getEmptyStation() {
 //   await storageService.post(STORAGE_KEY, { title: 'Michael Jackson', listencount: 420 })
 //   await storageService.post(STORAGE_KEY, { title: 'Shakira', listencount: 21 })
 // })()
+
+function getLabels() {
+  return [
+    {
+      name: 'Pop',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477156/Spotify/Pop_uaqlpr.jpg',
+    },
+    {
+      name: 'Mood-Booster',
+      imgUrl:
+        'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477174/Spotify/moodbooster_esxfs6.jpg',
+    },
+    {
+      name: 'Latino',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477166/Spotify/latino_najwkb.jpg',
+    },
+    {
+      name: 'Rock',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679477163/Spotify/Rock_cdizyt.jpg',
+    },
+    {
+      name: 'Rap',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679476992/Spotify/Rap_q7jmtn.jpg',
+    },
+    {
+      name: 'K-Pop',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679478366/Spotify/K-Pop_lfh88n.jpg',
+    },
+    {
+      name: 'Dance/Electronic',
+      imgUrl:
+        'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679491299/Spotify/DanceElectroincs_b5sonr.jpg',
+    },
+    // 'Hip-Hop',
+    // 'Rock',
+    // 'Latin',
+    // 'Charts',
+    // 'Dance/Electronic',
+
+    // 'Indie',
+    // 'Workout',
+    // 'Country',
+    // 'R&B',
+    // 'Chill',
+    // 'Party',
+    // 'Love',
+    // 'Metal',
+    // 'Jazz',
+    // 'Anime',
+    // 'Gaming',
+    // 'Folk & Acoustic',
+    // 'Soul',
+    // 'Instrumental',
+    // 'Summer',
+    // 'Fresh Finds'
+  ];
+}
