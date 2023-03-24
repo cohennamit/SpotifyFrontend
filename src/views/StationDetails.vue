@@ -8,7 +8,7 @@
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
     </article>
-    <SongList :station="station" />
+    <SongList  :station="station" />
     <SongFilter @addSong="addSong" />
   </section>
 </template>
@@ -24,6 +24,7 @@ import SongFilter from '../cmps/SongFilter.vue';
 
 export default {
   name: '',
+  emits: ['removeSong'],
   data() {
     return {
       station: {},
@@ -45,6 +46,12 @@ export default {
       this.station.songs.push(song)
       this.$store.dispatch({type:'updateStation', station: this.station})
     },
+    removeSong(songId){
+      console.log('details', songId)
+      const songIdx = this.stations.songs.findIndex(song=> song._id === songId)
+      this.station.songs.splice(songIdx, 1)
+      this.$store.dispatch({type:'updateStation', station: this.station})
+    }
   },
   computed:{
 

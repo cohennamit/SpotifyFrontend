@@ -1,11 +1,10 @@
 <template>
-    <div class="song-preview" @mouseover="isHover = true" @mouseleave="isHover = false">
+    <div class="song-preview-main" @mouseover="isHover = true" @mouseleave="isHover = false">
 
         <div v-html="isHover ? getSvg('playSong') : index + 1" :class="playSongClass" @click="setSong"></div>
         <!-- <span v-if="isHover">5</span> -->
-        <div>
+        <div class="song-preview-content">
             <div class="song-preview-img">
-
                 <img :src="song.imgUrl" />
             </div>
 
@@ -19,8 +18,14 @@
             </div>
 
         </div>
-        <p>{{ song.album }}</p>
+        <!-- <p>{{ song.album }}</p> -->
+        <p>DEMO ALBUM</p>
         <p>15 seconds Ago</p>
+        <div class="song-preview-preferences">
+            <div :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></div>
+            <span>3:14</span>
+            <div :class="togglePrefClass" class="icon" v-html="getSvg('trash')"></div>
+        </div>
     </div>
 </template>
 
@@ -32,14 +37,14 @@ export default {
         song: {
             type: Object
         },
-        station:{
+        station: {
             type: Object
         },
         index: {
             type: Number,
         }
     },
-    created(){
+    created() {
     },
     data() {
         return {
@@ -47,6 +52,10 @@ export default {
         }
     },
     methods: {
+        removeSong(){
+            console.log('preview',this.song._id);
+        this.$emit('removeSong', this.song._id)
+        },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
@@ -56,6 +65,9 @@ export default {
         }
     },
     computed: {
+        togglePrefClass(){
+            return this.isHover ? 'pref-visible' : ' pref-hidden'
+        },
         songAddedAt() {
             let date = this.song.addedAt.getSeconds()
             // var seconds = new Date().getTime() / 1000 ;
@@ -68,7 +80,7 @@ export default {
         shortenedTitle() {
             const maxLength = 30;
             return function (title) {
-            return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
+                return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
             }
         },
     }
