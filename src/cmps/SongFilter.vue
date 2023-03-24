@@ -12,17 +12,11 @@
           <img :src="video.snippet.thumbnails.default.url" alt="" />
           <div>
             <h3>{{ shortenedTitle(video.snippet.title) }}</h3>
-
             <h6>Artist</h6>
+            <button @click="addSong(video)">Add</button>
           </div>
-          <iframe
-            hidden
-            width="60"
-            height="15"
-            :src="'https://www.youtube.com/embed/' + video.id.videoId"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
+          <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + video.id.videoId" frameborder="0"
+            allowfullscreen></iframe>
         </li>
       </ul>
       <div v-if="!videos.length && !loading">No Songs</div>
@@ -31,6 +25,8 @@
 </template>
 
 <script>
+import { stationService } from '../services/station.service.local.js';
+import { eventBus } from '../services/event-bus.service.js';
 export default {
   data() {
     return {
@@ -41,7 +37,7 @@ export default {
   },
   computed: {
     shortenedTitle() {
-      const maxLength = 15;
+      const maxLength = 30;
       return function (title) {
         return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
       };
@@ -58,12 +54,29 @@ export default {
         );
         const { items } = await response.json();
         console.log('items: ', items);
-        console.log();
+        console.log(items);
         this.videos = items;
       } catch (error) {
         console.error(error);
       }
     },
+    addSong(video) {
+      const emptySong = stationService.getEmptySong()
+      const { snippet, id } = { ...video }
+      emptySong.title = snippet.title
+      emptySong.videoId = id.videoId
+      emptySong.imgUrl = snippet.thumbnails.default.url
+      console.log(video)
+      //OUR'S:
+      // const pattern = /[^-,_\w]+/g;
+      //CHATGPT'S: 
+      // const pattern = /^(?<artist>[^-()]+)\s*-\s*(?<title>[^()]+)(\((feat\..+)\))?$/i;
+      // const title = emptySong.title
+      // const match = title.match(pattern);
+      // const artist = match?.groups?.artist.trim();
+      // const songTitle = match?.groups?.title.trim();
+      //TODO: TRY TO FIX PATTERN TO NOT GET SHIT TITLE
+    }
   },
 };
 </script>
