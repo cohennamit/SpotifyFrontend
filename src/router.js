@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import Home from './views/Home.vue'
 import Chat from './views/Chat.vue'
 import StationIndex from './views/StationIndex.vue'
 import ReviewIndex from './views/ReviewIndex.vue'
@@ -13,8 +12,7 @@ import StationDetails from './views/StationDetails.vue'
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/station',
   },
   {
     path: '/station',

@@ -12,11 +12,15 @@
             <button class="footer-btn" @click="onPrevSong">
                 <div class="icon" v-html="getSvg('playPrev')"></div>
             </button>
-            <button @click="onPauseResume" class="footer-btn">{{ pauseStatus }}</button>
-            <button class="footer-btn" @click="onNextSong">
-                <div class="icon"  v-html="getSvg('playNext')"></div>
+            <button @click="onPauseResume" class="footer-btn btn-pause">
+                <div v-html="isPlaying ? getSvg('resume') : getSvg('pause')"></div>
             </button>
-            <button @click="onRepeat" class="footer-btn">{{ repeatStatus }}</button>
+            <button class="footer-btn" @click="onNextSong">
+                <div class="icon" v-html="getSvg('playNext')"></div>
+            </button>
+            <button @click="onRepeat" class="footer-btn">
+                <div class="icon" :class="{ 'active': isRepeating }" v-html="getSvg('repeat')"></div>
+            </button>
         </section>
         <section class="music-settings">
             <input class="footer-volume" type="range" min="0" max="100" step="10" id="volume-slider" v-model="volume" />
@@ -42,6 +46,7 @@ export default defineComponent({
             playerVars: {
                 loop: 0
             },
+            isPlaying: false,
             isShuffling: false,
             isRepeating: false,
         }
@@ -50,37 +55,30 @@ export default defineComponent({
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
-        onPauseResume() {
-            if (this.pauseStatus === 'Resume') {
-                this.$refs.youtube.playVideo()
-                this.pauseStatus = 'Pause'
-            } else {
-                this.pauseStatus = 'Resume'
-                this.$refs.youtube.pauseVideo()
-            }
-        },
-        onNextSong(){
-            this.$store.dispatch({type:'setNextSong'})
-        },
-        onPrevSong(){
-            this.$store.dispatch({type:'setPrevSong'})
-        },
-        // onRepeat() {
-        //     if (this.repeatStatus === 'Repeat') {
-        //         this.repeatStatus = 'Repeating'
-        //         this.playerVars.loop = 1
+        // onPauseResume() {
+        //     if (this.pauseStatus === 'Resume') {
+        //         this.$refs.youtube.playVideo()
+        //         this.pauseStatus = 'Pause'
+        //     } else {
+        //         this.pauseStatus = 'Resume'
+        //         this.$refs.youtube.pauseVideo()
         //     }
-        //     else {
-        //         this.repeatStatus = 'Repeat'
-        //         this.playerVars.loop = 1
-        //     }
-        //     this.isRepeating = !this.isRepeating
-        //     console.log('this.isRepeating', this.isRepeating)
         // },
+        onPauseResume() {
+            this.isPlaying = !this.isPlaying
+            if (this.isPlaying) this.$refs.youtube.pauseVideo()
+            else this.$refs.youtube.playVideo()
+        },
+        onNextSong() {
+            this.$store.dispatch({ type: 'setNextSong' })
+        },
+        onPrevSong() {
+            this.$store.dispatch({ type: 'setPrevSong' })
+        },
         onRepeat() {
-            if (isRepeating) this.playerVars = 0
-            else this.playerVars = 1
             this.isRepeating = !this.isRepeating
+            if (isRepeating) this.playerVars.loop = 0
+            else this.playerVars.loop = 1
         },
         onShuffle() {
             this.isShuffling = !this.isShuffling
