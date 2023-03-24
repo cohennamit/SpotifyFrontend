@@ -39,6 +39,8 @@ export default {
             type: Number,
         }
     },
+    created(){
+    },
     data() {
         return {
             isHover: false
@@ -50,7 +52,7 @@ export default {
         },
         setSong() {
             this.$store.dispatch({ type: 'setSong', song: this.song })
-            this.$store.dispatch({ type: 'setStation', song: this.station })
+            this.$store.dispatch({ type: 'setStation', station: this.station })
         }
     },
     computed: {

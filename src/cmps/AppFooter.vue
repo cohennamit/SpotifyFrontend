@@ -9,12 +9,12 @@
             <button @click="onShuffle" class="footer-btn">
                 <div class="icon" :class="{ 'active': isShuffling }" v-html="getSvg('shuffle')"></div>
             </button>
-            <button class="footer-btn">
+            <button class="footer-btn" @click="onPrevSong">
                 <div class="icon" v-html="getSvg('playPrev')"></div>
             </button>
             <button @click="onPauseResume" class="footer-btn">{{ pauseStatus }}</button>
-            <button class="footer-btn">
-                <div class="icon" v-html="getSvg('playNext')"></div>
+            <button class="footer-btn" @click="onNextSong">
+                <div class="icon"  v-html="getSvg('playNext')"></div>
             </button>
             <button @click="onRepeat" class="footer-btn">{{ repeatStatus }}</button>
         </section>
@@ -58,6 +58,12 @@ export default defineComponent({
                 this.pauseStatus = 'Resume'
                 this.$refs.youtube.pauseVideo()
             }
+        },
+        onNextSong(){
+            this.$store.dispatch({type:'setNextSong'})
+        },
+        onPrevSong(){
+            this.$store.dispatch({type:'setPrevSong'})
         },
         // onRepeat() {
         //     if (this.repeatStatus === 'Repeat') {
