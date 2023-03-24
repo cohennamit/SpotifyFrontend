@@ -33,7 +33,17 @@ export default {
       query: '',
       videos: [],
       loading: false,
+      currStation: {}
     };
+  },
+  async created(){
+    const { stationId } = this.$route.params;
+    try {
+      const station = await stationService.getById(stationId);
+      this.currStation = station;
+    } catch (error) {
+      console.log('Error fetching station: ', error);
+    }
   },
   computed: {
     shortenedTitle() {
@@ -61,12 +71,14 @@ export default {
       }
     },
     addSong(video) {
-      const emptySong = stationService.getEmptySong()
+      const song = stationService.getEmptySong()
       const { snippet, id } = { ...video }
-      emptySong.title = snippet.title
-      emptySong.videoId = id.videoId
-      emptySong.imgUrl = snippet.thumbnails.default.url
-      console.log(video)
+      song.title = snippet.title
+      song.videoId = id.videoId
+      song.imgUrl = snippet.thumbnails.default.url
+      this.$emit('addSong', song)
+
+
       //OUR'S:
       // const pattern = /[^-,_\w]+/g;
       //CHATGPT'S: 

@@ -15,7 +15,7 @@ export const stationService = {
   getLabels,
 };
 window.cs = stationService;
-
+//TODO: ADD FILTER BY OWNER AS PARAMETER
 async function query(filterBy = { txt: '', listencount: 0 }) {
   var stations = await storageService.query(STORAGE_KEY);
   return stations;
@@ -53,9 +53,9 @@ async function remove(stationId) {
 }
 
 async function save(station) {
-  console.log(station);
   var savedStation;
   if (station._id) {
+    console.log('station service entered update', station);
     savedStation = await storageService.put(STORAGE_KEY, station);
   } else {
     // Later, owner is set by the backend

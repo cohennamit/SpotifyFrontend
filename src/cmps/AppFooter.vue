@@ -2,7 +2,7 @@
     <section class="footer">
         <section class="song-info">
             <img :src="imgUrl" alt="">
-            <h3>{{ songTitle }}</h3>
+            <h3>{{ shortenedTitle(songTitle) }}</h3>
         </section>
         <YouTube hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" :player-vars="playerVars" />
         <section class="footer-btns">
@@ -74,7 +74,13 @@ export default defineComponent({
         },
         songTitle() {
             return this.$store.getters.currentSong.title
-        }
+        },
+        shortenedTitle() {
+            const maxLength = 20;
+            return function (title) {
+            return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
+            }
+        },
     }
 
 })

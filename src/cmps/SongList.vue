@@ -1,12 +1,13 @@
 <template>
-<section
+<ul
  class="song-list">
  <SongPreview
     v-for="(song,index) in station.songs"
     :song="song"
+    :station="station"
     :index="index"       
      />
-</section>
+</ul>
 </template>
 
 <script>    

@@ -5,7 +5,11 @@
     grid-gap: 16px;
     font-size: 16px;
     align-items: center;
-    height: 56px;
+    // height: 56px;
+    border-radius: 4px;
+    :hover{
+        background-color: hsl(0deg 0% 38.82%);
+    }
     p{
         margin: 0;
     }
@@ -15,7 +19,7 @@
     }
     span:first-of-type{
         // align-self: center;
-    }
+    } 
     &-img{
         img{
             object-fit:cover ;
@@ -28,5 +32,11 @@
     &-name{
         display: flex;
         flex-direction: column;
+    }
+    &-play-btn{
+        fill: white;
+        :hover{
+            cursor: pointer;
+        }
     }
 }

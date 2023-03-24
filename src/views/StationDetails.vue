@@ -9,7 +9,7 @@
       </ul>
     </article>
     <SongList :station="station" />
-    <SongFilter />
+    <SongFilter @addSong="addSong" />
   </section>
 </template>
 
@@ -41,16 +41,32 @@ export default {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
       this.$router.push('/station');
     },
+    addSong(song){
+      this.station.songs.push(song)
+      this.$store.dispatch({type:'updateStation', station: this.station})
+    },
   },
-  async created() {
-    const { stationId } = this.$route.params;
-    // console.log('create',stationId)
-    try {
-      const station = await stationService.getById(stationId);
-      this.station = station;
-    } catch (error) {
-      console.log('Error fetching station: ', error);
-    }
+  computed:{
+
+    // async getStation() {
+    //   const { stationId } = this.$route.params;
+    //   // console.log('create',stationId)
+    //   try {
+    //     const station = await stationService.getById(stationId);
+    //     this.station = station;
+    //   } catch (error) {
+    //     console.log('Error fetching station: ', error);
+    //   }
+    // },
+  },
+  watch:{
+    '$route.params': {
+      handler() {
+        const { stationId } = this.$route.params
+        stationService.getById(stationId).then(station => (this.station = station))
+      },
+      immediate: true
+    },
   },
   components: {
     StationHeader,
