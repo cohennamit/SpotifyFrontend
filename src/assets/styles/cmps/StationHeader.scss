@@ -1,0 +1,24 @@
+.station-details{
+    &-header {
+        display: flex;
+        
+        img {
+            width: 232px;
+            height: 232px;
+        }
+        
+        h1 {
+            font-family: "Circular"; 
+            font-weight: 900;
+            font-size: 6em;
+        }
+
+        span {
+            font-size: 14px;
+        }
+        &-title{
+            cursor: pointer;
+        }
+    }
+
+}

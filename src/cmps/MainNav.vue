@@ -19,12 +19,9 @@
         </section>
         <hr />
         <section class="user-playlists">
-            <section class="playlist-links">
-                <RouterLink to="/">My Playlist #1</RouterLink>
-                <RouterLink to="/">My Playlist #2</RouterLink>
-                <RouterLink to="/">My Playlist #3</RouterLink>
-                <RouterLink to="/">My Playlist #4</RouterLink>
-            </section>
+            <ul class="playlist-links">
+                <RouterLink v-for="userStation in userStations" to="'/station/'+ userStation._id"> {{ userStation.title }}</RouterLink>
+            </ul>
         </section>
         <button class="install-btn">
             <div class="icon" v-html="getSvg('install')"></div> Install App
@@ -34,23 +31,38 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
-import {stationService} from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.local.js'
 export default {
     name: '',
     data() {
-        return {};
+        return {
+        };
     },
     methods: {
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
-        onCreateStation(){
-           const newStation =  stationService.getEmptyStation()
-            this.$store.dispatch({type: 'addStation', newStation})
+        async onCreateStation() {
+            try {
+                const newStation = stationService.getEmptyStation()
+                const addedStation = await this.$store.dispatch({ type: 'addStation', newStation })
+                this.$router.push(`/station/${addedStation._id}`)
+            } catch (err) {
+                console.log(err, 'Can not add station');
+            }
+        },
+        
+    },
+    computed: {
+        userStations() {
+            let stations = this.$store.getters.stations
+            const userStations = stations.filter(station => station.isAddedByUser)
+            return userStations
         }
     },
-    computed: {},
-    created() { },
+    created() {
+
+    },
     components: {},
 };
 </script>

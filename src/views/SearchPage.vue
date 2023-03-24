@@ -13,6 +13,7 @@
 </template> 
 
 <script>
+//TODO: MAKE LABEL CONTAINER COLOR RANDOM
 // import {stationService} from '../services/station.service.local.js'
 export default {
   name: 'Search Page',

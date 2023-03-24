@@ -10,6 +10,7 @@ export const stationService = {
   save,
   remove,
   getEmptyStation,
+  getEmptySong,
   addStationMsg,
   getLabels,
 };
@@ -91,112 +92,126 @@ function getEmptyStation() {
   };
 }
 
-(async () => {
-  await storageService.post(STORAGE_KEY, {
-    title: 'Jericho Jackson Mix',
-    listencount: 420,
-    label: ['Pop', 'Dance/Electronic'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
-    createdAt: Date.now(),
-    songs: [
-      {
-        id: 's1001',
-        title: 'Music For a Sushi Restaurant',
-        album: "Harry's House",
-        artist: 'Harry Styles',
-        url: 'youtube/song.mp4',
-        imgUrl:
-          'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
-        addedBy: '{minimal-user}',
-        addedAt: new Date(),
-      },
-      {
-        id: 'mUkfiLjooxs',
-        title: 'Pass The Peas',
-        album: 'Food For Thought',
-        artist: "The JB's",
-        url: 'youtube/song.mp4',
-        imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
-        addedBy: {},
-        addedAt: new Date(),
-      },
-    ],
-  });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Dave Pad Mix',
-  //     listencount: 21,
-  //     labels: ['Pop'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Chill Mix',
-  //     listencount: 221,
-  //     labels: ['Rap'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Happy Mix',
-  //     listencount: 2221,
-  //     createdAt: Date.now(),
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: '2010s Mix',
-  //     listencount: 420,
-  //     label: ['Pop', 'Dance/Electronic'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: '2000s Mix',
-  //     listencount: 21,
-  //     labels: ['Pop'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 1',
-  //     listencount: 221,
-  //     labels: ['Rap'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 2',
-  //     listencount: 2221,
-  //     createdAt: Date.now(),
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 3',
-  //     listencount: 420,
-  //     label: ['Pop', 'Dance/Electronic'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 4',
-  //     listencount: 21,
-  //     labels: ['Pop'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 5',
-  //     listencount: 221,
-  //     labels: ['Rap'],
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
-  //     createdAt: Date.now(),
-  //   });
-  //   await storageService.post(STORAGE_KEY, {
-  //     title: 'Daily Mix 6',
-  //     listencount: 2221,
-  //     createdAt: Date.now(),
-  //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
-  //   });
-})();
+function getEmptySong() {
+    return {
+      _id: utilService.makeId(6),
+      title: '',
+      album: '',
+      artist: '',
+      videoId: '',
+      imgUrl:'',
+      addedBy: '',
+      addedAt: new Date(),
+    }
+    
+}
+
+// (async () => {
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Jericho Jackson Mix',
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
+//     createdAt: Date.now(),
+//     songs: [
+//       {
+//         id: 's1001',
+//         title: 'Music For a Sushi Restaurant',
+//         album: "Harry's House",
+//         artist: 'Harry Styles',
+//         url: 'youtube/song.mp4',
+//         imgUrl:
+//           'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 'mUkfiLjooxs',
+//         title: 'Pass The Peas',
+//         album: 'Food For Thought',
+//         artist: "The JB's",
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//     ],
+//   });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Dave Pad Mix',
+//       listencount: 21,
+//       labels: ['Pop'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Chill Mix',
+//       listencount: 221,
+//       labels: ['Rap'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Happy Mix',
+//       listencount: 2221,
+//       createdAt: Date.now(),
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: '2010s Mix',
+//       listencount: 420,
+//       label: ['Pop', 'Dance/Electronic'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: '2000s Mix',
+//       listencount: 21,
+//       labels: ['Pop'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 1',
+//       listencount: 221,
+//       labels: ['Rap'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 2',
+//       listencount: 2221,
+//       createdAt: Date.now(),
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 3',
+//       listencount: 420,
+//       label: ['Pop', 'Dance/Electronic'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 4',
+//       listencount: 21,
+//       labels: ['Pop'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 5',
+//       listencount: 221,
+//       labels: ['Rap'],
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
+//       createdAt: Date.now(),
+//     });
+//     await storageService.post(STORAGE_KEY, {
+//       title: 'Daily Mix 6',
+//       listencount: 2221,
+//       createdAt: Date.now(),
+//       imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
+//     });
+// })();
 
 // TEST DATA
 // ; (async () => {
