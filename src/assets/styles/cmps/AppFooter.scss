@@ -4,7 +4,7 @@ $primary-color: #0088cc;
     display: flex;
     height: 100px;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: absolute;
     bottom: 0;
     width: 99%;
@@ -41,4 +41,20 @@ input[type="range"] {
         border-radius: 50%;
         cursor: pointer;
     }
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-inline-start: 15px;
+}
+
+.song-info img {
+    height: 65px;
+    width: 65px;
+}
+
+.music-settings {
+    margin-inline-end: 15px;
 }

@@ -1,6 +1,10 @@
 <template>
     <section class="footer">
-        <YouTube hidden src="https://www.youtube.com/watch?v=Zi_XLOBDo_Y&ab" ref="youtube" :player-vars="playerVars" />
+        <section class="song-info">
+            <img :src="imgUrl" alt="">
+            <h3>{{ songTitle }}</h3>
+        </section>
+        <YouTube hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" :player-vars="playerVars" />
         <section class="footer-btns">
             <button class="footer-btn">Shuffle</button>
             <button class="footer-btn">Prev</button>
@@ -8,7 +12,9 @@
             <button class="footer-btn">Next</button>
             <button @click="onRepeat" class="footer-btn">{{ repeatStatus }}</button>
         </section>
-        <input class="footer-volume" type="range" min="0" max="100" step="10" id="volume-slider" v-model="volume" />
+        <section class="music-settings">
+            <input class="footer-volume" type="range" min="0" max="100" step="10" id="volume-slider" v-model="volume" />
+        </section>
     </section>
 </template>
 
@@ -21,6 +27,7 @@ export default defineComponent({
     components: { YouTube },
     data() {
         return {
+            // videoId: 'YVkUvmDQ3HY',
             repeatStatus: 'Repeat',
             pauseStatus: 'Resume',
             volume: 40,
@@ -56,6 +63,17 @@ export default defineComponent({
     watch: {
         volume(newVolume) {
             this.$refs.youtube.setVolume(newVolume);
+        }
+    },
+    computed: {
+        videoId() {
+            return this.$store.getters.currentSong.videoId
+        },
+        imgUrl() {
+            return this.$store.getters.currentSong.imgUrl
+        },
+        songTitle() {
+            return this.$store.getters.currentSong.title
         }
     }
 
