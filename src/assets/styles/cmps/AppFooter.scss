@@ -16,8 +16,8 @@ $primary-color: #0088cc;
         border-radius: 3px;
         margin-inline-start: 8px;
         margin-inline-end: 8px;
-        background-color: whitesmoke;
-        color: rgb(94, 94, 94);
+        background-color: transparent;
+        color: rgb(208, 208, 208);
 
         &:hover {
             border-radius: 5px;
@@ -57,4 +57,8 @@ input[type="range"] {
 
 .music-settings {
     margin-inline-end: 15px;
+}
+
+.active {
+    fill: green !important;
 }
