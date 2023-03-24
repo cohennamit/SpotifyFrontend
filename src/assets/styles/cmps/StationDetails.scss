@@ -1,25 +1,5 @@
 .station-details {
     padding-inline: 32px;
-    &-header {
-        display: flex;
-
-        img {
-            width: 232px;
-            height: 232px;
-        }
-
-        h1 {
-            font-size: 6em;
-        }
-
-        span {
-            font-size: 14px;
-        }
-        &-title{
-            cursor: pointer;
-        }
-    }
-
     &-body {
         div {
             cursor: pointer;

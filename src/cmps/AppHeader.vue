@@ -12,7 +12,7 @@
     <section class="loggedin-user" v-if="loggedInUser">
       <img :src="loggedInUser.imgUrl" />
       <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
+        {{ loggedInUser.username }}
       </RouterLink>
     </section>
     <section v-else>
