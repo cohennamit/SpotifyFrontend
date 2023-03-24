@@ -1,41 +1,56 @@
 <template>
-<ul
- class="song-list">
- <SongPreview
-    v-for="(song,index) in station.songs"
-    :song="song"
-    :station="station"
-    :index="index"       
-     />
-</ul>
+    <ul class="song-list">
+        <div v-if="isStation" class="song-preview-main song-preview-content-table">
+            <div>#</div>
+            <div>Title</div>
+            <div>Album</div>
+            <div>Date Added</div>
+            <div>
+                <div></div>
+                <div class="icon" v-html="getSvg('clock')"></div>
+                <div></div>  
+            </div>
+        </div>
+        <SongPreview v-for="(song, index) in station.songs"  :song="song" :station="station" :index="index" />
+    </ul>
 </template>
 
-<script>    
+<script>
 import SongPreview from './SongPreview.vue'
+import { svgService } from '../services/svg.service.js'
 export default {
-name: 'Song List',
-props:{
-    station:{
-        type: Object
-    }
-},
-data() {
-return {
+    name: 'Song List',
+    props: {
+        station: {
+            type: Object
+        }
+    },
+    emits: ['removeSong'],
+    data() {
+        return {
 
-}
-},
-methods: {
+        }
+    },
+    methods: {
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        },
+        // removeSong(songId){
+        //     console.log('list',songId);
+        //     this.$emit('removeSong', songId)
+        // }
+    },
+    computed: {
+        isStation(){
+            if(this.station) return this.station.songs.length > 0
+        }
+    },
+    created() {
 
-},
-computed: {
-
-},
-created() {
-
-},
-components: {
-SongPreview
-},
+    },
+    components: {
+        SongPreview
+    },
 }
 </script>
 
