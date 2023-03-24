@@ -1,0 +1,25 @@
+.station-filter {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    width: 350px;
+    height: 40px;
+    border-radius: 25px;
+}
+
+.search-input {
+    width: 250px;
+    color: black;
+    border: none;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-icon {
+    margin-block-end: -3px;
+    margin-inline-start: 6px;
+    margin-inline-end: 6px;
+    fill: black;
+}
