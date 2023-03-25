@@ -2,25 +2,38 @@
     <section class="main-nav">
         <h1 class="logo">Logo</h1>
         <section class="nav">
-            <RouterLink @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })" to="/station">
+            <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
+                to="/station">
                 <div class="icon" v-html="getSvg('home')"></div> Home
             </RouterLink>
-            <RouterLink @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })" to="/search">
-                <div class="icon" v-html="getSvg('search')"></div>
+            <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
+                to="/search">
+                <div class="icon nav-search" v-html="getSvg('emptySearch')"></div>
                 Search
             </RouterLink>
-            <RouterLink to="/">
+            <RouterLink class="btn-nav" to="/">
                 <div class="icon" v-html="getSvg('library')"></div>Your Library
             </RouterLink>
         </section>
         <section class="actions">
-            <button @click="onCreateStation" class="create-playlist-btn">Create Playlist</button>
-            <RouterLink to="/">Liked Songs</RouterLink>
+            <button @click="onCreateStation" class="create-playlist-btn">
+                <div class="btn-create">
+                    <div class="icon create-icon" v-html="getSvg('createPlaylist')"></div>
+                </div>
+                Create Playlist
+            </button>
+            <RouterLink class="liked-songs-btn" to="/">
+                <div class="btn-liked">
+                    <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
+                </div>
+                Liked Songs
+            </RouterLink>
         </section>
         <hr />
         <section class="user-playlists">
             <ul class="playlist-links">
-                <RouterLink v-for="userStation in userStations" :to="'/station/'+ userStation._id"> {{ userStation.title }}</RouterLink>
+                <RouterLink class="user-station" v-for="userStation in userStations" :to="'/station/' + userStation._id"> {{ userStation.title }}
+                </RouterLink>
             </ul>
         </section>
         <button class="install-btn">
@@ -51,7 +64,7 @@ export default {
                 console.log(err, 'Can not add station');
             }
         },
-        
+
     },
     computed: {
         userStations() {

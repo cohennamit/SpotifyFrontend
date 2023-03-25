@@ -77,4 +77,14 @@
         padding: 0;
         border-radius: 50%;
     }
+
+    .music-settings {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn-mute {
+        background-color: transparent;
+    }
+
 }
