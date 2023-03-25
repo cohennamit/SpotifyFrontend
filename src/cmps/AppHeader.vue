@@ -1,5 +1,5 @@
 <template>
-  <section class="header">
+  <section ref="header" class="header">
     <section class="header-right">
       <section class="header-buttons">
         <button title="Go Back" @click="goBack" class="header-nav-btn">
@@ -52,10 +52,23 @@ export default {
     },
     goForward() {
       this.$router.go(+1)
-    }
+    },
+    handleScroll() {
+      const element = this.$refs.header;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      //prettier-ignore
+      const opacity = scrollTop / 100;
+      console.log('opacity: ', opacity);
+      element.style.opacity = opacity;
+      const color = '#800080'
+      element.style.backgroundColor = color;
+    },
   },
   components: {
     StationFilter,
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
   },
 };
 </script>
