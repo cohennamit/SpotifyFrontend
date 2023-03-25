@@ -91,6 +91,7 @@ export const stationStore = {
       }
     },
     async updateStation(context, { station }) {
+      console.log('station store',station)
       try {
         station = await stationService.save(station);
         context.commit(getActionUpdateStation(station));

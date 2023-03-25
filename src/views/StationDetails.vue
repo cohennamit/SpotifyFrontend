@@ -8,8 +8,8 @@
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
     </article>
-    <SongList :station="station" />
-    <SongFilter />
+    <SongList  :station="station" />
+    <SongFilter @addSong="addSong" />
   </section>
 </template>
 
@@ -24,6 +24,7 @@ import SongFilter from '../cmps/SongFilter.vue';
 
 export default {
   name: '',
+  emits: ['removeSong'],
   data() {
     return {
       station: {},
@@ -41,16 +42,38 @@ export default {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
       this.$router.push('/station');
     },
-  },
-  async created() {
-    const { stationId } = this.$route.params;
-    // console.log('create',stationId)
-    try {
-      const station = await stationService.getById(stationId);
-      this.station = station;
-    } catch (error) {
-      console.log('Error fetching station: ', error);
+    addSong(song){
+      this.station.songs.push(song)
+      this.$store.dispatch({type:'updateStation', station: this.station})
+    },
+    removeSong(songId){
+      console.log('details', songId)
+      const songIdx = this.stations.songs.findIndex(song=> song._id === songId)
+      this.station.songs.splice(songIdx, 1)
+      this.$store.dispatch({type:'updateStation', station: this.station})
     }
+  },
+  computed:{
+
+    // async getStation() {
+    //   const { stationId } = this.$route.params;
+    //   // console.log('create',stationId)
+    //   try {
+    //     const station = await stationService.getById(stationId);
+    //     this.station = station;
+    //   } catch (error) {
+    //     console.log('Error fetching station: ', error);
+    //   }
+    // },
+  },
+  watch:{
+    '$route.params': {
+      handler() {
+        const { stationId } = this.$route.params
+        stationService.getById(stationId).then(station => (this.station = station))
+      },
+      immediate: true
+    },
   },
   components: {
     StationHeader,

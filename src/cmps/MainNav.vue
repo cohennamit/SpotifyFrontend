@@ -20,7 +20,7 @@
         <hr />
         <section class="user-playlists">
             <ul class="playlist-links">
-                <RouterLink v-for="userStation in userStations" to="'/station/'+ userStation._id"> {{ userStation.title }}</RouterLink>
+                <RouterLink v-for="userStation in userStations" :to="'/station/'+ userStation._id"> {{ userStation.title }}</RouterLink>
             </ul>
         </section>
         <button class="install-btn">

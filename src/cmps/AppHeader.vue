@@ -2,8 +2,12 @@
   <section class="header">
     <section class="header-right">
       <section class="header-buttons">
-        <button title="Go Back" class="header-nav-btn">&lt;</button>
-        <button title="Go Forward" class="header-nav-btn">&gt;</button>
+        <button title="Go Back" class="header-nav-btn">
+          <div class="icon" v-html="getSvg('arrowLeft')"></div>
+        </button>
+        <button title="Go Forward" class="header-nav-btn">
+          <div class="icon" v-html="getSvg('arrowRight')"></div>
+        </button>
       </section>
       <section>
         <StationFilter v-if="isFilterShown.isFilterShown" @setFilter="setFilter" />
@@ -24,6 +28,7 @@
 </template>
 
 <script>
+import { svgService } from '../services/svg.service.js';
 import StationFilter from './StationFilter.vue';
 
 export default {
@@ -36,6 +41,9 @@ export default {
     },
   },
   methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName);
+    },
     setFilter(filterBy) {
       this.$store.dispatch({ type: 'loadToys', filterBy });
     },

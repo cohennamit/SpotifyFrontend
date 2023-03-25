@@ -4,7 +4,8 @@ export const musicPlayerStore = {
             imgUrl: 'https://i.ytimg.com/vi/YVkUvmDQ3HY/default.jpg',
             title: 'Without Me',
             videoId: 'YVkUvmDQ3HY',
-        }
+        },
+        currentStation:{}
     },
     getters: {
         currentSong({ currentSong }) { return currentSong }
@@ -12,6 +13,25 @@ export const musicPlayerStore = {
     mutations: {
         setCurrentSong(state, { song }) {
             state.currentSong = (song) ? { ...song } : null
+        },
+        //TODO: COMBINE NEXT AND PREV FUNCTIONS
+        setNextSong(state) {
+            if(!state.currentSong) return
+            const currentSongIdx = state.currentStation.songs.findIndex(song => song._id === state.currentSong._id)
+            const nextSong = state.currentStation.songs[currentSongIdx + 1]
+            if(currentSongIdx + 1 > state.currentStation.songs.length -1) return
+            state.currentSong = {...nextSong}
+
+        },
+        setPrevSong(state) {
+            if(!state.currentSong) return
+            const currentSongIdx = state.currentStation.songs.findIndex(song => song._id === state.currentSong._id)
+            const prevSong = state.currentStation.songs[currentSongIdx - 1]
+            if(currentSongIdx - 1 < 0) return
+            state.currentSong = {...prevSong}
+        },
+        setCurrentStation(state, { station }) {
+            state.currentStation = (station) ? { ...station } : null
         }
     },
     actions: {
@@ -19,5 +39,15 @@ export const musicPlayerStore = {
             commit({ type: 'setCurrentSong', song })
             return song
         },
+        setNextSong({ commit }) {
+            commit({ type: 'setNextSong'})
+        },
+        setPrevSong({ commit }) {
+            commit({ type: 'setPrevSong'})
+        },
+        setStation({ commit }, { station }){
+            commit({ type: 'setCurrentStation', station })
+            return station
+        }
     }
 }

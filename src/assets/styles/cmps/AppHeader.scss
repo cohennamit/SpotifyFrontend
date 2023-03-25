@@ -5,16 +5,9 @@
     align-items: center;
     justify-content: space-between;
 
-    .search-input {
-        width: 350px;
-        height: 40px;
-        color: black;
-        border-radius: 25px;
-        border: none;
-        padding: 20px;
-    }
-
     .login-btn {
+        margin: 0;
+        padding: 0;
         margin-inline-end: 20px;
         display: grid;
         align-content: center;
@@ -80,6 +73,7 @@
 
 
 .header-nav-btn {
+    padding: 0;
     height: 35px;
     width: 35px;
     border-radius: 50%;
@@ -88,4 +82,10 @@
 
 .header-right {
     display: flex;
+}
+
+.header-buttons {
+    margin-inline-start: 20px;
+    margin-inline-end: 10px;
+
 }
