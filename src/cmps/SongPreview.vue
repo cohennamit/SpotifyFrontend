@@ -20,11 +20,11 @@
         </div>
         <!-- <p>{{ song.album }}</p> -->
         <p>DEMO ALBUM</p>
-        <p>15 seconds Ago</p>
+        <p>{{ addedAtDiff }}</p>
         <div class="song-preview-preferences">
             <div :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></div>
             <span>3:14</span>
-            <div :class="togglePrefClass" class="icon" v-html="getSvg('trash')"></div>
+            <div :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></div>
         </div>
     </div>
 </template>
@@ -52,9 +52,9 @@ export default {
         }
     },
     methods: {
-        removeSong(){
-            console.log('preview',this.song._id);
-        this.$emit('removeSong', this.song._id)
+        removeSong() {
+            console.log('preview', this.song._id)
+            this.$emit('removeSong', this.song._id)
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
@@ -65,12 +65,12 @@ export default {
         }
     },
     computed: {
-        togglePrefClass(){
+        togglePrefClass() {
             return this.isHover ? 'pref-visible' : ' pref-hidden'
         },
         songAddedAt() {
             let date = this.song.addedAt.getSeconds()
-            // var seconds = new Date().getTime() / 1000 ;
+            // var seconds = new Date().getTime() / 1000 
             //    const seconds =  date.getTime() / 1000
             return date
         },
@@ -78,11 +78,25 @@ export default {
             return this.isHover ? 'song-preview-play-btn' : ''
         },
         shortenedTitle() {
-            const maxLength = 30;
+            const maxLength = 30
             return function (title) {
-                return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
+                return title.length > maxLength ? title.slice(0, maxLength) + '...' : title
             }
         },
+        addedAtDiff() {
+            const addedAt = this.song.addedAt
+            const now = Date.now()
+            const diff = now - addedAt
+            if (diff < 60 * 1000) { // less than 1 minute
+                return `${Math.floor(diff / 1000)} seconds ago`
+            } else if (diff < 60 * 60 * 1000) { // less than 1 hour
+                return `${Math.floor(diff / (60 * 1000))} minutes ago`
+            } else if (diff < 24 * 60 * 60 * 1000) { // less than 1 day
+                return `${Math.floor(diff / (60 * 60 * 1000))} hours ago`
+            } else { // 1 day or more
+                return `${Math.floor(diff / (24 * 60 * 60 * 1000))} days ago`
+            }
+        }
     }
 }
 </script>

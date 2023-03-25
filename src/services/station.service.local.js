@@ -55,7 +55,6 @@ async function remove(stationId) {
 async function save(station) {
   var savedStation;
   if (station._id) {
-    console.log('station service entered update', station);
     savedStation = await storageService.put(STORAGE_KEY, station);
   } else {
     // Later, owner is set by the backend
@@ -101,7 +100,7 @@ function getEmptySong() {
     videoId: '',
     imgUrl: '',
     addedBy: '',
-    addedAt: new Date(),
+    addedAt: Date.now(),
   };
 }
 
