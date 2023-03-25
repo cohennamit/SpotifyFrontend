@@ -2,10 +2,10 @@
   <section class="header">
     <section class="header-right">
       <section class="header-buttons">
-        <button title="Go Back" class="header-nav-btn">
+        <button title="Go Back" @click="goBack" class="header-nav-btn">
           <div class="icon" v-html="getSvg('arrowLeft')"></div>
         </button>
-        <button title="Go Forward" class="header-nav-btn">
+        <button title="Go Forward" @click="goForward" class="header-nav-btn">
           <div class="icon" v-html="getSvg('arrowRight')"></div>
         </button>
       </section>
@@ -47,6 +47,12 @@ export default {
     setFilter(filterBy) {
       this.$store.dispatch({ type: 'loadToys', filterBy });
     },
+    goBack() {
+      this.$router.go(-1)
+    },
+    goForward() {
+      this.$router.go(+1)
+    }
   },
   components: {
     StationFilter,

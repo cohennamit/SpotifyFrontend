@@ -23,6 +23,9 @@
             </button>
         </section>
         <section class="music-settings">
+            <button @click="toggleMute" class="btn-mute">
+                <div class="icon" v-html="isMuted ? getSvg('soundMuted') : getSvg('sound')"></div>
+            </button>
             <input class="footer-volume" type="range" min="0" max="100" step="10" id="volume-slider" v-model="volume" />
         </section>
     </section>
@@ -46,6 +49,7 @@ export default defineComponent({
             playerVars: {
                 loop: 0
             },
+            isMuted: false,
             isPlaying: false,
             isShuffling: false,
             isRepeating: false,
@@ -82,6 +86,11 @@ export default defineComponent({
         },
         onShuffle() {
             this.isShuffling = !this.isShuffling
+        },
+        toggleMute() {
+            if (this.isMuted) this.volume = 40
+            else this.volume = 0
+            this.isMuted = !this.isMuted
         }
     },
     watch: {

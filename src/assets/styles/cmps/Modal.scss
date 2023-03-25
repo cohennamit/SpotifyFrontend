@@ -1,24 +1,100 @@
 .edit-modal {
     position: absolute;
-    right: 10svw;
-    left: 30svw;
-    top: 200px;
+    // right: 2svw;
+    left: 35svw;
+    top: 150px;
     z-index: 200;
     display: flex;
     flex-direction: column;
     background-color: grey;
     color: white;
     /* border: solid 3px grey; */
-    border-radius: var(--br-m);
-    min-width: 50svw;
-    max-width: 600px;
-    border-radius: 6px;
-    backdrop-filter: drop-shadow(4px 4px 50px black);    
-    &-img{
+    // min-width: 200px;
+    // width: 40vw;
+    width: 570px;
+    border-radius: 8px;
+    // backdrop-filter: drop-shadow(4px 4px 50px black);
+    background-color: #222222;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px;
+    }
+
+    &-body {
+        grid-gap: 16px;
+        display: grid;
+        grid-template: 32px 132px 32px auto/180px 1fr;
+        grid-template-areas:
+            "album-image title"
+            "album-image description"
+            ". save-button"
+            "disclaimer disclaimer";
+        padding: 0 24px 24px;
+
+        &-input {
+            grid-area: title;
+            background: hsla(0, 0%, 100%, .1);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            height: 40px;
+            padding: 0 12px;
+            width: 100%;
+        }
+
+        &-textarea {
+            grid-area: description;
+            background: hsla(0,0%,100%,.1);
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 14px;
+            height: 100%;
+            padding: 8px 8px 28px;
+            resize: none;
+            width: 100%;
+        }
+
+        button {
+            grid-area: save-button;
+            background: #fff;
+            color: black;
+            width: 82px;
+            height: 37px;
+        }
+
+        p {
+            grid-area: disclaimer;
+        }
+    }
+
+    &-img {
+        grid-area: album-image;
         width: 180px;
         height: 180px;
     }
-    input{
-        color: black;
+
+    input {
+        // color: black;
     }
-  }
+}
+
+//    -webkit-box-orient: vertical;
+//   -webkit-box-direction: normal;
+//   background-color: #282828;
+//   border-radius: 8px;
+//   box-shadow: 0 4px 4px rgba(0,0,0,.3);
+//   color: #fff;
+//   display: -webkit-box;
+//   display: -ms-flexbox;
+//   display: flex;
+//   -ms-flex-direction: column;
+//   flex-direction: column;
+//   min-height: 384px;
+//   width: 524px;
+//   -webkit-box-shadow: 0 4px 4px rgba(0,0,0,.3);

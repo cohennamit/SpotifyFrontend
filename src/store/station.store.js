@@ -70,7 +70,6 @@ export const stationStore = {
     removeStation(state, { stationId }) {
       // state.stations = state.stations.filter((station) => station._id !== stationId);
       const idx = state.stations.findIndex(station => station._id === stationId)
-      console.log(idx)
       state.stations.splice(idx, 1)
     },
     addStationMsg(state, { stationId, msg }) {
@@ -91,7 +90,6 @@ export const stationStore = {
       }
     },
     async updateStation(context, { station }) {
-      console.log('station store',station)
       try {
         station = await stationService.save(station);
         context.commit(getActionUpdateStation(station));

@@ -1,29 +1,29 @@
 <template>
 <section class="edit-modal">
-    <button @click="onCloseEditModal">X</button>
-    <h2>Edit details</h2>
-    <div>
-        <input v-model="station.title"  type="text">
+    <div class="edit-modal-header">
+        <h1>Edit details</h1>
+        <button  @click="onCloseEditModal">X</button>
+    </div>
+    <div v-if="isNameInputEmpty" class="edit-modal-require-err">
+
+    </div>
+    <div class="edit-modal-body">
         <div class="edit-modal-img">
             <img :src="station.imgUrl"/>
         </div>
+        <textarea class="edit-modal-body-textarea" placeholder="add an optional description" cols="20" rows="10"></textarea>
+        <input v-model="station.title" placeholder="Add a name" class="edit-modal-body-input" type="text">
+        <button @click="saveStation">Save</button>
+        <p>
+            By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.
+        </p>
     </div>
-    <button @click="saveStation">Save</button>
-    <p>
-        By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.
-    </p>
         
 </section>
 </template>
 
 <script>
 //TODO:Add Description edit option
-import {
-  getActionRemoveStation,
-  getActionUpdateStation,
-  getActionAddStationMsg,
-  getActionAddStation,
-} from '../store/station.store.js';
 export default {
 name: 'Modal',
 props:{
@@ -34,7 +34,7 @@ props:{
 },
 data() {
 return {
-
+    isNameInputEmpty: false
 }
 },
 methods: {

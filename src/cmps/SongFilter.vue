@@ -69,8 +69,6 @@ export default {
           `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.query}&type=video&maxResults=10&key=${API_KEY}`
         );
         const { items } = await response.json();
-        console.log('items: ', items);
-        console.log(items);
         this.videos = items;
       } catch (error) {
         console.error(error);
