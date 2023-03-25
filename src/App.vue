@@ -1,13 +1,13 @@
 <template>
-  <section>
+  <div class="layout-container">
+    <AppHeader />
+    <MainNav />
+    <AppFooter />
     <main class="app-main">
-      <MainNav />
-      <AppHeader />
       <RouterView />
-      <AppFooter />
       <UserMsg />
     </main>
-  </section>
+  </div>
 </template>
 
 <script>
