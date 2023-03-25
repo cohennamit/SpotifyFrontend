@@ -1,13 +1,7 @@
 <template>
   <main>
-    <!-- <pre> {{ stations }}</pre> -->
     <StationList v-if="stations" :stations="stations" />
   </main>
-  <!-- <form @submit.prevent="addStation()">
-      <h2>Add station</h2>
-      <input type="text" v-model="stationToAdd.title" />
-      <button>Save</button>
-    </form> -->
 </template>
 
 <script>
