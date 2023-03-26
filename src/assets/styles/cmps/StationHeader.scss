@@ -1,23 +1,25 @@
-.station-details{
+.station-details {
     &-header {
         display: flex;
-        
+        gap: 28px;
+        justify-content: flex-start;
+        align-items: center;
+
         img {
             width: 232px;
             height: 232px;
-        }
-        
-        h1 {
-            font-family: "Circular"; 
-            font-weight: 900;
-            font-size: 6em;
         }
 
         span {
             font-size: 14px;
         }
-        &-title{
+
+        &-title {
             cursor: pointer;
+            font-family: gothambook,sans-serif;
+            font-weight: 800;
+            font-size: 6em;
+            margin: 0 0 0.1em;
         }
     }
 

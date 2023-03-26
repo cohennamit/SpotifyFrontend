@@ -20,6 +20,21 @@
         display: flex;
         justify-content: space-between;
         padding: 24px;
+
+        &-exit-btn {
+            background-color: transparent;
+            border: 0;
+            border-radius: 32px;
+            color: hsla(0deg, 0%, 100%, 0.7);
+            margin-top: -4px;
+            margin-inline-end: -8px;
+            display: flex;
+            fill: #c5c5c5;
+
+            :hover {
+                background-color: #3e3e3e;
+            }
+        }
     }
 
     &-body {
@@ -48,7 +63,7 @@
 
         &-textarea {
             grid-area: description;
-            background: hsla(0,0%,100%,.1);
+            background: hsla(0, 0%, 100%, .1);
             border: 1px solid transparent;
             border-radius: 4px;
             color: #fff;
@@ -60,16 +75,23 @@
             width: 100%;
         }
 
-        button {
+        &-save-btn {
+            cursor: pointer;
             grid-area: save-button;
             background: #fff;
             color: black;
-            width: 82px;
-            height: 37px;
+            width: 108px;
+            height: 48px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            align-self: center;
+            justify-self: end;
         }
 
         p {
             grid-area: disclaimer;
+            font-size: 11px;
         }
     }
 
@@ -82,6 +104,9 @@
     input {
         // color: black;
     }
+}
+.edit-modal-body-save-btn:hover{
+    // font-weight: 900;
 }
 
 //    -webkit-box-orient: vertical;

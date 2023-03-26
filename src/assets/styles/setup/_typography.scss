@@ -3,6 +3,15 @@
     src: url(../../fonts/Caveat/Caveat-Regular.ttf);
 }
 @font-face {
-    font-family: "Circular";
-    src: url(../../fonts/Circular/GothamMedium.ttf);
+    font-family: "circular-book";
+    src: url('../../fonts/Circular/GothamBook.ttf');
+}
+
+@font-face {
+    font-family: 'gothambook';
+    src: url('../../fonts/Circular/gothambook-webfont.woff2') format('woff2'),
+         url('../../fonts/Circular/gothambook-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
 }

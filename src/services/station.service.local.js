@@ -84,10 +84,12 @@ function getEmptyStation() {
   //TODO: ADD COUNTER
   return {
     title: `My Playlist #`,
+    desc:'',
     imgUrl:
       'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',
     songs: [],
     isAddedByUser: true,
+
   };
 }
 

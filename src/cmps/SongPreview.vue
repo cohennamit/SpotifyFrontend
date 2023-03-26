@@ -19,12 +19,12 @@
 
         </div>
         <!-- <p>{{ song.album }}</p> -->
-        <p>DEMO ALBUM</p>
-        <p>{{ addedAtDiff }}</p>
+        <span>DEMO ALBUM</span>
+        <span>{{ addedAtDiff }}</span>
         <div class="song-preview-preferences">
-            <div :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></div>
+            <span :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></span>
             <span>3:14</span>
-            <div :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></div>
+            <span :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></span>
         </div>
     </div>
 </template>

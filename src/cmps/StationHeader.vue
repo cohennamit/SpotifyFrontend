@@ -6,6 +6,7 @@
         <div>
             <span>Playlist</span>
             <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
+            <p @click="onOpenEditModal">{{ station.desc }}</p>
             <RouterLink to="/login">by user</RouterLink>
         </div>
     </header>

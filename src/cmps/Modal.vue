@@ -2,7 +2,7 @@
 <section class="edit-modal">
     <div class="edit-modal-header">
         <h1>Edit details</h1>
-        <button  @click="onCloseEditModal">X</button>
+        <button class="edit-modal-header-exit-btn" @click="onCloseEditModal" v-html="getSvg('x')"></button>
     </div>
     <div v-if="isNameInputEmpty" class="edit-modal-require-err">
 
@@ -11,9 +11,9 @@
         <div class="edit-modal-img">
             <img :src="station.imgUrl"/>
         </div>
-        <textarea class="edit-modal-body-textarea" placeholder="add an optional description" cols="20" rows="10"></textarea>
+        <textarea v-model="station.desc" class="edit-modal-body-textarea" placeholder="add an optional description" cols="20" rows="10"></textarea>
         <input v-model="station.title" placeholder="Add a name" class="edit-modal-body-input" type="text">
-        <button @click="saveStation">Save</button>
+        <button class="edit-modal-body-save-btn" @click="saveStation">Save</button>
         <p>
             By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.
         </p>
@@ -24,6 +24,7 @@
 
 <script>
 //TODO:Add Description edit option
+import { svgService } from '../services/svg.service.js'
 export default {
 name: 'Modal',
 props:{
@@ -44,7 +45,10 @@ onCloseEditModal(){
 saveStation(){
 this.$store.dispatch({type:'updateStation', station: this.station})
 this.onCloseEditModal()
-}
+},
+getSvg(iconName) {
+    return svgService.getSvg(iconName)
+  }
 }
 }
 </script>
