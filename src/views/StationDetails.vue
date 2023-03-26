@@ -25,7 +25,6 @@ import SongFilter from '../cmps/SongFilter.vue';
 
 export default {
   name: 'Song Details',
-  emits: ['removeSong'],
   data() {
     return {
       station: {},
