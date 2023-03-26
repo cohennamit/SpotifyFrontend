@@ -6,7 +6,7 @@
         <div>
             <span>Playlist</span>
             <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
-            <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }} <span v-if="idx < 3">{{
+            <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }} <span v-if="idx < 2">{{
                 ',' }} {{ '&nbsp;' }} </span>
             </span>
             <p v-else  @click="onOpenEditModal">{{ station.userDesc }}</p>

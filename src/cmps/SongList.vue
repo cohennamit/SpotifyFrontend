@@ -1,6 +1,6 @@
 <template>
-  <ul class="song-list">
-    <div v-if="isStation" class="song-preview-main song-preview-content-table">
+  <ul v-if="station" class="song-list">
+    <div v-if="hasSongs" class="song-preview-main song-preview-content-table">
       <div>#</div>
       <div>Title</div>
       <div>Album</div>
@@ -11,14 +11,8 @@
         <div></div>
       </div>
     </div>
-    <SongPreview
-      v-for="(song, index) in station.songs"
-      @removeSong="removeSong"
-      :key="index"
-      :song="song"
-      :station="station"
-      :index="index"
-    />
+    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" :song="song" :station="station"
+      :index="index" />
   </ul>
 </template>
 
@@ -30,6 +24,7 @@ export default {
   props: {
     station: {
       type: Object,
+      require: true
     },
   },
   emits: ['removeSong'],
@@ -38,14 +33,20 @@ export default {
   },
   methods: {
     getSvg(iconName) {
-      return svgService.getSvg(iconName);
+      return svgService.getSvg(iconName)
     },
+    removeSong(songId) {
+      this.$emit('removeSong', songId)
+    }
   },
   computed: {
-    isStation() {
-      if (this.station) return this.station.songs.length > 0;
+    hasSongs() {
+      console.log(this.station);
+      return this.station.songs.length
     },
+
   },
+  created() { },
   components: {
     SongPreview,
   },

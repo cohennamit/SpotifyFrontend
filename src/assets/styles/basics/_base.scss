@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     color: $clr6;
+
 }
 
 ::selection {
@@ -17,13 +18,15 @@ body,
 }
 
 html {
-    font-family: montserrat;
+    // font-family: montserrat;
+    font-family: Gotham,sans-serif;
+    font-weight:700;
     line-height: 1.6;
     color: $clr2;
 }
 
 body {
-    font-size: rem(18px);
+    font-size: rem(16px);
     margin: 0;
     // background-color: #181818;
     overflow: hidden;
@@ -31,15 +34,14 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: caveat;
     margin: 0 0 0.6em;
     line-height: 1;
 }
 
 
-// section, // main, // footer {
-//     // padding: 5px;
-// }
+textarea:focus, input:focus{
+    outline: none;
+}
 li{
 list-style: none;
 }
