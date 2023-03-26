@@ -1,15 +1,16 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
 
+  <div class="header-placeholder"> </div>
   <section class="genres-wrap">
-    <h2>Browse all</h2>
-    <article class="genres-list">
-      <div class="label-container" v-for="label in labels" @click="setLabel(label)">
-        <img :src="label.imgUrl" />
-        <span>
-          {{ label.name }}
-        </span>
-      </div>
+      <h2>Browse all</h2>
+      <article class="genres-list">
+        <div class="label-container" :class="getRandomColorClass"  v-for="label in labels" @click="setLabel(label)">
+          <img :src="label.imgUrl" />
+          <span>
+            {{ label.name }}
+          </span>
+        </div>
     </article>
   </section>
 </template>
@@ -17,6 +18,7 @@
 <script>
 //TODO: MAKE LABEL CONTAINER COLOR RANDOM
 // import {stationService} from '../services/station.service.local.js'
+import { utilService } from '../services/util.service.js';
 export default {
   name: 'Search Page',
   data() {
@@ -32,8 +34,15 @@ export default {
   computed: {
     labels() {
       return this.$store.getters.labels;
-      return this.$store.getters.labels;
     },
+    getRandomColorClass(){
+      // const colors = [
+      // 'rgb(225 51 0)',
+      // 'rgb(115 88 255)',
+      // ]
+      const randomIdx = utilService.getRandomIntInclusive(0,12)
+      return `label-container-${randomIdx}`
+    }
   },
   created() {},
   components: {},

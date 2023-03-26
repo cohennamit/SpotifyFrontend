@@ -113,83 +113,68 @@ function getEmptySong() {
 //     label: ['Pop', 'Dance/Electronic'],
 //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
 //     createdAt: Date.now(),
-//     songs: [
-//       {
-//         id: 's1003',
-//         title: 'To Do List',
-//         album: 'To Do List',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1004',
-//         title: 'Machine & McQueens ',
-//         album: 'Food For Thought',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822075/41_nvcplo.jpg',
-//         addedBy: {},
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1005',
-//         title: 'Self Made',
-
-//         album: 'To Do List',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1006',
-//         title: 'Overthinking',
-
-//         album: 'To Do List',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1007',
-//         title: 'Breguets',
-
-//         album: 'To Do List',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1008',
-//         title: 'City by Sea',
-
-//         album: 'City by Sea',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822537/42_j30vad.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's1010',
-//         title: 'In My Life',
-
-//         album: 'In My Life',
-//         artist: 'Jericho Jackson',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822668/43_e2woap.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//     ],
+// songs:[
+//   {
+//       title: "Jericho Jackson - Overthinking",
+//       _id: "LaKagW",
+//       album: "",
+//       artist: "",
+//       videoId: "jL5AVWcPKwU",
+//       imgUrl: "https://i.ytimg.com/vi/jL5AVWcPKwU/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834105885
+//   },
+//   {
+//       title: "Jericho Jackson - Self Made",
+//       _id: "PyRFbv",
+//       album: "",
+//       artist: "",
+//       videoId: "JgUAig8FX7c",
+//       imgUrl: "https://i.ytimg.com/vi/JgUAig8FX7c/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834110914
+//   },
+//   {
+//       title: "Jericho Jackson - Breguets",
+//       _id: "8XaJFE",
+//       album: "",
+//       artist: "",
+//       videoId: "FYFdNbw98xY",
+//       imgUrl: "https://i.ytimg.com/vi/FYFdNbw98xY/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834114811
+//   },
+//   {
+//       title: "Jericho Jackson - Thank You",
+//       _id: "yPYTiG",
+//       album: "",
+//       artist: "",
+//       videoId: "J8rAmr5o3ik",
+//       imgUrl: "https://i.ytimg.com/vi/J8rAmr5o3ik/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834115795
+//   },
+//   {
+//       title: "Jericho Jackson - Seventeen",
+//       _id: "Agu0NI",
+//       album: "",
+//       artist: "",
+//       videoId: "JYp6AeGPBXY",
+//       imgUrl: "https://i.ytimg.com/vi/JYp6AeGPBXY/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834119781
+//   },
+//   {
+//       title: "Jericho Jackson - Listen feat. Amber Navran",
+//       _id: "AQ69Gj",
+//       album: "",
+//       artist: "",
+//       videoId: "CYl_4qFTp9E",
+//       imgUrl: "https://i.ytimg.com/vi/CYl_4qFTp9E/default.jpg",
+//       addedBy: "",
+//       addedAt: 1679834121346
+//   }
+// ]
 //   });
 //   await storageService.post(STORAGE_KEY, {
 //     title: 'Dave Pad Mix',
@@ -226,7 +211,7 @@ function getEmptySong() {
 //         imgUrl:
 //           'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
 //         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 'mUkfiLjooxs',
@@ -236,7 +221,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //     ],
 //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
@@ -321,40 +306,30 @@ function getEmptySong() {
 
 //         album: 'All the Brilliant Things',
 //         artist: 'Skyzoo',
-//         url: 'youtube/song.mp4',
+//         videoId: 'QSOqyH8j87E',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10012',
 //         title: 'St. James Liquors',
 //         album: 'All the Brilliant Things',
 //         artist: 'Skyzoo',
-//         url: 'youtube/song.mp4',
+//         videoId: '3fCSy0hDd9g',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 's10013',
-//         title: 'St. James Liquors',
-//         album: 'All the Brilliant Things',
-//         artist: 'Skyzoo',
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
-//         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10014',
 //         title: 'A Tour of the Neighborhood',
 //         album: 'All the Brilliant Things',
 //         artist: 'Skyzoo',
-//         url: 'youtube/song.mp4',
+//         videoId: 'eQUq5nDc_PQ',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10015',
@@ -364,7 +339,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10016',
@@ -374,7 +349,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10017',
@@ -384,7 +359,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10018',
@@ -394,7 +369,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10019',
@@ -404,7 +379,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10020',
@@ -414,7 +389,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10021',
@@ -424,7 +399,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10022',
@@ -434,7 +409,7 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //       {
 //         id: 's10023',
@@ -444,12 +419,14 @@ function getEmptySong() {
 //         url: 'youtube/song.mp4',
 //         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //         addedBy: {},
-//         addedAt: new Date(),
+//         addedAt: Date.now(),
 //       },
 //     ],
 //     createdAt: Date.now(),
 //     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
 //   });
+
+
 // })();
 
 function getLabels() {
@@ -484,6 +461,30 @@ function getLabels() {
       imgUrl:
         'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679491299/Spotify/DanceElectroincs_b5sonr.jpg',
     },
+    {
+      name: 'Sleep',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679830075/sleep_xdzs9m.jpg',
+    },
+    {
+      name: 'R&B',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679830075/R_B_drd8gk.jpg',
+    },
+    {
+      name: 'Anime',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679830071/anime_he2bov.jpg',
+    },
+    {
+      name: 'Focus',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679830071/focus_w1fi2z.jpg',
+    },
+    {
+      name: 'Stress Relief',
+      imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679830071/stress-relief_cjozfy.jpg',
+    },
+    {
+      name: 'Jazz',
+      imgUrl: '',
+    },
     // 'Hip-Hop',
     // 'Rock',
     // 'Latin',
@@ -508,3 +509,82 @@ function getLabels() {
     // 'Fresh Finds'
   ];
 }
+
+
+
+
+//       {
+//         id: 's1003',
+//         title: 'To Do List',
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         videoId: 'J-VxTPlGANM',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1005',
+//         title: 'Self Made',
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         videoId: 'pZdLWpa-Z2M',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//        addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1004',
+//         title: 'Machine & McQueens ',
+//         album: 'Food For Thought',
+//         artist: 'Jericho Jackson',
+//         videoId: 'xAW-T2t-woo',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822075/41_nvcplo.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1006',
+//         title: 'Overthinking',
+
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1007',
+//         title: 'Breguets',
+
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1008',
+//         title: 'City by Sea',
+
+//         album: 'City by Sea',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822537/42_j30vad.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//       {
+//         id: 's1010',
+//         title: 'In My Life',
+
+//         album: 'In My Life',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822668/43_e2woap.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: Date.now(),
+//       },
+//     ],

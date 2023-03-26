@@ -8,23 +8,33 @@
             <div style="width: 220px;" class="placeholder"></div>
         </section>
         <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube"
-            :player-vars="playerVars" />
-        <section class="footer-btns">
-            <button @click="onShuffle" class="footer-btn">
-                <div class="icon" :class="{ 'active': isShuffling }" v-html="getSvg('shuffle')"></div>
-            </button>
-            <button class="footer-btn" @click="onPrevSong">
-                <div class="icon" v-html="getSvg('playPrev')"></div>
-            </button>
-            <button @click="onPauseResume" class="footer-btn btn-pause">
-                <div v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
-            </button>
-            <button class="footer-btn" @click="onNextSong">
-                <div class="icon" v-html="getSvg('playNext')"></div>
-            </button>
-            <button @click="onRepeat" class="footer-btn">
-                <div class="icon" :class="{ 'active': isRepeating }" v-html="getSvg('repeat')"></div>
-            </button>
+            :player-vars="playerVars" @ready="onReady" @state-change="onStateChange" />
+        <section class="mid-section">
+            <section class="footer-btns">
+                <button @click="onShuffle" class="footer-btn">
+                    <div class="icon" :class="{ 'active': isShuffling }" v-html="getSvg('shuffle')"></div>
+                </button>
+                <button class="footer-btn" @click="onPrevSong">
+                    <div class="icon" v-html="getSvg('playPrev')"></div>
+                </button>
+                <button @click="onPauseResume" class="footer-btn btn-pause">
+                    <div v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
+                </button>
+                <button class="footer-btn" @click="onNextSong">
+                    <div class="icon" v-html="getSvg('playNext')"></div>
+                </button>
+                <button @click="onRepeat" class="footer-btn">
+                    <div class="icon" :class="{ 'active': isRepeating }" v-html="getSvg('repeat')"></div>
+                </button>
+            </section>
+            <div class="music-bar">
+                <span>{{ formatTime(currentTime) }}</span>
+                <div class="progress-bar" @click="findProgress($event)" ref="progressBar">
+                    <div class="progress-bar-fill" :style="{ width: progressBarWidth + '%' }" ref="progressBarFill">
+                    </div>
+                </div>
+                <span>{{ formatTime(duration) }}</span>
+            </div>
         </section>
         <section class="music-settings">
             <button @click="toggleMute" class="btn-mute">
@@ -50,13 +60,23 @@ export default defineComponent({
             playerVars: {
                 loop: 1
             },
+            intervalId: null,
             isMuted: false,
             isPlaying: false,
             isShuffling: false,
             isRepeating: false,
+            duration: 0,
+            currentTime: 0,
         }
     },
     methods: {
+        onReady() {
+            console.log('im ready');
+            this.duration = this.$refs.youtube.getDuration()
+            this.intervalId = setInterval(() => {
+                this.currentTime = this.$refs.youtube.getCurrentTime()
+            }, 1000)
+        },
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
@@ -76,17 +96,64 @@ export default defineComponent({
         },
         onRepeat() {
             this.isRepeating = !this.isRepeating
-            if (isRepeating) this.playerVars.loop = 0
-            else this.playerVars.loop = 1
+            // if (isRepeating) this.playerVars.loop = 0
+            // else this.playerVars.loop = 1
+            console.log('this.isRepeating', this.isRepeating)
         },
         onShuffle() {
             this.isShuffling = !this.isShuffling
+            console.log('this.isShuffling', this.isShuffling)
         },
         toggleMute() {
             if (!this.videoId) return
             if (this.isMuted) this.volume = 40
             else this.volume = 0
             this.isMuted = !this.isMuted
+        },
+        onStateChange(event) {
+            console.log('event.data', event.data)
+            if (event.data === 1) this.isPlaying = true
+            if (event.data === 0) {
+                this.isPlaying = false
+                clearInterval(this.intervalId)
+                this.currentTime = 0
+                if (this.isRepeating) {
+                    this.$store.commit({ type: 'setSameSong' })
+                }
+                else if (this.isShuffling) {
+                    this.$store.commit({ type: 'setRandomSong' })
+                }
+                else {
+                    this.$store.commit({ type: 'setNextSong' })
+                }
+                this.$refs.youtube.playVideo()
+                this.isPlaying = true
+                this.onReady()
+            }
+        },
+        formatTime(time) {
+            const minutes = Math.floor(time / 60)
+            const seconds = Math.floor(time % 60)
+            return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`
+        },
+        findProgress(ev) {
+            const progressBar = this.$refs.progressBar
+            const progressBarFill = this.$refs.progressBarFill
+
+            // calculate the position of the click on the progress bar
+            const progressBarWidth = progressBar.offsetWidth
+            const clickedPosition = ev.pageX - progressBar.offsetLeft
+            const progressPercentage = clickedPosition / progressBarWidth
+
+            // calculate the time to seek to
+            const newTime = this.duration * progressPercentage
+
+            // update the current time and seek to the new time
+            this.currentTime = newTime
+            this.$refs.youtube.seekTo(newTime)
+
+            // update the width of the progress bar fill
+            progressBarFill.style.width = progressPercentage * 100 + '%'
         }
     },
     watch: {
@@ -113,9 +180,16 @@ export default defineComponent({
                 return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
             }
         },
-        isPlaying() {
-            return this.$store.getters.isPlaying
+        progressBarWidth() {
+            if (!this.duration || !this.currentTime) return
+
+            const progressBarWidth = (this.currentTime / this.duration) * 100
+            return progressBarWidth
+
         }
+        // isPlaying() {
+        //     return this.$store.getters.isPlaying
+        // }
     },
     // created() {
     //     console.log('this.$refs', this.$refs)

@@ -3,14 +3,17 @@
         <div class="demo-img">
             <img :src="station.imgUrl" />
         </div>
-        <div>
+        <div class="station-details-header-info">
             <span>Playlist</span>
             <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
-            <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }} <span v-if="idx < 2">{{
-                ',' }} {{ '&nbsp;' }} </span>
-            </span>
-            <p v-else  @click="onOpenEditModal">{{ station.userDesc }}</p>
-            <RouterLink to="/login">by user</RouterLink>
+            <div>
+                <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }}
+                    <span v-if="idx < 2">{{
+                        ',' }} {{ '&nbsp;' }} </span>
+                </span>
+                <p v-else @click="onOpenEditModal">{{ station.userDesc }}</p>
+            </div>
+            <RouterLink v-if="station.isAddedByUser" to="/login">by user</RouterLink>
         </div>
     </header>
     <Modal @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />

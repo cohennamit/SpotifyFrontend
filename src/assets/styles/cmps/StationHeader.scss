@@ -14,7 +14,11 @@
         gap: 28px;
         justify-content: flex-start;
         align-items: center;
-
+        &-info{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
         img {
             width: 232px;
             height: 232px;

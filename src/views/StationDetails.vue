@@ -10,7 +10,9 @@
       </ul>
     </article>
     <SongList @removeSong="removeSong" :station="station" />
-    <SongSearchList @addSong="addSong" />
+    <SongSearchList v-if="station.isAddedByUser" @addSong="addSong" />
+    <hr>
+    <div class="placeholder"></div>
   </section>
 </template>
 

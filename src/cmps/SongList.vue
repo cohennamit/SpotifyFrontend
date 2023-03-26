@@ -4,7 +4,8 @@
       <div>#</div>
       <div>Title</div>
       <div>Album</div>
-      <div>Date Added</div>
+      <div v-if="station.isAddedByUser">Date Added</div>
+      <div v-else class="placeholder"></div>
       <div>
         <div></div>
         <div class="icon" v-html="getSvg('clock')"></div>
