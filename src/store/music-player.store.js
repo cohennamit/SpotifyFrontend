@@ -1,3 +1,4 @@
+import { utilService } from '../services/util.service.js'
 export const musicPlayerStore = {
     state: {
         currentSong: {
@@ -31,8 +32,19 @@ export const musicPlayerStore = {
             if (currentSongIdx + 1 > state.currentStation.songs.length - 1) return
             const nextSong = state.currentStation.songs[currentSongIdx + 1]
             state.currentSong = { ...nextSong }
-            console.log('Musicplayer store',nextSong)
+            console.log('Musicplayer store', nextSong)
 
+        },
+        setSameSong(state) {
+            if (!state.currentSong) return
+            const currentSongIdx = state.currentStation.songs.findIndex(song => song._id === state.currentSong._id)
+            const sameSong = state.currentStation.songs[currentSongIdx]
+            state.currentSong = { ...sameSong }
+        },
+        setRandomSong(state) {
+            if (!state.currentSong) return
+            const nextSong = state.currentStation.songs[utilService.getRandomIntInclusive(0, state.currentStation.songs.length - 1)]
+            state.currentSong = { ...nextSong }
         },
         setPrevSong(state) {
             if (!state.currentSong) return
@@ -56,6 +68,12 @@ export const musicPlayerStore = {
         },
         setNextSong({ commit }) {
             commit({ type: 'setNextSong' })
+        },
+        setSameSong({ commit }) {
+            commit({ type: 'setSameSong' })
+        },
+        setRandomSong({ commit }) {
+            commit({ type: 'setRandomSong' })
         },
         setPrevSong({ commit }) {
             commit({ type: 'setPrevSong' })
