@@ -35,7 +35,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    getSvg(iconName) {
+    return svgService.getSvg(iconName)
+  }
+  },
   computed: {
     isStation() {
       if (this.station) return this.station.songs.length > 0;

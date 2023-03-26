@@ -6,7 +6,10 @@
         <div>
             <span>Playlist</span>
             <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
-            <p @click="onOpenEditModal">{{ station.desc }}</p>
+            <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }} <span v-if="idx < 3">{{
+                ',' }} {{ '&nbsp;' }} </span>
+            </span>
+            <p v-else  @click="onOpenEditModal">{{ station.userDesc }}</p>
             <RouterLink to="/login">by user</RouterLink>
         </div>
     </header>
@@ -32,7 +35,7 @@ export default {
     methods: {
         onOpenEditModal() {
             //TODO : CHECK IF ADDED BY USER AND IF NOT REMOVE CURSOR
-            if(!this.station.isAddedByUser) return 
+            if (!this.station.isAddedByUser) return
             this.isEdit = true
         },
         onCloseEditModal() {

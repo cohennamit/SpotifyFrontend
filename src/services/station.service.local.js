@@ -84,19 +84,18 @@ function getEmptyStation() {
   //TODO: ADD COUNTER
   return {
     title: `My Playlist #`,
-    desc:'',
+    userDesc:'',
     imgUrl:
       'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',
     songs: [],
     isAddedByUser: true,
-
   };
 }
 
 function getEmptySong() {
   return {
-    _id: utilService.makeId(6),
     title: '',
+    _id: utilService.makeId(6),
     album: '',
     artist: '',
     videoId: '',
@@ -106,130 +105,137 @@ function getEmptySong() {
   };
 }
 
-// (async () => {
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Jericho Jackson Mix',
-//     desc: ['Large Professor,', 'Lord Finesse', 'Khrysis', 'And more'],
-//     listencount: 420,
-//     label: ['Pop', 'Dance/Electronic'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
-//     createdAt: Date.now(),
-//     songs: [
-//       {
-//         id: 's1001',
-//         title: 'Music For a Sushi Restaurant',
+(async () => {
+  await storageService.post(STORAGE_KEY, {
+    title: 'Jericho Jackson Mix',
+    desc: ['Large Professor,', 'Lord Finesse', 'Khrysis', 'And more'],
+    listencount: 420,
+    label: ['Pop', 'Dance/Electronic'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
+    createdAt: Date.now(),
+    songs: [
+      {
+        id: 's1001',
+        title: 'Music For a Sushi Restaurant',
 
-//         album: "Harry's House",
-//         artist: 'Harry Styles',
-//         url: 'youtube/song.mp4',
-//         imgUrl:
-//           'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
-//         addedBy: '{minimal-user}',
-//         addedAt: new Date(),
-//       },
-//       {
-//         id: 'mUkfiLjooxs',
-//         title: 'Pass The Peas',
-//         album: 'Food For Thought',
-//         artist: "The JB's",
-//         url: 'youtube/song.mp4',
-//         imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
-//         addedBy: {},
-//         addedAt: new Date(),
-//       },
-//     ],
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Dave Pad Mix',
-//     desc: ['Dave Pad', 'IO (Mulen)', 'Minimal Criminal', 'And more'],
+        album: "Harry's House",
+        artist: 'Harry Styles',
+        url: 'youtube/song.mp4',
+        imgUrl:
+          'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
+        addedBy: '{minimal-user}',
+        addedAt: new Date(),
+      },
+      {
+        id: 'mUkfiLjooxs',
+        title: 'Pass The Peas',
+        album: 'Food For Thought',
+        artist: "The JB's",
+        url: 'youtube/song.mp4',
+        imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
+        addedBy: {},
+        addedAt: new Date(),
+      },
+    ],
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Dave Pad Mix',
+    desc: ['Dave Pad', 'IO (Mulen)', 'Minimal Criminal', 'And more'],
 
-//     listencount: 21,
-//     labels: ['Pop'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Chill Mix',
-//     desc: ['The Alchemist', 'Boldy James', 'Peet', 'And more'],
+    listencount: 21,
+    labels: ['Pop'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Chill Mix',
+    desc: ['The Alchemist', 'Boldy James', 'Peet', 'And more'],
 
-//     listencount: 221,
-//     labels: ['Rap'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Happy Mix',
-//     desc: ['Harry Styles', 'Ed Sheeran', 'Niall Horan', 'And more'],
+    listencount: 221,
+    labels: ['Rap'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
+    createdAt: Date.now(),
+    songs:[]
 
-//     listencount: 2221,
-//     createdAt: Date.now(),
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: '2010s Mix',
-//     desc: ['Markus Homm', 'The Alchemist', 'Frink', 'And more'],
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Happy Mix',
+    desc: ['Harry Styles', 'Ed Sheeran', 'Niall Horan', 'And more'],
+    listencount: 2221,
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: '2010s Mix',
+    desc: ['Markus Homm', 'The Alchemist', 'Frink', 'And more'],
 
-//     listencount: 420,
-//     label: ['Pop', 'Dance/Electronic'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: '2000s Mix',
-//     desc: ['Large Professor', 'Thomas Fehlmann', 'Ja Rule', 'And more'],
+    listencount: 420,
+    label: ['Pop', 'Dance/Electronic'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
+    createdAt: Date.now(),
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: '2000s Mix',
+    desc: ['Large Professor', 'Thomas Fehlmann', 'Ja Rule', 'And more'],
+    listencount: 21,
+    labels: ['Pop'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
+    createdAt: Date.now(),
+    songs:[]
 
-//     listencount: 21,
-//     labels: ['Pop'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 1',
-//     desc: ['Boldy James', 'O.C.', 'Skyzoo', 'And more'],
-
-//     listencount: 221,
-//     labels: ['Rap'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 2',
-//     desc: ['IO (Mulen)', 'Till Von Sein', 'Mihai Popoviciu', 'And more'],
-
-//     listencount: 2221,
-//     createdAt: Date.now(),
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 3',
-//     desc: ['Ross from Friends', 'Kerala Dust', 'Sebb Junior', 'And more'],
-
-//     listencount: 420,
-//     label: ['Pop', 'Dance/Electronic'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 4',
-//     listencount: 21,
-//     labels: ['Pop'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 5',
-//     listencount: 221,
-//     labels: ['Rap'],
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
-//     createdAt: Date.now(),
-//   });
-//   await storageService.post(STORAGE_KEY, {
-//     title: 'Daily Mix 6',
-//     listencount: 2221,
-//     createdAt: Date.now(),
-//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
-//   });
-// })();
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 1',
+    desc: ['Boldy James', 'O.C.', 'Skyzoo', 'And more'],
+    listencount: 221,
+    labels: ['Rap'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 2',
+    desc: ['IO (Mulen)', 'Till Von Sein', 'Mihai Popoviciu', 'And more'],
+    listencount: 2221,
+    createdAt: Date.now(),
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 3',
+    desc: ['Ross from Friends', 'Kerala Dust', 'Sebb Junior', 'And more'],
+    listencount: 420,
+    label: ['Pop', 'Dance/Electronic'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 4',
+    listencount: 21,
+    labels: ['Pop'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 5',
+    listencount: 221,
+    labels: ['Rap'],
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
+    createdAt: Date.now(),
+    songs:[]
+  });
+  await storageService.post(STORAGE_KEY, {
+    title: 'Daily Mix 6',
+    listencount: 2221,
+    createdAt: Date.now(),
+    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
+    songs:[]
+  });
+})();
 
 // TEST DATA
 // ; (async () => {

@@ -3,7 +3,7 @@
     <img v-if="station.imgUrl" :src="station.imgUrl" />
     <p>{{ station.title }}</p>
     <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"
-      >{{ shortenedTitle(d) }} <span v-if="idx < 3">{{ ',' }} {{ '&nbsp;' }} </span>
+      >{{ d }} <span v-if="idx < 3">{{ ',' }} {{ '&nbsp;' }} </span>
     </span>
   </section>
 </template>
