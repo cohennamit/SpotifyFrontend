@@ -11,8 +11,8 @@
         <div></div>
       </div>
     </div>
-    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" :song="song" :station="station"
-      :index="index" />
+    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" :key="index" :song="song"
+      :station="station" :index="index" />
   </ul>
 </template>
 
