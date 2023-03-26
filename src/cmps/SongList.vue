@@ -39,11 +39,11 @@ export default {
     isStation() {
       if (this.station) return this.station.songs.length > 0;
     },
-  },
-
-  created() { },
+    
+  created() {},
   components: {
     SongPreview,
+  },
   },
 };
 </script>
