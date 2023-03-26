@@ -11,13 +11,8 @@
         <div></div>
       </div>
     </div>
-    <SongPreview
-      v-for="(song, index) in station.songs"
-      @removeSong="removeSong"
-      :song="song"
-      :station="station"
-      :index="index"
-    />
+    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" :song="song" :station="station"
+      :index="index" />
   </ul>
 </template>
 
@@ -37,8 +32,8 @@ export default {
   },
   methods: {
     getSvg(iconName) {
-    return svgService.getSvg(iconName)
-  }
+      return svgService.getSvg(iconName)
+    }
   },
   computed: {
     isStation() {
@@ -46,7 +41,7 @@ export default {
     },
   },
 
-  created() {},
+  created() { },
   components: {
     SongPreview,
   },
