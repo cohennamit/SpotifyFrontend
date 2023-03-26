@@ -13,23 +13,36 @@
 	margin-inline-start: 6px;
 	padding: 0px;
 	width: 98.5%;
-
+	
 	
 	@media (max-width:1600px) {
-		width: 95%;
+		width: 97.5%;
+		min-height: 220px;
 		
 	}
 	@media (max-width:1220px) {
-		width: 91%;
+		width: 96%;
+		grid-template-columns: repeat(2, minmax(267px, 1fr));
+		.top-content{
+			height: 84px;
+	}
+	}
+	@media (max-width:1085px) {
+		width: 95%;
 		// grid-template-columns: repeat(3, minmax(267px, 1fr));
-
+        min-height: 190px;
+		row-gap: 0.5em;
 	}
 	@media (max-width:1000px) {
-		width: 88%;
+		width: 92%;
 		
 	}
-	@media (max-width:800px) {
-		width: 80%;
+	@media (max-width:860px) {
+		width: 90%;
+		
+	}
+	@media (max-width:768) {
+		width: 88%;
 		
 	}
 	padding-inline-start: 12px;
@@ -38,12 +51,13 @@
 	align-items: center;
 	display: grid;
     column-gap: 12px;
-    row-gap: none;
-	grid-template-columns: repeat(2, minmax(267px, 1fr));
-	min-height: 220px;
+	grid-template-columns: repeat(3, minmax(267px, 1fr));
+	min-height:  147px;
+	
 	text-align: ltr;
 	.top-content{
-	  display: flex;
+		font-size: 0.63em;
+	  display: flex ;
 	  min-width: 200px;
 	  align-items: center;
 	  background-color: #2E293C;
@@ -51,18 +65,14 @@
       height: 64px;
 	}
 	h1{
-	align-self: start;
 	height: auto;
 	}
 	img {
-    padding: 8px;
-    margin-inline-start:-17px ;
-	width: 78px;
-	height: 78px;
+	width: 64px;
+	height: 64px;
+	border-radius: 4px;
 	}
 	*:not(img) {
-		padding: 0.5em;
-		height: auto;
 		margin: 0.2em;
 		transition: 300ms;
 		&:hover {
@@ -73,6 +83,8 @@
 
 
 .station-list {
+
+	
 	
 	grid-row: 2;
 	margin-inline-start: 6px;
@@ -84,17 +96,46 @@
 	gap: 24px;
 	column-gap: 1.2em;
     grid-template-columns: repeat(auto-fill,minmax(0,220px));
-}
+	@media (max-width:1600px) {
+		width: 97.5%;
+		gap: 6px;
+	}
+	@media (max-width:1600px) {
+		width: 97.5%;
+		gap: 6px;
+	}
+	@media (max-width:1220px) {
+		width: 96%;
+		// grid-template-columns: repeat(3, minmax(267px, 1fr));
 
-::-webkit-scrollbar{
-    background: transparent;
-	width: 0.5em;
-}
-::-webkit-scrollbar-thumb{
-    background: #7c7b7bab;
-    border-radius: 6px;
-	&:hover{
+	}
+	@media (max-width:1085px) {
+		width: 95%;
 		
-		background: #7c7b7bf5;
+	}
+	@media (max-width:1000px) {
+		width: 92%;
+		
+	}
+	@media (max-width:860px) {
+		width: 90%;
+		
+	}
+	@media (max-width:768) {
+		width: 88%;
+		
 	}
 }
+
+// ::-webkit-scrollbar{
+//     background: transparent;
+// 	width: 0.5em;
+// }
+// ::-webkit-scrollbar-thumb{
+//     background: #7c7b7bab;
+//     border-radius: 6px;
+// 	&:hover{
+		
+// 		background: #7c7b7bf5;
+// 	}
+// }

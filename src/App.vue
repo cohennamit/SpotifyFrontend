@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
-    <AppHeader />
     <MainNav />
+    <AppHeader />
     <AppFooter />
     <main class="app-main" ref="appMain" @scroll="handleScroll">
       <RouterView />
