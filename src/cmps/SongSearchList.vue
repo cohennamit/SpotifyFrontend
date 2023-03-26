@@ -1,46 +1,33 @@
 <template>
-  <section class="song-filter">
-
-    <header class="song-filter-header">
+  <section class="song-search">
+    <header class="song-search-header">
       <div>
         <h1>Let's find something for your playlist</h1>
-        <form @input.prevent="search">
-          <label for="">
-            <input name="search" v-html="getSvg('search')" type="search" v-model="query" placeholder="Search for songs" />
-          </label>
+        <form @submit.prevent="search">
+          <div class="input-wrap">
+            <div class="icon" v-html="getSvg('search')"></div>
+            <input name="search"  type="text" v-model="query" placeholder="Search for songs" />
+          </div>
           <!-- <button type="submit">Search</button> -->
         </form>
       </div>
     </header>
 
-      <div v-if="loading">Loading...</div>
-      <ul v-else>
-        <li v-for="(video, index) in videos" :key="index">
-          <h4>{{ index + 1 }}</h4>
-          <img :src="video.snippet.thumbnails.default.url" alt="" />
-          <div>
-            <h3>{{ shortenedTitle(video.snippet.title) }}</h3>
-            <h6>Artist</h6>
-            <button @click="addSong(video)">Add</button>
-          </div>
-          <iframe
-            hidden
-            width="60"
-            height="15"
-            :src="'https://www.youtube.com/embed/' + video.id.videoId"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </li>
-      </ul>
-      <div v-if="!videos.length && !loading">No Songs</div>
+    <div v-if="loading">Loading...</div>
+    <ul v-else class="song-search-results-wrap">
+      <SongSearchPreview  v-for="(video, index) in videos" @addSong="addSong" :video="video" :key="index"/>
+    </ul>
+    <div v-if="!videos.length && !loading">No Songs</div>
   </section>
 </template>
 
 <script>
 import { stationService } from '../services/station.service.local.js'
 import { svgService } from '../services/svg.service.js'
+
+import SongSearchPreview from './SongSearchPreview.vue';
 export default {
+  name:'Song Search List',
   data() {
     return {
       query: '',
@@ -59,16 +46,11 @@ export default {
     }
   },
   computed: {
-    shortenedTitle() {
-      const maxLength = 30
-      return function (title) {
-        return title.length > maxLength ? title.slice(0, maxLength) + '...' : title
-      }
-    },
+   
   },
   methods: {
     async search() {
-      const API_KEY = 'AIzaSyB_6u19ZnSR_5zv7HYgTJKw6qkPpnsREcg'
+      const API_KEY = 'AIzaSyD-UvcH5vO6zd23dOmPlTMIwHdlVHAALZc'
       this.videos = []
 
       try {
@@ -81,14 +63,8 @@ export default {
         console.error(error)
       }
     },
-    addSong(video) {
-      const song = stationService.getEmptySong();
-      const { snippet, id } = { ...video };
-      song.title = snippet.title;
-      song.videoId = id.videoId;
-      song.imgUrl = snippet.thumbnails.default.url;
+    addSong(song) {
       this.$emit('addSong', song);
-
       //OUR'S:
       // const pattern = /[^-,_\w]+/g;
       //CHATGPT'S:
@@ -100,8 +76,11 @@ export default {
       //TODO: TRY TO FIX PATTERN TO NOT GET SHIT TITLE
     },
     getSvg(iconName) {
-    return svgService.getSvg(iconName)
-  }
+      return svgService.getSvg(iconName)
+    }
   },
+  components:{
+    SongSearchPreview
+  }
 }
 </script>

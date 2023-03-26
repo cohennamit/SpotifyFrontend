@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
-  <section class="station-details">
+  <section v-if="station" class="station-details">
     <StationHeader :station="station" />
     <article class="station-details-body">
       <div @click="toggleStationOptions" class="icon" v-html="getSvg('playlistOptions')"></div>
@@ -10,7 +10,7 @@
       </ul>
     </article>
     <SongList @removeSong="removeSong" :station="station" />
-    <SongFilter @addSong="addSong" />
+    <SongSearchList @addSong="addSong" />
   </section>
 </template>
 
@@ -21,13 +21,13 @@ import { svgService } from '../services/svg.service.js';
 
 import StationHeader from '../cmps/StationHeader.vue';
 import SongList from '../cmps/SongList.vue';
-import SongFilter from '../cmps/SongFilter.vue';
+import SongSearchList from '../cmps/SongSearchList.vue';
 
 export default {
   name: 'Song Details',
   data() {
     return {
-      station: {},
+      station: null,
       isOptionsShown: false,
     };
   },
@@ -46,12 +46,14 @@ export default {
       this.station.songs.push(song);
       this.$store.dispatch({ type: 'updateStation', station: this.station });
     },
-    removeSong(songId) {
-      console.log('details', songId);
+    async removeSong(songId) {
       const songIdx = this.station.songs.findIndex((song) => song._id === songId);
-      console.log('details', songIdx);
       this.station.songs.splice(songIdx, 1);
-      this.$store.dispatch({ type: 'updateStation', station: this.station });
+      try {
+        await this.$store.dispatch({ type: 'updateStation', station: this.station });
+      } catch (err) {
+        console.log(err);
+      }
     },
   },
   computed: {
@@ -78,7 +80,7 @@ export default {
   components: {
     StationHeader,
     SongList,
-    SongFilter,
+    SongSearchList,
   },
 };
 </script>

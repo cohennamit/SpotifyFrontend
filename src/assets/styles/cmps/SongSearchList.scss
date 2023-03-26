@@ -1,0 +1,44 @@
+.song-search {
+    
+    &-header {
+        border-top: 1px solid hsla(0, 0%, 100%, .1);
+        margin-block-start: 24px;
+        padding: 24px 0;
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    .input-wrap {
+        display: flex;
+        width: 365px;
+        background-color: hsla(0deg, 0%, 100%, 0.1);
+        border: 0;
+        border-radius: 4px;
+        color: #c2c2c2;
+        height: 40px;
+        padding-inline-start: 17px;
+        text-overflow: ellipsis;
+        width: 100%;
+        font-size: 0.875rem;
+        padding-inline-end: 17px;
+        padding-block: 8px;
+        input{
+            background-color: inherit;
+            border: 0;
+            width: 100%;
+            background-color: transparent;
+        }
+    }
+
+    ul {
+        padding-inline-start: 0;
+    }
+
+    h6 {
+        margin-block-start: 0em;
+    }
+}
