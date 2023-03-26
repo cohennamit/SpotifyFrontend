@@ -23,8 +23,14 @@
             <h6>Artist</h6>
             <button @click="addSong(video)">Add</button>
           </div>
-          <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + video.id.videoId" frameborder="0"
-          allowfullscreen></iframe>
+          <iframe
+            hidden
+            width="60"
+            height="15"
+            :src="'https://www.youtube.com/embed/' + video.id.videoId"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </li>
       </ul>
       <div v-if="!videos.length && !loading">No Songs</div>
@@ -40,11 +46,11 @@ export default {
       query: '',
       videos: [],
       loading: false,
-      currStation: {}
-    }
+      currStation: {},
+    };
   },
-  async created(){
-    const { stationId } = this.$route.params
+  async created() {
+    const { stationId } = this.$route.params;
     try {
       const station = await stationService.getById(stationId)
       this.currStation = station
@@ -76,18 +82,17 @@ export default {
       }
     },
     addSong(video) {
-      const song = stationService.getEmptySong()
-      const { snippet, id } = { ...video }
-      song.title = snippet.title
-      song.videoId = id.videoId
-      song.imgUrl = snippet.thumbnails.default.url
-      this.$emit('addSong', song)
-
+      const song = stationService.getEmptySong();
+      const { snippet, id } = { ...video };
+      song.title = snippet.title;
+      song.videoId = id.videoId;
+      song.imgUrl = snippet.thumbnails.default.url;
+      this.$emit('addSong', song);
 
       //OUR'S:
-      // const pattern = /[^-,_\w]+/g
-      //CHATGPT'S: 
-      // const pattern = /^(?<artist>[^-()]+)\s*-\s*(?<title>[^()]+)(\((feat\..+)\))?$/i
+      // const pattern = /[^-,_\w]+/g;
+      //CHATGPT'S:
+      // const pattern = /^(?<artist>[^-()]+)\s*-\s*(?<title>[^()]+)(\((feat\..+)\))?$/i;
       // const title = emptySong.title
       // const match = title.match(pattern)
       // const artist = match?.groups?.artist.trim()

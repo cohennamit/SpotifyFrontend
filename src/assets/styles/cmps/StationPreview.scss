@@ -1,5 +1,8 @@
 .station-preview{
-    background-color: #292929b3;
+    .station-preview-desc{
+        font-size: 0.7em;
+    }
+    background-color: rgb(23, 23, 23);
     padding: 2em;
     transition: 300ms;
     text-align: ltr;
@@ -8,11 +11,13 @@
     width: 218px;
     height: 310px;
     border-radius: 8px;
-    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva;
+    font-family: 'circular';
+    p{
+        margin-block-end: 0.2em;
+    }
    
 	img {
         border-radius: 8px;
-
         margin: auto;
         height: 180px;
         width: 180px;

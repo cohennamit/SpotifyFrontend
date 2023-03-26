@@ -1,13 +1,13 @@
 <template>
-  <section>
-    <main class="app-main">
-      <MainNav />
-      <AppHeader />
+  <div class="layout-container">
+    <AppHeader />
+    <MainNav />
+    <AppFooter />
+    <main class="app-main" ref="appMain" @scroll="handleScroll">
       <RouterView />
-      <AppFooter />
       <UserMsg />
     </main>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -24,6 +24,26 @@ export default {
     const user = userService.getLoggedinUser();
     if (user) store.commit({ type: 'setLoggedinUser', user });
     this.$store.dispatch({ type: 'loadStations' });
+  },
+  methods: {
+    handleScroll() {
+      const appMain = this.$refs.appMain;
+      const scrollTop = appMain.scrollTop;
+      const opacity = 1 - scrollTop / 200;
+      const header = document.querySelector('.header');
+
+      header.style.backgroundColor = `rgba(28, 17, 56, ${1 - opacity})`;
+
+      // this.$store.dispatch('setScrollTop', scrollTop);
+    },
+  },
+  mounted() {
+    const app = this.$refs.appMain;
+    app.addEventListener('scroll', this.handleScroll);
+  },
+  unmounted() {
+    const app = this.$refs.appMain;
+    app.removeEventListener('scroll', this.handleScroll);
   },
   components: {
     AppHeader,

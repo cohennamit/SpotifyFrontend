@@ -1,4 +1,5 @@
 <template>
+  <!-- <div class="header-placeholder"></div> -->
   <section class="station-details">
     <StationHeader :station="station" />
     <article class="station-details-body">
@@ -8,7 +9,7 @@
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
     </article>
-    <SongList @removeSong="removeSong"  :station="station" />
+    <SongList @removeSong="removeSong" :station="station" />
     <SongFilter @addSong="addSong" />
   </section>
 </template>
@@ -42,20 +43,19 @@ export default {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
       this.$router.push('/station');
     },
-    addSong(song){
-      this.station.songs.push(song)
-      this.$store.dispatch({type:'updateStation', station: this.station})
+    addSong(song) {
+      this.station.songs.push(song);
+      this.$store.dispatch({ type: 'updateStation', station: this.station });
     },
-    removeSong(songId){
-      console.log('details', songId)
-      const songIdx = this.station.songs.findIndex(song=> song._id === songId)
-      console.log('details',songIdx)
-      this.station.songs.splice(songIdx, 1)
-      this.$store.dispatch({type:'updateStation', station: this.station})
-    }
+    removeSong(songId) {
+      console.log('details', songId);
+      const songIdx = this.station.songs.findIndex((song) => song._id === songId);
+      console.log('details', songIdx);
+      this.station.songs.splice(songIdx, 1);
+      this.$store.dispatch({ type: 'updateStation', station: this.station });
+    },
   },
-  computed:{
-
+  computed: {
     // async getStation() {
     //   const { stationId } = this.$route.params;
     //   // console.log('create',stationId)
@@ -67,13 +67,13 @@ export default {
     //   }
     // },
   },
-  watch:{
+  watch: {
     '$route.params': {
       handler() {
-        const { stationId } = this.$route.params
-        stationService.getById(stationId).then(station => (this.station = station))
+        const { stationId } = this.$route.params;
+        stationService.getById(stationId).then((station) => (this.station = station));
       },
-      immediate: true
+      immediate: true,
     },
   },
   components: {

@@ -32,12 +32,12 @@ const svgs = {
 }
 
 function getSvg(iconName) {
-    return svgs[iconName]
+  return svgs[iconName];
 }
 
 export const svgService = {
-    getSvg
-}
+  getSvg,
+};
 
 // in template
 // <div class="icon" v-html="getSvg('iconName')"></div>
