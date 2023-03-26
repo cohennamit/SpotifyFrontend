@@ -33,6 +33,7 @@
 import { svgService } from '../services/svg.service.js'
 export default {
     name: 'Song Preview',
+    emits:['removeSong'],
     props: {
         song: {
             type: Object
@@ -53,7 +54,6 @@ export default {
     },
     methods: {
         removeSong() {
-            console.log('preview', this.song._id)
             this.$emit('removeSong', this.song._id)
         },
         getSvg(iconName) {

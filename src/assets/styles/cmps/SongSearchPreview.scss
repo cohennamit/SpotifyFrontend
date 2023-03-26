@@ -1,0 +1,36 @@
+.song-search-preview {
+    display: grid;
+    grid-template-columns: 4fr 2fr minmax(120px, 1fr);
+    // font-size: 16px;
+    font-weight: 400;
+
+    &-img-title-wrap {
+        display: flex;
+
+        .img-wrap {
+
+            width: 40px;
+            margin-inline-end: 16px;
+
+        }
+    }
+
+    h6 {
+        color: #b3b3b3;
+    }
+
+    &-album {
+        color: #b3b3b3;
+    }
+
+    &-add-btn {
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        color: whitesmoke;
+        padding-block: 6px;
+        padding-inline: 17px;
+        border: 1px solid #727272;
+        border-radius: 500px;
+    }
+}

@@ -1,15 +1,14 @@
 <template>
     <section class="footer">
-        <section v-if="videoId" class="song-info">
+        <section style="width: 220px;" v-if="videoId" class="song-info">
             <img :src="imgUrl" alt="">
             <h3>{{ shortenedTitle(songTitle) }}</h3>
         </section>
         <section v-else>
-            <!-- <span></span> -->
-            <!-- <h3>Bruh</h3> -->
-            <div style="width: 220px;" class="placehold">placeholder</div>
+            <div style="width: 220px;" class="placeholder"></div>
         </section>
-        <YouTube hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" :player-vars="playerVars" />
+        <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube"
+            :player-vars="playerVars" />
         <section class="footer-btns">
             <button @click="onShuffle" class="footer-btn">
                 <div class="icon" :class="{ 'active': isShuffling }" v-html="getSvg('shuffle')"></div>
@@ -66,6 +65,9 @@ export default defineComponent({
             if (this.isPlaying) this.$refs.youtube.playVideo()
             else this.$refs.youtube.pauseVideo()
         },
+        // onPauseResume() {
+        //     this.$store.commit({ type: 'pauseResume' })
+        // },
         onNextSong() {
             this.$store.dispatch({ type: 'setNextSong' })
         },
@@ -81,6 +83,7 @@ export default defineComponent({
             this.isShuffling = !this.isShuffling
         },
         toggleMute() {
+            if (!this.videoId) return
             if (this.isMuted) this.volume = 40
             else this.volume = 0
             this.isMuted = !this.isMuted
@@ -110,7 +113,14 @@ export default defineComponent({
                 return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
             }
         },
-    }
+        isPlaying() {
+            return this.$store.getters.isPlaying
+        }
+    },
+    // created() {
+    //     console.log('this.$refs', this.$refs)
+    //     this.$store.commit({ type: 'setYoutubeRef', ref: this.$refs.youtube })
+    // }
 
 })
 
