@@ -44,11 +44,11 @@ export default {
     isStation() {
       if (this.station) return this.station.songs.length > 0;
     },
-  },
-
+    
   created() {},
   components: {
     SongPreview,
+  },
   },
 };
 </script>
