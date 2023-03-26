@@ -20,11 +20,13 @@
         </div>
         <!-- <p>{{ song.album }}</p> -->
         <span>DEMO ALBUM</span>
-        <span>{{ addedAtDiff }}</span>
+        <span v-if="station.isAddedByUser">{{ addedAtDiff }}</span>
+        <span v-else class="placeholderz"></span>
         <div class="song-preview-preferences">
             <span :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></span>
             <span>3:14</span>
-            <span :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></span>
+            <span v-if="station.isAddedByUser" :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></span>
+            <span v-else class="placeholder">  </span>
         </div>
     </div>
 </template>

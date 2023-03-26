@@ -36,9 +36,9 @@
                 </RouterLink>
             </ul>
         </section>
-        <button class="install-btn">
+        <!-- <button class="install-btn">
             <div class="icon" v-html="getSvg('install')"></div> Install App
-        </button>
+        </button> -->
     </section>
 </template>
 

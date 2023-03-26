@@ -28,9 +28,10 @@ export const musicPlayerStore = {
         setNextSong(state) {
             if (!state.currentSong) return
             const currentSongIdx = state.currentStation.songs.findIndex(song => song._id === state.currentSong._id)
-            const nextSong = state.currentStation.songs[currentSongIdx + 1]
             if (currentSongIdx + 1 > state.currentStation.songs.length - 1) return
+            const nextSong = state.currentStation.songs[currentSongIdx + 1]
             state.currentSong = { ...nextSong }
+            console.log('Musicplayer store',nextSong)
 
         },
         setPrevSong(state) {

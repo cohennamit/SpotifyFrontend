@@ -113,9 +113,9 @@ export default defineComponent({
                 return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
             }
         },
-        isPlaying() {
-            return this.$store.getters.isPlaying
-        }
+        // isPlaying() {
+        //     return this.$store.getters.isPlaying
+        // }
     },
     // created() {
     //     console.log('this.$refs', this.$refs)
