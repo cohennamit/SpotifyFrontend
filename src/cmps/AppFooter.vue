@@ -1,8 +1,13 @@
 <template>
     <section class="footer">
-        <section class="song-info">
+        <section v-if="videoId" class="song-info">
             <img :src="imgUrl" alt="">
             <h3>{{ shortenedTitle(songTitle) }}</h3>
+        </section>
+        <section v-else>
+            <!-- <span></span> -->
+            <!-- <h3>Bruh</h3> -->
+            <div style="width: 220px;" class="placehold">placeholder</div>
         </section>
         <YouTube hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" :player-vars="playerVars" />
         <section class="footer-btns">
@@ -13,7 +18,7 @@
                 <div class="icon" v-html="getSvg('playPrev')"></div>
             </button>
             <button @click="onPauseResume" class="footer-btn btn-pause">
-                <div v-html="isPlaying ? getSvg('resume') : getSvg('pause')"></div>
+                <div v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
             </button>
             <button class="footer-btn" @click="onNextSong">
                 <div class="icon" v-html="getSvg('playNext')"></div>
@@ -41,13 +46,10 @@ export default defineComponent({
     components: { YouTube },
     data() {
         return {
-            // videoId: 'YVkUvmDQ3HY',
-            repeatStatus: 'Repeat',
-            pauseStatus: 'Resume',
             volume: 40,
             isRepeating: true,
             playerVars: {
-                loop: 0
+                loop: 1
             },
             isMuted: false,
             isPlaying: false,
@@ -59,19 +61,10 @@ export default defineComponent({
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
-        // onPauseResume() {
-        //     if (this.pauseStatus === 'Resume') {
-        //         this.$refs.youtube.playVideo()
-        //         this.pauseStatus = 'Pause'
-        //     } else {
-        //         this.pauseStatus = 'Resume'
-        //         this.$refs.youtube.pauseVideo()
-        //     }
-        // },
         onPauseResume() {
             this.isPlaying = !this.isPlaying
-            if (this.isPlaying) this.$refs.youtube.pauseVideo()
-            else this.$refs.youtube.playVideo()
+            if (this.isPlaying) this.$refs.youtube.playVideo()
+            else this.$refs.youtube.pauseVideo()
         },
         onNextSong() {
             this.$store.dispatch({ type: 'setNextSong' })
