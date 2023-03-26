@@ -30,8 +30,10 @@ export function getActionAddStationMsg(stationId) {
 
 export const stationStore = {
   state: {
-    stations:[],
+    stations: [],
     isFilterShown: false,
+    scrollTop: 0,
+
     labels: stationService.getLabels(),
     filterBy: {
       labels: '',
@@ -40,6 +42,9 @@ export const stationStore = {
     labels: stationService.getLabels(),
   },
   getters: {
+    getScrollTop(state) {
+      return state.scrollTop;
+    },
     stations({ stations }) {
       return stations;
     },
@@ -51,6 +56,9 @@ export const stationStore = {
     },
   },
   mutations: {
+    SET_SCROLL_TOP(state, value) {
+      state.scrollTop = value;
+    },
     setFilterBy(state, { filterBy }) {
       state.filterBy = filterBy;
     },
@@ -69,8 +77,8 @@ export const stationStore = {
     },
     removeStation(state, { stationId }) {
       // state.stations = state.stations.filter((station) => station._id !== stationId);
-      const idx = state.stations.findIndex(station => station._id === stationId)
-      state.stations.splice(idx, 1)
+      const idx = state.stations.findIndex((station) => station._id === stationId);
+      state.stations.splice(idx, 1);
     },
     addStationMsg(state, { stationId, msg }) {
       const station = state.stations.find((station) => station._id === stationId);
@@ -79,7 +87,10 @@ export const stationStore = {
     },
   },
   actions: {
-    async addStation(context,  {newStation} ) {
+    setScrollTop({ commit }, value) {
+      commit('SET_SCROLL_TOP', value);
+    },
+    async addStation(context, { newStation }) {
       try {
         newStation = await stationService.save(newStation);
         context.commit(getActionAddStation(newStation));

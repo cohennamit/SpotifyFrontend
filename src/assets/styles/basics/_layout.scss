@@ -42,8 +42,8 @@
 }
 
 .app-main{
-      
-        grid-row: 2/-1;
+         
+        grid-row: 1/-1;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
@@ -55,7 +55,7 @@
     
     .layout-container{
         display: grid;
-        grid-template-columns: minmax(150px,200px) 1fr;
+        grid-template-columns: 190px 89.5vw;
         grid-template-rows: 80px 72dvh 120px;
 
 }

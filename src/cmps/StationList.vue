@@ -1,11 +1,5 @@
 <template>
-  <!-- <article class="station-list-top-content-container" v-for="label in labels">
-    <routerlink :label="label" :to="`/genre/${label}`">
-      <span>
-        {{ label.name }}
-      </span>
-    </routerlink>
-  </article> -->
+  <div class="header-placeholder"></div>
   <section class="station-list-top-content-container">
     <article class="top-content">
       <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png" alt="" />

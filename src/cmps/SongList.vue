@@ -35,20 +35,13 @@ export default {
   data() {
     return {};
   },
-  methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName);
-    },
-    removeSong(songId) {
-      console.log('list', songId);
-      this.$emit('removeSong', songId);
-    },
-  },
+  methods: {},
   computed: {
     isStation() {
       if (this.station) return this.station.songs.length > 0;
     },
   },
+
   created() {},
   components: {
     SongPreview,

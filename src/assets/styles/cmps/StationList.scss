@@ -1,49 +1,57 @@
-
+.header-placeholder{
+	height: 100px;
+}
 .station-list-top-content-container {
-	padding: 0px;
 
+	margin-inline-start: 6px;
+	padding: 0px;
+	width: 100%;
 	padding-inline-start: 12px;
 	padding-inline-end: 6px;
-	// background-color: #181818;
 	grid-column: 1 / -1;
 	align-items: center;
 	display: grid;
     column-gap: 12px;
     row-gap: none;
-	grid-template-columns: repeat(2, minmax(360px, 1fr));
+	grid-template-columns: repeat(2, minmax(267px, 1fr));
 	min-height: 220px;
 	text-align: ltr;
 	.top-content{
 	  display: flex;
+	  min-width: 200px;
 	  align-items: center;
-	  background-color: #292929b3;
+	  background-color: #2E293C;
       border-radius: 8px;
       height: 64px;
 	}
 	h1{
-		align-self: start;
-		height: auto;
+	align-self: start;
+	height: auto;
 	}
 	img {
+    padding: 8px;
     margin-inline-start:-11px ;
 	width: 72px;
 	}
-	* {
+	*:not(img) {
 		padding: 0.5em;
-		height: 4em;
+		height: auto;
 		margin: 0.2em;
 		transition: 300ms;
 		&:hover {
-			background-color: #292929;
+			background-color: #464054
 		}
 	}
 }
 
 .station-list {
-	// background-color: #181818;
+	grid-row: 2;
+
+	margin-inline-start: 6px;
 	padding: 0;
-overflow-x: hidden;
+    overflow-x: hidden;
 	overflow-y: hidden;
+	width: 100%;
     display: grid;
 	gap: 24px;
 	column-gap: 1.5em;

@@ -1,16 +1,18 @@
 <template>
+  <!-- <div class="header-placeholder"></div> -->
+
   <section class="genres-wrap">
     <h2>Browse all</h2>
     <article class="genres-list">
       <div class="label-container" v-for="label in labels" @click="setLabel(label)">
-        <img :src="label.imgUrl"/>
+        <img :src="label.imgUrl" />
         <span>
           {{ label.name }}
         </span>
       </div>
     </article>
   </section>
-</template> 
+</template>
 
 <script>
 //TODO: MAKE LABEL CONTAINER COLOR RANDOM
@@ -18,25 +20,23 @@
 export default {
   name: 'Search Page',
   data() {
-    return {
-    }
+    return {};
   },
   methods: {
     setLabel(label) {
-      console.log(label)
-      this.$router.push(`/genre/${label.name}`)
-      this.$router.push(`/genre/${label.name}`)
+      console.log(label);
+      this.$router.push(`/genre/${label.name}`);
+      this.$router.push(`/genre/${label.name}`);
     },
   },
   computed: {
     labels() {
-      return this.$store.getters.labels
-      return this.$store.getters.labels
-    }
+      return this.$store.getters.labels;
+      return this.$store.getters.labels;
+    },
   },
-  created() { },
-  components: {
-  },
+  created() {},
+  components: {},
 };
 </script>
 
