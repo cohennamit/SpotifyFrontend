@@ -84,7 +84,7 @@ function getEmptyStation() {
   //TODO: ADD COUNTER
   return {
     title: `My Playlist #`,
-    userDesc:'',
+    userDesc: '',
     imgUrl:
       'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',
     songs: [],
@@ -105,143 +105,352 @@ function getEmptySong() {
   };
 }
 
-(async () => {
-  await storageService.post(STORAGE_KEY, {
-    title: 'Jericho Jackson Mix',
-    desc: ['Large Professor,', 'Lord Finesse', 'Khrysis', 'And more'],
-    listencount: 420,
-    label: ['Pop', 'Dance/Electronic'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
-    createdAt: Date.now(),
-    songs: [
-      {
-        id: 's1001',
-        title: 'Music For a Sushi Restaurant',
+// (async () => {
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Jericho Jackson Mix',
+//     desc: ['Large Professor', 'Lord Finesse', 'Khrysis', 'And more'],
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg',
+//     createdAt: Date.now(),
+//     songs: [
+//       {
+//         id: 's1003',
+//         title: 'To Do List',
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1004',
+//         title: 'Machine & McQueens ',
+//         album: 'Food For Thought',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822075/41_nvcplo.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1005',
+//         title: 'Self Made',
 
-        album: "Harry's House",
-        artist: 'Harry Styles',
-        url: 'youtube/song.mp4',
-        imgUrl:
-          'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
-        addedBy: '{minimal-user}',
-        addedAt: new Date(),
-      },
-      {
-        id: 'mUkfiLjooxs',
-        title: 'Pass The Peas',
-        album: 'Food For Thought',
-        artist: "The JB's",
-        url: 'youtube/song.mp4',
-        imgUrl: 'https://i.ytimg.com/vi/mUkfiLjooxs/mqdefault.jpg',
-        addedBy: {},
-        addedAt: new Date(),
-      },
-    ],
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Dave Pad Mix',
-    desc: ['Dave Pad', 'IO (Mulen)', 'Minimal Criminal', 'And more'],
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1006',
+//         title: 'Overthinking',
 
-    listencount: 21,
-    labels: ['Pop'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Chill Mix',
-    desc: ['The Alchemist', 'Boldy James', 'Peet', 'And more'],
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1007',
+//         title: 'Breguets',
 
-    listencount: 221,
-    labels: ['Rap'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
-    createdAt: Date.now(),
-    songs:[]
+//         album: 'To Do List',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822071/40_b5npst.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1008',
+//         title: 'City by Sea',
 
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Happy Mix',
-    desc: ['Harry Styles', 'Ed Sheeran', 'Niall Horan', 'And more'],
-    listencount: 2221,
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: '2010s Mix',
-    desc: ['Markus Homm', 'The Alchemist', 'Frink', 'And more'],
+//         album: 'City by Sea',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822537/42_j30vad.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's1010',
+//         title: 'In My Life',
 
-    listencount: 420,
-    label: ['Pop', 'Dance/Electronic'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
-    createdAt: Date.now(),
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: '2000s Mix',
-    desc: ['Large Professor', 'Thomas Fehlmann', 'Ja Rule', 'And more'],
-    listencount: 21,
-    labels: ['Pop'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
-    createdAt: Date.now(),
-    songs:[]
+//         album: 'In My Life',
+//         artist: 'Jericho Jackson',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679822668/43_e2woap.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//     ],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Dave Pad Mix',
+//     desc: ['Dave Pad', 'IO (Mulen)', 'Microlab', 'And more'],
 
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 1',
-    desc: ['Boldy James', 'O.C.', 'Skyzoo', 'And more'],
-    listencount: 221,
-    labels: ['Rap'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 2',
-    desc: ['IO (Mulen)', 'Till Von Sein', 'Mihai Popoviciu', 'And more'],
-    listencount: 2221,
-    createdAt: Date.now(),
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 3',
-    desc: ['Ross from Friends', 'Kerala Dust', 'Sebb Junior', 'And more'],
-    listencount: 420,
-    label: ['Pop', 'Dance/Electronic'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 4',
-    listencount: 21,
-    labels: ['Pop'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 5',
-    listencount: 221,
-    labels: ['Rap'],
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
-    createdAt: Date.now(),
-    songs:[]
-  });
-  await storageService.post(STORAGE_KEY, {
-    title: 'Daily Mix 6',
-    listencount: 2221,
-    createdAt: Date.now(),
-    imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
-    songs:[]
-  });
-})();
+//     listencount: 21,
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/2_fqlkiv.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Chill Mix',
+//     desc: ['The Alchemist', 'Boldy James', 'Peet', 'And more'],
 
-// TEST DATA
-// ; (async () => {
-//   await storageService.post(STORAGE_KEY, { title: 'Michael Jackson', listencount: 420 })
-//   await storageService.post(STORAGE_KEY, { title: 'Shakira', listencount: 21 })
-// })()
+//     listencount: 221,
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/3_ftip11.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Happy Mix',
+//     desc: ['Harry Styles', 'Ed Sheeran', 'Niall Horan', 'And more'],
+//     listencount: 2221,
+//     songs: [
+//       {
+//         id: 's1001',
+//         title: 'Music For a Sushi Restaurant',
+
+//         album: "Harry's House",
+//         artist: 'Harry Styles',
+//         url: 'youtube/song.mp4',
+//         imgUrl:
+//           'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679589348/Spotify/Spotify%20Thumb/harry-styles-finger_raaj6h.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 'mUkfiLjooxs',
+//         title: 'Pass The Peas',
+//         album: 'Food For Thought',
+//         artist: "The JB's",
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//     ],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/4_zqassb.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: '2010s Mix',
+//     desc: ['Markus Homm', 'The Alchemist', 'Frink', 'And more'],
+
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/5_zgkvqb.jpg',
+//     createdAt: Date.now(),
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: '2000s Mix',
+//     desc: ['Large Professor', 'Thomas Fehlmann', 'Ja Rule', 'And more'],
+//     listencount: 21,
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/6_yroxz0.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 1',
+//     desc: ['Boldy James', 'O.C.', 'Skyzoo', 'And more'],
+//     listencount: 221,
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/7_kdyhn9.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 2',
+//     desc: ['IO (Mulen)', 'Till Von Sein', 'Mihai Popoviciu', 'And more'],
+//     listencount: 2221,
+//     createdAt: Date.now(),
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/8_hzvmqn.jpg',
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 3',
+//     desc: ['Ross from Friends', 'Kerala Dust', 'Sebb Junior', 'And more'],
+//     listencount: 420,
+//     label: ['Pop', 'Dance/Electronic'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/9_w355qd.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 4',
+//     listencount: 21,
+//     labels: ['Pop'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/10_tpus35.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 5',
+//     listencount: 221,
+//     labels: ['Rap'],
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/11_oqkz3h.jpg',
+//     createdAt: Date.now(),
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'Daily Mix 6',
+//     listencount: 2221,
+//     createdAt: Date.now(),
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679550706/12_fteet5.jpg',
+//     songs: [],
+//   });
+//   await storageService.post(STORAGE_KEY, {
+//     title: 'All the Brilliant Things',
+//     listencount: 22221,
+//     desc: ['Skyzoo', '2021', '14 songs', '55 min'],
+//     songs: [
+//       {
+//         id: 's10011',
+//         title: 'Free Jewelry',
+
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: '{minimal-user}',
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10012',
+//         title: 'St. James Liquors',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10013',
+//         title: 'St. James Liquors',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10014',
+//         title: 'A Tour of the Neighborhood',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10015',
+//         title: 'Rich Rhetoric',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10016',
+//         title: 'Bodega Flowers',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10017',
+//         title: 'Something to Believe In',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10018',
+//         title: 'Humble Brag',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10019',
+//         title: 'I was Supposed to Be a Trap Rapper',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10020',
+//         title: 'Plugs and Connection',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10021',
+//         title: 'The Scrimmage',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10022',
+//         title: 'Culture-Ish - Sole Food Remix',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//       {
+//         id: 's10023',
+//         title: 'Bed-Stuy is Burning',
+//         album: 'All the Brilliant Things',
+//         artist: 'Skyzoo',
+//         url: 'youtube/song.mp4',
+//         imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//         addedBy: {},
+//         addedAt: new Date(),
+//       },
+//     ],
+//     createdAt: Date.now(),
+//     imgUrl: 'https://res.cloudinary.com/dixcbkuih/image/upload/v1679823769/44_jefegb.jpg',
+//   });
+// })();
 
 function getLabels() {
   return [

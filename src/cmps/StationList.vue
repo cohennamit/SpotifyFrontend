@@ -1,15 +1,15 @@
 <template>
   <div class="header-placeholder"></div>
   <section class="station-list-top-content-container">
-    <article class="top-content">
+    <route class="top-content">
       <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png" alt="" />
       <h1>Liked Songs</h1>
-    </article>
+    </route>
     <article class="top-content">
       <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/16_emxov7.jpg" alt="" />
       <h1>All the Brilliant Things</h1>
     </article>
-    <article class="top-content">
+    <article @click="goToClickedStation('Jericho Jackson')" class="top-content">
       <img src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg" alt="" />
       <h1>Jericho Jackson</h1>
     </article>
@@ -26,6 +26,9 @@
       <h1>Super Tecmo Bo</h1>
     </article>
   </section>
+  <article>
+    <h1 class="station-list-text">Made For You</h1>
+  </article>
   <ul class="station-list">
     <StationPreview v-for="station in stations" :key="station._id" :station="station" />
   </ul>
@@ -40,9 +43,17 @@ export default {
     default: [],
   },
   data() {
-    return {};
+    return {
+      stationId: '',
+    };
   },
-  methods: {},
+  methods: {
+    goToClickedStation(stationTitle) {
+      const station = this.stations.find(({ title }) => title === stationTitle);
+      console.log('station: ', station);
+      this.stationId = station._Id;
+    },
+  },
   computed: {
     labels() {
       return this.$store.getters.labels;
