@@ -86,15 +86,15 @@
     grid-template-columns: repeat(auto-fill,minmax(0,220px));
 }
 
-::-webkit-scrollbar{
-    background: transparent;
-	width: 0.5em;
-}
-::-webkit-scrollbar-thumb{
-    background: #7c7b7bab;
-    border-radius: 6px;
-	&:hover{
+// ::-webkit-scrollbar{
+//     background: transparent;
+// 	width: 0.5em;
+// }
+// ::-webkit-scrollbar-thumb{
+//     background: #7c7b7bab;
+//     border-radius: 6px;
+// 	&:hover{
 		
-		background: #7c7b7bf5;
-	}
-}
+// 		background: #7c7b7bf5;
+// 	}
+// }

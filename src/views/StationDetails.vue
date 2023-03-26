@@ -2,13 +2,14 @@
   <!-- <div class="header-placeholder"></div> -->
   <section v-if="station" class="station-details">
     <StationHeader :station="station" />
-    <article class="station-details-body">
-      <div @click="toggleStationOptions" class="icon" v-html="getSvg('playlistOptions')"></div>
+    <div class="station-details-body">
+      <PlayBtn/>
+      <div @click="toggleStationOptions" class="options-icon" v-html="getSvg('playlistOptions')"></div>
       <ul v-if="isOptionsShown">
         <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
-    </article>
+    </div>
     <SongList @removeSong="removeSong" :station="station" />
     <SongSearchList v-if="station.isAddedByUser" @addSong="addSong" />
     <hr>
@@ -24,7 +25,7 @@ import { svgService } from '../services/svg.service.js';
 import StationHeader from '../cmps/StationHeader.vue';
 import SongList from '../cmps/SongList.vue';
 import SongSearchList from '../cmps/SongSearchList.vue';
-
+import PlayBtn from '../cmps/PlayBtn.vue';
 export default {
   name: 'Song Details',
   data() {
@@ -83,6 +84,7 @@ export default {
     StationHeader,
     SongList,
     SongSearchList,
+    PlayBtn
   },
 };
 </script>

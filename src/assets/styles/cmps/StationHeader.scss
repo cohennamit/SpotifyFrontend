@@ -14,10 +14,12 @@
         gap: 28px;
         justify-content: flex-start;
         align-items: center;
-        &-info{
+        &-info {
             display: flex;
             flex-direction: column;
             gap: 6px;
+        }
+        h1{
         }
         img {
             width: 232px;
@@ -34,10 +36,12 @@
             // font-weight: bold;
             font-size: 6rem;
             margin: 0 0 0.1em;
+            font-family: Gotham Book;
+
         }
 
         p {
-            margin:1em 0 0.5em;
+            margin: 1em 0 0.5em;
             ;
         }
     }

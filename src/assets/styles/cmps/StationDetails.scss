@@ -1,9 +1,14 @@
 .station-details {
     grid-row: 2;
     padding-inline: 32px;
+
     &-body {
-        div {
-            cursor: pointer;
+        display: flex;
+        .options-icon {
+            svg {
+                cursor: pointer;
+                fill: white;
+            }
         }
     }
 }
