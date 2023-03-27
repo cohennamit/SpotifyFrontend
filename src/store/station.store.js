@@ -33,7 +33,7 @@ export const stationStore = {
     stations: [],
     isFilterShown: false,
     scrollTop: 0,
-
+    currentRoute: '',
     labels: stationService.getLabels(),
     filterBy: {
       labels: '',

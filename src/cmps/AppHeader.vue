@@ -11,7 +11,7 @@
           </button>
         </section>
         <section>
-          <StationFilter v-if="isFilterShown.isFilterShown" @setFilter="setFilter" />
+          <StationFilter v-if="isSearch" @setFilter="setFilter" />
         </section>
         <section class="loggedin-user" v-if="loggedInUser">
           <img :src="loggedInUser.imgUrl" />
@@ -21,7 +21,7 @@
         </section>
         <section v-else>
           <section class="login-btn">
-            <RouterLink to="/login">Login</RouterLink>
+            <RouterLink class="login-span" to="/login">Login</RouterLink>
           </section>
         </section>
       </header>
@@ -49,6 +49,11 @@ export default {
     },
     loggedInUser() {
       return this.$store.getters.loggedinUser;
+    },
+    isSearch() {
+      console.log('isSearch from station store')
+      if (this.$route.name === 'Search') return true
+      else return false
     },
   },
   methods: {
