@@ -68,11 +68,18 @@
     .btn-pause {
         margin: 0;
         padding: 0;
-        height: 32px;
-        width: 32px;
         background-color: white;
         border-radius: 50%;
+        margin-block-end: 4px;
+
+        div {
+            padding-inline: 8px;
+            padding-block-start: 7px;
+            padding-block-end: 5px;
+        }
     }
+} 
+
 
     .btn-pause:hover {
         margin: 0;
@@ -108,4 +115,3 @@
         display: flex;
         gap: 5px;
     }
-}

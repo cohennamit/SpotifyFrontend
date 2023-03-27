@@ -11,13 +11,12 @@
 .station-details {
     &-header {
         display: flex;
-        gap: 28px;
+        gap: 23px;
         justify-content: flex-start;
         align-items: center;
         &-info {
             display: flex;
             flex-direction: column;
-            gap: 6px;
         }
         h1{
         }
@@ -32,17 +31,20 @@
 
         &-title {
             cursor: pointer;
-            // font-family: 'gotham Book', sans-serif;
-            // font-weight: bold;
             font-size: 6rem;
-            margin: 0 0 0.1em;
-            font-family: Gotham Book;
-
+            /* margin: 0 0 0.1em; */
+            font-family: Gotham Bold;
+            margin-block: 0.1em;
+            letter-spacing: -8px;
+            a{
+                margin-block-start: 0.9em;
+            }
         }
 
         p {
-            margin: 1em 0 0.5em;
-            ;
+            margin: 0;
+            font-size: 14px;
+            color: #FFFFFFB2;
         }
     }
 
