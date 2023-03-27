@@ -4,47 +4,34 @@
 
 .station-list-text{
 	margin-inline-start: 24px;
-	margin-block-start: 20px;
+	margin-block-start: 2em;
 	margin-block-end: 0px;
 }
  
 .station-list-top-content-container {
-
 	margin-inline-start: 6px;
 	padding: 0px;
-	width: 98.5%;
-	
-	
+	width: 98%;
+	row-gap: 1em;
 	@media (max-width:1600px) {
-		width: 97.5%;
-		min-height: 220px;
+		.top-content{
+			   height: 84px;
+	   }
 		
 	}
 	@media (max-width:1220px) {
-		width: 96%;
+		min-height: 220px;
 		grid-template-columns: repeat(2, minmax(267px, 1fr));
-		.top-content{
-			height: 84px;
+		row-gap: 0.5em;
+	 .top-content{
+			height: 64px;
 	}
 	}
 	@media (max-width:1085px) {
-		width: 95%;
-		// grid-template-columns: repeat(3, minmax(267px, 1fr));
+
         min-height: 190px;
-		row-gap: 0.5em;
 	}
-	@media (max-width:1000px) {
-		width: 92%;
-		
-	}
-	@media (max-width:860px) {
-		width: 90%;
-		
-	}
-	@media (max-width:768) {
-		width: 88%;
-		
-	}
+	
 	padding-inline-start: 12px;
 	padding-inline-end: 6px;
 	grid-column: 1 / -1;
@@ -53,19 +40,26 @@
     column-gap: 12px;
 	grid-template-columns: repeat(3, minmax(267px, 1fr));
 	min-height:  147px;
-	
 	text-align: ltr;
 	.top-content{
-		font-size: 0.63em;
-	  display: flex ;
-	  min-width: 200px;
+    @media (min-width: 1220px) {
+	height: 84px;
+     img {
+	height: 84px;
+	width: 84px;
+    }
+      }
+	font-size: 0.63em;
+	display: flex ;
+	 min-width: 200px;
 	  align-items: center;
 	  background-color: #2E293C;
-      border-radius: 8px;
+      border-radius: 4px;
       height: 64px;
 	}
 	h1{
 	height: auto;
+	justify-self: end;
 	}
 	img {
 	width: 64px;
@@ -83,48 +77,15 @@
 
 
 .station-list {
-
-	
-	
 	grid-row: 2;
-	margin-inline-start: 6px;
 	padding: 0;
     overflow-x: hidden;
 	overflow-y: hidden;
 	width: 100%;
     display: grid;
 	gap: 24px;
-	column-gap: 1.2em;
+	column-gap: 0.9em;
     grid-template-columns: repeat(auto-fill,minmax(0,220px));
-	@media (max-width:1600px) {
-		width: 97.5%;
-		gap: 6px;
-	}
-	@media (max-width:1600px) {
-		width: 97.5%;
-		gap: 6px;
-	}
-	@media (max-width:1220px) {
-		width: 96%;
-		// grid-template-columns: repeat(3, minmax(267px, 1fr));
-
-	}
-	@media (max-width:1085px) {
-		width: 95%;
-		
-	}
-	@media (max-width:1000px) {
-		width: 92%;
-		
-	}
-	@media (max-width:860px) {
-		width: 90%;
-		
-	}
-	@media (max-width:768) {
-		width: 88%;
-		
-	}
 }
 
 // ::-webkit-scrollbar{

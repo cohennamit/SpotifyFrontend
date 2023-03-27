@@ -42,20 +42,20 @@
 }
 
 .app-main{
-         
-    grid-row: 1/-1;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 85px 1fr 120px 0.5fr;
-    overflow: scroll;
-    overflow-x: hidden;
+        //  margin-inline-start: auto;
+        grid-row: 1/-1;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100px 1fr 120px 0.5fr;
+        overflow: scroll;
+        overflow-x: hidden;
 
     }
     
     .layout-container{
         display: grid;
-        grid-template-columns: auto 89.5vw;
+        grid-template-columns: 220px 1fr;
         grid-template-rows: 80px 72dvh 120px;
 
 }
