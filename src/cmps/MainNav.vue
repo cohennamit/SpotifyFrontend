@@ -4,15 +4,15 @@
         <section class="nav">
             <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
                 to="/station">
-                <div class="icon" v-html="getSvg('home')"></div> Home
+                <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div> Home
             </RouterLink>
             <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
                 to="/search">
-                <div class="icon nav-search" v-html="getSvg('emptySearch')"></div>
-                Search
+                <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div> Search
             </RouterLink>
-            <RouterLink class="btn-nav" to="/">
-                <div class="icon" v-html="getSvg('library')"></div>Your Library
+            <RouterLink class="btn-nav" to="/library">
+                <div class="icon" v-html="isLibrary ? getSvg('libraryFull') : getSvg('library')"></div> Your Library
+
             </RouterLink>
         </section>
         <section class="actions">
@@ -32,7 +32,8 @@
         <hr />
         <section class="user-playlists">
             <ul class="playlist-links">
-                <RouterLink class="user-station" v-for="userStation in userStations" :to="'/station/' + userStation._id"> {{ userStation.title }}
+                <RouterLink class="user-station" v-for="userStation in userStations" :to="'/station/' + userStation._id"> {{
+                    userStation.title }}
                 </RouterLink>
             </ul>
         </section>
@@ -49,6 +50,7 @@ export default {
     name: '',
     data() {
         return {
+            currentRoute: ''
         };
     },
     methods: {
@@ -71,10 +73,34 @@ export default {
             let stations = this.$store.getters.stations
             const userStations = stations.filter(station => station.isAddedByUser)
             return userStations
-        }
+        },
+        isHome() {
+            if (this.$route.name === 'StationIndex') return true
+            else return false
+        },
+        isSearch() {
+            if (this.$route.name === 'Search') return true
+            else return false
+        },
+        isLibrary() {
+            if (this.$route.name === 'Library') return true
+            else return false
+        },
+
     },
     created() {
 
+    },
+    watch: {
+        '$route': {
+            handler() {
+                console.log('this.$route', this.$route.name)
+                const { name } = this.$route;
+                this.currentRoute = name
+                // stationService.getById(stationId).then((station) => (this.station = station));
+            },
+            immediate: true,
+        },
     },
     components: {},
 };

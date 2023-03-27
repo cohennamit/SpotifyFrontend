@@ -6,6 +6,7 @@ import ReviewIndex from './views/ReviewIndex.vue'
 import LoginSignup from './views/LoginSignup.vue'
 import UserDetails from './views/UserDetails.vue'
 import SearchPage from './views/SearchPage.vue'
+import LibraryPage from './views/LibraryPage.vue'
 import GenreDetails from './views/GenreDetails.vue'
 import StationDetails from './views/StationDetails.vue'
 
@@ -48,6 +49,11 @@ const routes = [
     path: '/search',
     name: 'Search',
     component: SearchPage
+  },
+  {
+    path: '/library',
+    name: 'Library',
+    component: LibraryPage
   },
   {
     path: '/genre/:label',
