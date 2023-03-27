@@ -1,9 +1,12 @@
 <template>
-    <div class="song-preview-main" @mouseover="isHover = true" @mouseleave="isHover = false">
+    <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
+        @mouseleave="isHover = false">
 
-        <div v-html="isHover ? getSvg('playSong') : index + 1" :class="playSongClass" @click="setSong"></div>
+
+        <div v-html="playSvg" :class="playSongClass" @click="setSong"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
+
             <div class="song-preview-img">
                 <img :src="song.imgUrl" />
             </div>
@@ -12,7 +15,7 @@
                 <span class="song-preview-name-title">
                     {{ shortenedTitle(song.title) }}
                 </span>
-                <span>
+                <span :class="getClass">
                     artist
                     <!-- {{ song.artist }} -->
                 </span>
@@ -20,23 +23,25 @@
 
         </div>
         <!-- <p>{{ song.album }}</p> -->
-        <span>DEMO ALBUM</span>
-        <span v-if="station.isAddedByUser">{{ addedAtDiff }}</span>
-        <span v-else class="placeholderz"></span>
-        <div class="song-preview-preferences">
-            <span :class="togglePrefClass" class="icon" v-html="getSvg('heart')"></span>
-            <span>3:14</span>
-            <span v-if="station.isAddedByUser" :class="togglePrefClass" @click="removeSong" class="icon" v-html="getSvg('trash')"></span>
-            <span v-else class="placeholder">  </span>
+        <div class="column-3" :class="getClass">DEMO ALBUM</div>
+
+        <div>{{ addedAtDiff }}</div>
+        <!-- <span v-else class="placeholder"></span> -->
+        <div class="column-5">
+            <div>3:14</div>
+            <div v-if="isHover" class="song-preview-preferences">
+                <span :class="getClass" class="heart-icon" v-html="getSvg('heart')"></span>
+                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+            </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <script>
 import { svgService } from '../services/svg.service.js'
 export default {
     name: 'Song Preview',
-    emits:['removeSong'],
+    emits: ['removeSong'],
     props: {
         song: {
             type: Object
@@ -46,16 +51,26 @@ export default {
         },
         index: {
             type: Number,
+        },
+        activeSongIdx: {
+            type: Number
         }
     },
     created() {
     },
     data() {
         return {
-            isHover: false
+            isHover: false,
+            isActive: false
+            // currActivePreviewIdx:null,
+            // prevActivePreviewIdx: null,
+            // hoverSongIdx:null
         }
     },
     methods: {
+        handleBlur() {
+            console.log('ok')
+        },
         removeSong() {
             this.$emit('removeSong', this.song._id)
         },
@@ -65,11 +80,17 @@ export default {
         setSong() {
             this.$store.dispatch({ type: 'setSong', song: this.song })
             this.$store.dispatch({ type: 'setStation', station: this.station })
+        },
+        handleClick() {
+            this.$emit('setActiveSong', this.index)
         }
     },
     computed: {
-        togglePrefClass() {
-            return this.isHover ? 'pref-visible' : ' pref-hidden'
+        getClass() {
+            return {
+                'hover': this.isHover || this.isActive,
+                'active': this.activeSongIdx === this.index
+            }
         },
         songAddedAt() {
             let date = this.song.addedAt.getSeconds()
@@ -99,6 +120,11 @@ export default {
             } else { // 1 day or more
                 return `${Math.floor(diff / (24 * 60 * 60 * 1000))} days ago`
             }
+        },
+        playSvg() {
+            
+            if (this.isHover || this.activeSongIdx === this.index) return this.getSvg('playSong')
+            else return this.index + 1
         }
     }
 }
