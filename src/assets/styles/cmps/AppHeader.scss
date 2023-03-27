@@ -11,7 +11,7 @@
 
 
 .header {
-    width: 120%;
+    width: 100vw;
     right: 0px;
     left: 28vw;
     background-color: rgba(28, 17, 56, 0);
@@ -97,6 +97,8 @@
 
 
 .header-nav-btn {
+    position: relative;
+    left: 50px;
     padding: 0;
     height: 35px;
     width: 35px;
