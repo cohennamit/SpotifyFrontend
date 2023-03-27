@@ -1,7 +1,7 @@
 .station-filter {
     // position: relative;
-margin-block-start: 0.5;   
- margin-inline-start: 300px;
+    margin-block-start: 0.5;
+    margin-inline-start: 300px;
     left: 230px;
     background-color: #fff;
     display: flex;
@@ -18,7 +18,9 @@ margin-block-start: 0.5;
 }
 
 .search-icon {
-    margin-block-end: -3px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
     margin-inline-start: 6px;
     margin-inline-end: 6px;
     fill: rgb(0, 0, 0);

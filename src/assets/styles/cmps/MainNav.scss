@@ -38,6 +38,11 @@ button:hover {
     cursor: pointer;
 }
 
+.icon {
+    display: grid;
+    align-items: center;
+}
+
 .nav {
     display: grid;
     gap: 11px;
@@ -107,17 +112,14 @@ hr {
 }
 
 .btn-create .icon {
-    margin-block-start: 2px;
     fill: rgb(0, 0, 0);
-}
-
-.btn-liked .icon {
-    margin-block-start: 3px;
 }
 
 .btn-nav {
     display: flex;
+    align-items: center;
     gap: 15px;
+    margin-block-end: 8px;
 }
 
 .nav-search {
