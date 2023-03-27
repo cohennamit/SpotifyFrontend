@@ -1,5 +1,7 @@
 .song-preview{
     &-main{
+        color: #B3B3B3;
+        font-size: 13px;
         display:grid;
         grid-template-columns: [index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr);
         padding-inline: 16px;
@@ -8,16 +10,26 @@
         align-items: center;
         height: 56px;
         border-radius: 4px;
+        
         div:first-of-type{
             display: flex;
             justify-content: center;
         }
     }
     &-content-table{
-        border-bottom: 1px solid hsla(0,0%,100%,.1);
+        border-bottom: 1px solid hsla(0deg, 0%, 100%, 0.1);
         height: 36px;
         border-radius: 0px;
-        .icon{
+        margin-block-end: 15px;
+        padding-block-end: 5px;
+       .album{
+        padding-inline-start: 14px;
+       }
+       .date-added{
+        padding-inline-start: 22px;
+       }
+        .clock-icon{
+            fill: #B3B3B3;
             display: flex;
             justify-content: center;
             margin-inline-end: 20px;
@@ -29,6 +41,7 @@
     &-content{
         display: flex;
         align-items: center;
+        
     }
     &-preferences{
         display: flex;
@@ -52,6 +65,9 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        &-title{
+            color: white;
+        }
     }
     &-play-btn{
         fill: white;

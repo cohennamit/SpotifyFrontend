@@ -9,11 +9,12 @@
             </div>
 
             <div class="song-preview-name">
-                <span>
+                <span class="song-preview-name-title">
                     {{ shortenedTitle(song.title) }}
                 </span>
                 <span>
-                    {{ song.artist }}
+                    artist
+                    <!-- {{ song.artist }} -->
                 </span>
             </div>
 

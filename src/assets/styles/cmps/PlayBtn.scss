@@ -1,11 +1,15 @@
-.play-btn{
-    width: 100px;
-    height: 100px;
+.play-btn {
+    width: 56px;
+    height: 56px;
     background-color: #1ed760;
-    :hover{
+    border-radius: 100%;
+
+    :hover {
         background-color: #1fde64;
     }
-    &-icon{
 
+    &-icon {
+        padding-block-start: 5px;
+        padding-inline-start: 1px;
     }
 }

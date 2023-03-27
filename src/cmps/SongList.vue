@@ -2,13 +2,13 @@
   <ul v-if="station" class="song-list">
     <div v-if="hasSongs" class="song-preview-main song-preview-content-table">
       <div>#</div>
-      <div>Title</div>
-      <div>Album</div>
-      <div v-if="station.isAddedByUser">Date Added</div>
+      <div class="title">Title</div>
+      <div class="album">Album</div>
+      <div class="Date-added" v-if="station.isAddedByUser">Date Added</div>
       <div v-else class="placeholder"></div>
       <div>
         <div></div>
-        <div class="icon" v-html="getSvg('clock')"></div>
+        <div class="clock-icon" v-html="getSvg('clock')"></div>
         <div></div>
       </div>
     </div>

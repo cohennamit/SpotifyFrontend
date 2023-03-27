@@ -11,8 +11,8 @@
         <div class="edit-modal-img">
             <img :src="station.imgUrl"/>
         </div>
-        <textarea v-model="station.userDesc" class="edit-modal-body-textarea" placeholder="add an optional description" cols="20" rows="10"></textarea>
-        <input v-model="station.title" placeholder="Add a name" class="edit-modal-body-input" type="text">
+        <textarea v-model="stationUserDesc" class="edit-modal-body-textarea" placeholder="add an optional description" cols="20" rows="10"></textarea>
+        <input v-model="stationTitle" placeholder="add a name" class="edit-modal-body-input" type="text">
         <button class="edit-modal-body-save-btn" @click="saveStation">Save</button>
         <p>
             By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you have the right to upload the image.
@@ -35,7 +35,9 @@ props:{
 },
 data() {
 return {
-    isNameInputEmpty: false
+    isNameInputEmpty: false,
+    stationTitle : this.station.title,
+    stationUserDesc: this.station.userDesc,
 }
 },
 methods: {
@@ -43,6 +45,9 @@ onCloseEditModal(){
     this.$emit('onCloseEditModal')
 },
 saveStation(){
+if(!this.stationTitle)return
+this.station.title = this.stationTitle
+this.station.userDesc = this.stationUserDesc
 this.$store.dispatch({type:'updateStation', station: this.station})
 this.onCloseEditModal()
 },

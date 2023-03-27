@@ -2,8 +2,9 @@ $primary-color: #fff;
 $secondary-color: #aaa;
 
 .main-nav {
+    z-index: 200;
     font-size: 0.8125rem;
-    min-width: 215px;
+    min-width: 185px;
     max-width: 200px;
     background-color: black;
     color: rgb(224, 224, 224);
