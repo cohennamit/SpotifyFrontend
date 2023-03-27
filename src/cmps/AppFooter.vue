@@ -40,7 +40,8 @@
             <button @click="toggleMute" class="btn-mute">
                 <div class="icon" v-html="isMuted ? getSvg('soundMuted') : getSvg('sound')"></div>
             </button>
-            <input class="footer-volume" type="range" min="0" max="100" step="10" id="volume-slider" v-model="volume" />
+            <input class="footer-volume volume-slider" type="range" min="0" max="100" step="10" id="volume-slider"
+                v-model="volume" />
         </section>
     </section>
 </template>
