@@ -77,15 +77,15 @@
 
 
 .station-list {
-	grid-row: 2;
-	padding: 0;
+	// grid-row: 2;
+    padding: 0;
     overflow-x: hidden;
-	overflow-y: hidden;
-	width: 100%;
+    overflow-y: hidden;
+    width: 100%;
     display: grid;
-	gap: 24px;
-	column-gap: 0.9em;
-    grid-template-columns: repeat(auto-fill,minmax(0,220px));
+    gap: 26px;
+    /* column-gap: 0.9em; */
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
 // ::-webkit-scrollbar{

@@ -4,18 +4,17 @@
     }
 
     background-color: rgb(23, 23, 23);
-    padding: 2em;
+    // padding: 2em;
     transition: 300ms;
-    text-align: ltr;
-    margin: 2em 2em 2em 1em;
+    /* margin: 2em 2em 2em 1em; */
     padding: 1em;
-    width: 218px;
-    height: 310px;
+    // width: 218px;
+    /* height: 310px; */
     border-radius: 8px;
-    font-family: 'circular';
+    font-family: "circular";
     @media (max-width:1600px) {
-		width: 194px;
-        height: 285px;
+		// width: 194px;
+        // height: 285px;
 
     img{
         width: 162px;
