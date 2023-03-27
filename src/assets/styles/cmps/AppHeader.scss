@@ -1,4 +1,4 @@
-.header-content-fixed-container{
+.header-content-fixed-container {
     position: fixed;
 }
 
@@ -7,12 +7,13 @@
     grid-column: 2;
     height: 60px;
     width: 100vw;
-    
+
     background-color: rgba(28, 17, 56, 0);
     // background-color: pink;
     display: flex;
     align-items: center;
     justify-items: space-around;
+
     button {
         z-index: 600;
         margin-inline-start: 1em;
@@ -27,8 +28,8 @@
         padding: 0;
         margin-inline-end: 20px;
         display: flex;
-        justify-content: space-evenly;
-        align-items: flex-end;
+        justify-content: center;
+        align-items: center;
         background-color: black;
         border-radius: 50px;
         height: 35px;
@@ -47,6 +48,7 @@
         padding: 2px 8px;
         border-radius: 1em;
         align-self: center;
+
         span {
             color: whitesmoke;
             background-color: $clr2;
@@ -61,22 +63,27 @@
             height: 2em;
             border-radius: 50%;
         }
+
         a {
             color: whitesmoke;
         }
+
         a:hover {
             text-decoration: none;
         }
     }
+
     nav {
         background-color: $clr4;
         padding: 5px 0;
     }
+
     nav a:not(:first-child) {
         border-top: 1px solid $clr1;
         padding: 0 5px;
         margin: 10px;
     }
+
     nav .active {
         color: $clr1;
     }
@@ -84,11 +91,14 @@
 
 
 .header-nav-btn {
+    display: grid;
+    align-items: center;
+    justify-content: center;
     position: relative;
     left: 230px;
     padding: 0;
-    height: 35px;
-    width: 35px;
+    height: 32px;
+    width: 32px;
     border-radius: 50%;
     background-color: rgb(10, 10, 10);
 }
