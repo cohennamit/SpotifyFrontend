@@ -1,9 +1,7 @@
 <template>
     <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
         @mouseleave="isHover = false">
-
-
-        <div v-html="playSvg" :class="playSongClass" @click="setSong"></div>
+        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
 
@@ -29,7 +27,7 @@
         <!-- <span v-else class="placeholder"></span> -->
         <div class="column-5">
             <div>3:14</div>
-            <div v-if="isHover" class="song-preview-preferences">
+            <div class="song-preview-preferences">
                 <span :class="getClass" class="heart-icon" v-html="getSvg('heart')"></span>
                 <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
             </div>
@@ -75,7 +73,8 @@ export default {
             this.$emit('removeSong', this.song._id)
         },
         getSvg(iconName) {
-            return svgService.getSvg(iconName)
+            if (this.isHover || this.activeSongIdx === this.index) return svgService.getSvg(iconName)
+            else if(iconName === 'playSong')return this.index + 1
         },
         setSong() {
             this.$store.dispatch({ type: 'setSong', song: this.song })
@@ -98,9 +97,6 @@ export default {
             //    const seconds =  date.getTime() / 1000
             return date
         },
-        playSongClass() {
-            return this.isHover ? 'song-preview-play-btn' : ''
-        },
         shortenedTitle() {
             const maxLength = 30
             return function (title) {
@@ -121,11 +117,8 @@ export default {
                 return `${Math.floor(diff / (24 * 60 * 60 * 1000))} days ago`
             }
         },
-        playSvg() {
-            
-            if (this.isHover || this.activeSongIdx === this.index) return this.getSvg('playSong')
-            else return this.index + 1
-        }
+       
+
     }
 }
 </script>

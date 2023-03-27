@@ -5,7 +5,7 @@
         <h1>Let's find something for your playlist</h1>
         <form @submit.prevent="search">
           <div class="input-wrap">
-            <div class="icon" v-html="getSvg('emptySearch')"></div>
+            <div class="input-wrap-search-icon" v-html="getSvg('emptySearch')"></div>
             <input name="search" type="text" v-model="query" placeholder="Search for songs" />
           </div>
           <!-- <button type="submit">Search</button> -->

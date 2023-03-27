@@ -9,56 +9,61 @@
         align-items: center;
         height: 56px;
         border-radius: 4px;
-        padding-inline-end: 19px;
+        padding-inline-end: 28px;
 
         div:first-of-type {
             display: flex;
             justify-content: center;
         }
-
+        
         .column-5 {
             position: relative;
             fill: #B3B3B3;
         }
+        
+        .clock-icon {
+            fill: #B3B3B3;
+            padding-inline-start: 23px;
+            
+        }
+        .play-song-icon {
+            svg {
+                width: 18px;
+                height: 16px;
+            }
+        }
 
         &.hover {
             cursor: pointer;
-            background-color: hsla(0, 0%, 39%, 0.66);
+            background-color: hsla(0, 0%, 39%, 0.167);
         }
-        &.active{
+
+        &.active {
             background-color: hsl(0deg 0% 35.29%);
         }
-        &.active,&.hover{
+
+        &.active,
+        &.hover {
             fill: white;
+
             .column-3 {
                 color: white;
             }
-    
+
             .song-preview-name {
                 color: white;
             }
         }
+        
     }
 
-    // &-header{
-    //     border-bottom: 1px solid hsla(0deg, 0%, 100%, 0.1);
-    //     height: 36px;
-    //     border-radius: 0px;
-    //     padding-block-end: 5px;
-    //    .album{
-    //     padding-inline-start: 14px;
-    //    }
-    //     margin-block-end: 15px;
-    //    .date-added{
-    //        padding-inline-start: 22px;
-    //    }
-    //     .clock-icon{
-    //         fill: #B3B3B3;
-    //         display: flex;
-    //         justify-content: center;
-    //         margin-inline-end: 20px;
-    //     }
-    // }
+    &-header {
+        border-bottom: 1px solid hsla(0deg, 0%, 100%, 0.1);
+        height: 36px;
+        border-radius: 0px;
+
+    }
+
     p {
         margin: 0;
     }
@@ -105,9 +110,7 @@
         }
     }
 
-    &-play-btn {
-        fill: white;
-    }
+
 
     .song-preview-main:hover:not(.song-preview-content-table) {
 

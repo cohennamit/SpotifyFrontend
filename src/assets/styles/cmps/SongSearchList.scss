@@ -1,36 +1,56 @@
 .song-search {
-    
+
     &-header {
         border-top: 1px solid hsla(0, 0%, 100%, .1);
         margin-block-start: 24px;
-        padding: 24px 0;
+        padding: 30px 0;
         display: flex;
         justify-content: space-between;
 
         h1 {
-            font-size: 24px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: "Poppins Medium";
+            letter-spacing: -0.2px;
+            margin-block-end: 27px
         }
     }
 
     .input-wrap {
         display: flex;
-        width: 365px;
         background-color: hsla(0deg, 0%, 100%, 0.1);
         border: 0;
         border-radius: 4px;
         color: #c2c2c2;
         height: 40px;
-        padding-inline-start: 17px;
+        padding-inline-start: 10.6px;
         text-overflow: ellipsis;
         width: 100%;
         font-size: 0.875rem;
         padding-inline-end: 17px;
-        padding-block: 8px;
-        input{
+        padding-block-end: 8px;
+        gap: 2px;
+        padding-block-start: 10px;
+
+        input {
             background-color: inherit;
             border: 0;
             width: 100%;
             background-color: transparent;
+
+            &::placeholder {
+                font-weight: 700;
+                color: hsl(0deg 0% 74.9%);
+                font-family: Gotham Book;
+            }
+        }
+        &-search-icon {
+            padding-block-start: 2px;
+            svg {
+                width: 17px;
+                height: 17px;
+                fill: hsl(0deg 0% 74.9%);
+            }
         }
     }
 
@@ -41,4 +61,5 @@
     h6 {
         margin-block-start: 0em;
     }
+
 }
