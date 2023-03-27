@@ -42,20 +42,22 @@
 }
 
 .app-main{
-        //  margin-inline-start: auto;
+        background-image: linear-gradient(0deg,#121212 88%,#220e47 );
+        background-attachment: local;
+        padding: 32px;
         grid-row: 1/-1;
         width: 100%;
         display: grid;
         grid-template-columns: 100%;
         grid-template-rows: 100px 1fr 120px 0.5fr;
-        overflow: scroll;
+        overflow: auto;
         overflow-x: hidden;
-
     }
     
     .layout-container{
         display: grid;
         grid-template-columns: 220px 1fr;
-        grid-template-rows: 80px 72dvh 120px;
+        grid-template-rows: 70px 72dvh 139px;
+        padding-block-end: 1em;
 
 }

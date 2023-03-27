@@ -11,7 +11,7 @@ html,
 body,
 #app {
     height: 100%;
-    background-image: linear-gradient(0deg,#121212 70%,#220e47 );
+    // background-image: linear-gradient(0deg,#121212 70%,#220e47 );
     background-attachment: fixed;
 }
 
@@ -58,4 +58,15 @@ a {
     color: $clr6;
 }
 
-
+::-webkit-scrollbar{
+    background: linear-gradient(0deg,#121212 90%,#220e47 );
+	width: 0.5em;
+}
+::-webkit-scrollbar-thumb{
+    background: #7c7b7bab;
+    border-radius: 6px;
+	&:hover{
+		
+		background: #7c7b7bf5;
+	}
+}

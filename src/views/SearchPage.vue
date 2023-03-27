@@ -1,18 +1,23 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
+  <div class="header-placeholder"></div>
 
-  <div class="header-placeholder"> </div>
-  <section class="genres-wrap">
-      <h2>Browse all</h2>
-      <article class="genres-list">
-        <div class="label-container" :class="getRandomColorClass"  v-for="label in labels" @click="setLabel(label)">
-          <img :src="label.imgUrl" />
-          <span>
-            {{ label.name }}
-          </span>
-        </div>
+  <!-- <section class="genres-wrap"> -->
+  <!-- <span>Browse all</span> -->
+  <section class="labels-list">
+    <article
+      class="label-container"
+      :class="getRandomColorClass"
+      v-for="label in labels"
+      @click="setLabel(label)"
+    >
+      <img :src="label.imgUrl" />
+      <span>
+        {{ label.name }}
+      </span>
     </article>
   </section>
+  <!-- </section> -->
 </template>
 
 <script>
@@ -35,14 +40,14 @@ export default {
     labels() {
       return this.$store.getters.labels;
     },
-    getRandomColorClass(){
+    getRandomColorClass() {
       // const colors = [
       // 'rgb(225 51 0)',
       // 'rgb(115 88 255)',
       // ]
-      const randomIdx = utilService.getRandomIntInclusive(0,12)
-      return `label-container-${randomIdx}`
-    }
+      const randomIdx = utilService.getRandomIntInclusive(0, 12);
+      return `label-container-${randomIdx}`;
+    },
   },
   created() {},
   components: {},
