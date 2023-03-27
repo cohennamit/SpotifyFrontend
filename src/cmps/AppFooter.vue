@@ -1,14 +1,14 @@
 <template>
     <section class="footer">
-        <section style="width: 220px;" v-if="videoId" class="song-info">
+        <section v-if="videoId" class="song-info">
             <img :src="imgUrl" alt="">
             <h3>{{ shortenedTitle(songTitle) }}</h3>
         </section>
         <section v-else>
-            <div style="width: 220px;" class="placeholder"></div>
+            <div class="placeholder"></div>
         </section>
-        <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube"
-            :player-vars="playerVars" @ready="onReady" @state-change="onStateChange" />
+        <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" @ready="onReady"
+            @state-change="onStateChange" />
         <section class="mid-section">
             <section class="footer-btns">
                 <button @click="onShuffle" class="footer-btn">
@@ -28,21 +28,23 @@
                 </button>
             </section>
             <div class="music-bar">
-                <span>{{ formatTime(currentTime) }}</span>
+                <span class="duration-span">{{ formatTime(currentTime) }}</span>
                 <div class="progress-bar" @click="findProgress($event)" ref="progressBar">
                     <div class="progress-bar-fill" :style="{ width: progressBarWidth + '%' }" ref="progressBarFill">
                     </div>
                 </div>
-                <span>{{ formatTime(duration) }}</span>
+                <span class="duration-span">{{ formatTime(duration) }}</span>
             </div>
         </section>
-        <section class="music-settings">
-            <button @click="toggleMute" class="btn-mute">
-                <div class="icon" v-html="isMuted ? getSvg('soundMuted') : getSvg('sound')"></div>
-            </button>
-            <input class="footer-volume volume-slider" type="range" min="0" max="100" step="10" id="volume-slider"
-                v-model="volume" />
-        </section>
+        <div class="music-settings-container">
+            <section class="music-settings">
+                <button @click="toggleMute" class="btn-mute">
+                    <div class="icon" v-html="isMuted ? getSvg('soundMuted') : getSvg('sound')"></div>
+                </button>
+                <input class="footer-volume volume-slider" type="range" min="0" max="100" step="1" id="volume-slider"
+                    v-model="volume" />
+            </section>
+        </div>
     </section>
 </template>
 
@@ -82,6 +84,7 @@ export default defineComponent({
             return svgService.getSvg(iconName);
         },
         onPauseResume() {
+            if (!this.videoId) return
             this.isPlaying = !this.isPlaying
             if (this.isPlaying) this.$refs.youtube.playVideo()
             else this.$refs.youtube.pauseVideo()
@@ -97,8 +100,6 @@ export default defineComponent({
         },
         onRepeat() {
             this.isRepeating = !this.isRepeating
-            // if (isRepeating) this.playerVars.loop = 0
-            // else this.playerVars.loop = 1
             console.log('this.isRepeating', this.isRepeating)
         },
         onShuffle() {
