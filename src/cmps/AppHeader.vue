@@ -1,21 +1,17 @@
 <template>
   <div class="header-content-fixed-container">
     <div class="header-content-placeholder-container">
-      <div class="header-content-placeholder"></div>
-
-      <section ref="header" class="header">
-        <section class="header-right">
-          <section class="header-buttons">
-            <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
-              <div class="icon" v-html="getSvg('arrowLeft')"></div>
-            </button>
-            <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
-              <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
-            </button>
-          </section>
-          <section>
-            <StationFilter v-if="isFilterShown.isFilterShown" @setFilter="setFilter" />
-          </section>
+      <header ref="header" class="header">
+        <section class="header-buttons">
+          <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
+            <div class="icon" v-html="getSvg('arrowLeft')"></div>
+          </button>
+          <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
+            <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
+          </button>
+        </section>
+        <section>
+          <StationFilter v-if="isFilterShown.isFilterShown" @setFilter="setFilter" />
         </section>
         <section class="loggedin-user" v-if="loggedInUser">
           <img :src="loggedInUser.imgUrl" />
@@ -28,7 +24,7 @@
             <RouterLink to="/login">Login</RouterLink>
           </section>
         </section>
-      </section>
+      </header>
     </div>
   </div>
 </template>

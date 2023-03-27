@@ -1,19 +1,18 @@
 <template>
   <ul v-if="station" class="song-list">
-    <div v-if="hasSongs" class="song-preview-main song-preview-content-table">
+    <div v-if="hasSongs" class="song-preview-main song-preview-header">
       <div>#</div>
       <div class="title">Title</div>
       <div class="album">Album</div>
-      <div class="Date-added" v-if="station.isAddedByUser">Date Added</div>
-      <div v-else class="placeholder"></div>
+      <div class="Date-added">Date Added</div>
       <div>
         <div></div>
         <div class="clock-icon" v-html="getSvg('clock')"></div>
         <div></div>
       </div>
     </div>
-    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" :song="song" :station="station"
-      :index="index" />
+    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" @setActiveSong="setActiveSong"
+      :activeSongIdx="activeSongIdx" :song="song" :station="station" :index="index" />
   </ul>
 </template>
 
@@ -30,7 +29,10 @@ export default {
   },
   emits: ['removeSong'],
   data() {
-    return {};
+    return {
+      activeSongIdx: -1,
+
+    };
   },
   methods: {
     getSvg(iconName) {
@@ -38,6 +40,10 @@ export default {
     },
     removeSong(songId) {
       this.$emit('removeSong', songId)
+    },
+    setActiveSong(idx){
+      console.log(idx)
+      this.activeSongIdx = idx
     }
   },
   computed: {

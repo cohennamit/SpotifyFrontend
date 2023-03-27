@@ -1,25 +1,24 @@
-.genres-wrap{
-	// grid-row: 2;
-z-index: 0;
-	padding: 0 32px;
 
-}
-.genres-list{
-    display: grid;
+.labels-list{
+  overflow: scroll;
+  display: grid;
     gap: 24px;
     grid-template-columns: repeat(auto-fill, minmax(0,180px));
-    height: auto;
+    height: 200%;
+	width: 100%;
+	overflow: scroll;
 	
 }
 .label-container{
+   padding: 16px;
 	background-color: green;
 	width: 180px;
+	height: 180px;
 	border-radius: 8px;
 	position: relative;
-	overflow: hidden;
-	height: 180px;
+	overflow-x: hidden;
+    overflow-y: hidden;
 	cursor: pointer;
-	
 	img{
 		right: 0;
 		transform: rotate(25deg) translate(18%,-2%);
@@ -29,10 +28,8 @@ z-index: 0;
 		bottom: 0;
 	}
 	span{
-		max-width: 100%;
-		padding: 16px;
-		overflow-wrap:break-word;
-		position:absolute;
+		
+		height: 60px;
 	}
 
 	}

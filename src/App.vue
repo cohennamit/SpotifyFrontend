@@ -3,10 +3,10 @@
     <MainNav />
     <AppHeader />
     <AppFooter />
-    <main class="app-main" ref="appMain" @scroll="handleScroll">
+    <div class="app-main" ref="appMain" @scroll="handleScroll">
       <RouterView />
       <UserMsg />
-    </main>
+    </div>
   </div>
 </template>
 
