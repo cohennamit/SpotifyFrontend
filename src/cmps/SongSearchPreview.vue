@@ -1,24 +1,26 @@
 <template>
-    <section class="song-search-preview">
-
+    <section class="song-search-preview" :class="getClass" @mouseover="isHover = true" @mouseleave="isHover = false">
         <div class="song-search-preview-img-title-wrap">
 
             <div class="img-wrap">
-                <img :src="video.snippet.thumbnails.default.url" alt="" />
+                <img :src="video.snippet.thumbnails.medium.url" alt="" />
+                <!-- <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div> -->
+                <!-- <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div> -->
             </div>
+
 
             <div>
                 <h3>{{ shortenedTitle(video.snippet.title) }}</h3>
-                <h6>Artist</h6>
+                <h6 class="song-search-preview-artist" :class="getClass">Artist</h6>
             </div>
 
         </div>
 
-        <p class="song-search-preview-album">
-            DEMO ALBUM
+        <p :class="getClass" class="song-search-preview-album">
+            The Marshall Mathers LP
         </p>
 
-        <div >
+        <div>
             <button class="song-search-preview-add-btn" @click="addSong(video)">Add</button>
         </div>
 
@@ -39,7 +41,7 @@ export default {
     emits: ['addSong'],
     data() {
         return {
-
+            isHover: false
         }
     },
     methods: {
@@ -48,11 +50,16 @@ export default {
             const { snippet, id } = { ...video };
             song.title = snippet.title;
             song.videoId = id.videoId;
-            song.imgUrl = snippet.thumbnails.default.url;
+            song.imgUrl = snippet.thumbnails.medium.url;
             this.$emit('addSong', song);
         }
     },
     computed: {
+        getClass() {
+            return {
+                'hover': this.isHover
+            }
+        },
         shortenedTitle() {
             const maxLength = 30
             return function (title) {

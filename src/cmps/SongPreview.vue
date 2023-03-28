@@ -11,11 +11,10 @@
 
             <div class="song-preview-name">
                 <span class="song-preview-name-title">
-                    {{ shortenedTitle(song.title) }}
+                    {{ shortenedTitle(songTitle) }}
                 </span>
                 <span :class="getClass">
-                    artist
-                    <!-- {{ song.artist }} -->
+                    {{ songArtist }}
                 </span>
             </div>
 
@@ -23,7 +22,7 @@
         <!-- <p>{{ song.album }}</p> -->
         <div class="column-3" :class="getClass">DEMO ALBUM</div>
 
-        <div>{{ addedAtDiff }}</div>
+        <div>{{ songAddedAt }}</div>
         <!-- <span v-else class="placeholder"></span> -->
         <div class="column-5">
             <div>3:14</div>
@@ -60,9 +59,6 @@ export default {
         return {
             isHover: false,
             isActive: false
-            // currActivePreviewIdx:null,
-            // prevActivePreviewIdx: null,
-            // hoverSongIdx:null
         }
     },
     methods: {
@@ -74,7 +70,7 @@ export default {
         },
         getSvg(iconName) {
             if (this.isHover || this.activeSongIdx === this.index) return svgService.getSvg(iconName)
-            else if(iconName === 'playSong')return this.index + 1
+            else if (iconName === 'playSong') return this.index + 1
         },
         setSong() {
             this.$store.dispatch({ type: 'setSong', song: this.song })
@@ -82,7 +78,18 @@ export default {
         },
         handleClick() {
             this.$emit('setActiveSong', this.index)
-        }
+        },
+        // async songAlbum() {
+        //     try {
+        //         const response = await fetch(
+        //             `https://api.deezer.com/search?q=without me`
+        //         )
+        //         const {data} = response.json
+        //         console.log(response)
+        //     } catch (err) {
+        //         console.log('cant find song', err)
+        //     }
+        // }
     },
     computed: {
         getClass() {
@@ -91,19 +98,13 @@ export default {
                 'active': this.activeSongIdx === this.index
             }
         },
-        songAddedAt() {
-            let date = this.song.addedAt.getSeconds()
-            // var seconds = new Date().getTime() / 1000 
-            //    const seconds =  date.getTime() / 1000
-            return date
-        },
         shortenedTitle() {
             const maxLength = 30
             return function (title) {
                 return title.length > maxLength ? title.slice(0, maxLength) + '...' : title
             }
         },
-        addedAtDiff() {
+        songAddedAt() {
             const addedAt = this.song.addedAt
             const now = Date.now()
             const diff = now - addedAt
@@ -115,6 +116,35 @@ export default {
                 return `${Math.floor(diff / (60 * 60 * 1000))} hours ago`
             } else { // 1 day or more
                 return `${Math.floor(diff / (24 * 60 * 60 * 1000))} days ago`
+            }
+        },
+
+        songTitle() {
+            // const pattern = /(.+)\s-\s(.+)(?:\s\[[^\]]*\])?\s\(/;
+            const pattern = /^(.+?)\s*[-–]\s*(.+?)(?:\s+\[(.+?)\])?$/i;
+
+
+            const matches = pattern.exec(this.song.title);
+            if (matches) {
+                const songTitle = matches[2]
+                console.log(songTitle)
+                // verification second round
+                const regex = /^(.+)\s+\(.+\)$/;
+                const match = songTitle.match(regex);
+                if (match) {
+                    return match[1].trim();
+                }
+                return songTitle
+            } else {
+                return this.song.title
+            }
+        },
+        songArtist() {
+            const pattern = /^(.+?)\s*[-–]\s*(.+?)(?:\s+\[(.+?)\])?$/i;
+            const matches = pattern.exec(this.song.title);
+            if (matches) {
+                const songArtist = matches[1]
+                return songArtist
             }
         },
        
