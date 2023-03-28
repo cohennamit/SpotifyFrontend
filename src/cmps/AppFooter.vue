@@ -113,7 +113,8 @@ export default defineComponent({
             this.isMuted = !this.isMuted
         },
         onStateChange(event) {
-            console.log('event.data', event.data)
+            // this.currentTime = 0
+            this.duration = this.$refs.youtube.getDuration()
             if (event.data === 1) this.isPlaying = true
             if (event.data === 0) {
                 this.isPlaying = false
