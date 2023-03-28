@@ -24,9 +24,15 @@
             <button class="song-search-preview-add-btn" @click="addSong(video)">Add</button>
         </div>
 
-        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + video.id.videoId" frameborder="0"
-            allowfullscreen></iframe>
-    </section>
+    <iframe
+      hidden
+      width="60"
+      height="15"
+      :src="'https://www.youtube.com/embed/' + video.id.videoId"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+  </section>
 </template>
 
 <script>

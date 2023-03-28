@@ -7,7 +7,9 @@
         src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png"
         alt=""
       />
-      <h1>Liked Songs</h1>
+      <div class="top-content-content-internal-wrapper">
+        <h1>Liked Songs</h1>
+      </div>
     </route>
     <article class="top-content">
       <img
