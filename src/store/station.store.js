@@ -133,6 +133,7 @@ export const stationStore = {
       try {
         const stations = await stationService.query(filterBy);
         context.commit({ type: 'setStations', stations });
+        console.log(stations)
       } catch (err) {
         console.log('stationStore: Error in loadStations', err);
         throw err;

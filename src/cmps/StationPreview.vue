@@ -35,9 +35,9 @@ export default {
 
   computed: {
     shortenedTitle() {
-      let maxLength = 20;
+      const maxLength = 30;
       return function (title) {
-        return title.length > maxLength ? title.slice(0, maxLength) + 'and...' : title;
+        return title.length > maxLength ? title.slice(0, maxLength) + 'and more' : title;
       };
     },
   },
