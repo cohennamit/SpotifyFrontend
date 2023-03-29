@@ -94,7 +94,7 @@ export default {
             // this.isPlaying = !this.isPlaying
 
             if (!this.isPlaying) {
-                this.$refs.youtube.playVideo()
+                // this.$refs.youtube.playVideo()
                 this.$store.commit({ type: 'play' })
             }
             else {

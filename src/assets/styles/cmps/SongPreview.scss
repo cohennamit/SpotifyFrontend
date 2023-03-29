@@ -97,6 +97,7 @@
             // object-position: center bottom; /* center the image vertically */
 
         }
+
         // overflow: hidden;
         width: 40px;
         height: 40px;
@@ -130,4 +131,8 @@
     .pref-visible {
         visibility: visible;
     }
+}
+
+.fill-green {
+    fill: #1db954;
 }
