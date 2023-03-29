@@ -7,6 +7,7 @@
           <div class="input-wrap">
             <div class="input-wrap-search-icon" v-html="getSvg('emptySearch')"></div>
             <input name="search" type="text" v-model="query" placeholder="Search for songs" />
+            <div class="input-wrap-x-icon" v-html="getSvg('x')"></div>
           </div>
           <!-- <button type="submit">Search</button> -->
         </form>
@@ -68,15 +69,6 @@ export default {
     },
     addSong(song) {
       this.$emit('addSong', song);
-      //OUR'S:
-      // const pattern = /[^-,_\w]+/g;
-      //CHATGPT'S:
-      // const pattern = /^(?<artist>[^-()]+)\s*-\s*(?<title>[^()]+)(\((feat\..+)\))?$/i;
-      // const title = emptySong.title
-      // const match = title.match(pattern)
-      // const artist = match?.groups?.artist.trim()
-      // const songTitle = match?.groups?.title.trim()
-      //TODO: TRY TO FIX PATTERN TO NOT GET SHIT TITLE
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
