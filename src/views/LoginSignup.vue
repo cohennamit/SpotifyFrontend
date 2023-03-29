@@ -25,7 +25,7 @@
           <hr />
         </div>
       </section>
-    <!-- <div v-if="loggedinUser">
+      <!-- <div v-if="loggedinUser">
       <h3>
         Loggedin User:
         {{ loggedinUser.fullname }}
@@ -76,8 +76,8 @@
         </li>
       </ul>
     </details> -->
-  </div>
-</section>
+    </div>
+  </section>
 </template>
 <script>
 
