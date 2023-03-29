@@ -1,6 +1,9 @@
 <template>
     <section class="main-nav">
-        <h1 class="logo">Logo</h1>
+        <RouterLink to="/" class="main-nav-logo" >
+            <div class="headphones-icon" v-html="getSvg('headphones')"></div>
+            <h1>Satisfy</h1>
+        </RouterLink>
         <section class="nav">
             <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
                 to="/station">
