@@ -99,7 +99,7 @@
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0, 0, 0, .7);
 }
 
 .header-right {
@@ -107,6 +107,7 @@
 }
 
 .header-buttons {
+    margin-inline-start: 12px;
     // margin-inline-end: 1em;
     display: flex;
     justify-content: space-evenly;
