@@ -1,7 +1,7 @@
 <template>
-  <!-- <div class="header-content-fixed-container"> -->
-    <!-- <div class="header-content-placeholder-container"> -->
-      <header ref="header" class="header">
+  <!-- <div class="header-content-fixed-container">
+    <div class="header-content-placeholder-container"> -->
+      <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
         <section class="header-buttons">
           <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
             <div class="icon" v-html="getSvg('arrowLeft')"></div>
@@ -35,15 +35,10 @@ import StationFilter from './StationFilter.vue';
 
 export default {
   computed: {
-    // scrollTop() {
-    //   return this.$store.state.scrollTop;
-    // },
-    // opacity() {
-    //   return this.scrollTop / 100;
-    // },
-    // backgroundColor() {
-    //   return 'white';
-    // },
+    headerColor() {
+      // console.log('From Getter', this.$store.getters.headerColor);
+      return this.$store.getters.headerColor;
+    },
     isFilterShown() {
       return this.$store.getters.isFilterShown;
     },
@@ -51,11 +46,12 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     isSearch() {
-      console.log('isSearch from station store')
-      if (this.$route.name === 'Search') return true
-      else return false
+      console.log('isSearch from station store');
+      if (this.$route.name === 'Search') return true;
+      else return false;
     },
   },
+
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName);

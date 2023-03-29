@@ -1,22 +1,35 @@
-.station-preview {
+.station-preview{
+    //   overflow: hidden;
+       *{
+
+       	font-family: Gotham Bold;
+       }
+       span {
+        font-family: Gotham Book;
+        padding: 0;
+        line-height: 0px;
+
+        color: rgb(165, 164, 164);
+       }
+    .station-preview-desc{
+        font-size: 0.75em;
+    }
     cursor: pointer;
+    min-height: 300px;
+    max-width: 230px;
+    @media (max-width: 800px){
+        max-height: 350px;
+
+    }
     background-color: rgb(23, 23, 23);
     transition: 300ms;
     padding: 1em;
     border-radius: 8px;
-    font-family: "circular";
-
-    * {
-        // pointer-events: none;
-    }
-
-    .station-preview-desc {
-        font-size: 0.7em;
-    }
-
-
-    p {
-        margin-block-end: 0.2em;
+    font-family: "circular";	
+    p{
+        font-family: Gotham Book;
+        margin-block-start: 0.2em;
+        margin-block-end: 0.1em;
     }
 
     .img-wrapper {
