@@ -4,12 +4,16 @@
 }
 
 .station-list-text{
+	font-family: Gotham Bold;
 	margin-inline-start: 0.25em;
 	margin-block-start: 2em;
 	margin-block-end: 1em;
 }
  
 .station-list-top-content-container {
+	*{
+		font-family: Gotham Bold;
+	}
 	padding: 0px;
 	width: 100%;
 	row-gap: 1em;
@@ -38,29 +42,30 @@
 	min-height:  147px;
 	text-align: ltr;
 	.top-content{
+     h1{
+	 margin-inline-start: 1em;
+		}
     @media (min-width: 1220px) {
 	height: 84px;
      img {
 	height: 84px;
 	width: 84px;
+	
     }
       }
-	font-size: 0.63em;
-	display: flex ;
-	 min-width: 150spx;
+	 font-size: 0.63em;
+	 display: flex ;
 	  align-items: center;
 	  background-color: #2E293C;
       border-radius: 4px;
       height: 64px;
 	}
-	h1{
-		// justify-self: center;
-		// align-self: center;
-	}
+	
 	img {
 	width: 64px;
 	height: 64px;
-	border-radius: 4px;
+	border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
 	}
 	*:not(img) {
 		margin: 0.2em;
@@ -78,6 +83,7 @@
 		
 	}
     padding: 0;
+	padding-block-end: 3em;
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;

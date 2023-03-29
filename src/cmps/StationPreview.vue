@@ -1,9 +1,15 @@
 <template>
   <section @click="goToDetails" class="station-preview">
-    <img v-if="station.imgUrl" :src="station.imgUrl" />
+    <img
+      @click="$store.dispatch('setHeaderColor', 'white')"
+      v-if="station.imgUrl"
+      :src="station.imgUrl"
+    />
+
     <p>{{ station.title }}</p>
     <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"
-      >{{ d }} <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
+      >{{ d }}
+      <span v-if="idx < 2"> {{ '&nbsp;' }} </span>
     </span>
   </section>
 </template>
@@ -25,9 +31,9 @@ export default {
 
   computed: {
     shortenedTitle() {
-      const maxLength = 30;
+      // let maxLength = 20;
       return function (title) {
-        return title.length > maxLength ? title.slice(0, maxLength) + 'and more' : title;
+        return title.length > maxLength ? title.slice(0, maxLength) + 'and...' : title;
       };
     },
   },
