@@ -1,7 +1,18 @@
 <template>
     <header class="station-details-header">
-        <div class="demo-img">
-            <img :src="station.imgUrl" />
+        <div class="img-wrapper">
+            <!-- <button class="change-img-btn"></button> -->
+            <!-- <div class="opacity-placeholder"></div> -->
+            <article class="choose-photo">
+                <div class="pencil-icon" v-html="getSvg('pencil')"></div>
+                <span>Choose Photo</span>
+            </article>
+            <div class="img-container">
+                <ImgUploader @updateImgUrl="updateImgUrl"/>
+                <img v-if="station.imgUrl" :src="station.imgUrl" alt=""/>
+                <img v-else src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg" />
+            </div>
+            
         </div>
         <div class="station-details-header-info">
             <span>Playlist</span>
@@ -16,11 +27,15 @@
             <RouterLink v-if="station.isAddedByUser" to="/login">by user</RouterLink>
         </div>
     </header>
-    <Modal @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
+    <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
 </template>
 
 <script>
-import Modal from './Modal.vue';
+import { svgService } from '../services/svg.service.js'
+
+import ImgUploader from '../cmps/ImgUploader.vue'
+import Modal from './Modal.vue'
+
 export default {
     name: 'Station Header',
     props: {
@@ -29,7 +44,7 @@ export default {
             // required: true
         }
     },
-    emits: ['onCloseEditModal'],
+    emits: ['onCloseEditModal','updateImgUrl'],
     data() {
         return {
             isEdit: false
@@ -43,6 +58,13 @@ export default {
         },
         onCloseEditModal() {
             this.isEdit = false
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        },
+        updateImgUrl(imgUrl){
+            if(!imgUrl) return
+            this.$emit('updateImgUrl',imgUrl)
         }
     },
     computed: {
@@ -52,6 +74,7 @@ export default {
     },
     components: {
         Modal,
+        ImgUploader
     },
 }
 </script>

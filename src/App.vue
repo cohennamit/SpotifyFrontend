@@ -1,9 +1,9 @@
 <template>
   <div class="layout-container">
     <MainNav />
-    <AppHeader />
     <AppFooter />
     <div class="app-main" ref="appMain" @scroll="handleScroll">
+      <AppHeader />
       <RouterView />
       <UserMsg />
     </div>

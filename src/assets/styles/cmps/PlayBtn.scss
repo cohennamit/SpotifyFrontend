@@ -3,14 +3,18 @@
     height: 56px;
     background-color: #1ed760;
     border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 8px 8px rgba(0,0,0,.3);
     &:hover {
         background-color: #1fde64;
-        
         transform: scale(1.04); /* Increase size by 4% */
     }
 
     &-icon {
-        padding-block-start: 5px;
-        padding-inline-start: 1px;
-    }
+        padding-block-start: 4px;
+        padding-inline-start: 2px;
+        }
 }

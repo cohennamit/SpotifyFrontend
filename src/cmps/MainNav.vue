@@ -6,7 +6,7 @@
                 to="/station">
                 <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div> Home
             </RouterLink>
-            <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
+            <RouterLink class="btn-nav"  @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
                 to="/search">
                 <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div> Search
             </RouterLink>

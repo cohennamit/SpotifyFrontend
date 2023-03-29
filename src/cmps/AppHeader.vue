@@ -1,6 +1,6 @@
 <template>
-  <div class="header-content-fixed-container">
-    <div class="header-content-placeholder-container">
+  <!-- <div class="header-content-fixed-container"> -->
+    <!-- <div class="header-content-placeholder-container"> -->
       <header ref="header" class="header">
         <section class="header-buttons">
           <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
@@ -25,8 +25,8 @@
           </section>
         </section>
       </header>
-    </div>
-  </div>
+    <!-- </div> -->
+  <!-- </div> -->
 </template>
 
 <script>

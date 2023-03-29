@@ -1,17 +1,26 @@
 <template>
-<button class="play-btn">
-    <div  class="play-btn-icon" v-html="getSvg('playSongLarge')"></div>
-</button>
+  <button @click.stop="setSong" class="play-btn">
+    <div class="play-btn-icon" v-html="getSvg('playSongLarge')"></div>
+  </button>
 </template>
 
 <script>
 import { svgService } from '../services/svg.service.js';
 export default {
-name: 'Play Btn',
-methods: {
+  name: 'Play Btn',
+  props: {
+    station: {
+      type: Object
+    }
+  },
+  methods: {
     getSvg(iconName) {
-    return svgService.getSvg(iconName)
+      return svgService.getSvg(iconName)
+    },
+    setSong() {
+      console.log(this.station);
+      this.$store.dispatch({ type: 'setSong', song: this.station.songs[0] })
+    },
   }
-}
 }
 </script>

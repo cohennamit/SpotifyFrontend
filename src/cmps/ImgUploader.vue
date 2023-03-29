@@ -1,20 +1,22 @@
 <template>
   <div className="upload-preview">
-    <img v-if="imgUrl" :src="imgUrl" :style="{ maxWidth: '200px', float: 'right' }" />
-    <label for="imgUpload">{{ uploadMsg }}</label>
+    <!-- <img v-if="imgUrl" :src="imgUrl" :style="{ maxWidth: '232px', float: 'right' }" /> -->
+    <!-- <label for="imgUpload">{{ uploadMsg }}</label> -->
+    <!-- <pre>{{  }}</pre> -->
     <input type="file" @change="uploadImg" accept="img/*" id="imgUpload" />
   </div>
 </template>
 
 <script>
-import { uploadService } from '../services/upload.service.js'
+import { uploadService } from '../services/upload.service'
 
 export default {
+  emits:['updateImgUrl'],
   data() {
     return {
       imgUrl: null,
-      height: 500,
-      width: 500,
+      height: 232,
+      width: 232,
       isUploading: false
     }
   },
@@ -26,7 +28,7 @@ export default {
       this.imgUrl = secure_url
       this.height = height
       this.width = width
-      this.$emit('uploaded', this.imgUrl)
+      this.$emit('updateImgUrl', this.imgUrl)
     }
   },
   computed: {

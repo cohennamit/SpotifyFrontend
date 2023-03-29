@@ -2,7 +2,7 @@ $primary-color: #fff;
 $secondary-color: #aaa;
 
 .main-nav {
-    z-index: 200;
+    z-index: 310;
     font-size: 0.8125rem;
     min-width: 185px;
     // max-width: 200px;
@@ -26,16 +26,17 @@ $secondary-color: #aaa;
             text-decoration: none;
         }
     }
-}
 
-.user-playlists {
-    a {
-        color: rgb(170, 170, 170);
+    .user-playlists {
+        a {
+            color: rgb(170, 170, 170);
+        }
+
     }
-}
 
-button:hover {
-    cursor: pointer;
+    button:hover {
+        cursor: pointer;
+    }
 }
 
 .icon {

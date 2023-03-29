@@ -1,16 +1,16 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
   <section v-if="station" class="station-details">
-    <StationHeader :station="station" />
+    <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
-      <PlayBtn/>
+      <PlayBtn :station="station" />
       <div @click="toggleStationOptions" class="options-icon" v-html="getSvg('playlistOptions')"></div>
       <ul v-if="isOptionsShown">
         <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
         <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
       </ul>
     </div>
-    <SongList @removeSong="removeSong" :station="station" />
+    <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
     <SongSearchList v-if="station.isAddedByUser" @addSong="addSong" />
     <hr>
     <div class="placeholder"></div>
@@ -35,6 +35,12 @@ export default {
     };
   },
   methods: {
+    setSong(song) {
+      this.$store.dispatch({ type: 'setSong', song })
+    },
+    setStation(station) {
+      this.$store.dispatch({ type: 'setStation', station })
+    },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
@@ -58,6 +64,11 @@ export default {
         console.log(err);
       }
     },
+    updateImgUrl(imgUrl){
+      console.log(imgUrl)
+      this.station.imgUrl = imgUrl
+      this.$store.dispatch({type: 'updateStation', station: this.station})
+    }
   },
   computed: {
     // async getStation() {
