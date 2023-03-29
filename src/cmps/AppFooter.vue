@@ -51,10 +51,12 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
+import { eventBus } from '../services/event-bus.service.js';
 import { defineComponent } from 'vue'
 import YouTube from 'vue3-youtube'
 
-export default defineComponent({
+// export default defineComponent({
+export default {
     components: { YouTube },
     data() {
         return {
@@ -65,11 +67,12 @@ export default defineComponent({
             },
             intervalId: null,
             isMuted: false,
-            isPlaying: false,
+            // isPlaying: false,
             isShuffling: false,
             isRepeating: false,
             duration: 0,
             currentTime: 0,
+            unSub: null
         }
     },
     methods: {
@@ -79,15 +82,26 @@ export default defineComponent({
             this.intervalId = setInterval(() => {
                 this.currentTime = this.$refs.youtube.getCurrentTime()
             }, 1000)
+            this.$refs.youtube.playVideo()
+            this.$store.commit({ type: 'play' })
+
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName);
         },
         onPauseResume() {
             if (!this.videoId) return
-            this.isPlaying = !this.isPlaying
-            if (this.isPlaying) this.$refs.youtube.playVideo()
-            else this.$refs.youtube.pauseVideo()
+            // this.isPlaying = !this.isPlaying
+
+            if (!this.isPlaying) {
+                this.$refs.youtube.playVideo()
+                this.$store.commit({ type: 'play' })
+            }
+            else {
+                this.$refs.youtube.pauseVideo()
+                this.$store.commit({ type: 'pause' })
+            }
+            console.log('this.isPlaying', this.isPlaying)
         },
         // onPauseResume() {
         //     this.$store.commit({ type: 'pauseResume' })
@@ -115,9 +129,13 @@ export default defineComponent({
         onStateChange(event) {
             // this.currentTime = 0
             this.duration = this.$refs.youtube.getDuration()
-            if (event.data === 1) this.isPlaying = true
+            if (event.data === 1) {
+                // this.isPlaying = true
+                this.$store.commit({ type: 'play' })
+            }
             if (event.data === 0) {
-                this.isPlaying = false
+                // this.isPlaying = false
+                this.$store.commit({ type: 'pause' })
                 clearInterval(this.intervalId)
                 this.currentTime = 0
                 if (this.isRepeating) {
@@ -130,7 +148,8 @@ export default defineComponent({
                     this.$store.commit({ type: 'setNextSong' })
                 }
                 this.$refs.youtube.playVideo()
-                this.isPlaying = true
+                // this.isPlaying = true
+                this.$store.commit({ type: 'play' })
                 this.onReady()
             }
         },
@@ -189,16 +208,18 @@ export default defineComponent({
             const progressBarWidth = (this.currentTime / this.duration) * 100
             return progressBarWidth
 
+        },
+        isPlaying() {
+            return this.$store.getters.isPlaying
         }
-        // isPlaying() {
-        //     return this.$store.getters.isPlaying
-        // }
     },
-    // created() {
-    //     console.log('this.$refs', this.$refs)
-    //     this.$store.commit({ type: 'setYoutubeRef', ref: this.$refs.youtube })
-    // }
+    created() {
+        this.unSub = eventBus.on('onTogglePlay', this.onPauseResume)
+    },
+    unmounted() {
+        this.unSub()
+    }
 
-})
+}
 
 </script>

@@ -23,9 +23,8 @@
         <div class="column-3" :class="getClass">{{song.album}}</div>
 
         <div>{{ songAddedAt }}</div>
-        <!-- <span v-else class="placeholder"></span> -->
         <div class="column-5">
-            <div>3:14</div>
+            <div>{{ song.duration }}</div>
             <div class="song-preview-preferences">
                 <span :class="getClass" class="heart-icon" v-html="getSvg('heart')"></span>
                 <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
@@ -35,6 +34,7 @@
 </template>
 
 <script>
+import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
 export default {
     name: 'Song Preview',
@@ -74,6 +74,7 @@ export default {
         },
         setStation(){
             this.$emit('setStation', this.station)
+            eventBus.emit('onTogglePlay')
         },
         handleClick() {
             this.$emit('setActiveSong', this.index)
@@ -146,7 +147,7 @@ export default {
                 return songArtist
             }
         },
-       
+
 
     }
 }

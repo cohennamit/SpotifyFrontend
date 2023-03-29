@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 import { userService } from './user.service.js';
+import gStations from '../../data/station.json';
 
 const STORAGE_KEY = 'station';
 
@@ -101,6 +102,7 @@ function getEmptySong() {
     videoId: '',
     imgUrl: '',
     addedBy: '',
+    duration: 0,
     addedAt: Date.now(),
   };
 }
@@ -510,8 +512,13 @@ function getLabels() {
   ];
 }
 
-
-
+; (async () => {
+  let stations = await storageService.query(STORAGE_KEY)
+  if (!stations || !stations.length) {
+    console.log('gStations', gStations)
+    await storageService.postMany(STORAGE_KEY, gStations)
+  }
+})()
 
 //       {
 //         id: 's1003',

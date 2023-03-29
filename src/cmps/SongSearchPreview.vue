@@ -17,26 +17,20 @@
         </div>
 
         <p :class="getClass" class="song-search-preview-album">
-            The Marshall Mathers LP
+            <!-- {{video.album}} -->
         </p>
 
         <div>
             <button class="song-search-preview-add-btn" @click="addSong(video)">Add</button>
         </div>
 
-    <iframe
-      hidden
-      width="60"
-      height="15"
-      :src="'https://www.youtube.com/embed/' + video.id.videoId"
-      frameborder="0"
-      allowfullscreen
-    ></iframe>
-  </section>
+        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + video.id.videoId" frameborder="0"
+            allowfullscreen></iframe>
+    </section>
 </template>
 
 <script>
-import { stationService } from '../services/station.service.local.js';
+import { stationService } from '../services/station.service.js';
 export default {
     name: 'Song Search Preview',
     props: {
@@ -53,10 +47,12 @@ export default {
     methods: {
         addSong(video) {
             const song = stationService.getEmptySong();
+            console.log('video', video)
             const { snippet, id } = { ...video };
             song.title = snippet.title;
             song.videoId = id.videoId;
             song.imgUrl = snippet.thumbnails.medium.url;
+            // song.duration = video.contentDetails.duration;
             this.$emit('addSong', song);
         }
     },

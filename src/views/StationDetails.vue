@@ -19,7 +19,7 @@
 
 <script>
 //TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
-import { stationService } from '../services/station.service.local.js';
+import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
 
 import StationHeader from '../cmps/StationHeader.vue';

@@ -29,23 +29,32 @@ body {
     margin: 0;
     // background-color: #181818;
     overflow: hidden;
-    
+
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     margin: 0 0 0.6em;
     line-height: 1;
 }
 
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
     outline: none;
 }
-li{
-list-style: none;
+
+li {
+    list-style: none;
 }
+
 img {
     width: 100%;
+    aspect-ratio: 1;
 }
 
 p {
@@ -58,15 +67,17 @@ a {
     color: $clr6;
 }
 
-::-webkit-scrollbar{
-    background: linear-gradient(0deg,#121212 90%,#220e47 );
-	width: 0.5em;
+::-webkit-scrollbar {
+    background: linear-gradient(0deg, #121212 90%, #220e47);
+    width: 0.5em;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
     background: #7c7b7bab;
     border-radius: 6px;
-	&:hover{
-		
-		background: #7c7b7bf5;
-	}
+
+    &:hover {
+
+        background: #7c7b7bf5;
+    }
 }

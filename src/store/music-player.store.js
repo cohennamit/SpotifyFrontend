@@ -12,8 +12,17 @@ export const musicPlayerStore = {
     },
     getters: {
         currentSong({ currentSong }) { return currentSong },
+        currentStation({ currentStation }) { return currentStation },
+        isPlaying({ isPlaying }) { return isPlaying }
     },
     mutations: {
+        play(state) {
+            console.log('state.isPlaying', state.isPlaying)
+            state.isPlaying = true
+        },
+        pause(state) {
+            state.isPlaying = false
+        },
         setCurrentSong(state, { song }) {
             state.currentSong = (song) ? { ...song } : null
             console.log('state.currentSong', state.currentSong)

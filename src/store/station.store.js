@@ -1,5 +1,5 @@
 import { storageService } from '../services/async-storage.service';
-import { stationService } from '../services/station.service.local';
+import { stationService } from '../services/station.service';
 // import { stationService } from '../services/station.service'
 
 export function getActionRemoveStation(stationId) {
@@ -36,12 +36,13 @@ export const stationStore = {
 
     isFilterShown: false,
     currentRoute: '',
-    labels: stationService.getLabels(),
+    // labels: stationService.getLabels(),
     filterBy: {
       labels: '',
       sort: 'name',
     },
     labels: stationService.getLabels(),
+    // labels: []
   },
   getters: {
     headerColor: (state) => {
