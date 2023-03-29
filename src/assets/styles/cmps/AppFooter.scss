@@ -1,6 +1,6 @@
 .footer {
     // display: none;
-border-top: 0.1px  rgba(240, 248, 255, 0.154) outset;
+    border-top: 0.1px rgba(240, 248, 255, 0.154) outset;
     width: 100vw;
     z-index: 400;
     grid-column: 1;
@@ -51,6 +51,7 @@ border-top: 0.1px  rgba(240, 248, 255, 0.154) outset;
         img {
             height: 65px;
             width: 65px;
+            object-fit: cover;
         }
 
         h3 {
