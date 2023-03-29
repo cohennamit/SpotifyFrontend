@@ -1,7 +1,7 @@
 <template>
     <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
         @mouseleave="isHover = false">
-        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div>
+        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(),setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
 
@@ -20,7 +20,7 @@
 
         </div>
         <!-- <p>{{ song.album }}</p> -->
-        <div class="column-3" :class="getClass">{{ song.album }}</div>
+        <div class="column-3" :class="getClass">{{song.album}}</div>
 
         <div>{{ songAddedAt }}</div>
         <div class="column-5">
@@ -38,7 +38,7 @@ import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong'],
+    emits: ['removeSong','setSong','setStation'],
     props: {
         song: {
             type: Object
@@ -62,9 +62,6 @@ export default {
         }
     },
     methods: {
-        handleBlur() {
-            console.log('ok')
-        },
         removeSong() {
             this.$emit('removeSong', this.song._id)
         },
@@ -73,8 +70,10 @@ export default {
             else if (iconName === 'playSong') return this.index + 1
         },
         setSong() {
-            this.$store.dispatch({ type: 'setSong', song: this.song })
-            this.$store.dispatch({ type: 'setStation', station: this.station })
+            this.$emit('setSong', this.song)
+        },
+        setStation(){
+            this.$emit('setStation', this.station)
             eventBus.emit('onTogglePlay')
         },
         handleClick() {
@@ -85,7 +84,7 @@ export default {
         //         const response = await fetch(
         //             `https://api.deezer.com/search?q=without me`
         //         )
-        //         const {data} = response.json
+        //          const {data} = response.json
         //         console.log(response)
         //     } catch (err) {
         //         console.log('cant find song', err)

@@ -1,9 +1,9 @@
 <template>
   <div class="layout-container">
     <MainNav />
-    <AppHeader />
     <AppFooter />
     <div class="app-main" ref="appMain" @scroll="handleScroll">
+      <AppHeader />
       <RouterView />
       <UserMsg />
     </div>
@@ -30,11 +30,11 @@ export default {
       const appMain = this.$refs.appMain;
       const scrollTop = appMain.scrollTop;
       const opacity = 1 - scrollTop / 200;
-      const header = document.querySelector('.header');
 
-      header.style.backgroundColor = `rgba(28, 17, 56, ${1 - opacity})`;
+      this.$store.dispatch('setHeaderColor', `rgba(0, 0, 0, ${1 - opacity})`);
+      // this.$store.dispatch('setHeaderColor', `rgba(28, 17, 56, ${1 - opacity})`);
 
-      // this.$store.dispatch('setScrollTop', scrollTop);
+      this.$store.dispatch('setScrollTop', scrollTop);
     },
   },
   mounted() {

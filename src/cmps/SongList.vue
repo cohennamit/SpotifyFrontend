@@ -11,8 +11,9 @@
         <div></div>
       </div>
     </div>
-    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" @setActiveSong="setActiveSong"
-      :activeSongIdx="activeSongIdx" :song="song" :station="station" :index="index" />
+    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" @setSong="setSong"
+      @setStation="setStation" @setActiveSong="setActiveSong" :activeSongIdx="activeSongIdx" :song="song"
+      :station="station" :index="index" />
   </ul>
 </template>
 
@@ -27,11 +28,10 @@ export default {
       require: true
     },
   },
-  emits: ['removeSong'],
+  emits: ['removeSong','setSong','setStation'],
   data() {
     return {
       activeSongIdx: -1,
-
     };
   },
   methods: {
@@ -44,7 +44,13 @@ export default {
     setActiveSong(idx) {
       console.log(idx)
       this.activeSongIdx = idx
-    }
+    },
+    setSong(song){
+      this.$emit('setSong',song)
+    },
+    setStation(station){
+      this.$emit('setStation',station)
+    },
   },
   computed: {
     hasSongs() {

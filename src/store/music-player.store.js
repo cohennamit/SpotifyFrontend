@@ -73,7 +73,7 @@ export const musicPlayerStore = {
     actions: {
         setSong({ commit }, { song }) {
             commit({ type: 'setCurrentSong', song })
-            return song
+            console.log(song)
         },
         setNextSong({ commit }) {
             commit({ type: 'setNextSong' })
@@ -89,7 +89,6 @@ export const musicPlayerStore = {
         },
         setStation({ commit }, { station }) {
             commit({ type: 'setCurrentStation', station })
-            return station
         }
     }
 }

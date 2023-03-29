@@ -49,7 +49,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 100px 1fr 120px 0.5fr;
+        grid-template-rows: 48px 1fr 120px 0.5fr;
         overflow: auto;
         overflow-x: hidden;
         padding-inline: 32px;
@@ -57,7 +57,7 @@
     
     .layout-container{
         display: grid;
-        grid-template-columns: 185px 1fr;
+        grid-template-columns: 200px 1fr;
         grid-template-rows: 70px 72dvh 139px;
         padding-block-end: 1em;
 

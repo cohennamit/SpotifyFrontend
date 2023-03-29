@@ -31,8 +31,10 @@ export function getActionAddStationMsg(stationId) {
 export const stationStore = {
   state: {
     stations: [],
-    isFilterShown: false,
+    headerColor: 'rgba(0, 0, 0, 0 )',
     scrollTop: 0,
+
+    isFilterShown: false,
     currentRoute: '',
     // labels: stationService.getLabels(),
     filterBy: {
@@ -43,9 +45,15 @@ export const stationStore = {
     // labels: []
   },
   getters: {
-    getScrollTop(state) {
+    headerColor: (state) => {
+      console.log('state.headerColor: ', state.headerColor);
+      return state.headerColor;
+    },
+    scrollTop: (state) => {
+      console.log('state.scrollTop: ', state.scrollTop);
       return state.scrollTop;
     },
+
     stations({ stations }) {
       return stations;
     },
@@ -58,7 +66,12 @@ export const stationStore = {
   },
   mutations: {
     SET_SCROLL_TOP(state, value) {
+      console.log('value: ', value);
       state.scrollTop = value;
+    },
+    SET_HEADER_COLOR(state, color) {
+      // console.log('color: ', color);
+      state.headerColor = color;
     },
     setFilterBy(state, { filterBy }) {
       state.filterBy = filterBy;
@@ -88,9 +101,14 @@ export const stationStore = {
     },
   },
   actions: {
-    setScrollTop({ commit }, value) {
-      commit('SET_SCROLL_TOP', value);
+    setScrollTop(context, scrollTop) {
+      context.commit('SET_SCROLL_TOP', scrollTop);
     },
+    setHeaderColor({ commit }, color) {
+      // console.log('color: ', color);
+      commit('SET_HEADER_COLOR', color);
+    },
+
     async addStation(context, { newStation }) {
       try {
         newStation = await stationService.save(newStation);

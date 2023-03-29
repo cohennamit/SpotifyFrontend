@@ -1,44 +1,83 @@
-@import url('https://fonts.cdnfonts.com/css/gotham');
-
-//TODO: CHANGE THIS IMPORT CDN TO @FONTFACE IN typgraphy.scss
-// font-family: 'Gotham', sans-serif;
-// font-family: 'Gotham Black', sans-serif;
-// font-family: 'Gotham Light', sans-serif;
-// font-family: 'Gotham Thin', sans-serif;
-// font-family: 'Gotham XLight', sans-serif;
-// font-family: 'Gotham Book', sans-serif;
-// font-family: 'Gotham Ultra', sans-serif;
 .station-details {
     &-header {
         display: flex;
         gap: 23px;
-        justify-content: flex-start;
-        align-items: center;
+        align-items: flex-end;
+
         &-info {
             display: flex;
             flex-direction: column;
         }
-        h1{
+
+        .img-wrapper {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            .img-container {
+                width: 232px;
+                height: 232px;
+                .upload-preview{
+                    input{
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0;
+                        // visibility: hidden;
+                    }
+                }
+                img {
+
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    box-shadow: 0 4px 60px rgba(0, 0, 0, .5);
+                }
+            }
+
+            .choose-photo {
+                display: none;
+            }
+    
+            &:hover {
+                .img-container {
+                    opacity: 0.3;
+                }
+
+                .choose-photo {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding-block-start: 37px;
+                    letter-spacing: 1px;
+                    fill: white;
+                    color: white;
+                }
+            }
         }
-        img {
-            width: 232px;
-            height: 232px;
-        }
+
+     
 
         span {
             font-size: 14px;
+            margin-inline-start: 6px;
         }
 
         &-title {
             cursor: pointer;
             font-size: 6rem;
-            /* margin: 0 0 0.1em; */
             font-family: Gotham Bold;
-            margin-block: 0.1em;
-            letter-spacing: -8px;
-            a{
-                margin-block-start: 0.9em;
-            }
+            margin-block-end: 0.3em;
+            letter-spacing: -4px;
+            margin-block-start: 3px;
+        }
+
+        a {
+            margin-inline-start: 8px;
         }
 
         p {
