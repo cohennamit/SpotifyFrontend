@@ -3,7 +3,7 @@
   <section v-if="station" class="station-details">
     <StationHeader :station="station" />
     <div class="station-details-body">
-      <PlayBtn/>
+      <PlayBtn />
       <div @click="toggleStationOptions" class="options-icon" v-html="getSvg('playlistOptions')"></div>
       <ul v-if="isOptionsShown">
         <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
@@ -19,7 +19,7 @@
 
 <script>
 //TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
-import { stationService } from '../services/station.service.local.js';
+import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
 
 import StationHeader from '../cmps/StationHeader.vue';

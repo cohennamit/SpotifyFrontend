@@ -1,0 +1,38 @@
+[
+    {
+        "_id": "u001",
+        "username": "Guest",
+        "password": "1234",
+        "fullname": "Guest Guest",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        "likedSongs": [],
+        "stations": []
+    },
+    {
+        "_id": "u1004",
+        "username": "Coe",
+        "password": "ac1004",
+        "fullname": "Amit Cohen",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        "likedSongs": [],
+        "stations": []
+    },
+    {
+        "_id": "u123",
+        "username": "Darnell",
+        "password": "D1234",
+        "fullname": "Darnell Green",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        "likedSongs": [],
+        "stations": []
+    },
+    {
+        "_id": "u456",
+        "username": "Ilan",
+        "password": "I1234",
+        "fullname": "Ilan Sulimanov",
+        "imgUrl": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+        "likedSongs": [],
+        "stations": []
+    }
+]

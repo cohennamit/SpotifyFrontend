@@ -5,12 +5,7 @@
   <!-- <section class="genres-wrap"> -->
   <!-- <span>Browse all</span> -->
   <section class="labels-list">
-    <article
-      class="label-container"
-      :class="getRandomColorClass"
-      v-for="label in labels"
-      @click="setLabel(label)"
-    >
+    <article class="label-container" :class="getRandomColorClass" v-for="label in labels" @click="setLabel(label)">
       <img :src="label.imgUrl" />
       <span>
         {{ label.name }}
@@ -22,7 +17,7 @@
 
 <script>
 //TODO: MAKE LABEL CONTAINER COLOR RANDOM
-// import {stationService} from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.js'
 import { utilService } from '../services/util.service.js';
 export default {
   name: 'Search Page',
@@ -49,7 +44,7 @@ export default {
       return `label-container-${randomIdx}`;
     },
   },
-  created() {},
+  created() { },
   components: {},
 };
 </script>

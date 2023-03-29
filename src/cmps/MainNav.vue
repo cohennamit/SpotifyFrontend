@@ -45,7 +45,7 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
-import { stationService } from '../services/station.service.local.js'
+import { stationService } from '../services/station.service.js'
 export default {
     name: '',
     data() {

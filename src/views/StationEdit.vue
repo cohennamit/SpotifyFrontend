@@ -27,7 +27,7 @@
 <script>
 import StationList from '../cmps/StationList.vue';
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service';
-import { stationService } from '../services/station.service.local';
+import { stationService } from '../services/station.service';
 import {
   getActionRemoveStation,
   getActionUpdateStation,

@@ -1,0 +1,948 @@
+[
+    {
+        "title": "Michael Jackson",
+        "listencount": "1004",
+        "label": [
+            "Pop"
+        ],
+        "desc": [
+            "Michael Jackson",
+            "1995",
+            "12 songs",
+            "67 min"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dwxvwkasw/image/upload/v1680001556/ab67616d00001e024121faee8df82c526cbab2be_yz3vzt.jpg",
+        "songs": [
+            {
+                "title": "Billie Jean",
+                "_id": "vxiFmM",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "OZGtRvYF-A4",
+                "imgUrl": "https://i.ytimg.com/vi/OZGtRvYF-A4/mqdefault.jpg",
+                "duration": "4:55",
+                "addedAt": 1680073064382.0
+            },
+            {
+                "title": "Smooth Criminal",
+                "_id": "PvOEvP",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "tOgftEf7UDg",
+                "imgUrl": "https://i.ytimg.com/vi/tOgftEf7UDg/mqdefault.jpg",
+                "duration": "4:18",
+                "addedAt": 1680073076251.0
+            },
+            {
+                "title": "Beat It",
+                "_id": "WqcBXt",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "ftCalx6_pYA",
+                "imgUrl": "https://i.ytimg.com/vi/ftCalx6_pYA/mqdefault.jpg",
+                "duration": "4:18",
+                "addedAt": 1680073086985.0
+            },
+            {
+                "title": "Bad",
+                "_id": "hCo7M1",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "o-Ncnh5dcJU",
+                "imgUrl": "https://i.ytimg.com/vi/o-Ncnh5dcJU/mqdefault.jpg",
+                "duration": "4:07",
+                "addedAt": 1680073096627.0
+            },
+            {
+                "title": "Dangerous",
+                "_id": "WyBIro",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "7jTq2FXKr0g",
+                "imgUrl": "https://i.ytimg.com/vi/7jTq2FXKr0g/mqdefault.jpg",
+                "duration": "7:00",
+                "addedAt": 1680073108929.0
+            },
+            {
+                "title": "Slave to the Rhythm",
+                "_id": "ujnuNU",
+                "album": "Xscape",
+                "artist": "Michael Jackson",
+                "videoId": "mMwGT27OBNU",
+                "imgUrl": "https://i.ytimg.com/vi/mMwGT27OBNU/mqdefault.jpg",
+                "duration": "4:35",
+                "addedAt": 1680073122930.0
+            },
+            {
+                "title": "Another Part of Me",
+                "_id": "NkpkWD",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "tKc3VcOyY2c",
+                "imgUrl": "https://i.ytimg.com/vi/tKc3VcOyY2c/mqdefault.jpg",
+                "duration": "3:54",
+                "addedAt": 1680073135513.0
+            },
+            {
+                "title": "She Drives Me Wild",
+                "_id": "Go4hpG",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "kRp_FqCmsVA",
+                "imgUrl": "https://i.ytimg.com/vi/kRp_FqCmsVA/mqdefault.jpg",
+                "duration": "3:41",
+                "addedAt": 1680073158542.0
+            },
+            {
+                "title": "Blood On The Dance Floor",
+                "_id": "5Y8g5h",
+                "album": "Blood On The Dance Floor",
+                "artist": "Michael Jackson",
+                "videoId": "F5hg0elhWPE",
+                "imgUrl": "https://i.ytimg.com/vi/F5hg0elhWPE/mqdefault.jpg",
+                "duration": "4:14",
+                "addedAt": 1680073175835.0
+            },
+            {
+                "title": "Thriller",
+                "_id": "8ZjaHj",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "StgAsIxCP6A",
+                "imgUrl": "https://i.ytimg.com/vi/StgAsIxCP6A/mqdefault.jpg",
+                "duration": "5:59",
+                "addedAt": 1680073188326.0
+            },
+            {
+                "title": "They Don't Care About Us",
+                "_id": "YwtFec",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "GsHZBisKwxg",
+                "imgUrl": "https://i.ytimg.com/vi/GsHZBisKwxg/mqdefault.jpg",
+                "duration": "4:44",
+                "addedAt": 1680073334379.0
+            },
+            {
+                "title": "Earth Song",
+                "_id": "SeKJIB",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "DN6It52dsmY",
+                "imgUrl": "https://i.ytimg.com/vi/DN6It52dsmY/mqdefault.jpg",
+                "duration": "6:46",
+                "addedAt": 1680073363747.0
+            }
+        ]
+    },
+    {
+        "_id": "s123",
+        "title": "Michael Jackson",
+        "listencount": "1004",
+        "desc": [
+            "Michael Jackson",
+            "1995",
+            "12 songs",
+            "67 min"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dwxvwkasw/image/upload/v1680001556/ab67616d00001e024121faee8df82c526cbab2be_yz3vzt.jpg",
+        "songs": [
+            {
+                "title": "Michael Jackson - Billie Jean",
+                "id": "jUJ1Pa",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "Zi_XLOBDo_Y",
+                "imgUrl": "https://i.ytimg.com/vi/Zi_XLOBDo_Y/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Blood On The Dance Floor",
+                "id": "Qf4XK5",
+                "album": "HIStory in the Mix",
+                "artist": "Michael Jackson",
+                "videoId": "F5hg0elhWPE",
+                "imgUrl": "https://i.ytimg.com/vi/F5hg0elhWPE/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - She Drives Me Wild",
+                "id": "mDWyub",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "kRp_FqCmsVA",
+                "imgUrl": "https://i.ytimg.com/vi/kRp_FqCmsVA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Bad",
+                "id": "5fHb56",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "-DlMoJ2V6uk",
+                "imgUrl": "https://i.ytimg.com/vi/-DlMoJ2V6uk/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Slave To The Rhythm",
+                "id": "vZLsLb",
+                "album": "Xscape",
+                "artist": "Michael Jackson",
+                "videoId": "jDRTghGZ7XU",
+                "imgUrl": "https://i.ytimg.com/vi/jDRTghGZ7XU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Dangerous",
+                "id": "GFAFEC",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "7jTq2FXKr0g",
+                "imgUrl": "https://i.ytimg.com/vi/7jTq2FXKr0g/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Smooth Criminal",
+                "id": "uDyIzG",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "h_D3VFfhvs4",
+                "imgUrl": "https://i.ytimg.com/vi/h_D3VFfhvs4/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Another Part of Me",
+                "id": "7Pm6MO",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "Ue_PVqFTUZg",
+                "imgUrl": "https://i.ytimg.com/vi/Ue_PVqFTUZg/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Beat It",
+                "id": "XUJE6I",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "WlTlUseVt7E",
+                "imgUrl": "https://i.ytimg.com/vi/WlTlUseVt7E/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Earth Song",
+                "id": "4oen0x",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "XAi3VTSdTxU",
+                "imgUrl": "https://i.ytimg.com/vi/XAi3VTSdTxU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - They Don't Care About Us",
+                "id": "dWoL8j",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "QNJL6nfu__Q",
+                "imgUrl": "https://i.ytimg.com/vi/QNJL6nfu__Q/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Thriller",
+                "id": "F5rs0i",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "sOnqjkJTMaA",
+                "imgUrl": "https://i.ytimg.com/vi/sOnqjkJTMaA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s456",
+        "title": "Jericho Jackson Mix",
+        "desc": [
+            "Large Professor",
+            "Lord Finesse",
+            "Khrysis",
+            "And more"
+        ],
+        "listencount": 420,
+        "label": [
+            "Pop",
+            "Dance/Electronic"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg",
+        "songs": [
+            {
+                "title": "Jericho Jackson - Overthinking",
+                "_id": "LaKagW",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "jL5AVWcPKwU",
+                "imgUrl": "https://i.ytimg.com/vi/jL5AVWcPKwU/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Self Made",
+                "_id": "PyRFbv",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JgUAig8FX7c",
+                "imgUrl": "https://i.ytimg.com/vi/JgUAig8FX7c/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Breguets",
+                "_id": "8XaJFE",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "FYFdNbw98xY",
+                "imgUrl": "https://i.ytimg.com/vi/FYFdNbw98xY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Thank You",
+                "_id": "yPYTiG",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "J8rAmr5o3ik",
+                "imgUrl": "https://i.ytimg.com/vi/J8rAmr5o3ik/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Seventeen",
+                "_id": "Agu0NI",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JYp6AeGPBXY",
+                "imgUrl": "https://i.ytimg.com/vi/JYp6AeGPBXY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Listen feat. Amber Navran",
+                "_id": "AQ69Gj",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "CYl_4qFTp9E",
+                "imgUrl": "https://i.ytimg.com/vi/CYl_4qFTp9E/default.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s789",
+        "title": "All the Brilliant Things",
+        "listencount": 22221,
+        "desc": [
+            "Skyzoo",
+            "2021",
+            "14 songs",
+            "55 min"
+        ],
+        "songs": [
+            {
+                "id": "s10011",
+                "title": "Free Jewelry",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "QSOqyH8j87E",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10012",
+                "title": "St. James Liquors",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "3fCSy0hDd9g",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10014",
+                "title": "A Tour of the Neighborhood",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "eQUq5nDc_PQ",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10015",
+                "title": "Rich Rhetoric",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10016",
+                "title": "Bodega Flowers",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10017",
+                "title": "Something to Believe In",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10018",
+                "title": "Humble Brag",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s555",
+        "title": "Michael Jackson",
+        "listencount": "1004",
+        "desc": [
+            "Michael Jackson",
+            "1995",
+            "12 songs",
+            "67 min"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dwxvwkasw/image/upload/v1680001556/ab67616d00001e024121faee8df82c526cbab2be_yz3vzt.jpg",
+        "songs": [
+            {
+                "title": "Michael Jackson - Billie Jean",
+                "_id": "jUJ1Pa1",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "Zi_XLOBDo_Y",
+                "imgUrl": "https://i.ytimg.com/vi/Zi_XLOBDo_Y/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Blood On The Dance Floor",
+                "_id": "Qf4XK52",
+                "album": "HIStory in the Mix",
+                "artist": "Michael Jackson",
+                "videoId": "F5hg0elhWPE",
+                "imgUrl": "https://i.ytimg.com/vi/F5hg0elhWPE/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - She Drives Me Wild",
+                "_id": "mDWyub3",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "kRp_FqCmsVA",
+                "imgUrl": "https://i.ytimg.com/vi/kRp_FqCmsVA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Bad",
+                "_id": "5fHb564",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "-DlMoJ2V6uk",
+                "imgUrl": "https://i.ytimg.com/vi/-DlMoJ2V6uk/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Slave To The Rhythm",
+                "_id": "vZLsLb5",
+                "album": "Xscape",
+                "artist": "Michael Jackson",
+                "videoId": "MuTgX_A52Eo",
+                "imgUrl": "https://i.ytimg.com/vi/jDRTghGZ7XU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Dangerous",
+                "_id": "GFAFEC6",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "7jTq2FXKr0g",
+                "imgUrl": "https://i.ytimg.com/vi/7jTq2FXKr0g/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Smooth Criminal",
+                "_id": "uDyIzG7",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "tOgftEf7UDg",
+                "imgUrl": "https://i.ytimg.com/vi/h_D3VFfhvs4/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Another Part of Me",
+                "_id": "7Pm6MO8",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "tKc3VcOyY2c",
+                "imgUrl": "https://i.ytimg.com/vi/Ue_PVqFTUZg/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Beat It",
+                "_id": "XUJE6I9",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "WlTlUseVt7E",
+                "imgUrl": "https://i.ytimg.com/vi/WlTlUseVt7E/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Earth Song",
+                "_id": "4oen0x10",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "DN6It52dsmY",
+                "imgUrl": "https://i.ytimg.com/vi/XAi3VTSdTxU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - They Don't Care About Us",
+                "_id": "dWoL8j11",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "GsHZBisKwxg",
+                "imgUrl": "https://i.ytimg.com/vi/QNJL6nfu__Q/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Thriller",
+                "_id": "F5rs0i12",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "-e-y-1VRZ3I",
+                "imgUrl": "https://i.ytimg.com/vi/sOnqjkJTMaA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s666",
+        "title": "Jericho Jackson Mix",
+        "desc": [
+            "Large Professor",
+            "Lord Finesse",
+            "Khrysis",
+            "And more"
+        ],
+        "listencount": 420,
+        "label": [
+            "Pop",
+            "Dance/Electronic"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg",
+        "songs": [
+            {
+                "title": "Jericho Jackson - Overthinking",
+                "_id": "LaKagW",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "jL5AVWcPKwU",
+                "imgUrl": "https://i.ytimg.com/vi/jL5AVWcPKwU/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Self Made",
+                "_id": "PyRFbv",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JgUAig8FX7c",
+                "imgUrl": "https://i.ytimg.com/vi/JgUAig8FX7c/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Breguets",
+                "_id": "8XaJFE",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "FYFdNbw98xY",
+                "imgUrl": "https://i.ytimg.com/vi/FYFdNbw98xY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Thank You",
+                "_id": "yPYTiG",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "J8rAmr5o3ik",
+                "imgUrl": "https://i.ytimg.com/vi/J8rAmr5o3ik/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Seventeen",
+                "_id": "Agu0NI",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JYp6AeGPBXY",
+                "imgUrl": "https://i.ytimg.com/vi/JYp6AeGPBXY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Listen feat. Amber Navran",
+                "_id": "AQ69Gj",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "CYl_4qFTp9E",
+                "imgUrl": "https://i.ytimg.com/vi/CYl_4qFTp9E/default.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s777",
+        "title": "All the Brilliant Things",
+        "listencount": 22221,
+        "desc": [
+            "Skyzoo",
+            "2021",
+            "14 songs",
+            "55 min"
+        ],
+        "songs": [
+            {
+                "id": "s10011",
+                "title": "Free Jewelry",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "QSOqyH8j87E",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10012",
+                "title": "St. James Liquors",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "3fCSy0hDd9g",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10014",
+                "title": "A Tour of the Neighborhood",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "eQUq5nDc_PQ",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10015",
+                "title": "Rich Rhetoric",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10016",
+                "title": "Bodega Flowers",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10017",
+                "title": "Something to Believe In",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10018",
+                "title": "Humble Brag",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s888",
+        "title": "Michael Jackson",
+        "listencount": "1004",
+        "desc": [
+            "Michael Jackson",
+            "1995",
+            "12 songs",
+            "67 min"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dwxvwkasw/image/upload/v1680001556/ab67616d00001e024121faee8df82c526cbab2be_yz3vzt.jpg",
+        "songs": [
+            {
+                "title": "Michael Jackson - Billie Jean",
+                "id": "jUJ1Pa",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "Zi_XLOBDo_Y",
+                "imgUrl": "https://i.ytimg.com/vi/Zi_XLOBDo_Y/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Blood On The Dance Floor",
+                "id": "Qf4XK5",
+                "album": "HIStory in the Mix",
+                "artist": "Michael Jackson",
+                "videoId": "F5hg0elhWPE",
+                "imgUrl": "https://i.ytimg.com/vi/F5hg0elhWPE/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - She Drives Me Wild",
+                "id": "mDWyub",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "kRp_FqCmsVA",
+                "imgUrl": "https://i.ytimg.com/vi/kRp_FqCmsVA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Bad",
+                "id": "5fHb56",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "-DlMoJ2V6uk",
+                "imgUrl": "https://i.ytimg.com/vi/-DlMoJ2V6uk/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Slave To The Rhythm",
+                "id": "vZLsLb",
+                "album": "Xscape",
+                "artist": "Michael Jackson",
+                "videoId": "jDRTghGZ7XU",
+                "imgUrl": "https://i.ytimg.com/vi/jDRTghGZ7XU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Dangerous",
+                "id": "GFAFEC",
+                "album": "Dangerous",
+                "artist": "Michael Jackson",
+                "videoId": "7jTq2FXKr0g",
+                "imgUrl": "https://i.ytimg.com/vi/7jTq2FXKr0g/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Smooth Criminal",
+                "id": "uDyIzG",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "h_D3VFfhvs4",
+                "imgUrl": "https://i.ytimg.com/vi/h_D3VFfhvs4/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Another Part of Me",
+                "id": "7Pm6MO",
+                "album": "Bad",
+                "artist": "Michael Jackson",
+                "videoId": "Ue_PVqFTUZg",
+                "imgUrl": "https://i.ytimg.com/vi/Ue_PVqFTUZg/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Beat It",
+                "id": "XUJE6I",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "WlTlUseVt7E",
+                "imgUrl": "https://i.ytimg.com/vi/WlTlUseVt7E/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Earth Song",
+                "id": "4oen0x",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "XAi3VTSdTxU",
+                "imgUrl": "https://i.ytimg.com/vi/XAi3VTSdTxU/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - They Don't Care About Us",
+                "id": "dWoL8j",
+                "album": "HIStory: Past, Present and Future",
+                "artist": "Michael Jackson",
+                "videoId": "QNJL6nfu__Q",
+                "imgUrl": "https://i.ytimg.com/vi/QNJL6nfu__Q/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Michael Jackson - Thriller",
+                "id": "F5rs0i",
+                "album": "Thriller",
+                "artist": "Michael Jackson",
+                "videoId": "sOnqjkJTMaA",
+                "imgUrl": "https://i.ytimg.com/vi/sOnqjkJTMaA/mqdefault.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s999",
+        "title": "Jericho Jackson Mix",
+        "desc": [
+            "Large Professor",
+            "Lord Finesse",
+            "Khrysis",
+            "And more"
+        ],
+        "listencount": 420,
+        "label": [
+            "Pop",
+            "Dance/Electronic"
+        ],
+        "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v1679550705/1_qrmwde.jpg",
+        "songs": [
+            {
+                "title": "Jericho Jackson - Overthinking",
+                "_id": "LaKagW",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "jL5AVWcPKwU",
+                "imgUrl": "https://i.ytimg.com/vi/jL5AVWcPKwU/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Self Made",
+                "_id": "PyRFbv",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JgUAig8FX7c",
+                "imgUrl": "https://i.ytimg.com/vi/JgUAig8FX7c/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Breguets",
+                "_id": "8XaJFE",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "FYFdNbw98xY",
+                "imgUrl": "https://i.ytimg.com/vi/FYFdNbw98xY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Thank You",
+                "_id": "yPYTiG",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "J8rAmr5o3ik",
+                "imgUrl": "https://i.ytimg.com/vi/J8rAmr5o3ik/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Seventeen",
+                "_id": "Agu0NI",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "JYp6AeGPBXY",
+                "imgUrl": "https://i.ytimg.com/vi/JYp6AeGPBXY/default.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "title": "Jericho Jackson - Listen feat. Amber Navran",
+                "_id": "AQ69Gj",
+                "album": "Khrysis & Elzhi Are Jericho Jackson",
+                "artist": "Jericho Jackson",
+                "videoId": "CYl_4qFTp9E",
+                "imgUrl": "https://i.ytimg.com/vi/CYl_4qFTp9E/default.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    },
+    {
+        "_id": "s000",
+        "title": "All the Brilliant Things",
+        "listencount": 22221,
+        "desc": [
+            "Skyzoo",
+            "2021",
+            "14 songs",
+            "55 min"
+        ],
+        "songs": [
+            {
+                "id": "s10011",
+                "title": "Free Jewelry",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "QSOqyH8j87E",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10012",
+                "title": "St. James Liquors",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "3fCSy0hDd9g",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10014",
+                "title": "A Tour of the Neighborhood",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "videoId": "eQUq5nDc_PQ",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10015",
+                "title": "Rich Rhetoric",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10016",
+                "title": "Bodega Flowers",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10017",
+                "title": "Something to Believe In",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            },
+            {
+                "id": "s10018",
+                "title": "Humble Brag",
+                "album": "All the Brilliant Things",
+                "artist": "Skyzoo",
+                "url": "youtube/song.mp4",
+                "imgUrl": "https://res.cloudinary.com/dixcbkuih/image/upload/v16,79823769/44_jefegb.jpg",
+                "addedAt": "1680012325917"
+            }
+        ]
+    }
+]

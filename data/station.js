@@ -49,9 +49,9 @@ var station = {
   ],
   "msgs": [
     {
-      id: 'm101',
-      from: '{mini-user}',
-      txt: 'Manish?'
+      "id": 'm101',
+      "from": '{mini-user}',
+      "txt": 'Manish?'
     }
   ]
 }

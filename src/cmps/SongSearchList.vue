@@ -16,19 +16,14 @@
 
     <div v-if="loading">Loading...</div>
     <ul v-else class="song-search-results-wrap">
-      <SongSearchPreview
-        v-for="(video, index) in videos"
-        @addSong="addSong"
-        :video="video"
-        :key="index"
-      />
+      <SongSearchPreview v-for="(video, index) in videos" @addSong="addSong" :video="video" :key="index" />
     </ul>
     <div v-if="!videos.length && !loading">No Songs</div>
   </section>
 </template>
 
 <script>
-import { stationService } from '../services/station.service.local.js';
+import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
 
 import SongSearchPreview from './SongSearchPreview.vue';
@@ -60,6 +55,7 @@ export default {
       try {
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${this.query}&type=video&maxResults=10&key=${API_KEY}`
+          // `https://www.googleapis.com/youtube/v3/search?part=snippet,contentDetails&q=${this.query}&type=video&maxResults=10&key=${API_KEY}`
         );
         const { items } = await response.json();
         this.videos = items;

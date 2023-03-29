@@ -41,7 +41,7 @@ export default {
     removeSong(songId) {
       this.$emit('removeSong', songId)
     },
-    setActiveSong(idx){
+    setActiveSong(idx) {
       console.log(idx)
       this.activeSongIdx = idx
     }
