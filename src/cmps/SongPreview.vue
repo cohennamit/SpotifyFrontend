@@ -1,7 +1,7 @@
 <template>
     <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
         @mouseleave="isHover = false">
-        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(),setStation()"></div>
+        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
 
@@ -20,13 +20,15 @@
 
         </div>
         <!-- <p>{{ song.album }}</p> -->
-        <div class="column-3" :class="getClass">{{song.album}}</div>
+        <div class="column-3" :class="getClass">{{ song.album }}</div>
 
         <div>{{ songAddedAt }}</div>
         <div class="column-5">
             <div>{{ song.duration }}</div>
             <div class="song-preview-preferences">
-                <span :class="getClass" class="heart-icon" v-html="getSvg('heart')"></span>
+                <span @click="likeSong()" :class="getClass" class="heart-icon">
+                    <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
+                </span>
                 <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
             </div>
         </div>
@@ -38,7 +40,7 @@ import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong','setSong','setStation'],
+    emits: ['removeSong', 'setSong', 'setStation'],
     props: {
         song: {
             type: Object
@@ -72,13 +74,16 @@ export default {
         setSong() {
             this.$emit('setSong', this.song)
         },
-        setStation(){
+        setStation() {
             this.$emit('setStation', this.station)
             eventBus.emit('onTogglePlay')
         },
         handleClick() {
             this.$emit('setActiveSong', this.index)
         },
+        likeSong() {
+            console.log('liked this song:', this.song)
+        }
         // async songAlbum() {
         //     try {
         //         const response = await fetch(
@@ -92,6 +97,17 @@ export default {
         // }
     },
     computed: {
+        isLiked() {
+            // if (!user) return false
+            // const user = this.$store.getters.loggedinUser
+            // console.log('user', user)
+            // const userLikedSongs = user.likedSongs
+            // console.log('userSongs', userLikedSongs)
+            // // if (!userLikedSongs.includes(this.song)) return false
+            // // else return true
+            // this.$store.dispatch({ type: 'updateUser', user })
+            return false
+        },
         getClass() {
             return {
                 'hover': this.isHover || this.isActive,

@@ -17,6 +17,17 @@
     cursor: pointer;
     min-height: 300px;
     max-width: 230px;
+    min-width: 198px;
+    // @media(min-width: 1780px){
+    //     font-size: 0.6em;
+    //     width: 180px;
+    //     max-height: 230px;
+    //     img {
+    //         margin: auto;
+    //         width: 100%;
+    //         height: 100%;
+    //     }
+	// }
     @media (max-width: 800px){
         max-height: 350px;
 

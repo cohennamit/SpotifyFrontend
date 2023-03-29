@@ -1,32 +1,28 @@
 <template>
-  <!-- <div class="header-content-fixed-container">
-    <div class="header-content-placeholder-container"> -->
-      <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
-        <section class="header-buttons">
-          <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
-            <div class="icon" v-html="getSvg('arrowLeft')"></div>
-          </button>
-          <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
-            <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
-          </button>
-        </section>
-        <section>
-          <StationFilter v-if="isSearch" @setFilter="setFilter" />
-        </section>
-        <section class="loggedin-user" v-if="loggedInUser">
-          <img :src="loggedInUser.imgUrl" />
-          <RouterLink :to="`/user/${loggedInUser._id}`">
-            {{ loggedInUser.username }}
-          </RouterLink>
-        </section>
-        <section v-else>
-          <section class="login-btn">
-            <RouterLink class="login-span" to="/login">Login</RouterLink>
-          </section>
-        </section>
-      </header>
-    <!-- </div> -->
-  <!-- </div> -->
+  <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
+    <section class="header-buttons">
+      <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
+        <div class="icon" v-html="getSvg('arrowLeft')"></div>
+      </button>
+      <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
+        <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
+      </button>
+    </section>
+    <section>
+      <StationFilter v-if="isSearch" @setFilter="setFilter" />
+    </section>
+    <section class="loggedin-user" v-if="loggedInUser">
+      <img :src="loggedInUser.imgUrl" />
+      <RouterLink :to="`/user/${loggedInUser._id}`">
+        {{ loggedInUser.username }}
+      </RouterLink>
+    </section>
+    <section v-else>
+      <section class="login-btn">
+        <RouterLink class="login-span" to="/login">Login</RouterLink>
+      </section>
+    </section>
+  </header>
 </template>
 
 <script>
@@ -36,9 +32,12 @@ import StationFilter from './StationFilter.vue';
 export default {
   computed: {
     headerColor() {
-      // console.log('From Getter', this.$store.getters.headerColor);
-      return this.$store.getters.headerColor;
+      // const color = `rgba(${this.$store.getters.headerColor})`
+
+      console.log('From Getter', this.$store.getters.headerColor);
+      return this.$store.getters.currColor;
     },
+
     isFilterShown() {
       return this.$store.getters.isFilterShown;
     },

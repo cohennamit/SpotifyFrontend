@@ -1,8 +1,4 @@
 <template>
-  <!-- <div class="header-placeholder"></div> -->
-  <div class="header-placeholder"></div>
-
-  <!-- <section class="genres-wrap"> -->
   <!-- <span>Browse all</span> -->
   <section class="labels-list">
     <article class="label-container" :class="getRandomColorClass" v-for="label in labels" @click="setLabel(label)">
@@ -12,7 +8,6 @@
       </span>
     </article>
   </section>
-  <!-- </section> -->
 </template>
 
 <script>

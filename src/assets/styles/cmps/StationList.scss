@@ -14,26 +14,26 @@
 	*{
 		font-family: Gotham Bold;
 	}
-	padding: 0px;
-	width: 100%;
-	row-gap: 1em;
 	@media (max-width:1600px) {
 		.top-content{
-			   height: 84px;
-	   }
+			height: 84px;
+		}
 	}
 	@media (max-width:1220px) {
 		min-height: 220px;
 		grid-template-columns: repeat(2, minmax(267px, 1fr));
 		row-gap: 0.5em;
-	 .top-content{
+		.top-content{
 			height: 64px;
-	}
+		}
 	}
 	@media (max-width:1085px) {
-
-        min-height: 190px;
+		
+		min-height: 190px;
 	}
+	padding: 0px;
+	width: 100%;
+	row-gap: 1em;
 	grid-column: 1 / -1;
 	display: grid;
 	align-items: center;
@@ -60,7 +60,6 @@
       border-radius: 4px;
       height: 64px;
 	}
-	
 	img {
 	width: 64px;
 	height: 64px;
@@ -78,6 +77,10 @@
 
 
 .station-list {
+	// @media(min-width: 1780px){
+	// 	grid-template-columns: repeat(8, minmax(170px, 0.9fr));
+
+	// }
 	@media (max-width: 760px) {
 		grid-template-columns: repeat(2, 1fr);
 		
