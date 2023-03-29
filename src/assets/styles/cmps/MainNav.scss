@@ -13,9 +13,26 @@ $secondary-color: #aaa;
     padding-inline-end: 20px;
     grid-row: 1 / 5;
 
-    .logo {
-        margin-block-start: 15px;
-        margin-block-end: 30px;
+    &-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-block-start: 19px;
+        .headphones-icon {
+
+            svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: white;
+            // margin-block-start: 15px;
+            margin: 0 0 0.1em;
+            // margin-block-end: 30px;
+        }
     }
 
     a {
@@ -47,7 +64,7 @@ $secondary-color: #aaa;
 .nav {
     display: grid;
     gap: 11px;
-    margin-block-start: 55px;
+    margin-block-start: 28px;
     margin-inline-start: -1px;
 }
 

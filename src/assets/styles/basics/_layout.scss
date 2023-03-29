@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: 20px 1fr 20px;
 
-    > * {
+    >* {
         grid-column: 2;
 
         &.full {
@@ -16,22 +16,18 @@
     }
 
     @include for-narrow-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(20px, 1fr);
+        grid-template-columns:
+            minmax(20px, 1fr) minmax(auto, $mobile-breakpoint) minmax(20px, 1fr);
     }
+
     @include for-normal-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(20px, 1fr);
+        grid-template-columns:
+            minmax(20px, 1fr) minmax(auto, $narrow-breakpoint) minmax(20px, 1fr);
     }
+
     @include for-wide-layout {
-        grid-template-columns: 
-            minmax(20px, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(20px, 1fr);
+        grid-template-columns:
+            minmax(20px, 1fr) minmax(auto, $normal-breakpoint) minmax(20px, 1fr);
     }
 }
 
@@ -41,26 +37,27 @@
     grid-gap: 20px;
 }
 
-.app-main{
-        background-image: linear-gradient(0deg,#121212 88%,#222222 );
-        background-attachment: local;
-        padding: 32px;
-        padding-top: 100px;
+.app-main {
+    background-image: linear-gradient(0deg, #121212 88%, #222222);
+    background-attachment: local;
+    padding: 32px;
+    padding-top: 100px;
 
-        grid-row: 1/-1;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: 48px 1fr 120px 0.5fr;
-        overflow: auto;
-        overflow-x: hidden;
-        padding-inline: 32px;
-    }
-    
-    .layout-container{
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        grid-template-rows: 70px 72dvh 139px;
-        padding-block-end: 1em;
+
+    grid-row: 1/-1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 48px 1fr 120px 0.5fr;
+    overflow: auto;
+    overflow-x: hidden;
+    padding-inline: 32px;
+}
+
+.layout-container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 70px 72dvh 139px;
+    padding-block-end: 1em;
 
 }
