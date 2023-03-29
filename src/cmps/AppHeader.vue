@@ -32,9 +32,12 @@ import StationFilter from './StationFilter.vue';
 export default {
   computed: {
     headerColor() {
-      // console.log('From Getter', this.$store.getters.headerColor);
-      return this.$store.getters.headerColor;
+      // const color = `rgba(${this.$store.getters.headerColor})`
+
+      console.log('From Getter', this.$store.getters.headerColor);
+      return this.$store.getters.currColor;
     },
+
     isFilterShown() {
       return this.$store.getters.isFilterShown;
     },

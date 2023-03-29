@@ -25,16 +25,20 @@ export default {
     if (user) store.commit({ type: 'setLoggedinUser', user });
     this.$store.dispatch({ type: 'loadStations' });
   },
+  computed: {
+    headerColor() {
+      return this.$store.getters.headerColor;
+    },
+  },
   methods: {
     handleScroll() {
       const appMain = this.$refs.appMain;
       const scrollTop = appMain.scrollTop;
       const opacity = 1 - scrollTop / 200;
 
-      this.$store.dispatch('setHeaderColor', `rgba(0, 0, 0, ${1 - opacity})`);
-      // this.$store.dispatch('setHeaderColor', `rgba(28, 17, 56, ${1 - opacity})`);
-
+      this.$store.dispatch('setCurrColor', `rgba(0, 0, 0, ${1 - opacity})`);
       this.$store.dispatch('setScrollTop', scrollTop);
+      // appMain.style.backgroundImage = `linear-gradient(0deg, #121212 88%, ${this.headerColor})`;
     },
   },
   mounted() {

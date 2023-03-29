@@ -31,7 +31,7 @@ export function getActionAddStationMsg(stationId) {
 export const stationStore = {
   state: {
     stations: [],
-    headerColor: 'rgba(0, 0, 0, 0 )',
+    currColor: 'rgba(0, 0, 0, 0 )',
     scrollTop: 0,
 
     isFilterShown: false,
@@ -45,9 +45,9 @@ export const stationStore = {
     // labels: []
   },
   getters: {
-    headerColor: (state) => {
-      console.log('state.headerColor: ', state.headerColor);
-      return state.headerColor;
+    currColor: (state) => {
+      console.log('state.currColor: ', state.currColor);
+      return state.currColor;
     },
     scrollTop: (state) => {
       console.log('state.scrollTop: ', state.scrollTop);
@@ -69,9 +69,9 @@ export const stationStore = {
       console.log('value: ', value);
       state.scrollTop = value;
     },
-    SET_HEADER_COLOR(state, color) {
+    SET_CURR_COLOR(state, color) {
       // console.log('color: ', color);
-      state.headerColor = color;
+      state.currColor = color;
     },
     setFilterBy(state, { filterBy }) {
       state.filterBy = filterBy;
@@ -104,9 +104,9 @@ export const stationStore = {
     setScrollTop(context, scrollTop) {
       context.commit('SET_SCROLL_TOP', scrollTop);
     },
-    setHeaderColor({ commit }, color) {
+    setCurrColor({ commit }, color) {
       // console.log('color: ', color);
-      commit('SET_HEADER_COLOR', color);
+      commit('SET_CURR_COLOR', color);
     },
 
     async addStation(context, { newStation }) {

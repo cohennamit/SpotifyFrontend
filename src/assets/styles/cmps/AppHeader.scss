@@ -1,12 +1,12 @@
 
-header {
+.header {
     z-index: 300;
     position: fixed;
     top: 0;
     left: 0;
     grid-column: 2;
     height: 60px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-items: space-around;
