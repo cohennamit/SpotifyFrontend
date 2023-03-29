@@ -4,8 +4,7 @@
     <h3>Nickname - {{ user.username }}</h3>
     <section v-if="isMe">
       <h4>Its me</h4>
-      <!-- <RouterLink to="/login">Logout</RouterLink> -->
-      <button @click="doLogout()">Logout</button>
+      <button @click="doLogout">Logout</button>
     </section>
     <img style="max-width: 200px;" :src="user.imgUrl" />
     <ul>

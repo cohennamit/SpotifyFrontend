@@ -20,7 +20,9 @@ export default {
     setSong() {
       console.log(this.station);
       this.$store.dispatch({ type: 'setSong', song: this.station.songs[0] })
+      this.$store.dispatch({ type: 'setStation', station: this.station })
     },
+    
   }
 }
 </script>

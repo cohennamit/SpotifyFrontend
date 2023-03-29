@@ -32,35 +32,40 @@
         <button @click="doLogout">Logout</button>
       </h3>
     </div> -->
-      <section>
-        <form @submit.prevent="doLogin">
-          <label for="username"></label>
-          <div class="input-wrapper">
-            <input v-model="loginCred.username" placeholder="username" type="text" name="username" />
-          </div>
-          <label for="password"></label>
-          <div class="input-wrapper">
-            <div class="eye-icon" v-html="getSvg('eye')"></div>
-            <input placeholder="password" type="password" name="password" v-model="loginCred.password" />
-          </div>
-          <option value="">Select User</option>
-          <option v-for="user in users" :key="user._id" :value="user.username">{{ user.fullname }}</option>
-          <input type="text" v-model="loginCred.username" placeholder="User name" />
-          <input type="text" v-model="loginCred.password" placeholder="Password" />
-          <button>Connection</button>
-
-        </form>
-        <!-- <form @submit.prevent="doSignup">
-        <h2>Signup</h2>
-        <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
-        <input type="text" v-model="signupCred.username" placeholder="Username" />
-        <input type="password" v-model="signupCred.password" placeholder="Password" />
-        <ImgUploader @uploaded="onUploaded" />
-        <button>Signup</button>
-      </form> -->
-        <h2>Don't have an account?</h2>
-      </section>
-      <!-- <details>
+    <section class="login-form">
+      <form @submit.prevent="doLogin">
+        <label for="username"></label>
+        <div class="input-wrapper">
+          <input placeholder="username" type="text" name="username" v-model="loginCred.username" />
+        </div>
+        <label for="password"></label>
+        <div class="input-wrapper">
+          <div class="eye-icon" v-html="getSvg('eye')"></div>
+          <input placeholder="password" type="password" name="password" v-model="loginCred.password" />
+        </div> 
+        <!-- <option value="">Select User</option>
+          <option v-for="user in users" :key="user._id" :value="user.username">{{ user.fullname }}</option> -->
+          
+          <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
+            <input
+            type="text"
+            v-model="loginCred.password"
+            placeholder="Password"
+            /> -->
+        <button style="color:black">Connection</button>
+        
+      </form>
+    </section>
+    <h2>Don't have an account?</h2>
+    <form @submit.prevent="doSignup">
+      <h2>Signup</h2>
+      <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
+      <input type="text" v-model="signupCred.username" placeholder="Username" />
+      <input type="password" v-model="signupCred.password" placeholder="Password" />
+      <ImgUploader @uploaded="onUploaded" />
+      <button style="color:black">Signup</button>
+    </form>
+    <!-- <details>
       <summary>
         Admin Section
       </summary>
@@ -111,9 +116,6 @@ export default {
         console.log(err)
         this.msg = 'Failed to login'
       }
-    },
-    doLogout() {
-      this.$store.dispatch({ type: 'logout' })
     },
     async doSignup() {
       if (!this.signupCred.fullname || !this.signupCred.password || !this.signupCred.username) {
