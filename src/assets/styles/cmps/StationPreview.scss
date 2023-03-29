@@ -58,9 +58,9 @@
             display: block;
             position: absolute;
             bottom: 0px;
-            right: 7px;
+            right: 3%;
             margin-block-end: 6px;
-            transition: opacity 100ms, bottom 100ms ease-in;
+            transition: opacity 165ms, bottom 165ms ease-in;
             svg{
                 width: 24px;
                 height: 24px;
@@ -84,20 +84,6 @@
 }
 
 .station-preview:hover .play-btn {
-    // margin-block-end: ;
     animation: fade-in 0.3s ease-in forwards;
 }
 
-
-// @keyframes fade-in {
-//     from {
-//         opacity: 0;
-//         transform: translateY(10px);
-//     }
-
-//     to {
-//         opacity: 1;
-//         transform: translateY(0);
-//     }
-
-// }

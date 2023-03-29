@@ -33,7 +33,6 @@ export default {
   computed: {
     headerColor() {
       // const color = `rgba(${this.$store.getters.headerColor})`
-
       console.log('From Getter', this.$store.getters.headerColor);
       return this.$store.getters.currColor;
     },
