@@ -4,7 +4,8 @@
     <h3>Nickname - {{ user.username }}</h3>
     <section v-if="isMe">
       <h4>Its me</h4>
-      <RouterLink to="/login">Logout</RouterLink>
+      <!-- <RouterLink to="/login">Logout</RouterLink> -->
+      <button @click="doLogout()">Logout</button>
     </section>
     <img style="max-width: 200px;" :src="user.imgUrl" />
     <ul>
@@ -58,6 +59,10 @@ export default {
     },
   },
   methods: {
+    doLogout() {
+      this.$store.dispatch({ type: 'logout' })
+      this.$router.push('/')
+    },
   }
 }
 </script>
