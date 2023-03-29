@@ -1,38 +1,21 @@
-// .header-content-fixed-container {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-// }
 
-
-.header {
+header {
     z-index: 300;
-    // background-color: aqua;
     position: fixed;
     top: 0;
     left: 0;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
     grid-column: 2;
     height: 60px;
     width: 100vw;
-
-    // background-color: rgba(28, 17, 56, 0);
-    // background-color: pink;
     display: flex;
     align-items: center;
     justify-items: space-around;
-
     button {
-        z-index: 300;
         margin-inline-start: 1em;
         cursor: pointer;
     }
-
     .login-btn {
         position: fixed;
-        z-index: 300;
         top: 1em;
         right: 1em;
         margin: 0;
@@ -50,7 +33,6 @@
 
     .loggedin-user {
         position: fixed;
-        z-index: 300;
         top: 1em;
         right: 1em;
         margin: 0;
@@ -90,12 +72,10 @@
             text-decoration: none;
         }
     }
-
     nav {
         background-color: $clr4;
         padding: 5px 0;
     }
-
     nav a:not(:first-child) {
         border-top: 1px solid $clr1;
         padding: 0 5px;

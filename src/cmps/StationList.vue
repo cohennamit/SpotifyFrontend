@@ -1,5 +1,4 @@
 <template>
-  <div class="header-placeholder"></div>
   <section class="station-list-top-content-container">
     <route class="top-content">
       <img
@@ -56,7 +55,7 @@
     <h1 class="station-list-text">Made For You</h1>
   </article>
   <ul class="station-list">
-    <StationPreview  v-for="station in stations" :key="station._id" :station="station" />
+    <StationPreview v-for="station in stations" :key="station._id" :station="station" />
   </ul>
 </template>
 
