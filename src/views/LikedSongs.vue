@@ -16,7 +16,7 @@
         <div class="placeholder"></div>
     </section>
     <section v-else>
-        <h1>You don't have liked songs yet</h1>
+        <h1>get</h1>
     </section>
 </template>
   

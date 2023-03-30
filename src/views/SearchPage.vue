@@ -1,15 +1,11 @@
 <template>
   <!-- <span>Browse all</span> -->
 
-    <SongSearchList v-if="songs" :songs="songs"/>
+  <SongSearchList v-if="songs" :songs="songs" />
 
-  <section class="labels-list">
-   <article
-      class="label-container"
-      :class="getRandomColorClass(index)"
-      v-for="(label, index) in labels"
-      @click="setLabel(label)"
-    >
+  <section v-else class="labels-list">
+    <article class="label-container" :class="getRandomColorClass(index)" v-for="(label, index) in labels"
+      @click="setLabel(label)">
       <img :src="label.imgUrl" />
       <span>{{ label.name }}</span>
     </article>
@@ -36,24 +32,24 @@ export default {
   },
   watch: {
     '$route.query': {
-    async handler() {
+      async handler() {
         const { query } = this.$route.query
         console.log(getSongs(query));
-        if(query){
+        if (query) {
           this.songs = await getSongs(query)
         }
-        // this.isSearchPage= (path === '/search') ? true : false
+        this.isSearchPage = (path === '/search') ? true : false
       },
       immediate: true,
     },
     '$route': {
       handler() {
         const { path } = this.$route
-        if(path === '/search')this.songs = null
+        if (path === '/search') this.songs = null
       },
       immediate: true,
     },
-   
+
   },
   methods: {
     setLabel(label) {
@@ -79,9 +75,9 @@ export default {
       return colors[randomIdx];
     },
   },
-  created() {},
+  created() { },
   components: {
-        SongSearchList
+    SongSearchList
 
   },
 };
