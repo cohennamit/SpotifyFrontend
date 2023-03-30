@@ -26,7 +26,7 @@
         <div class="column-5">
             <div>{{ song.duration }}</div>
             <div class="song-preview-preferences">
-                <span @click="likeSong()" :class="getClass" class="heart-icon">
+                <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
                 <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
@@ -38,6 +38,7 @@
 <script>
 import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
+import { userService } from '../services/user.service'
 export default {
     name: 'Song Preview',
     emits: ['removeSong', 'setSong', 'setStation'],
@@ -82,7 +83,18 @@ export default {
             this.$emit('setActiveSong', this.index)
         },
         likeSong() {
-            console.log('liked this song:', this.song)
+            const user = this.$store.getters.loggedinUser
+            // const username = this.$store.getters.loggedinUser.username
+            // const usersLikedSongs = this.$store.getters.loggedinUser.likedSongs
+            // console.log(`${username} liked this song:`, this.song)
+            console.log('user', user)
+            this.$store.dispatch({ type: 'addLikedSong', song: this.song })
+            // console.log(`this is ${username} liked songs: ${usersLikedSongs}`)
+        },
+        unlikeSong() {
+            const user = this.$store.getters.loggedinUser
+            console.log('user', user)
+            this.$store.dispatch({ type: 'removeLikedSong', song: this.song })
         }
         // async songAlbum() {
         //     try {
@@ -98,15 +110,15 @@ export default {
     },
     computed: {
         isLiked() {
-            // if (!user) return false
-            // const user = this.$store.getters.loggedinUser
+            const user = this.$store.getters.loggedinUser
+            if (!user) return false
             // console.log('user', user)
-            // const userLikedSongs = user.likedSongs
+            const userLikedSongs = user.likedSongs
             // console.log('userSongs', userLikedSongs)
-            // // if (!userLikedSongs.includes(this.song)) return false
-            // // else return true
+            if (!userLikedSongs.includes(this.song)) return false
+            else return true
             // this.$store.dispatch({ type: 'updateUser', user })
-            return false
+            // return false
         },
         getClass() {
             return {

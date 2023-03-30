@@ -118,6 +118,7 @@ export const stationStore = {
       try {
         station = await stationService.save(station);
         context.commit(getActionUpdateStation(station));
+        console.log('station from updateStation:', station)
         return station;
       } catch (err) {
         console.log('stationStore: Error in updateStation', err);
@@ -126,6 +127,7 @@ export const stationStore = {
     },
     async loadStations(context, { filterBy }) {
       try {
+        console.log('filterBy', filterBy)
         const stations = await stationService.query(filterBy);
         context.commit({ type: 'setStations', stations });
       } catch (err) {
