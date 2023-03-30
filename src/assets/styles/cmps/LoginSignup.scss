@@ -147,9 +147,8 @@
                         box-shadow: 0 3px 0 black;
                     }
                 }
-                background-color: #1ed760;
             }
-
+            
             button {
                 color: black;
                 padding-block: 12px;
@@ -158,9 +157,11 @@
                 border-radius: 500px;
                 letter-spacing: 2px;
                 font-size: 12px;
+                background-color: #1ed760;
             }
 
-            h2 {
+            .route-to-signup {
+                color: black;
                 margin: 0;
                 /* line-height: 0; */
                 font-size: 14.7px;

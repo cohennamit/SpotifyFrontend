@@ -1,5 +1,9 @@
+
 .song-preview {
     &-main {
+        &:first-of-type{
+            margin-block-start: 10px;
+        }
         color: #B3B3B3;
         font-size: 13px;
         display: grid;
@@ -83,6 +87,9 @@
         left: 50%;
         transform: translate(-50%, -37%);
         gap: 65px;
+        .heart-icon{
+            padding-block-start: 1.4px;
+        }
     }
 
     span:first-of-type {

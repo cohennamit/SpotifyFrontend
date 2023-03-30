@@ -1,0 +1,8 @@
+.library {
+    grid-row: 2/-1;
+
+    .liked-songs {
+        background: linear-gradient(135deg, #450af5, #c4efd9);;
+        grid-column: 1/3;
+    }
+}

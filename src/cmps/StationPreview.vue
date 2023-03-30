@@ -3,7 +3,7 @@
     <section @click="goToDetails" class="station-preview">
       <div class="img-wrapper">
         <img v-if="station.imgUrl" :src="station.imgUrl" />
-        <PlayBtn :station="station" class="play-btn img-wrapper-play-btn" />
+        <PlayBtn v-if="station.songs.length" :station="station" class="play-btn img-wrapper-play-btn" />
       </div>
       <p>{{ station.title }}</p>
       <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"

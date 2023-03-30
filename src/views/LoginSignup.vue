@@ -47,7 +47,7 @@
         <button style="color:black">CONNECTION</button>
       </form>
       <hr/>
-      <h2>Don't have an account?</h2>
+      <RouterLink class="route-to-signup" to="/signup">Don't have an account?</RouterLink>
     </section>
 
     <section v-if="!isLogin" class="login-form">
