@@ -1,24 +1,24 @@
 <template>
   <section class="login-signup">
     <section class="login-signup-logo">
-      <span>Spotify</span>
+      <span>{{isLogin ? 'Login':'Sign up'}}</span>
     </section>
     <div class="login-signup-wrapper">
-      <p>To continue, connect to Spotify.</p>
+      <p>To continue, {{isLogin?'continue':'sign up'}} to Spotify.</p>
       <section class="login-out-src">
         <div class="login-out-src-btn facebook">
           <div>
-            <span>CONTINUE WITH FACEBOOK
+            <span>{{isLogin?'CONTINUE':'SIGN UP'}} WITH FACEBOOK
             </span>
             <div class="facebook-icon" v-html="getSvg('facebook')"></div>
           </div>
         </div>
         <div class="login-out-src-btn google">
           <div>
-            <span>CONTINUE WITH GOOGLE</span>
+            <span>{{isLogin?'CONTINUE':'SIGN UP'}} WITH GOOGLE</span>
             <span class="google-icon-img"></span>
           </div>
-        </div>
+        </div>  
         <div class="or">
           <hr />
           <span>OR</span>
@@ -32,16 +32,39 @@
         <button @click="doLogout">Logout</button>
       </h3>
     </div> -->
-    <section class="login-form">
+    <section v-if="isLogin" class="login-form">
       <form @submit.prevent="doLogin">
-        <label for="username"></label>
-        <div class="input-wrapper">
+        <p :class="isInvalid?'invalid' : ''">Username</p>
+        <div :class="isInvalid?'invalid' : ''" class="input-wrapper">
           <input placeholder="username" type="text" name="username" v-model="loginCred.username" />
         </div>
-        <label for="password"></label>
-        <div class="input-wrapper">
-          <div class="eye-icon" v-html="getSvg('eye')"></div>
-          <input placeholder="password" type="password" name="password" v-model="loginCred.password" />
+        <p>Password</p>
+        <div :class="isInvalid?'invalid' : ''" class="input-wrapper password">
+          <input placeholder="password" :type="isPassShown?'text':'password'" name="password" v-model="loginCred.password" />
+          <div @click="handleEye" v-if="!isPassShown" :class="isEyeClicked ? 'clicked':''" class="eye-icon" v-html="getSvg('eyeCross')"></div>
+          <div @click="handleEye" v-else :class="isEyeClicked ? 'clicked':''" class="eye-icon" v-html="getSvg('eye')"></div>
+        </div> 
+        <button style="color:black">CONNECTION</button>
+      </form>
+      <hr/>
+      <h2>Don't have an account?</h2>
+    </section>
+
+    <section v-if="!isLogin" class="login-form">
+      <form @submit.prevent="doSignup">
+        <p :class="isInvalid?'invalid' : ''">Fullname</p>
+        <div :class="isInvalid?'invalid' : ''" class="input-wrapper">
+          <input placeholder="fullname" type="text" name="fullname" v-model="signupCred.fullname" />
+        </div>
+        <p :class="isInvalid?'invalid' : ''">Username</p>
+        <div :class="isInvalid?'invalid' : ''" class="input-wrapper">
+          <input placeholder="username" type="text" name="username" v-model="signupCred.username" />
+        </div>
+        <p>Password</p>
+        <div :class="isInvalid?'invalid' : ''" class="input-wrapper password">
+          <input placeholder="password" :type="isPassShown?'text':'password'" name="password" v-model="signupCred.password" />
+          <div @click="handleEye" v-if="!isPassShown" :class="isEyeClicked ? 'clicked':''" class="eye-icon" v-html="getSvg('eyeCross')"></div>
+          <div @click="handleEye" v-else :class="isEyeClicked ? 'clicked':''" class="eye-icon" v-html="getSvg('eye')"></div>
         </div> 
         <!-- <option value="">Select User</option>
           <option v-for="user in users" :key="user._id" :value="user.username">{{ user.fullname }}</option> -->
@@ -52,19 +75,19 @@
             v-model="loginCred.password"
             placeholder="Password"
             /> -->
-        <button style="color:black">Connection</button>
+        <button style="color:black">Sign up</button>
         
       </form>
+      <hr/>
     </section>
-    <h2>Don't have an account?</h2>
-    <form @submit.prevent="doSignup">
+    <!-- <form @submit.prevent="doSignup">
       <h2>Signup</h2>
       <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
       <input type="text" v-model="signupCred.username" placeholder="Username" />
       <input type="password" v-model="signupCred.password" placeholder="Password" />
       <ImgUploader @uploaded="onUploaded" />
       <button style="color:black">Signup</button>
-    </form>
+    </form> -->
     <!-- <details>
       <summary>
         Admin Section
@@ -90,6 +113,10 @@ export default {
       msg: '',
       loginCred: { username: 'user1', password: '123' },
       signupCred: { username: '', password: '', fullname: '', imgUrl: '' },
+      isPassShown: false,
+      isEyeClicked: false,
+      isInvalid: false,
+      isLogin:false
     }
   },
   computed: {
@@ -104,6 +131,10 @@ export default {
     this.loadUsers()
   },
   methods: {
+    handleEye(){
+      this.isPassShown=!this.isPassShown
+      this.isEyeClicked = true
+    },
     async doLogin() {
       if (!this.loginCred.username) {
         this.msg = 'Oops! Something went wrong, check Username or Password.'
@@ -114,7 +145,7 @@ export default {
         this.$router.push('/')
       } catch (err) {
         console.log(err)
-        this.msg = 'Failed to login'
+        this.isInvalid = true
       }
     },
     async doSignup() {
@@ -144,6 +175,15 @@ export default {
       return svgService.getSvg(iconName)
     }
 
+  },
+  watch: {
+    '$route': {
+      handler() {
+        const { path } = this.$route;
+        this.isLogin = (path === '/login') ? true : false
+      },
+      immediate: true,
+    },
   },
   components: {
     ImgUploader

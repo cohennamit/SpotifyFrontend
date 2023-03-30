@@ -17,7 +17,6 @@ export const musicPlayerStore = {
     },
     mutations: {
         play(state) {
-            console.log('state.isPlaying', state.isPlaying)
             state.isPlaying = true
         },
         pause(state) {
@@ -25,7 +24,6 @@ export const musicPlayerStore = {
         },
         setCurrentSong(state, { song }) {
             state.currentSong = (song) ? { ...song } : null
-            console.log('state.currentSong', state.currentSong)
         },
         pauseResume(state) {
             this.isPlaying = !this.isPlaying
@@ -41,7 +39,6 @@ export const musicPlayerStore = {
             if (currentSongIdx + 1 > state.currentStation.songs.length - 1) return
             const nextSong = state.currentStation.songs[currentSongIdx + 1]
             state.currentSong = { ...nextSong }
-            console.log('Musicplayer store', nextSong)
 
         },
         setSameSong(state) {
@@ -66,14 +63,12 @@ export const musicPlayerStore = {
             state.currentStation = (station) ? { ...station } : null
         },
         setYoutubeRef(state, { ref }) {
-            console.log('ref', ref)
             state.youtubeRef = ref
         }
     },
     actions: {
         setSong({ commit }, { song }) {
             commit({ type: 'setCurrentSong', song })
-            console.log(song)
         },
         setNextSong({ commit }) {
             commit({ type: 'setNextSong' })

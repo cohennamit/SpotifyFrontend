@@ -21,8 +21,6 @@ export default {
   },
   methods: {
     setLabel(label) {
-      console.log(label);
-      this.$router.push(`/genre/${label.name}`);
       this.$router.push(`/genre/${label.name}`);
     },
   },

@@ -18,7 +18,6 @@ export default {
       return svgService.getSvg(iconName)
     },
     setSong() {
-      console.log(this.station);
       this.$store.dispatch({ type: 'setSong', song: this.station.songs[0] })
       this.$store.dispatch({ type: 'setStation', station: this.station })
     },

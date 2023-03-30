@@ -33,10 +33,6 @@
                     placeholder="Add an optional description" cols="20" rows="10"></textarea>
                 <input v-model="stationTitle" placeholder="Add a name" :class="{err:isNameInputEmpty}" class="edit-modal-body-input" type="text">
                 <button class="edit-modal-body-save-btn" @click="saveStation">Save</button>
-                <p>
-                    By proceeding, you agree to give Spotify access to the image you choose to upload. Please make sure you
-                    have the right to upload the image.
-                </p>
             </div>
 
         </section>

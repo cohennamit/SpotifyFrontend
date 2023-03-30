@@ -23,7 +23,6 @@ async function query(filterBy = { txt: '', listencount: 0 }) {
   // return _filterStations(filterBy,stations)
 }
 function _filterStations(filterBy, stations) {
-  console.log('stations: ', stations);
   // const {labels,txt,listencount} = filterBy
   let filteredStations;
   //Filter By Txt
@@ -515,7 +514,6 @@ function getLabels() {
 ; (async () => {
   let stations = await storageService.query(STORAGE_KEY)
   if (!stations || !stations.length) {
-    console.log('gStations', gStations)
     await storageService.postMany(STORAGE_KEY, gStations)
   }
 })()

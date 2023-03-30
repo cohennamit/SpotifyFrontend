@@ -77,7 +77,6 @@ export default {
     },
     methods: {
         onReady() {
-            console.log('im ready');
             this.duration = this.$refs.youtube.getDuration()
             this.intervalId = setInterval(() => {
                 this.currentTime = this.$refs.youtube.getCurrentTime()
@@ -101,7 +100,6 @@ export default {
                 this.$refs.youtube.pauseVideo()
                 this.$store.commit({ type: 'pause' })
             }
-            console.log('this.isPlaying', this.isPlaying)
         },
         // onPauseResume() {
         //     this.$store.commit({ type: 'pauseResume' })
@@ -114,11 +112,9 @@ export default {
         },
         onRepeat() {
             this.isRepeating = !this.isRepeating
-            console.log('this.isRepeating', this.isRepeating)
         },
         onShuffle() {
             this.isShuffling = !this.isShuffling
-            console.log('this.isShuffling', this.isShuffling)
         },
         toggleMute() {
             if (!this.videoId) return
