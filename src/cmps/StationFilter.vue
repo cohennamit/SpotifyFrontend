@@ -1,4 +1,4 @@
-<template>
+  <template>
   <section class="station-filter">
     <div class="search-icon" v-html="getSvg('searchEmpty')"></div>
     <input v-model="filterBy.name" @input="setFilter" class="search-input" type="text" name="search" id="search-input"

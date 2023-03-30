@@ -1,0 +1,111 @@
+.station-details-search {
+    display: flex;
+    background-color: hsla(0deg, 0%, 100%, 0.1);
+    border: 0;
+    border-radius: 4px;
+    color: #c2c2c2;
+    height: 40px;
+    padding-inline-start: 8.6px;
+    text-overflow: ellipsis;
+    width: 100%;
+    font-size: 0.875rem;
+    padding-inline-end: 11px;
+    padding-block-end: 8px;
+    gap: 5px;
+    padding-block-start: 10px;
+    max-width: 367px;
+    fill: hsl(0deg 0% 74.9%);
+
+    input {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+
+        background-color: inherit;
+        border: 0;
+        width: 100%;
+        background-color: transparent;
+        font-weight: 700;
+        color: hsl(0deg 0% 74.9%);
+        font-family: Gotham Book;
+
+        &::placeholder {
+            font-weight: 700;
+            color: hsl(0deg 0% 74.9%);
+            font-family: Gotham Book;
+        }
+    }
+
+    .search-icon {
+        padding-block-start: 2px;
+
+        svg {
+            width: 17px;
+            height: 17px;
+        }
+    }
+
+    .x-icon {
+        padding-block-start: 3px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+.header-search {
+    display: flex;
+    background-color: white;
+    border: 0;
+    border-radius: 500px;
+    height: 40px;
+    font-size: 0.875rem;
+    padding-inline-end: 14px;
+    padding-block-end: 8px;
+    padding-block-start: 10px;
+    width: 364px;
+    padding-inline-start: 11px;
+    align-items: center;
+    fill: black;
+    input {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+
+        background-color: inherit;
+        border: 0;
+        width: 100%;
+        background-color: transparent;
+        font-weight: 700;
+        color: black;
+        font-family: Gotham Book;
+
+        &::placeholder {
+            font-weight: 700;
+            color: hsl(0deg 0% 74.9%);
+            font-family: Gotham Book;
+        }
+    }
+
+    .search-icon {
+        margin-inline-end: 12px;
+        /* padding-block-end: 17px; */
+        padding-block-start: 5px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+    }
+    .x-icon {
+        // padding-block-start: 3px;
+        margin-block-start: 7px;
+        svg {
+            width: 22px;
+            height: 22px;
+        }
+    }
+}

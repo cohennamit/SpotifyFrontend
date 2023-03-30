@@ -11,7 +11,11 @@
       </ul>
     </div>
     <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
-    <SongSearchList v-if="station.isAddedByUser" @addSong="addSong" />
+    <section v-if="station.isAddedByUser" class="song-search-header">
+      <h1>Let's find something for your playlist</h1>
+      <SongSearch @setSearch="fetchSongs" class="station-details-search"/>  
+    </section>
+    <SongSearchList :songs="songs" class="search-results-list" @addSong="addSong" />
     <hr>
     <div class="placeholder"></div>
   </section>
@@ -21,20 +25,26 @@
 //TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
 import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
+import { getSongs } from '../services/songService.js';
 
 import StationHeader from '../cmps/StationHeader.vue';
 import SongList from '../cmps/SongList.vue';
 import SongSearchList from '../cmps/SongSearchList.vue';
 import PlayBtn from '../cmps/PlayBtn.vue';
+import SongSearch from '../cmps/SongSearch.vue';
 export default {
   name: 'Song Details',
   data() {
     return {
       station: null,
       isOptionsShown: false,
+      songs: null
     };
   },
   methods: {
+    async fetchSongs(query){
+          this.songs = await getSongs(query)
+    },
     setSong(song) {
       this.$store.dispatch({ type: 'setSong', song })
     },
@@ -94,7 +104,8 @@ export default {
     StationHeader,
     SongList,
     SongSearchList,
-    PlayBtn
+    PlayBtn,
+    SongSearch
   },
 };
 </script>

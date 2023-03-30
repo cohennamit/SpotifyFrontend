@@ -41,7 +41,7 @@
                 display: none;
             }
     
-            &:hover {
+            &:hover:not(.not-custom) {
                 .img-container {
                     opacity: 0.3;
                 }

@@ -1,6 +1,6 @@
 <template>
   <header class="station-details-header">
-    <div class="img-wrapper">
+    <div class="img-wrapper" :class="station.isAddedByUser? '' :'not-custom'">
       <!-- <button class="change-img-btn"></button> -->
       <!-- <div class="opacity-placeholder"></div> -->
       <article class="choose-photo">
@@ -8,7 +8,7 @@
         <span>Choose Photo</span>
       </article>
       <div class="img-container">
-        <ImgUploader @updateImgUrl="updateImgUrl" />
+        <ImgUploader v-if="station.isAddedByUser" @updateImgUrl="updateImgUrl" />
         <img v-if="station.imgUrl" :src="station.imgUrl" alt="" />
         <img
           v-else
