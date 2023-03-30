@@ -38,20 +38,20 @@
 }
 
 .app-main {
+    z-index: 100;
     background-image: linear-gradient(0deg, #121212 88%, #222222);
     background-attachment: local;
     padding: 32px;
     padding-top: 100px;
-
-
-    grid-row: 1/-1;
+    grid-area: 1 / 2 / -1 / -1;
+    // grid-row: 1/-1;
+    // grid-column: 2;
     width: 100%;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 48px 1fr 120px 0.5fr;
     overflow: auto;
     overflow-x: hidden;
-    padding-inline: 32px;
 }
 
 .layout-container {

@@ -10,7 +10,7 @@ export async function getSongs(query) {
         // const searchResults = items 
         // if(this.isSearchPage){
         // this.$router.push(`/search/${this.query}`);
-    // }
+        // }
     } catch (error) {
         console.error(error);
     }

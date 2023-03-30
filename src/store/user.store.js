@@ -17,6 +17,7 @@ export const userStore = {
     },
     mutations: {
         setLoggedinUser(state, { user }) {
+            console.log('user from setloggedinuser', user)
             // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user) ? { ...user } : null
         },
@@ -26,12 +27,25 @@ export const userStore = {
         setUsers(state, { users }) {
             state.users = users
         },
+        // setUser(state, { user }) {
+        //     state.logg = users
+        // },
         removeUser(state, { userId }) {
             state.users = state.users.filter(user => user._id !== userId)
         },
         setUserScore(state, { score }) {
             state.loggedinUser.score = score
         },
+        addLikedSong(state, { song }) {
+            console.log('state.loggedinUser', state.loggedinUser)
+            state.loggedinUser.likedSongs.push(song)
+        },
+        removeLikedSong(state, { song }) {
+            console.log('state.loggedinUser', state.loggedinUser)
+            const likedSongs = state.loggedinUser.likedSongs
+            const index = likedSongs.findIndex((s => s.id === song.id))
+            state.loggedinUser.likedSongs.splice(index, 1)
+        }
     },
     actions: {
         async login({ commit }, { userCred }) {
@@ -95,8 +109,10 @@ export const userStore = {
         },
         async updateUser({ commit }, { user }) {
             try {
-                user = await userService.update(user)
-                commit({ type: 'setUser', user })
+                console.log('user', user)
+                await userService.update(user)
+                console.log('user', user)
+                commit({ type: 'setLoggedinUser', user })
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)
                 throw err
@@ -109,6 +125,28 @@ export const userStore = {
                 commit({ type: 'setUserScore', score })
             } catch (err) {
                 console.log('userStore: Error in increaseScore', err)
+                throw err
+            }
+        },
+        async addLikedSong({ state, commit, dispatch }, { song }) {
+            try {
+
+                console.log('state.loggedinUser', state.loggedinUser)
+                commit({ type: 'addLikedSong', song })
+                console.log('state.loggedinUser', state.loggedinUser)
+                dispatch({ type: 'updateUser', user: { ...state.loggedinUser } })
+            } catch (err) {
+                console.log('userStore: Had a problem liking a song', err);
+                throw err
+            }
+        },
+        async removeLikedSong({ state, commit, dispatch }, { song }) {
+            try {
+                commit({ type: 'removeLikedSong', song })
+                console.log('state.loggedinUser', state.loggedinUser)
+                dispatch({ type: 'updateUser', user: { ...state.loggedinUser } })
+            } catch (err) {
+                console.log('userStore: Had a problem liking a song', err);
                 throw err
             }
         },

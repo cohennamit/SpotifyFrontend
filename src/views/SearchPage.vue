@@ -1,19 +1,18 @@
 <template>
   <!-- <span>Browse all</span> -->
-  <SongSearchList v-if="songs" :songs="songs"/>
+
+  <SongSearchList v-if="songs" :songs="songs" />
+
   <section v-else class="labels-list">
-    <article class="label-container" :class="getRandomColorClass" v-for="label in labels" @click="setLabel(label)">
+    <article class="label-container" :class="getRandomColorClass(index)" v-for="(label, index) in labels"
+      @click="setLabel(label)">
       <img :src="label.imgUrl" />
-      <span>
-        {{ label.name }}
-      </span>
+      <span>{{ label.name }}</span>
     </article>
   </section>
 </template>
 
 <script>
-//TODO: MAKE LABEL CONTAINER COLOR RANDOM
-import { stationService } from '../services/station.service.js'
 import { utilService } from '../services/util.service.js';
 import { getSongs } from '../services/songService.js';
 
@@ -23,53 +22,63 @@ export default {
   name: 'Search Page',
   data() {
     return {
-      songs:null
+      songs: null,
     };
-  },
-  methods: {
-    setLabel(label) {
-      this.$router.push(`/genre/${label.name}`);
-    },
   },
   computed: {
     labels() {
       return this.$store.getters.labels;
     },
-    // const colors = [
-      // 'rgb(225 51 0)',
-        getRandomColorClass() {
-      // 'rgb(115 88 255)',
-      // ]
-      const randomIdx = utilService.getRandomIntInclusive(0, 12);
-      return `label-container-${randomIdx}`;
-    },
   },
   watch: {
     '$route.query': {
-    async handler() {
+      async handler() {
         const { query } = this.$route.query
         console.log(getSongs(query));
-        if(query){
+        if (query) {
           this.songs = await getSongs(query)
         }
-        // this.isSearchPage= (path === '/search') ? true : false
+        this.isSearchPage = (path === '/search') ? true : false
       },
       immediate: true,
     },
     '$route': {
       handler() {
         const { path } = this.$route
-        if(path === '/search')this.songs = null
+        if (path === '/search') this.songs = null
       },
       immediate: true,
     },
-   
+
+  },
+  methods: {
+    setLabel(label) {
+      this.$router.push(`/genre/${label.name}`);
+    },
+    getRandomColorClass(index) {
+      const colors = [
+        'label-container-0',
+        'label-container-1',
+        'label-container-2',
+        'label-container-3',
+        'label-container-4',
+        'label-container-5',
+        'label-container-6',
+        'label-container-7',
+        'label-container-8',
+        'label-container-9',
+        'label-container-10',
+        'label-container-11',
+        'label-container-12',
+      ];
+      const randomIdx = utilService.getRandomIntInclusive(0, colors.length - 1);
+      return colors[randomIdx];
+    },
   },
   created() { },
-  components: { 
+  components: {
     SongSearchList
-   },
+
+  },
 };
 </script>
-
-<style></style>

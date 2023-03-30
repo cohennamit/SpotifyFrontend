@@ -1,6 +1,6 @@
 <template>
     <section class="main-nav">
-        <RouterLink to="/" class="main-nav-logo" >
+        <RouterLink to="/" class="main-nav-logo">
             <div class="headphones-icon" v-html="getSvg('headphones')"></div>
             <h1>Satisfy</h1>
         </RouterLink>
@@ -9,7 +9,7 @@
                 to="/station">
                 <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div> Home
             </RouterLink>
-            <RouterLink class="btn-nav"  @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
+            <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
                 to="/search">
                 <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div> Search
             </RouterLink>
@@ -25,7 +25,7 @@
                 </div>
                 Create Playlist
             </button>
-            <RouterLink class="liked-songs-btn" to="/">
+            <RouterLink class="liked-songs-btn" to="/liked">
                 <div class="btn-liked">
                     <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
                 </div>
@@ -75,6 +75,7 @@ export default {
         userStations() {
             let stations = this.$store.getters.stations
             const userStations = stations.filter(station => station.isAddedByUser)
+            console.log('userStations', userStations)
             return userStations
         },
         isHome() {

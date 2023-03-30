@@ -21,6 +21,7 @@ window.cs = stationService
 
 
 async function query(filterBy = { txt: '', listencount: 0 }) {
+    console.log('filterBy from query', filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
     // var stations = await storageService.query(STORAGE_KEY)
