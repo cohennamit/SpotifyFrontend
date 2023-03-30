@@ -1,6 +1,5 @@
 .station-preview{
        *{
-
        	font-family: Gotham Bold;
        }
        span {
@@ -8,23 +7,20 @@
         padding: 0;
         line-height: 0px;
         color: rgb(165, 164, 164);
-       }
-    .station-preview-desc{
         font-size: 0.75em;
-    }
+       }
     cursor: pointer;
     min-height: 300px;
     max-width: 230px;
     min-width: 198px;
-    @media (max-width: 800px){
-        max-height: 350px;
-
-    }
     background-color: rgb(23, 23, 23);
     transition: 300ms;
     padding: 1em;
     border-radius: 8px;
-    font-family: "circular";	
+    @media (max-width: 800px){
+        max-height: 350px;
+
+    }
     p{
         font-family: Gotham Book;
         margin-block-start: 0.2em;
@@ -33,7 +29,6 @@
 
     .img-wrapper {
         position: relative;
-
         img {
             border-radius: 4px;
             margin: auto;
@@ -47,7 +42,7 @@
             display: block;
             position: absolute;
             bottom: 0px;
-            right: 3%;
+            right: 2.8%;
             margin-block-end: 6px;
             transition: opacity 165ms, bottom 165ms ease-in;
             svg{

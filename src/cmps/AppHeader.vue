@@ -1,5 +1,5 @@
 <template>
-  <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
+  <header :style="{ backgroundColor: headerColor, opacity: headerOpacity }" ref="header" class="header">
     <section class="header-buttons">
       <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
         <div class="icon" v-html="getSvg('arrowLeft')"></div>
@@ -8,9 +8,8 @@
         <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
-    <section>
-      <StationFilter v-if="isSearch" @setFilter="setFilter" />
-    </section>
+    <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
+    <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
       <img :src="loggedInUser.imgUrl" />
       <RouterLink :to="`/user/${loggedInUser._id}`">
@@ -27,15 +26,39 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
-import StationFilter from './StationFilter.vue';
-
+import SongSearchList from './SongSearchList.vue';
+import SongSearch from './SongSearch.vue';
 export default {
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName);
+    },
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'loadToys', filterBy });
+    },
+    goBack() {
+      if (Object.keys(this.$route.query).length > 0 && this.$route.path === '/search') {
+        this.$router.replace('/search');
+      } else this.$router.go(-1);
+    },
+    goForward() {
+      this.$router.go(+1);
+    },
+    setSearch(query) {
+      if (this.isSearch) {
+        // const url = new URL(window.location)
+        // url.searchParams.set('query',query)
+        this.$router.replace({ name: 'Search', query: { query } });
+      }
+    },
+  },
   computed: {
     headerColor() {
-      // const color = `rgba(${this.$store.getters.headerColor})`
       return this.$store.getters.currColor;
     },
-
+    headerOpacity() {
+      return 1 - this.$store.getters.opacity;
+    },
     isFilterShown() {
       return this.$store.getters.isFilterShown;
     },
@@ -48,22 +71,9 @@ export default {
     },
   },
 
-  methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName);
-    },
-    setFilter(filterBy) {
-      this.$store.dispatch({ type: 'loadToys', filterBy });
-    },
-    goBack() {
-      this.$router.go(-1);
-    },
-    goForward() {
-      this.$router.go(+1);
-    },
-  },
   components: {
-    StationFilter,
+    SongSearchList,
+    SongSearch,
   },
 };
 </script>

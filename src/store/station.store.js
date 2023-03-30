@@ -31,8 +31,8 @@ export function getActionAddStationMsg(stationId) {
 export const stationStore = {
   state: {
     stations: [],
-    currColor: 'rgba(0, 0, 0, 0 )',
-    scrollTop: 0,
+    currColor: 'rgb(0, 0, 0 )',
+    opacity: 1,
 
     isFilterShown: false,
     currentRoute: '',
@@ -48,8 +48,8 @@ export const stationStore = {
     currColor: (state) => {
       return state.currColor;
     },
-    scrollTop: (state) => {
-      return state.scrollTop;
+    opacity: (state) => {
+      return state.opacity;
     },
 
     stations({ stations }) {
@@ -63,8 +63,8 @@ export const stationStore = {
     },
   },
   mutations: {
-    SET_SCROLL_TOP(state, value) {
-      state.scrollTop = value;
+    SET_OPACITY(state, opacity) {
+      state.opacity = opacity;
     },
     SET_CURR_COLOR(state, color) {
       state.currColor = color;
@@ -97,8 +97,8 @@ export const stationStore = {
     },
   },
   actions: {
-    setScrollTop(context, scrollTop) {
-      context.commit('SET_SCROLL_TOP', scrollTop);
+    setOpacity(context, opacity) {
+      context.commit('SET_OPACITY', opacity);
     },
     setCurrColor({ commit }, color) {
       commit('SET_CURR_COLOR', color);

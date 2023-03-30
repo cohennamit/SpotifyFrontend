@@ -1,6 +1,6 @@
 <template>
   <header class="station-details-header">
-    <div class="img-wrapper">
+    <div class="img-wrapper" :class="station.isAddedByUser ? '' : 'not-custom'">
       <!-- <button class="change-img-btn"></button> -->
       <!-- <div class="opacity-placeholder"></div> -->
       <article class="choose-photo">
@@ -8,9 +8,9 @@
         <span>Choose Photo</span>
       </article>
       <div class="img-container">
-        <ImgUploader @updateImgUrl="updateImgUrl" />
-        <img v-if="station.imgUrl" :src="station.imgUrl" alt="" />
-        <img
+        <ImgUploader v-if="station.isAddedByUser" @updateImgUrl="updateImgUrl" />
+    <img v-if="station.imgUrl" ref="image" :src="station.imgUrl" alt="" crossorigin="anonymous" />      
+      <img
           v-else
           src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg"
         />
@@ -42,8 +42,8 @@
 </template>
 
 <script>
+import { FastAverageColor } from 'fast-average-color';
 import { svgService } from '../services/svg.service.js';
-
 import ImgUploader from '../cmps/ImgUploader.vue';
 import Modal from './Modal.vue';
 
@@ -61,6 +61,20 @@ export default {
       isEdit: false,
     };
   },
+  mounted() {
+    const image = this.$refs.image;
+    const fac = new FastAverageColor();
+    image.addEventListener('load', () => {
+      const color = fac.getColor(image);
+      this.$store.dispatch('setCurrColor', color.rgb);
+      // console.log(color.rgb);
+    });
+    // this.$store.dispatch('setCurrColor', `rgb(0, 0, 0)`);
+  },
+  // unmounted() {
+  //   const image = this.$refs.image;
+  //   image.removeEventListener('load');
+  // },
   methods: {
     onOpenEditModal() {
       //TODO : CHECK IF ADDED BY USER AND IF NOT REMOVE CURSOR
@@ -78,6 +92,7 @@ export default {
       this.$emit('updateImgUrl', imgUrl);
     },
   },
+
   computed: {},
   created() {},
   components: {

@@ -17,4 +17,20 @@
             }
         }
     }
+    .song-search-header {
+        border-top: 1px solid hsla(0deg, 0%, 100%, 0.1);
+        margin-block-start: 24px;
+        padding: 30px 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: Gotham Bold;
+            letter-spacing: -0.7px;
+            margin-block-end: 27px
+        }
+    }
+    
 }
