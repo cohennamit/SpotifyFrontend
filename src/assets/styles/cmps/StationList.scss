@@ -88,10 +88,6 @@
 
 
 .station-list {
-	// @media(min-width: 1780px){
-	// 	grid-template-columns: repeat(8, minmax(170px, 0.9fr));
-
-	// }
 	@media (max-width: 760px) {
 		grid-template-columns: repeat(2, 1fr);
 

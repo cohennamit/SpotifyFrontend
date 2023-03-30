@@ -46,7 +46,6 @@ async function remove(stationId) {
 async function save(station) {
     var savedStation
     if (station._id) {
-        console.log('station', station)
         // savedStation = await storageService.put(STORAGE_KEY, station)
         savedStation = await httpService.put(`station/${station._id}`, station)
 

@@ -46,11 +46,9 @@ export const stationStore = {
   },
   getters: {
     currColor: (state) => {
-      console.log('state.currColor: ', state.currColor);
       return state.currColor;
     },
     scrollTop: (state) => {
-      console.log('state.scrollTop: ', state.scrollTop);
       return state.scrollTop;
     },
 
@@ -66,11 +64,9 @@ export const stationStore = {
   },
   mutations: {
     SET_SCROLL_TOP(state, value) {
-      console.log('value: ', value);
       state.scrollTop = value;
     },
     SET_CURR_COLOR(state, color) {
-      // console.log('color: ', color);
       state.currColor = color;
     },
     setFilterBy(state, { filterBy }) {
@@ -105,7 +101,6 @@ export const stationStore = {
       context.commit('SET_SCROLL_TOP', scrollTop);
     },
     setCurrColor({ commit }, color) {
-      // console.log('color: ', color);
       commit('SET_CURR_COLOR', color);
     },
 
@@ -133,7 +128,6 @@ export const stationStore = {
       try {
         const stations = await stationService.query(filterBy);
         context.commit({ type: 'setStations', stations });
-        console.log(stations)
       } catch (err) {
         console.log('stationStore: Error in loadStations', err);
         throw err;

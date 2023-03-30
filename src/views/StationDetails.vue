@@ -65,7 +65,6 @@ export default {
       }
     },
     updateImgUrl(imgUrl){
-      console.log(imgUrl)
       this.station.imgUrl = imgUrl
       this.$store.dispatch({type: 'updateStation', station: this.station})
     }
