@@ -3,28 +3,27 @@
         <div class="song-search-preview-img-title-wrap">
 
             <div class="img-wrap">
-                <img :src="video.snippet.thumbnails.medium.url" alt="" />
-                <!-- <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div> -->
+                <img :src="song.snippet.thumbnails.medium.url" alt="" />
                 <!-- <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div> -->
             </div>
 
 
             <div>
-                <h3>{{ shortenedTitle(video.snippet.title) }}</h3>
+                <h3>{{ shortenedTitle(song.snippet.title) }}</h3>
                 <h6 class="song-search-preview-artist" :class="getClass">Artist</h6>
             </div>
 
         </div>
 
         <p :class="getClass" class="song-search-preview-album">
-            <!-- {{video.album}} -->
+            <!-- {{song.album}} -->
         </p>
 
         <div>
-            <button class="song-search-preview-add-btn" @click="addSong(video)">Add</button>
+            <button class="song-search-preview-add-btn" @click="addSong">Add</button>
         </div>
 
-        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + video.id.videoId" frameborder="0"
+        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + song.id.songId" frameborder="0"
             allowfullscreen></iframe>
     </section>
 </template>
@@ -34,7 +33,7 @@ import { stationService } from '../services/station.service.js';
 export default {
     name: 'Song Search Preview',
     props: {
-        video: {
+        song: {
             type: Object
         }
     },
@@ -45,13 +44,13 @@ export default {
         }
     },
     methods: {
-        addSong(video) {
+        addSong() {
             const song = stationService.getEmptySong();
-            const { snippet, id } = { ...video };
+            const { snippet, id } = { ...this.song };
             song.title = snippet.title;
-            song.videoId = id.videoId;
+            song.songId = id.songId;
             song.imgUrl = snippet.thumbnails.medium.url;
-            // song.duration = video.contentDetails.duration;
+            // song.duration = song.contentDetails.duration;
             this.$emit('addSong', song);
         }
     },

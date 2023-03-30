@@ -8,9 +8,8 @@
         <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
-    <section>
-      <StationFilter v-if="isSearch" @setFilter="setFilter" />
-    </section>
+    <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
+    <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
       <img :src="loggedInUser.imgUrl" />
       <RouterLink :to="`/user/${loggedInUser._id}`">
@@ -27,9 +26,32 @@
 
 <script>
 import { svgService } from '../services/svg.service.js';
-import StationFilter from './StationFilter.vue';
-
+import SongSearchList from './SongSearchList.vue';
+import SongSearch from './SongSearch.vue';
 export default {
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName);
+    },
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: 'loadToys', filterBy });
+    },
+    goBack() {
+      if (Object.keys(this.$route.query).length > 0 && this.$route.path === '/search') {
+        this.$router.replace('/search');
+      } else this.$router.go(-1);
+    },
+    goForward() {
+      this.$router.go(+1);
+    },
+    setSearch(query) {
+      if (this.isSearch) {
+        // const url = new URL(window.location)
+        // url.searchParams.set('query',query)
+        this.$router.replace({ name: 'Search', query: { query } });
+      }
+    },
+  },
   computed: {
     headerColor() {
       return this.$store.getters.currColor;
@@ -49,28 +71,9 @@ export default {
     },
   },
 
-  methods: {
-    // updateHeaderBackground(color, opacity) {
-    //   const header = this.$refs.header;
-    //   const headerBefore = window.getComputedStyle(header, '::before');
-    //   headerBefore.backgroundColor = color;
-    //   headerBefore.opacity = opacity;
-    // },
-    getSvg(iconName) {
-      return svgService.getSvg(iconName);
-    },
-    setFilter(filterBy) {
-      this.$store.dispatch({ type: 'loadToys', filterBy });
-    },
-    goBack() {
-      this.$router.go(-1);
-    },
-    goForward() {
-      this.$router.go(+1);
-    },
-  },
   components: {
-    StationFilter,
+    SongSearchList,
+    SongSearch,
   },
 };
 </script>

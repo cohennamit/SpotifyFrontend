@@ -1,6 +1,10 @@
 <template>
+  <!-- <span>Browse all</span> -->
+
+    <SongSearchList v-if="songs" :songs="songs"/>
+
   <section class="labels-list">
-    <article
+   <article
       class="label-container"
       :class="getRandomColorClass(index)"
       v-for="(label, index) in labels"
@@ -14,13 +18,42 @@
 
 <script>
 import { utilService } from '../services/util.service.js';
+import { getSongs } from '../services/songService.js';
+
+import SongSearchList from '../cmps/SongSearchList.vue';
 
 export default {
-  // ...
+  name: 'Search Page',
+  data() {
+    return {
+      songs: null,
+    };
+  },
   computed: {
     labels() {
       return this.$store.getters.labels;
     },
+  },
+  watch: {
+    '$route.query': {
+    async handler() {
+        const { query } = this.$route.query
+        console.log(getSongs(query));
+        if(query){
+          this.songs = await getSongs(query)
+        }
+        // this.isSearchPage= (path === '/search') ? true : false
+      },
+      immediate: true,
+    },
+    '$route': {
+      handler() {
+        const { path } = this.$route
+        if(path === '/search')this.songs = null
+      },
+      immediate: true,
+    },
+   
   },
   methods: {
     setLabel(label) {
@@ -45,6 +78,11 @@ export default {
       const randomIdx = utilService.getRandomIntInclusive(0, colors.length - 1);
       return colors[randomIdx];
     },
+  },
+  created() {},
+  components: {
+        SongSearchList
+
   },
 };
 </script>
