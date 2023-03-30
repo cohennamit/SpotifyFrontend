@@ -1,12 +1,16 @@
 .station-filter {
-    // position: relative;
-    margin-block-start: 0.5;
-    margin-inline-start: 225px;
-    // left: 230px;
+    justify-self: start    ;
+    // -webkit-box-flex: 0;   
+    // font-size: 0.875rem; 
+    margin-inline-end: 380px;
+    flex: 0 1 364px;
+
+
+    
     background-color: #fff;
     display: flex;
     align-items: center;
-    width: 350px;
+    min-width: 364px;
     height: 40px;
     border-radius: 25px;
 }

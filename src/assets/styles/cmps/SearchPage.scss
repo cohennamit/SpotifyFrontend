@@ -4,7 +4,7 @@
 	grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
     gap: 24px;
 	grid-row: 2  ;
-	// width: calc(100dvw - 200px);
+	width: calc(100dvw - 250px);
 	}
 
 	.label-container{
@@ -24,3 +24,43 @@
 		bottom: 0;
 	}
 	}
+
+	.label-container-0 {
+		background-color: #E13300;
+	  }
+	  .label-container-1 {
+		background-color: #7358FF;
+	  }
+	  .label-container-2 {
+		background-color: #E80F5B;
+	  }
+	  .label-container-3 {
+		background-color: #148A09;
+	  }
+	  .label-container-4 {
+		background-color: #BC5900;
+	  }
+	  .label-container-5 {
+		background-color: #E91328;
+	  }
+	  .label-container-6 {
+		background-color: #E10F8C;
+	  }
+	  .label-container-7 {
+		background-color: #D84100;
+	  }
+	  .label-container-8 {
+		background-color: #1D3264;
+	  }
+	  .label-container-9 {
+		background-color: #537AA1;
+	  }
+	  .label-container-10 {
+		background-color: #5179A1;
+	  }
+	  .label-container-11 {
+		background-color: #BA5D08;
+	  }
+	  .label-container-12 {
+		background-color: #4F3750;
+	  }

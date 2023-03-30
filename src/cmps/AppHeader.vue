@@ -1,5 +1,5 @@
 <template>
-  <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
+  <header :style="{ backgroundColor: headerColor, opacity: headerOpacity }" ref="header" class="header">
     <section class="header-buttons">
       <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
         <div class="icon" v-html="getSvg('arrowLeft')"></div>
@@ -32,10 +32,11 @@ import StationFilter from './StationFilter.vue';
 export default {
   computed: {
     headerColor() {
-      // const color = `rgba(${this.$store.getters.headerColor})`
       return this.$store.getters.currColor;
     },
-
+    headerOpacity() {
+      return 1 - this.$store.getters.opacity;
+    },
     isFilterShown() {
       return this.$store.getters.isFilterShown;
     },
@@ -49,6 +50,12 @@ export default {
   },
 
   methods: {
+    // updateHeaderBackground(color, opacity) {
+    //   const header = this.$refs.header;
+    //   const headerBefore = window.getComputedStyle(header, '::before');
+    //   headerBefore.backgroundColor = color;
+    //   headerBefore.opacity = opacity;
+    // },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },

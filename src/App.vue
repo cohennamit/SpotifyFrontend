@@ -1,9 +1,14 @@
 <template>
   <div class="layout-container">
+    <AppHeader />
     <MainNav />
     <AppFooter />
-    <div class="app-main" ref="appMain" @scroll="handleScroll">
-      <AppHeader />
+    <div
+      @scroll="handleScroll"
+      class="app-main"
+      ref="appMain"
+      :style="{ backgroundImage: backgroundColor }"
+    >
       <RouterView />
       <UserMsg />
     </div>
@@ -25,19 +30,22 @@ export default {
     if (user) store.commit({ type: 'setLoggedinUser', user });
     this.$store.dispatch({ type: 'loadStations' });
   },
+  mounted() {
+    this.handleScroll();
+  },
   computed: {
-    headerColor() {
-      return this.$store.getters.headerColor;
+    backgroundColor() {
+      return `linear-gradient(0deg, #121212 88%, ${this.$store.getters.currColor}`;
     },
   },
   methods: {
     handleScroll() {
       const appMain = this.$refs.appMain;
       const scrollTop = appMain.scrollTop;
-      const opacity = 1 - scrollTop / 200;
+      const opacity = 1 - scrollTop / 100;
 
-      this.$store.dispatch('setCurrColor', `rgba(0, 0, 0, ${1 - opacity})`);
-      this.$store.dispatch('setScrollTop', scrollTop);
+      // this.$store.dispatch('setCurrColor', `rgb(0, 0, 0)`);
+      this.$store.dispatch('setOpacity', opacity);
       // appMain.style.backgroundImage = `linear-gradient(0deg, #121212 88%, ${this.headerColor})`;
     },
   },

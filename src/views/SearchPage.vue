@@ -1,45 +1,50 @@
 <template>
-  <!-- <span>Browse all</span> -->
   <section class="labels-list">
-    <article class="label-container" :class="getRandomColorClass" v-for="label in labels" @click="setLabel(label)">
+    <article
+      class="label-container"
+      :class="getRandomColorClass(index)"
+      v-for="(label, index) in labels"
+      @click="setLabel(label)"
+    >
       <img :src="label.imgUrl" />
-      <span>
-        {{ label.name }}
-      </span>
+      <span>{{ label.name }}</span>
     </article>
   </section>
 </template>
 
 <script>
-//TODO: MAKE LABEL CONTAINER COLOR RANDOM
-import { stationService } from '../services/station.service.js'
 import { utilService } from '../services/util.service.js';
+
 export default {
-  name: 'Search Page',
-  data() {
-    return {};
+  // ...
+  computed: {
+    labels() {
+      return this.$store.getters.labels;
+    },
   },
   methods: {
     setLabel(label) {
       this.$router.push(`/genre/${label.name}`);
     },
-  },
-  computed: {
-    labels() {
-      return this.$store.getters.labels;
+    getRandomColorClass(index) {
+      const colors = [
+        'label-container-0',
+        'label-container-1',
+        'label-container-2',
+        'label-container-3',
+        'label-container-4',
+        'label-container-5',
+        'label-container-6',
+        'label-container-7',
+        'label-container-8',
+        'label-container-9',
+        'label-container-10',
+        'label-container-11',
+        'label-container-12',
+      ];
+      const randomIdx = utilService.getRandomIntInclusive(0, colors.length - 1);
+      return colors[randomIdx];
     },
-    getRandomColorClass() {
-      // const colors = [
-      // 'rgb(225 51 0)',
-      // 'rgb(115 88 255)',
-      // ]
-      const randomIdx = utilService.getRandomIntInclusive(0, 12);
-      return `label-container-${randomIdx}`;
-    },
   },
-  created() { },
-  components: {},
 };
 </script>
-
-<style></style>
