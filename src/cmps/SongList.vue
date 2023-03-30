@@ -42,7 +42,6 @@ export default {
       this.$emit('removeSong', songId)
     },
     setActiveSong(idx) {
-      console.log(idx)
       this.activeSongIdx = idx
     },
     setSong(song){
@@ -54,7 +53,6 @@ export default {
   },
   computed: {
     hasSongs() {
-      console.log(this.station);
       return this.station.songs.length
     },
 

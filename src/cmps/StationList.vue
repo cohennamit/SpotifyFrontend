@@ -77,7 +77,6 @@ export default {
       this.$store.dispatch('setHeaderColor', `rgba(28, 17, 56, ${1 - opacity})`);
 
       const station = this.stations.find(({ title }) => title === stationTitle);
-      console.log('station: ', station);
       this.stationId = station._Id;
     },
   },

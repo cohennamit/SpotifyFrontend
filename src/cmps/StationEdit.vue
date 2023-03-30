@@ -90,7 +90,6 @@ export default {
       }
     },
     printStationToConsole(station) {
-      console.log('Station msgs:', station.msgs);
     },
   },
   components: {

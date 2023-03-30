@@ -47,7 +47,6 @@ export default {
     methods: {
         addSong(video) {
             const song = stationService.getEmptySong();
-            console.log('video', video)
             const { snippet, id } = { ...video };
             song.title = snippet.title;
             song.videoId = id.videoId;
@@ -70,7 +69,6 @@ export default {
         },
     },
     created() {
-        console.log(this.video)
     },
     components: {
 

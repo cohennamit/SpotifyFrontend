@@ -33,7 +33,6 @@ export default {
   computed: {
     headerColor() {
       // const color = `rgba(${this.$store.getters.headerColor})`
-      console.log('From Getter', this.$store.getters.headerColor);
       return this.$store.getters.currColor;
     },
 
@@ -44,7 +43,6 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     isSearch() {
-      console.log('isSearch from station store');
       if (this.$route.name === 'Search') return true;
       else return false;
     },

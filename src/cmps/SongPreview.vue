@@ -143,7 +143,6 @@ export default {
             const matches = pattern.exec(this.song.title);
             if (matches) {
                 const songTitle = matches[2]
-                console.log(songTitle)
                 // verification second round
                 const regex = /^(.+)\s+\(.+\)$/;
                 const match = songTitle.match(regex);

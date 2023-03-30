@@ -97,7 +97,6 @@ export default {
     watch: {
         '$route': {
             handler() {
-                console.log('this.$route', this.$route.name)
                 const { name } = this.$route;
                 this.currentRoute = name
                 // stationService.getById(stationId).then((station) => (this.station = station));
