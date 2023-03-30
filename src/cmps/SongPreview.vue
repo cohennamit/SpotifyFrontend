@@ -58,7 +58,6 @@ export default {
         }
     },
     created() {
-        console.log('songpreview',this.song)
     },
     data() {
         return {

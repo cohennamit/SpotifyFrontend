@@ -53,7 +53,7 @@ export default {
             const song = stationService.getEmptySong();
             const { snippet, id } = { ...this.song };
             song.title = snippet.title;
-            song.songId = id.songId;
+            song.videoId = id.videoId;
             song.imgUrl = snippet.thumbnails.medium.url;
             // song.duration = song.contentDetails.duration;
             this.$emit('addSong', song);
@@ -62,8 +62,12 @@ export default {
             return svgService.getSvg(iconName)
         },
         setSong() {
-            console.log('preview',this.song);
-            this.$emit('setSong', this.song)
+            const song = stationService.getEmptySong();
+            const { snippet, id } = { ...this.song };
+            song.title = snippet.title;
+            song.videoId = id.videoId;
+            song.imgUrl = snippet.thumbnails.medium.url;
+            this.$emit('setSong', song)
         },
     },
     computed: {
