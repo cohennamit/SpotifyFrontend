@@ -1,5 +1,5 @@
 export async function getSongs(query) {
-    const API_KEY = 'AIzaSyAQMRj8tqe46m_ZSvafQo52TfijMYg6V9c';
+    const API_KEY = 'AIzaSyBCisp-vtFHADlUJuhG563ZQW3osxaj_eQ';
     try {
         const response = await fetch(
             `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=1&key=${API_KEY}`
