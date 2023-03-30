@@ -36,12 +36,13 @@
 </template>
 
 <script>
+import { watch } from 'vue'
 import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
 import { userService } from '../services/user.service'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong', 'setSong', 'setStation'],
+    emits: ['removeSong', 'setSong', 'setStation','setActiveSong'],
     props: {
         song: {
             type: Object
@@ -57,11 +58,12 @@ export default {
         }
     },
     created() {
+        console.log('songpreview',this.song)
     },
     data() {
         return {
             isHover: false,
-            isActive: false
+            isActive: false,
         }
     },
     methods: {
@@ -174,8 +176,7 @@ export default {
                 return songArtist
             }
         },
-
-
-    }
+    },
+  
 }
 </script>

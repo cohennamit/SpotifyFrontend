@@ -1,14 +1,15 @@
 <template>
   <header class="station-details-header">
     <div class="img-wrapper" :class="station.isAddedByUser ? '' : 'not-custom'">
-      <!-- <button class="change-img-btn"></button> -->
-      <!-- <div class="opacity-placeholder"></div> -->
+
       <article class="choose-photo">
-        <div class="pencil-icon" v-html="getSvg('pencil')"></div>
-        <span>Choose Photo</span>
-      </article>
-      <div class="img-container">
+          <div class="pencil-icon" v-html="getSvg('pencil')"></div>
+          <span>Choose Photo</span>
         <ImgUploader v-if="station.isAddedByUser" @updateImgUrl="updateImgUrl" />
+      </article>
+      
+      <div class="img-container">
+
     <img v-if="station.imgUrl" ref="image" :src="station.imgUrl" alt="" crossorigin="anonymous" />      
       <img
           v-else

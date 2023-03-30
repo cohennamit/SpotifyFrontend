@@ -1,7 +1,7 @@
 <template>
   <!-- <span>Browse all</span> -->
 
-  <SongSearchList v-if="songs" :songs="songs" />
+  <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list">
     <article class="label-container" :class="getRandomColorClass(index)" v-for="(label, index) in labels"
@@ -52,6 +52,10 @@ export default {
 
   },
   methods: {
+    setSong(song) {
+      console.log('page',song);
+      this.$store.dispatch({ type: 'setSong', song })
+    },
     setLabel(label) {
       this.$router.push(`/genre/${label.name}`);
     },
