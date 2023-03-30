@@ -50,7 +50,7 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 48px 1fr 120px 0.5fr;
-    overflow: auto;
+    overflow: overlay;
     overflow-x: hidden;
 }
 
