@@ -27,12 +27,10 @@
         background-color: transparent;
         font-weight: 700;
         color: hsl(0deg 0% 74.9%);
-        font-family: Gotham Book;
 
         &::placeholder {
             font-weight: 700;
             color: hsl(0deg 0% 74.9%);
-            font-family: Gotham Book;
         }
     }
 
@@ -70,7 +68,7 @@
     padding-inline-start: 11px;
     align-items: center;
     fill: black;
-
+    margin-inline-start: -23px;
     &-placeholder {
         opacity: 0;
         width: 100%;
@@ -88,12 +86,10 @@
         background-color: transparent;
         font-weight: 700;
         color: black;
-        font-family: Gotham Book;
 
         &::placeholder {
             font-weight: 700;
             color: hsl(0deg 0% 74.9%);
-            font-family: Gotham Book;
         }
     }
 

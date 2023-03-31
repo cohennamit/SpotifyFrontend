@@ -1,7 +1,7 @@
 .station-details {
         grid-row: 2     ;
         // padding-inline-end: 32px;
-
+        padding-block-end: 4em;
     &-body {
         display: flex;
         padding-block-start: 40px;
@@ -27,7 +27,6 @@
         h1 {
             font-size: 1.3rem;
             font-weight: 700;
-            font-family: Gotham Bold;
             letter-spacing: -0.7px;
             margin-block-end: 27px
         }
