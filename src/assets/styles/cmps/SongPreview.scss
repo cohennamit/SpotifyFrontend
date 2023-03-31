@@ -21,7 +21,9 @@
             .column-4 {
                 display: none;
             }
-
+            .column-3{
+                padding-inline-start: 30px;
+            }
             grid-template-columns: 38px 1.7fr 1.50fr 64.6px;
         }
 
@@ -89,10 +91,13 @@
     }
 
     &-header {
+        @media (max-width:1150px) {
         .date-added {
-            @media (max-width:1150px) {
                 display: none;
             }
+        .album{
+            padding-inline-start: 30px;
+        }
         }
 
         border-bottom: 1px solid hsla(0deg, 0%, 100%, 0.1);
@@ -109,6 +114,11 @@
         display: flex;
         align-items: center;
         gap: 19px;
+        // div:nth-child(3){
+        //     white-space: nowrap;
+        //     overflow: hidden;
+        //     text-overflow: ellipsis;
+        // }
     }
 
     &-preferences {
@@ -146,12 +156,11 @@
     &-name {
         display: flex;
         flex-direction: column;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+       
 
         &-title {
             color: white;
+       
         }
     }
 

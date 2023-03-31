@@ -9,6 +9,7 @@
         </section>
         <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" @ready="onReady"
             @state-change="onStateChange" />
+        <div class="play-pause-icon-mobile" @click="onPauseResume" v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
         <section class="mid-section">
             <section class="footer-btns">
                 <button @click="onShuffle" class="footer-btn">
@@ -18,8 +19,9 @@
                     <div class="icon" v-html="getSvg('playPrev')"></div>
                 </button>
                 <button @click="onPauseResume" class="footer-btn btn-pause">
-                    <div v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
+                    <div class="play-pause-icon" v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
                 </button>
+
                 <button class="footer-btn" @click="onNextSong">
                     <div class="icon" v-html="getSvg('playNext')"></div>
                 </button>
@@ -178,10 +180,10 @@ export default {
     watch: {
         volume(newVolume) {
             this.$refs.youtube.setVolume(newVolume);
-            if (newVolume > 75) this.volumeSvg=this.getSvg('volume100')
-            else if (newVolume > 25 && newVolume < 75)  this.volumeSvg=this.getSvg('volume100')
-            else if (newVolume > 0 && newVolume < 25)  this.volumeSvg=this.getSvg('volume100')
-            else if (newVolume === 0)  this.volumeSvg=this.getSvg('volume100')
+            if (newVolume > 75) this.volumeSvg = this.getSvg('volume100')
+            else if (newVolume > 25 && newVolume < 75) this.volumeSvg = this.getSvg('volume100')
+            else if (newVolume > 0 && newVolume < 25) this.volumeSvg = this.getSvg('volume100')
+            else if (newVolume === 0) this.volumeSvg = this.getSvg('volume100')
         }
     },
     computed: {

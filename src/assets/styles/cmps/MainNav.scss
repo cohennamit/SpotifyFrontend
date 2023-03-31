@@ -2,6 +2,9 @@ $primary-color: #fff;
 $secondary-color: #aaa;
 
 .main-nav {
+    @media (max-width:800px) {
+        display: none;
+    }
     z-index: 310;
     font-size: 0.8125rem;
     min-width: 185px;
