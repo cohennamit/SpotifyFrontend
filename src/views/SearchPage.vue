@@ -1,20 +1,19 @@
 <template>
   <span class="label-list-text">Browse all</span>
 
-  <div class="label-list-container">
-    <SongSearchList v-if="songs" :songs="songs" />
-    <section v-else class="labels-list">
-      <article
-        class="label-container"
-        :class="getRandomColorClass(index)"
-        v-for="(label, index) in labels"
-        @click="setLabel(label)"
-      >
-        <img :src="label.imgUrl" />
-        <span>{{ label.name }}</span>
-      </article>
-    </section>
-  </div>
+  <SongSearchList v-if="songs" :songs="songs" />
+
+  <section v-else class="labels-list">
+    <article
+      class="label-container"
+      :class="getRandomColorClass(index)"
+      v-for="(label, index) in labels"
+      @click="setLabel(label)"
+    >
+      <img :src="label.imgUrl" />
+      <span>{{ label.name }}</span>
+    </article>
+  </section>
 </template>
 
 <script>
@@ -59,6 +58,10 @@ export default {
     },
   },
   methods: {
+    setSong(song) {
+      console.log('page', song);
+      this.$store.dispatch({ type: 'setSong', song });
+    },
     setLabel(label) {
       this.$router.push(`/genre/${label.name}`);
     },

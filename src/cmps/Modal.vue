@@ -12,18 +12,15 @@
         <p>Playlist name is required.</p>
       </div>
       <div class="edit-modal-body">
-        <!-- <div class="edit-modal-img">
-            <img :src="station.imgUrl"/>
-            </div> -->
+
         <div class="edit-modal-img">
-          <!-- <button class="change-img-btn"></button> -->
-          <!-- <div class="opacity-placeholder"></div> -->
           <article class="choose-photo">
             <div class="pencil-icon" v-html="getSvg('pencil')"></div>
             <span>Choose Photo</span>
-          </article>
-          <div class="img-container">
             <ImgUploader @updateImgUrl="updateImgUrl" />
+          </article>
+
+          <div class="img-container">
             <img
               v-if="station.imgUrl"
               ref="image"
@@ -82,15 +79,15 @@ export default {
   },
   mounted() {
     const image = this.$refs.image;
-    const fac = new FastAverageColor();
+    // const fac = new FastAverageColor();
     image.addEventListener('load', () => {
-      const color = fac.getColor(image);
-      console.log(color);
+      // const color = fac.getColor(image);
+      // console.log(color);
     });
   },
   unmounted() {
     const image = this.$refs.image;
-    image.removeEventListener('load');
+    // image.removeEventListener('load');
   },
   methods: {
     onCloseEditModal() {

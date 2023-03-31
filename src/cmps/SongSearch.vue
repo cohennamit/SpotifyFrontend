@@ -2,7 +2,7 @@
         <form @submit.prevent="setSearch">
                 <div class="search-icon" v-html="getSvg('emptySearch')"></div>
                 <input name="search" type="text" v-model="query" :placeholder="isSearchPage? 'What do you want to listen to?' :'Search for songs'" />
-                <div class="x-icon" v-html="getSvg('x')"></div>
+                <div @click="deleteInputValue" class="x-icon" v-html="getSvg('x')"></div>
         </form>
 </template>
 
@@ -26,6 +26,9 @@ export default {
         setSearch() {
             this.$emit('setSearch', this.query)
         },
+        deleteInputValue(){
+            this.query = ''
+        }
     },
     computed: {
         setParams(){

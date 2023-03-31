@@ -3,8 +3,10 @@
         <div class="song-search-preview-img-title-wrap">
 
             <div class="img-wrap">
+                <article class="play-song-btn">
+                    <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div>
+                </article>
                 <img :src="song.snippet.thumbnails.medium.url" alt="" />
-                <!-- <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div> -->
             </div>
 
 
@@ -20,7 +22,7 @@
         </p>
 
         <div>
-            <button class="song-search-preview-add-btn" @click="addSong">Add</button>
+            <button v-if="!isSearchPage" class="song-search-preview-add-btn" @click="addSong">Add</button>
         </div>
 
         <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + song.id.songId" frameborder="0"
@@ -30,6 +32,7 @@
 
 <script>
 import { stationService } from '../services/station.service.js';
+import { svgService } from '../services/svg.service.js';
 export default {
     name: 'Song Search Preview',
     props: {
@@ -37,10 +40,12 @@ export default {
             type: Object
         }
     },
-    emits: ['addSong'],
+    emits: ['addSong','setSong'],
     data() {
         return {
-            isHover: false
+            isHover: false,
+            isSearchPage: false
+
         }
     },
     methods: {
@@ -48,11 +53,22 @@ export default {
             const song = stationService.getEmptySong();
             const { snippet, id } = { ...this.song };
             song.title = snippet.title;
-            song.songId = id.songId;
+            song.videoId = id.videoId;
             song.imgUrl = snippet.thumbnails.medium.url;
             // song.duration = song.contentDetails.duration;
             this.$emit('addSong', song);
-        }
+        },
+        getSvg(iconName) {
+            return svgService.getSvg(iconName)
+        },
+        setSong() {
+            const song = stationService.getEmptySong();
+            const { snippet, id } = { ...this.song };
+            song.title = snippet.title;
+            song.videoId = id.videoId;
+            song.imgUrl = snippet.thumbnails.medium.url;
+            this.$emit('setSong', song)
+        },
     },
     computed: {
         getClass() {
@@ -67,11 +83,18 @@ export default {
             }
         },
     },
-    created() {
-    },
-    components: {
 
-    },
+    watch: {
+        '$route': {
+            handler() {
+                const { path } = this.$route
+                if (path === '/search') this.isSearchPage = true
+            },
+            immediate: true,
+        },
+
+    }
+
 }
 </script>
 

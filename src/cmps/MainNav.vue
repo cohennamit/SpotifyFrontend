@@ -53,7 +53,8 @@ export default {
     name: '',
     data() {
         return {
-            currentRoute: ''
+            currentRoute: '',
+            userStations: null
         };
     },
     methods: {
@@ -72,12 +73,6 @@ export default {
 
     },
     computed: {
-        userStations() {
-            let stations = this.$store.getters.stations
-            const userStations = stations.filter(station => station.isAddedByUser)
-            console.log('userStations', userStations)
-            return userStations
-        },
         isHome() {
             if (this.$route.name === 'StationIndex') return true
             else return false
@@ -92,8 +87,13 @@ export default {
         },
 
     },
-    created() {
-
+    async created() {
+        const user = this.$store.getters.loggedinUser
+        try {
+            this.userStations = await stationService.getUserStations(user._id)
+        } catch (err) {
+            console.log('Failed to get loggedinUser stations')
+        }
     },
     watch: {
         '$route': {

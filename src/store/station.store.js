@@ -51,8 +51,8 @@ export const stationStore = {
     opacity: (state) => {
       return state.opacity;
     },
-
     stations({ stations }) {
+      console.log(stations)
       return stations;
     },
     isFilterShown({ isFilterShown }) {

@@ -1,5 +1,7 @@
 <template>
-  <h1 class="station-list-text">Good Morning</h1>
+  <section class="home-grace">
+    <h2>{{ greetings }}</h2>
+  </section>
   <section class="station-list-top-content-container">
     <route class="top-content">
       <img
@@ -91,6 +93,18 @@ export default {
     defaultStations() {
       return this.stations.filter((station) => !station.isAddedByUser);
     },
+  },
+  greetings() {
+    const now = new Date();
+    const hour = now.getHours();
+    console.log(hour);
+    if (hour >= 5 && hour < 12) {
+      return 'Good morning';
+    } else if (hour >= 12 && hour < 18) {
+      return 'Good afternoon';
+    } else {
+      return 'Good evening';
+    }
   },
   created() {},
   components: {

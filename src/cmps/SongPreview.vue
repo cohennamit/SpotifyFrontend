@@ -36,12 +36,13 @@
 </template>
 
 <script>
+import { watch } from 'vue'
 import { eventBus } from '../services/event-bus.service'
 import { svgService } from '../services/svg.service.js'
 import { userService } from '../services/user.service'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong', 'setSong', 'setStation'],
+    emits: ['removeSong', 'setSong', 'setStation','setActiveSong'],
     props: {
         song: {
             type: Object
@@ -57,11 +58,12 @@ export default {
         }
     },
     created() {
+        
     },
     data() {
         return {
             isHover: false,
-            isActive: false
+            isActive: false,
         }
     },
     methods: {
@@ -114,9 +116,9 @@ export default {
             if (!user) return false
             // console.log('user', user)
             const userLikedSongs = user.likedSongs
-            // console.log('userSongs', userLikedSongs)
-            if (!userLikedSongs.includes(this.song)) return false
-            else return true
+            console.log('userSongs', userLikedSongs)
+            // if (!userLikedSongs.includes(this.song)) return false
+            // else return true
             // this.$store.dispatch({ type: 'updateUser', user })
             // return false
         },
@@ -174,8 +176,7 @@ export default {
                 return songArtist
             }
         },
-
-
-    }
+    },
+  
 }
 </script>

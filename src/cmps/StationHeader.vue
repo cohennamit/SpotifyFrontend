@@ -1,44 +1,42 @@
 <template>
   <header class="station-details-header">
     <div class="img-wrapper" :class="station.isAddedByUser ? '' : 'not-custom'">
-      <!-- <button class="change-img-btn"></button> -->
-      <!-- <div class="opacity-placeholder"></div> -->
+
       <article class="choose-photo">
         <div class="pencil-icon" v-html="getSvg('pencil')"></div>
         <span>Choose Photo</span>
-      </article>
-      <div class="img-container">
         <ImgUploader v-if="station.isAddedByUser" @updateImgUrl="updateImgUrl" />
-    <img v-if="station.imgUrl" ref="image" :src="station.imgUrl" alt="" crossorigin="anonymous" />      
-      <img
-          v-else
-          src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg"
-        />
+      </article>
+
+      <div class="img-container">
+
+        <img v-if="station.imgUrl" ref="image" :src="station.imgUrl" alt="" crossorigin="anonymous" />
+        <img v-else
+          src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg" />
       </div>
     </div>
     <div class="station-details-header-info">
       <span>Playlist</span>
       <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
-      <div>
-        <span
-          v-if="station.desc"
-          v-for="(d, idx) in station.desc"
-          :key="idx"
-          class="station-preview-desc"
-          >{{ d }}
+      <!-- <div>
+        <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }}
           <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
         </span>
         <p v-else @click="onOpenEditModal">{{ station.userDesc }}</p>
-      </div>
-      <RouterLink v-if="station.isAddedByUser" to="/login">by user</RouterLink>
+      </div> -->
+      <RouterLink :to="station.isAddedByUser ? '/library':'/station' " class="by-user">
+        <div v-if="!station.isAddedByUser" class="headphones-icon" v-html="getSvg('smallHeadphones')" ></div>
+        <p>
+          {{  station.isAddedByUser ? loggedInUser.fullname : 'Satisfy' }}  
+        </p>
+        <span>
+          <p class="songs-count">{{ station.songs.length }} songs </p>
+          <p class="songs-total-duration"></p>
+        </span>
+      </RouterLink>
     </div>
   </header>
-  <Modal
-    @updateImgUrl="updateImgUrl"
-    @onCloseEditModal="onCloseEditModal"
-    v-if="isEdit"
-    :station="station"
-  />
+  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
 </template>
 
 <script>
@@ -59,6 +57,7 @@ export default {
   data() {
     return {
       isEdit: false,
+      loggedInUser: null
     };
   },
   mounted() {
@@ -94,7 +93,9 @@ export default {
   },
 
   computed: {},
-  created() {},
+  created() {
+    this.loggedInUser = this.$store.getters.loggedinUser
+  },
   components: {
     Modal,
     ImgUploader,

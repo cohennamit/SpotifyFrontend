@@ -15,7 +15,7 @@
       <h1>Let's find something for your playlist</h1>
       <SongSearch @setSearch="fetchSongs" class="station-details-search"/>  
     </section>
-    <SongSearchList :songs="songs" class="search-results-list" @addSong="addSong" />
+    <SongSearchList :songs="songs" class="search-results-list" @setSong="setSong" @addSong="addSong" />
     <hr>
     <div class="placeholder"></div>
   </section>

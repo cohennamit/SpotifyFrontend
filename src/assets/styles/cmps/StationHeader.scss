@@ -7,29 +7,55 @@
         &-info {
             display: flex;
             flex-direction: column;
+
+            .by-user {
+                font-size: 14px;
+                display: flex;
+                margin-block-end: -4px;
+                gap: 8px;
+
+                .headphones-icon {
+                    margin-block-end: -2px;
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+                    }
+                }
+
+                span {
+                    margin: 0;
+                    display: flex;
+                    align-items: flex-end;
+
+                    p {
+                        font-size: 13.4px;
+                        margin-block-end: 0.6px;
+                    }
+
+                    &::before {
+                      
+                        content: "•";
+                        margin: 0px 5px 3px -3px;
+                        font-size: 10px;
+                    }
+                }
+            }
         }
 
         .img-wrapper {
-
+            width: 232px;
+            height: 232px;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
 
             .img-container {
-                width: 232px;
-                height: 232px;
-                .upload-preview{
-                    input{
-                        position: absolute;
-                        width: 100%;
-                        height: 100%;
-                        opacity: 0;
-                        // visibility: hidden;
-                    }
-                }
-                img {
+                width: 100%;
+                height: 100%;
 
+                img {
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
@@ -38,29 +64,45 @@
             }
 
             .choose-photo {
-                display: none;
-            }
-    
-            &:hover:not(.not-custom) {
-                .img-container {
-                    opacity: 0.3;
-                }
+                position: absolute;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                letter-spacing: 1px;
+                fill: white;
+                color: white;
+                opacity: 0;
+                pointer-events: none;
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
 
-                .choose-photo {
+                .upload-preview {
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
                     position: absolute;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    padding-block-start: 37px;
-                    letter-spacing: 1px;
-                    fill: white;
-                    color: white;
+
+                    input {
+                        // position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        // opacity: 0;
+                        // visibility: hidden;
+                    }
+                }
+            }
+
+            &:hover:not(.not-custom) {
+                .choose-photo {
+                    opacity: 1;
+                    pointer-events: all;
                 }
             }
         }
 
-     
+
 
         span {
             font-size: 14px;

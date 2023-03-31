@@ -1,7 +1,7 @@
 <template>
   <section>
     <ul v-if="songs" :class="setSearchClass" class="song-search-results-wrap">
-      <SongSearchPreview v-for="(song, index) in songs" @addSong="addSong" :song="song" :key="index" />
+      <SongSearchPreview v-for="(song, index) in songs" @addSong="addSong" @setSong="setSong" :song="song" :key="index" />
     </ul>
     <div v-if="!songs && !loading">No Songs</div>
   </section>
@@ -15,16 +15,17 @@ import SongSearchPreview from './SongSearchPreview.vue';
 
 export default {
   name: 'Song Search List',
-  props:{
-    songs :{
+  props: {
+    songs: {
       type: Array
     }
   },
+  emits:['setSong'],
   data() {
     return {
       query: '',
       currStation: {},
-      loading: false
+      loading: false,
     };
   },
   async created() {
@@ -37,8 +38,8 @@ export default {
     }
   },
   computed: {
-    setSearchClass(){
-      if(this.$route.path === '/search') return 'search-page'
+    setSearchClass() {
+      if (this.$route.path === '/search') return 'search-page'
     }
   },
   methods: {
@@ -48,10 +49,12 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
-    // setSongs(searchResults) {
-    //   this.Songs = searchResults
-    // }
+    setSong(song) {
+      console.log('list',song);
+      this.$emit('setSong',song)
+    },
   },
+
   components: {
     SongSearchPreview,
   },
