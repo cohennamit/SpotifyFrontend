@@ -45,14 +45,15 @@ export default {
         if (query) {
           this.songs = await getSongs(query);
         }
-        this.isSearchPage = path === '/search' ? true : false;
       },
       immediate: true,
     },
-    $route: {
+    '$route': {
       handler() {
         const { path } = this.$route;
+        console.log(path)
         if (path === '/search') this.songs = null;
+        this.isSearchPage = path === '/search' ? true : false;
       },
       immediate: true,
     },
