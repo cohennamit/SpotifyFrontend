@@ -1,14 +1,15 @@
 <template>
     <ul class="station-list library">
-        <section class="liked-songs">
+        <Routerlink to="/liked" class="liked-songs">
             Liked Songs
-        </section>
-        <StationPreview v-if="stations" v-for="station in userStations" :key="station._id" :station="station" />
+        </Routerlink>
+        <StationPreview v-if="stations" v-for="station in stations" :key="station._id" :station="station" />
     </ul>
 </template>
 
 <script>
 import StationPreview from '../cmps/StationPreview.vue';
+import { stationService } from '../services/station.service';
 
 export default {
     name: '',
@@ -21,17 +22,25 @@ export default {
 
     },
     computed: {
-     userStations() {
-        if(this.stations){
-            return this.stations.filter(station => station.isAddedByUser)
+        userStations() {
+            if (this.stations) {
+                return this.stations.filter(station => station.isAddedByUser)
+            }
+        },
+        loggedinUser() {
+            return this.$store.getters.loggedinUser
         }
-    }
     },
-    created() {
-       this.stations = this.$store.getters.stations
+    async created() {
+        try {
+            this.stations = await stationService.getUserStations(this.loggedinUser._id)
+            console.log(this.stations)
+        } catch (err) {
+            console.log('Failed to get loggedinUser stations')
+        }
     },
     components: {
-        StationPreview  
+        StationPreview
     },
 }
 </script>
