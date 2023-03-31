@@ -1,6 +1,6 @@
 <template>
   <section class="home-grace">
-    <h2>{{ greetings }}</h2>
+    <h2>Good morning</h2>
   </section>
   <section class="station-list-top-content-container">
     <route class="top-content">
