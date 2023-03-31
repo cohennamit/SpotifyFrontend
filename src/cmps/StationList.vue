@@ -3,54 +3,36 @@
     <h2>Good morning</h2>
   </section>
   <section class="station-list-top-content-container">
-    <route class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png"
-        alt=""
-      />
+    <RouterLink to="/liked" class="top-content">
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png"
+        alt="" />
       <!-- <div class="top-content-content-internal-wrapper"> -->
       <h1>Liked Songs</h1>
       <!-- </div> -->
-    </route>
+    </RouterLink>
     <route class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/16_emxov7.jpg"
-        alt=""
-      />
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/16_emxov7.jpg"
+        alt="" />
       <h1>All the Brilliant Things</h1>
     </route>
     <route @click="goToClickedStation('Jericho Jackson')" class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg"
-        alt=""
-      />
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg"
+        alt="" />
       <h1>Jericho Jackson</h1>
     </route>
     <route class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/17_awapkm.jpg"
-        alt=""
-      />
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/17_awapkm.jpg"
+        alt="" />
       <h1>DJ Muggs</h1>
     </route>
     <route class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/19_y8ts6r.jpg"
-        alt=""
-      />
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/19_y8ts6r.jpg"
+        alt="" />
       <h1>Boldy James</h1>
     </route>
     <route class="top-content">
-      <img
-        class="top-content-img"
-        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/22_mxixz2.jpg"
-        alt=""
-      />
+      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/22_mxixz2.jpg"
+        alt="" />
       <h1>Super Tecmo Bo</h1>
     </route>
   </section>
@@ -106,7 +88,7 @@ export default {
       return 'Good evening';
     }
   },
-  created() {},
+  created() { },
   components: {
     StationPreview,
   },

@@ -29,7 +29,9 @@
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
-                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon"
+                    v-html="getSvg('trash')"></span>
+                <span v-else></span>
             </div>
         </div>
     </article>
@@ -42,7 +44,7 @@ import { svgService } from '../services/svg.service.js'
 import { userService } from '../services/user.service'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong', 'setSong', 'setStation','setActiveSong'],
+    emits: ['removeSong', 'setSong', 'setStation', 'setActiveSong'],
     props: {
         song: {
             type: Object
@@ -58,7 +60,7 @@ export default {
         }
     },
     created() {
-        
+
     },
     data() {
         return {
@@ -114,13 +116,10 @@ export default {
         isLiked() {
             const user = this.$store.getters.loggedinUser
             if (!user) return false
-            // console.log('user', user)
             const userLikedSongs = user.likedSongs
-            console.log('userSongs', userLikedSongs)
-            // if (!userLikedSongs.includes(this.song)) return false
-            // else return true
-            // this.$store.dispatch({ type: 'updateUser', user })
-            // return false
+            const res = userLikedSongs.findIndex(song => song._id === this.song._id)
+            if (res >= 0) return true
+            return false
         },
         getClass() {
             return {
@@ -177,6 +176,6 @@ export default {
             }
         },
     },
-  
+
 }
 </script>

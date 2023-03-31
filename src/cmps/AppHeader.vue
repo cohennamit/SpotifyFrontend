@@ -9,6 +9,7 @@
       </button>
     </section>
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
+    <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
       <img :src="loggedInUser.imgUrl" />

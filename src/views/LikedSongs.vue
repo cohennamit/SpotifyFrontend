@@ -4,19 +4,13 @@
         <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
         <div class="station-details-body">
             <PlayBtn :station="station" />
-            <div @click="toggleStationOptions" class="options-icon" v-html="getSvg('playlistOptions')"></div>
-            <ul v-if="isOptionsShown">
-                <!-- <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li> -->
-                <!-- <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li> -->
-            </ul>
         </div>
         <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
-        <!-- <SongSearchList v-if="station.isAddedByUser" @addSong="addSong" /> -->
         <hr>
         <div class="placeholder"></div>
     </section>
     <section v-else>
-        <h1>get</h1>
+        <h1>You don't have any liked songs yet...</h1>
     </section>
 </template>
   

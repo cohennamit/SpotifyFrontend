@@ -43,7 +43,7 @@ export const userStore = {
         removeLikedSong(state, { song }) {
             console.log('state.loggedinUser', state.loggedinUser)
             const likedSongs = state.loggedinUser.likedSongs
-            const index = likedSongs.findIndex((s => s.id === song.id))
+            const index = likedSongs.findIndex((s => s._id === song._id))
             state.loggedinUser.likedSongs.splice(index, 1)
         }
     },
