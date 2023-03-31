@@ -1,5 +1,9 @@
+.label-list-text{
+	padding-top: 32px;
+}
 
-.labels-list{
+ .labels-list{
+	padding-top: 32px;
 	display: grid;
 	grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
     gap: 24px;

@@ -1,5 +1,5 @@
 <template>
-  <header :style="{ backgroundColor: headerColor, opacity: headerOpacity }" ref="header" class="header">
+  <header :style="{ backgroundColor: headerColor }" ref="header" class="header">
     <section class="header-buttons">
       <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
         <div class="icon" v-html="getSvg('arrowLeft')"></div>
@@ -54,10 +54,12 @@ export default {
   },
   computed: {
     headerColor() {
-      return this.$store.getters.currColor;
-    },
-    headerOpacity() {
-      return 1 - this.$store.getters.opacity;
+      const opacity = 1 - this.$store.getters.opacity;
+
+      const rgbaColor = this.$store.getters.currColor
+        .replace('rgb', 'rgba')
+        .replace(')', `, ${opacity})`);
+      return rgbaColor;
     },
     isFilterShown() {
       return this.$store.getters.isFilterShown;

@@ -23,7 +23,6 @@
 		min-height: 220px;
 		grid-template-columns: repeat(2, minmax(267px, 1fr));
 		row-gap: 0.5em;
-
 		.top-content {
 			height: 64px;
 		}
@@ -58,7 +57,7 @@
 		font-size: 0.63em;
 		display: flex;
 		align-items: center;
-		background-color: #373737;
+		background-color: #282727;
 		border-radius: 4px;
 		height: 64px;
 	}
@@ -77,15 +76,12 @@
 	}
 }
 
-
 .station-list {
 	@media (max-width: 760px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 	padding: 0;
 	padding-block-end: 7em;
-	overflow-x: hidden;
-	overflow-y: hidden;
 	width: 100%;
 	display: grid;
 	gap: 26px;
