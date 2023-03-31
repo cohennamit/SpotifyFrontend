@@ -8,20 +8,21 @@ import { userService } from './user.service.js'
 const STORAGE_KEY = 'station'
 
 export const stationService = {
+    getEmptyStation,
     query,
     getById,
     save,
     remove,
-    getEmptyStation,
     addStationMsg,
     getEmptySong,
     getLabels,
-    getUserStations
+    getUserStations,
+    getLabelStations,
 }
 window.cs = stationService
 
 
-async function query(filterBy = { txt: '', listencount: 0 }) {
+async function query(filterBy = { owner:''}) {
     console.log('filterBy from query', filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
@@ -36,8 +37,12 @@ async function query(filterBy = { txt: '', listencount: 0 }) {
     // return stations
 
 }
-async function getUserStations(userId){
-  return await query({owner: userId})
+async function getUserStations(userId) {
+    return await query({ owner: userId })
+}
+async function getLabelStations(labelName){
+    console.log(labelName)
+    return await query({label: labelName})
 }
 function getById(stationId) {
     // return storageService.get(STORAGE_KEY, stationId)
@@ -72,7 +77,7 @@ async function addStationMsg(stationId, txt) {
 function getEmptyStation() {
     return {
         //TODO: ADD COUNTER
-        title: `My Playlist #`,
+        title: 'My Playlist',
         userDesc: '',
         imgUrl:
             'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',

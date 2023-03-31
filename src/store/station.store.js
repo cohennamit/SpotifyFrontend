@@ -59,6 +59,7 @@ export const stationStore = {
       return isFilterShown;
     },
     labels({ labels }) {
+      console.log('store,labels',labels)
       return labels;
     },
   },

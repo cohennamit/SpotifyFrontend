@@ -1,6 +1,6 @@
 <template>
-    <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
-        @mouseleave="isHover = false">
+    <article :class="getClass"  class="song-preview-main" @click="handleClick"
+        @mouseover="isHover = true" @mouseleave="isHover = false">
         <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
@@ -22,14 +22,16 @@
         <!-- <p>{{ song.album }}</p> -->
         <div class="column-3" :class="getClass">{{ song.album }}</div>
 
-        <div>{{ songAddedAt }}</div>
+        <div class="column-4">{{ songAddedAt }}</div>
         <div class="column-5">
             <div>{{ song.duration }}</div>
             <div class="song-preview-preferences">
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
-                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon"
+                    v-html="getSvg('trash')"></span>
+                <span v-else></span>
             </div>
         </div>
     </article>
@@ -42,7 +44,7 @@ import { svgService } from '../services/svg.service.js'
 import { userService } from '../services/user.service'
 export default {
     name: 'Song Preview',
-    emits: ['removeSong', 'setSong', 'setStation','setActiveSong'],
+    emits: ['removeSong', 'setSong', 'setStation', 'setActiveSong'],
     props: {
         song: {
             type: Object
@@ -58,7 +60,7 @@ export default {
         }
     },
     created() {
-        
+
     },
     data() {
         return {
@@ -114,18 +116,17 @@ export default {
         isLiked() {
             const user = this.$store.getters.loggedinUser
             if (!user) return false
-            // console.log('user', user)
             const userLikedSongs = user.likedSongs
-            console.log('userSongs', userLikedSongs)
-            // if (!userLikedSongs.includes(this.song)) return false
-            // else return true
-            // this.$store.dispatch({ type: 'updateUser', user })
-            // return false
+            const res = userLikedSongs.findIndex(song => song._id === this.song._id)
+            if (res >= 0) return true
+            return false
         },
         getClass() {
             return {
                 'hover': this.isHover || this.isActive,
-                'active': this.activeSongIdx === this.index
+                'active': this.activeSongIdx === this.index,
+                'not-custom': !this.station.isAddedByUser,
+                'custom': this.station.isAddedByUser
             }
         },
         shortenedTitle() {
@@ -177,6 +178,6 @@ export default {
             }
         },
     },
-  
+
 }
 </script>

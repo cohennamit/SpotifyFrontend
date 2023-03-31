@@ -4,20 +4,26 @@
 }
 
 .station-list-text {
-	font-family: Gotham Bold;
 	margin-inline-start: 0.25em;
 	margin-block-start: 2em;
 	margin-block-end: 1em;
 }
+h2{
 
+    margin-block-start: 59.7px;
+    font-size: 30px;
+	margin-block-end: 0.9em;
+	font-family: 'Circular Bold';
+}
 .station-list-top-content-container {
 	* {
-		font-family: Gotham Bold;
-	}
+		font-family: 'Circular Light';
+		letter-spacing: 1px;
+	}	
 
 	@media (max-width:1600px) {
 		.top-content {
-			height: 84px;
+			height: 80px;
 		}
 	}
 
@@ -54,8 +60,8 @@
 			height: 84px;
 
 			img {
-				height: 84px;
-				width: 84px;
+				height: 80px;
+				width: 80px;
 
 			}
 		}
@@ -85,21 +91,14 @@
 	}
 }
 
-.home-grace{
-	font-size: 2rem;
-    font-family: 'Gotham Bold';
-	margin-block-end: 0.9em;
-	margin-inline-start: 0.25em;
-	margin-block-start: 2em;
-	margin-block-end: 1em;
-}
+
 .station-list {
 	@media (max-width: 760px) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
 	padding: 0;
-	padding-block-end: 7em;
+	padding-block-end: 15em;
 	width: 100%;
 	display: grid;
 	gap: 26px;

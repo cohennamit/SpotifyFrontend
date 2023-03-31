@@ -5,8 +5,6 @@
       <h1>Satisfy</h1>
     </RouterLink>
     <section class="nav">
-      <!-- <section class=" nav-container nav-top-container"> -->
-
       <RouterLink
         class="btn-nav"
         @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
@@ -33,19 +31,16 @@
         <div class="btn-create">
           <div class="icon create-icon" v-html="getSvg('createPlaylist')"></div>
         </div>
-        Create Playlist
+        <span> Create Playlist </span>
       </button>
       <RouterLink class="liked-songs-btn" to="/liked">
         <div class="btn-liked">
           <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
         </div>
-        Liked Songs
+        <span> Liked Songs </span>
       </RouterLink>
     </section>
-    <!-- </section> -->
     <hr />
-    <!-- <section class=" nav-container nav-bottom-container"> -->
-
     <section class="user-playlists">
       <ul class="playlist-links">
         <RouterLink
@@ -57,7 +52,6 @@
         </RouterLink>
       </ul>
     </section>
-    <!-- </section> -->
     <!-- <button class="install-btn">
             <div class="icon" v-html="getSvg('install')"></div> Install App
         </button> -->

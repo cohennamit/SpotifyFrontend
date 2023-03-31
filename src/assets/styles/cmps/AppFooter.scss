@@ -1,4 +1,14 @@
 .footer {
+    @media (max-width:800px) {
+        padding-inline-end: 20px;
+        .mid-section:not(.btn-pause){
+            display: none;
+        }
+        .play-pause-icon-mobile{
+            display: block;
+        }
+    }
+
     // display: none;
     border-top: 0.1px rgba(240, 248, 255, 0.154) outset;
     width: 100vw;
@@ -114,7 +124,6 @@
     input[type="range"]::-ms-fill-upper {
         background-color: #b7b7b7;
     }
-
     .btn-pause {
         margin-inline-start: 9px;
         margin-inline-end: 9px;
@@ -130,6 +139,11 @@
 }
 
 .music-settings-container {
+    @media (max-width:800px) {
+        display: none;
+
+    }
+
     flex: 0 1 250px;
 
     margin-inline-end: 25px;
@@ -157,7 +171,11 @@
     background-color: transparent;
     width: 20px;
 }
-
+.play-pause-icon-mobile{
+    display: none;
+    width: 20px;
+    height: 20px;
+}
 .progress-bar {
     background-color: grey;
     margin-top: 9px;
@@ -179,15 +197,18 @@
 
 .music-bar {
     margin: auto;
-    width: 550px;
+    width: 100%;
     display: flex;
     gap: 5px;
 }
 
 .mid-section {
-    width: 600px;
+   
+
+    width: 60vw;
     display: grid;
     gap: 5px;
+    max-width: 38.6vw;
 }
 
 .song-info {
