@@ -15,18 +15,19 @@ export default {
     data() {
         return {
             label: '',
-            stations: null,
+            stations: null
         }
     },
     methods: {
 
     },
     computed: {
-          labeledStations(){
-            const filteredStations = stations.filter((station) => station.label.includes(this.label));
+        labeledStations() {
+            const filteredStations =  this.stations.filter((station) => !station.isAddedByUser);
+            // const labeledStations = filteredStations.filter(station=> station.label.includes(this.label))
             console.log(filteredStations)
-            return filteredStations
-          }
+            return labeledStations
+        },
     },
     watch: {
         '$route.params': {
@@ -38,14 +39,8 @@ export default {
     },
     async created() {
         try {
-            const stations = await stationService.query()
-            this.stations=stations
-            // const filteredStations =  stations.filter((station) => !station.isAddedByUser &&
-            //  station.label.some((label) => this.label.includes(label)));
-            // console.log(filteredStations)
-            // const labeledStations = filteredStations.filter(station=> station.label.includes(this.label))
-            // console.log(labeledStations)
-            // this.labeledStations = labeledStations
+            this.stations = await stationService.query()
+            console.log(this.stations)
         } catch (err) {
             console.log('Failed to get loggedinUser stations')
         }

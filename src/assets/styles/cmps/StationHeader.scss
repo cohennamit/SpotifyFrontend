@@ -9,7 +9,7 @@
             flex-direction: column;
 
             .by-user {
-                font-size: 14px;
+                font-size: 1vw;
                 display: flex;
                 margin-block-end: -4px;
                 gap: 8px;
@@ -44,8 +44,8 @@
         }
 
         .img-wrapper {
-            width: 232px;
-            height: 232px;
+            width: 15vw;
+            height: 15vw;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -101,18 +101,17 @@
                 }
             }
         }
-
-
-
         span {
+
+
+
             font-size: 14px;
             margin-inline-start: 6px;
         }
 
         &-title {
             cursor: pointer;
-            font-size: 6rem;
-            font-family: Gotham Bold;
+            font-size: 6.9vw;
             margin-block-end: 0.3em;
             letter-spacing: -4px;
             margin-block-start: 3px;

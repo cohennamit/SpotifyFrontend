@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family: Gotham Book;
-    letter-spacing: 1px;
+    font-family: Circular Light, Circular Light MAC;
 }
 
 ::selection {
@@ -38,6 +37,7 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: Circular Bold,Circular Bold MAC;
     margin: 0 0 0.6em;
     line-height: 1;
 }

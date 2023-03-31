@@ -179,15 +179,16 @@
 
 .music-bar {
     margin: auto;
-    width: 550px;
+    width: 100%;
     display: flex;
     gap: 5px;
 }
 
 .mid-section {
-    width: 600px;
+    width: 60vw;
     display: grid;
     gap: 5px;
+    max-width: 38.6vw;
 }
 
 .song-info {

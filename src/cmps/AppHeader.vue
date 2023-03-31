@@ -17,10 +17,8 @@
         {{ loggedInUser.username }}
       </RouterLink>
     </section>
-    <section v-else>
-      <section class="login-btn">
+      <section v-else class="login-btn">
         <RouterLink class="login-span" to="/login">Login</RouterLink>
-      </section>
     </section>
   </header>
 </template>

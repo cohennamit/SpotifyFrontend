@@ -1,14 +1,43 @@
 
 @font-face {
-    font-family: Gotham Book;
+    font-family: Circular Book;
     src: url('../../../../src/assets/fonts/Circular/CircularStd-Book.otf');
   }
 @font-face {
-    font-family: Gotham Bold;
-    src: url('../../../../src/assets/fonts/Circular/GothamBold.ttf');
+    font-family: Circular Book MAC;
+    src: url('../../../../src/assets/fonts/Circular/__MACOSX/CircularStd-Book.otf');
+  }
+
+@font-face {
+    font-family: Circular Bold;
+    src: url('../../../../src/assets/fonts/Circular//CircularStd-Bold.otf');
+  }
+@font-face {
+    font-family: Circular Bold MAC;
+    src: url('../../../../src/assets/fonts/Circular/__MACOSX/CircularStd-Bold.otf');
   }
   
   @font-face{
-    font-family: Circular Book;
-    src: url('../../../../src/assets/fonts/Circular/CircularStd-Book.otf');
+    font-family: Circular Black;
+    src: url('../../../../src/assets/fonts/Circular/CircularStd-Black.otf');
+  }
+  @font-face{
+    font-family: Circular Black MAC;
+    src: url('../../../../src/assets/fonts/Circular/__MACOSX/CircularStd-Black.otf');
+  }
+  @font-face{
+    font-family: Circular Light;
+    src: url('../../../../src/assets/fonts/Circular/CircularStd-Light.otf');
+  }
+  @font-face{
+    font-family: Circular Light MAC;
+    src: url('../../../../src/assets/fonts/Circular/__MACOSX/CircularStd-Light.otf');
+  }
+  @font-face{
+    font-family: Circular Medium;
+    src: url('../../../../src/assets/fonts/Circular/CircularStd-Medium.otf');
+  }
+  @font-face{
+    font-family: Circular Medium MAC;
+    src: url('../../../../src/assets/fonts/Circular/__MACOSX/CircularStd-Medium.otf');
   }

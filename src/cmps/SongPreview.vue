@@ -1,6 +1,6 @@
 <template>
-    <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
-        @mouseleave="isHover = false">
+    <article :class="getClass"  class="song-preview-main" @click="handleClick"
+        @mouseover="isHover = true" @mouseleave="isHover = false">
         <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
@@ -22,7 +22,7 @@
         <!-- <p>{{ song.album }}</p> -->
         <div class="column-3" :class="getClass">{{ song.album }}</div>
 
-        <div>{{ songAddedAt }}</div>
+        <div class="column-4">{{ songAddedAt }}</div>
         <div class="column-5">
             <div>{{ song.duration }}</div>
             <div class="song-preview-preferences">
@@ -124,7 +124,9 @@ export default {
         getClass() {
             return {
                 'hover': this.isHover || this.isActive,
-                'active': this.activeSongIdx === this.index
+                'active': this.activeSongIdx === this.index,
+                'not-custom': !this.station.isAddedByUser,
+                'custom': this.station.isAddedByUser
             }
         },
         shortenedTitle() {

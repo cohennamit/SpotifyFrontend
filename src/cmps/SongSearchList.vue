@@ -3,7 +3,7 @@
     <ul v-if="songs" :class="setSearchClass" class="song-search-results-wrap">
       <SongSearchPreview v-for="(song, index) in songs" @addSong="addSong" @setSong="setSong" :song="song" :key="index" />
     </ul>
-    <div v-if="!songs && !loading">No Songs</div>
+    <div v-if="!songs" class="no-songs">No Songs</div>
   </section>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <ul v-if="station" class="song-list">
-    <div v-if="hasSongs" class="song-preview-main song-preview-header">
+    <div v-if="hasSongs" :class="getClass" class="song-preview-main song-preview-header">
       <div>#</div>
       <div class="title">Title</div>
       <div class="album">Album</div>
-      <div class="Date-added">Date Added</div>
+      <div class="date-added">Date Added</div>
       <div>
         <div></div>
         <div class="clock-icon" v-html="getSvg('clock')"></div>
@@ -28,7 +28,7 @@ export default {
       require: true
     },
   },
-  emits: ['removeSong','setSong','setStation'],
+  emits: ['removeSong', 'setSong', 'setStation'],
   data() {
     return {
       activeSongIdx: -1,
@@ -44,18 +44,23 @@ export default {
     setActiveSong(idx) {
       this.activeSongIdx = idx
     },
-    setSong(song){
-      this.$emit('setSong',song)
+    setSong(song) {
+      this.$emit('setSong', song)
     },
-    setStation(station){
-      this.$emit('setStation',station)
+    setStation(station) {
+      this.$emit('setStation', station)
     },
   },
   computed: {
     hasSongs() {
       return this.station.songs.length
     },
-
+    getClass() {
+      return {
+        'not-custom': !this.station.isAddedByUser,
+        'custom': this.station.isAddedByUser
+      }
+    }
   },
   created() { },
   components: {
