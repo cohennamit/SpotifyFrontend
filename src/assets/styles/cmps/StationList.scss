@@ -89,6 +89,9 @@
 	font-size: 2rem;
     font-family: 'Gotham Bold';
 	margin-block-end: 0.9em;
+	margin-inline-start: 0.25em;
+	margin-block-start: 2em;
+	margin-block-end: 1em;
 }
 .station-list {
 	@media (max-width: 760px) {
