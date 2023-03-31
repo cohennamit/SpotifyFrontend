@@ -29,7 +29,8 @@
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
-                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+                <span v-else></span>
             </div>
         </div>
     </article>
