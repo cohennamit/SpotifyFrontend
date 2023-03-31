@@ -15,7 +15,8 @@ export const stationService = {
     getEmptyStation,
     addStationMsg,
     getEmptySong,
-    getLabels
+    getLabels,
+    getUserStations
 }
 window.cs = stationService
 
@@ -34,6 +35,9 @@ async function query(filterBy = { txt: '', listencount: 0 }) {
     // }
     // return stations
 
+}
+async function getUserStations(userId){
+  return await query({owner: userId})
 }
 function getById(stationId) {
     // return storageService.get(STORAGE_KEY, stationId)

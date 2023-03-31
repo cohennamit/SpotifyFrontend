@@ -58,6 +58,7 @@ export default {
         }
     },
     created() {
+        
     },
     data() {
         return {
@@ -115,9 +116,9 @@ export default {
             if (!user) return false
             // console.log('user', user)
             const userLikedSongs = user.likedSongs
-            // console.log('userSongs', userLikedSongs)
-            if (!userLikedSongs.includes(this.song)) return false
-            else return true
+            console.log('userSongs', userLikedSongs)
+            // if (!userLikedSongs.includes(this.song)) return false
+            // else return true
             // this.$store.dispatch({ type: 'updateUser', user })
             // return false
         },

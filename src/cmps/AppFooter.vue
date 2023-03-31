@@ -39,7 +39,7 @@
         <div class="music-settings-container">
             <section class="music-settings">
                 <button @click="toggleMute" class="btn-mute">
-                    <div class="icon" v-html="isMuted ? getSvg('soundMuted') : getSvg('sound')"></div>
+                    <div class="icon" v-html="getSvg('volume100')"></div>
                 </button>
                 <input class="footer-volume volume-slider" type="range" min="0" max="100" step="1" id="volume-slider"
                     v-model="volume" />
@@ -61,6 +61,7 @@ export default {
     data() {
         return {
             volume: 40,
+            volumeSvg: '',
             isRepeating: true,
             playerVars: {
                 loop: 1
@@ -177,11 +178,19 @@ export default {
     watch: {
         volume(newVolume) {
             this.$refs.youtube.setVolume(newVolume);
+            if (newVolume > 75) this.volumeSvg=this.getSvg('volume100')
+            else if (newVolume > 25 && newVolume < 75)  this.volumeSvg=this.getSvg('volume100')
+            else if (newVolume > 0 && newVolume < 25)  this.volumeSvg=this.getSvg('volume100')
+            else if (newVolume === 0)  this.volumeSvg=this.getSvg('volume100')
         }
     },
     computed: {
+        volumeSvg() {
+            return this.getSvg(this.volumeSvgName)
+        },
         videoId() {
             return this.$store.getters.currentSong.videoId
+            console.log();
         },
         imgUrl() {
             return this.$store.getters.currentSong.imgUrl

@@ -30,12 +30,14 @@ export default {
     if (user) store.commit({ type: 'setLoggedinUser', user });
     this.$store.dispatch({ type: 'loadStations' });
   },
-  mounted() {
-    this.handleScroll();
-  },
+
   computed: {
     backgroundColor() {
-      return `linear-gradient(0deg, #121212 88%, ${this.$store.getters.currColor}`;
+      if (this.$store.getters.currColor === 'black' || this.$store.getters.currColor === 'rgb(0,0,0)') {
+        return `linear-gradient(0deg, #121212 88%, ${this.$store.getters.currColor}`;
+      } else {
+        return `linear-gradient(0deg, #121212 55%, ${this.$store.getters.currColor}`;
+      }
     },
   },
   methods: {

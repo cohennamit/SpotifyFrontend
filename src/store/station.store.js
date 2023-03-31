@@ -31,7 +31,7 @@ export function getActionAddStationMsg(stationId) {
 export const stationStore = {
   state: {
     stations: [],
-    currColor: 'rgb(0, 0, 0 )',
+    currColor: 'black',
     opacity: 1,
 
     isFilterShown: false,
@@ -51,8 +51,8 @@ export const stationStore = {
     opacity: (state) => {
       return state.opacity;
     },
-
     stations({ stations }) {
+      console.log(stations)
       return stations;
     },
     isFilterShown({ isFilterShown }) {
@@ -118,7 +118,7 @@ export const stationStore = {
       try {
         station = await stationService.save(station);
         context.commit(getActionUpdateStation(station));
-        console.log('station from updateStation:', station)
+        console.log('station from updateStation:', station);
         return station;
       } catch (err) {
         console.log('stationStore: Error in updateStation', err);
@@ -127,7 +127,7 @@ export const stationStore = {
     },
     async loadStations(context, { filterBy }) {
       try {
-        console.log('filterBy', filterBy)
+        console.log('filterBy', filterBy);
         const stations = await stationService.query(filterBy);
         context.commit({ type: 'setStations', stations });
       } catch (err) {

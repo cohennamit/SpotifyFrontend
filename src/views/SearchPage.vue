@@ -1,11 +1,15 @@
 <template>
-  <!-- <span>Browse all</span> -->
+  <span class="label-list-text">Browse all</span>
 
-  <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
+  <SongSearchList v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list">
-    <article class="label-container" :class="getRandomColorClass(index)" v-for="(label, index) in labels"
-      @click="setLabel(label)">
+    <article
+      class="label-container"
+      :class="getRandomColorClass(index)"
+      v-for="(label, index) in labels"
+      @click="setLabel(label)"
+    >
       <img :src="label.imgUrl" />
       <span>{{ label.name }}</span>
     </article>
@@ -25,6 +29,9 @@ export default {
       songs: null,
     };
   },
+  mounted() {
+    this.$store.dispatch('setCurrColor', 'rgb(0,0,0)');
+  },
   computed: {
     labels() {
       return this.$store.getters.labels;
@@ -33,28 +40,27 @@ export default {
   watch: {
     '$route.query': {
       async handler() {
-        const { query } = this.$route.query
+        const { query } = this.$route.query;
         console.log(getSongs(query));
         if (query) {
-          this.songs = await getSongs(query)
+          this.songs = await getSongs(query);
         }
-        this.isSearchPage = (this.$route.path === '/search') ? true : false
+        this.isSearchPage = path === '/search' ? true : false;
       },
       immediate: true,
     },
-    '$route': {
+    $route: {
       handler() {
-        const { path } = this.$route
-        if (path === '/search') this.songs = null
+        const { path } = this.$route;
+        if (path === '/search') this.songs = null;
       },
       immediate: true,
     },
-
   },
   methods: {
     setSong(song) {
-      console.log('page',song);
-      this.$store.dispatch({ type: 'setSong', song })
+      console.log('page', song);
+      this.$store.dispatch({ type: 'setSong', song });
     },
     setLabel(label) {
       this.$router.push(`/genre/${label.name}`);
@@ -79,10 +85,9 @@ export default {
       return colors[randomIdx];
     },
   },
-  created() { },
+  created() {},
   components: {
-    SongSearchList
-
+    SongSearchList,
   },
 };
 </script>

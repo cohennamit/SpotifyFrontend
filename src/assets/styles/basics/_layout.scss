@@ -42,14 +42,14 @@
     background-image: linear-gradient(0deg, #121212 88%, #222222);
     background-attachment: local;
     padding: 32px;
-    padding-top: 100px;
+    padding-top: 32px;
     grid-area: 1 / 2 / -1 / -1;
     // grid-row: 1/-1;
     // grid-column: 2;
     width: 100%;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 48px 1fr 120px 0.5fr;
+    grid-template-rows: 48px 1fr 120px ;
     overflow: overlay;
     overflow-x: hidden;
 }
@@ -57,7 +57,7 @@
 .layout-container {
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 70px 72dvh 139px;
+    grid-template-rows: 70px 80dvh 139px;
     padding-block-end: 1em;
 
 }
