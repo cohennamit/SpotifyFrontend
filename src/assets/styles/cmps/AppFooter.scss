@@ -1,24 +1,50 @@
 .footer {
-    @media (max-width:800px) {
-        padding-inline-end: 20px;
-        .mid-section:not(.btn-pause){
-            display: none;
-        }
-        .play-pause-icon-mobile{
-            display: block;
-        }
-    }
+    // @media (max-width:800px) {
+    //     padding-inline-end: 20px;
+    //     .mid-section:not(.btn-pause){
+    //         display: none;
+    //     }
+    //     .play-pause-icon-mobile{
+    //         display: block;
+    //     }
+    // }
 
-    // display: none;
+    @media (max-width: 800px) {
+        // display: none
+        height: 0px;
+        width: 90dvw;
+        .music-settings-container{
+
+        }
+        .footer-btns, .music-settings, .progress-bar {
+display: none;     
+opacity: 0;   }
+        .play-pause-icon{
+            position: absolute;
+            bottom: 120px;
+            right: 1em;
+            fill: red;
+            
+        }
+
+.song-info{
+position: absolute;
+z-index: 500;
+bottom: 90px;
+background-color: pink;
+width: 100vw;
+}    
+}
+
     border-top: 0.1px rgba(240, 248, 255, 0.154) outset;
-    width: 100vw;
     z-index: 400;
-    // grid-row: 3;
+    grid-row: 3;
     display: flex;
     flex-wrap: nowrap;
     height: 90px;
     align-items: center;
     justify-content: space-between;
+    width: 100vw;
     position: absolute;
     bottom: 0;
     background-color: #333;
@@ -139,10 +165,10 @@
 }
 
 .music-settings-container {
-    @media (max-width:800px) {
-        display: none;
+    // @media (max-width:800px) {
+    //     display: none;
 
-    }
+    // }
 
     flex: 0 1 250px;
 

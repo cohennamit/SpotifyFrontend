@@ -3,7 +3,22 @@ $secondary-color: #aaa;
 
 .main-nav {
     @media (max-width:800px) {
-        display: none;
+        width: 100vw;
+        display: grid;
+        grid-row: 3;
+    grid-column: 1/-1;
+        .actions, span, hr, .main-nav-logo, .playlist-links{
+            display: none;
+        }
+        .nav{
+grid-template-columns: 0.33fr 0.33fr 0.33fr;  
+justify-content: space-evenly;
+   }
+   a {
+
+    justify-self: center;
+
+   }
     }
     z-index: 310;
     font-size: 0.8125rem;

@@ -11,7 +11,7 @@
         to="/station"
       >
         <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div>
-        Home
+        <span> Home </span>
       </RouterLink>
       <RouterLink
         class="btn-nav"
@@ -19,11 +19,11 @@
         to="/search"
       >
         <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div>
-        Search
+        <span> Search </span>
       </RouterLink>
       <RouterLink class="btn-nav" to="/library">
         <div class="icon" v-html="isLibrary ? getSvg('libraryFull') : getSvg('library')"></div>
-        Your Library
+        <span> Your Library </span>
       </RouterLink>
     </section>
     <section class="actions">
