@@ -1,9 +1,11 @@
 .footer {
     @media (max-width: 800px) {
         height: 0px;
-        .footer-btns, .music-bar .music-settings, .progress-bar {
+        .footer-btns, .footer-btns * ,.mid-section, .mid-section *, input ,.music-settings-container, .music-settings-container *  .music-bar .music-settings, .progress-bar {
           display: none;     
           opacity: 0;  
+          height: 0px;
+          width: 0px;
          }
          
         .play-pause-icon, .play-pause-icon-mobile {

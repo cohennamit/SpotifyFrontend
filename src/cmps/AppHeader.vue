@@ -17,8 +17,8 @@
         {{ loggedInUser.username }}
       </RouterLink>
     </section>
-      <section v-else class="login-btn">
-        <RouterLink class="login-span" to="/login">Login</RouterLink>
+    <section v-else class="login-btn">
+      <RouterLink class="login-span" to="/login">Login</RouterLink>
     </section>
   </header>
 </template>
@@ -54,11 +54,7 @@ export default {
   computed: {
     headerColor() {
       const opacity = 1 - this.$store.getters.opacity;
-
-      const rgbaColor = this.$store.getters.currColor
-        .replace('rgb', 'rgba')
-        .replace(')', `, ${opacity})`);
-      return rgbaColor;
+      return this.$store.getters.currColor.replace('rgb', 'rgba').replace(')', `, ${opacity})`);
     },
     isFilterShown() {
       return this.$store.getters.isFilterShown;

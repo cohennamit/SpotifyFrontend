@@ -33,7 +33,11 @@ export default {
 
   computed: {
     backgroundColor() {
-      if (this.$store.getters.currColor === 'black' || this.$store.getters.currColor === 'rgb(0,0,0)') {
+      if (
+        this.$store.getters.currColor === 'black' ||
+        this.$store.getters.currColor === 'rgb(0,0,0)' ||
+        this.$store.getters.currColor === 'rgb(28, 11, 59)'
+      ) {
         return `linear-gradient(0deg, #121212 88%, ${this.$store.getters.currColor}`;
       } else {
         return `linear-gradient(0deg, #121212 55%, ${this.$store.getters.currColor}`;
@@ -45,10 +49,8 @@ export default {
       const appMain = this.$refs.appMain;
       const scrollTop = appMain.scrollTop;
       const opacity = 1 - scrollTop / 100;
-
       // this.$store.dispatch('setCurrColor', `rgb(0, 0, 0)`);
       this.$store.dispatch('setOpacity', opacity);
-      // appMain.style.backgroundImage = `linear-gradient(0deg, #121212 88%, ${this.headerColor})`;
     },
   },
   mounted() {

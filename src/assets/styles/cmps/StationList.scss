@@ -35,8 +35,9 @@ h2{
 			height: 64px;
 		}
 	}
-
+	
 	@media (max-width:1085px) {
+		grid-template-columns: repeat(2, minmax(177px, 1fr));
 		min-height: 190px;
 	}
 
@@ -68,6 +69,7 @@ h2{
 
 		font-size: 0.63em;
 		display: flex;
+		flex-shrink: 2;
 		align-items: center;
 		background-color: #282727;
 		border-radius: 4px;
@@ -93,10 +95,22 @@ h2{
 
 
 .station-list {
-	@media (max-width: 760px) {
-		grid-template-columns: repeat(2, 1fr);
+	@media (max-width: 879px) {
+		// grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
 	}
-
+	@media (max-width: 845px) {
+		// grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(3, minmax(163px, 1fr));
+	}
+	@media (max-width: 587px) {
+		// grid-template-columns: repeat(3, 1fr);
+		// grid-template-columns: repeat(auto-fill, minmax(163px, 1fr));
+	}
+	@media (max-width: 587px) {
+		// grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, minmax(163px, 1fr));
+	}
 	padding: 0;
 	padding-block-end: 15em;
 	width: 100%;

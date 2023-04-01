@@ -1,6 +1,6 @@
 <template>
   <section class="main-nav">
-    <RouterLink to="/" class="main-nav-logo">
+    <RouterLink @mouseover="this.$store.dispatch('setCurrColor', 'black')" to="/" class="main-nav-logo">
       <div class="headphones-icon" v-html="getSvg('headphones')"></div>
       <h1>Satisfy</h1>
     </RouterLink>
@@ -26,7 +26,11 @@
         </div>
         <span> Create Playlist </span>
       </button>
-      <RouterLink class="liked-songs-btn" to="/liked">
+      <RouterLink
+        @mouseover="this.$store.dispatch('setCurrColor', 'rgb(28, 11, 59)')"
+        class="liked-songs-btn"
+        to="/liked"
+      >
         <div class="btn-liked">
           <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
         </div>
