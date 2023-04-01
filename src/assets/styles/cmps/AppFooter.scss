@@ -1,38 +1,32 @@
 .footer {
-    // @media (max-width:800px) {
-    //     padding-inline-end: 20px;
-    //     .mid-section:not(.btn-pause){
-    //         display: none;
-    //     }
-    //     .play-pause-icon-mobile{
-    //         display: block;
-    //     }
-    // }
-
     @media (max-width: 800px) {
-        // display: none
         height: 0px;
-        width: 90dvw;
-        .music-settings-container{
-
-        }
-        .footer-btns, .music-settings, .progress-bar {
-display: none;     
-opacity: 0;   }
-        .play-pause-icon{
+        .footer-btns, .music-bar .music-settings, .progress-bar {
+          display: none;     
+          opacity: 0;  
+         }
+         
+        .play-pause-icon, .play-pause-icon-mobile {
+            z-index: 300;
+            // opacity: 1 !important;
+            display: block;
             position: absolute;
-            bottom: 120px;
-            right: 1em;
+            bottom: 110px;
+            right: 4.5em;
             fill: red;
-            
         }
 
 .song-info{
 position: absolute;
-z-index: 500;
+z-index: 200;
 bottom: 90px;
 background-color: pink;
-width: 100vw;
+width: 90vw;
+border-radius: 8px;
+img {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
 }    
 }
 
