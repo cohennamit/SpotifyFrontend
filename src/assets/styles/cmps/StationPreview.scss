@@ -8,16 +8,22 @@
         font-size: 0.75em;
        }
     cursor: pointer;
-    min-height: 300px;
+    min-height: 275px;
     max-width: 230px;
-    min-width: 198px;
+    min-width: 182px;
     background-color: rgb(23, 23, 23);
     transition: 300ms;
     padding: 1em;
     border-radius: 8px;
     @media (max-width: 800px){
-        max-height: 350px;
-
+        
+        p{
+            display: none;
+        }
+        min-width: 160px;
+        min-height: 250px;
+        // max-height: 300px;
+    
     }
     p{
         margin-block-start: 0.2em;

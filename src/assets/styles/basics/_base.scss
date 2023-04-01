@@ -10,7 +10,7 @@
 html,
 body,
 #app {
-    // height: 100dvh;
+    height: 100%;
     // background-image: linear-gradient(0deg,#121212 70%,#220e47 );
     background-attachment: fixed;
 }
@@ -68,6 +68,10 @@ a {
 }
 
 ::-webkit-scrollbar {
+    @media (max-width: 800px) {
+        display: none;
+        
+    }
     background: linear-gradient(0deg, #121212 90%, #222222 );
     // background: linear-gradient(0deg, #121212 90%, #220e47);
     width: 0.5em;
