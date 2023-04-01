@@ -90,7 +90,7 @@ export default {
     // image.removeEventListener('load');
   },
   methods: {
-    onCloseEditModal() {
+    onCloseEditModal(event) {
       this.$emit('onCloseEditModal');
     },
     saveStation() {

@@ -8,7 +8,8 @@ export const userStore = {
     state: {
         loggedinUser: null,
         users: [],
-        watchedUser: null
+        watchedUser: null,
+        userStations: null
     },
     getters: {
         users({ users }) { return users },

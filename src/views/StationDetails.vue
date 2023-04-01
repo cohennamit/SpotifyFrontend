@@ -1,13 +1,14 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
-  <section v-if="station" class="station-details">
+  <section @click="closeStationOptions"  v-if="station" class="station-details">
     <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
-      <div @click="toggleStationOptions" class="options-icon" v-html="getSvg('playlistOptions')"></div>
-      <ul v-if="isOptionsShown">
-        <li v-if="station.isAddedByUser" @click="onEditStation">Edit</li>
-        <li v-if="station.isAddedByUser" @click="onRemoveStation">Delete</li>
+      <div  @click="openStationOptions($event)" @blur="closeStationOptions" class="options-icon" v-html="getSvg('playlistOptions')">
+      </div>
+      <ul ref="modalContainer" class="options-menu" v-if="isOptionsShown" >
+        <li v-if="station.isAddedByUser" @click="onOpenEditModal($event)">Edit</li>
+        <li v-if="station.isAddedByUser" @click="onRemoveStation($event)" >Delete</li>
       </ul>
     </div>
     <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
@@ -19,6 +20,7 @@
     <hr>
     <div class="placeholder"></div>
   </section>
+  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
 </template>
 
 <script>
@@ -27,6 +29,7 @@ import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
 import { getSongs } from '../services/songService.js';
 
+import Modal from '../cmps/Modal.vue';
 import StationHeader from '../cmps/StationHeader.vue';
 import SongList from '../cmps/SongList.vue';
 import SongSearchList from '../cmps/SongSearchList.vue';
@@ -38,10 +41,19 @@ export default {
     return {
       station: null,
       isOptionsShown: false,
-      songs: null
+      songs: null,
+      isEdit:false
     };
   },
   methods: {
+    onOpenEditModal() {
+      if (!this.station.isAddedByUser) return;
+      this.isEdit = true;
+    },
+    onCloseEditModal() {
+      this.isEdit = false;
+    },
+
     async fetchSongs(query){
           this.songs = await getSongs(query)
     },
@@ -54,8 +66,12 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
-    toggleStationOptions() {
-      this.isOptionsShown = !this.isOptionsShown;
+    openStationOptions(event) {
+      event.stopPropagation();
+      this.isOptionsShown = true
+    },
+    closeStationOptions(event){
+      this.isOptionsShown = false
     },
     onRemoveStation() {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
@@ -75,6 +91,7 @@ export default {
       }
     },
     updateImgUrl(imgUrl){
+      if(!imgUrl)return
       this.station.imgUrl = imgUrl
       this.$store.dispatch({type: 'updateStation', station: this.station})
     }
@@ -105,7 +122,8 @@ export default {
     SongList,
     SongSearchList,
     PlayBtn,
-    SongSearch
+    SongSearch,
+    Modal
   },
 };
 </script>

@@ -80,6 +80,7 @@ export const stationStore = {
       state.stations = stations;
     },
     addStation(state, { station }) {
+      console.log('mutations station store addStation',station)
       state.stations.push(station);
     },
     updateStation(state, { station }) {
