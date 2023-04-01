@@ -1,4 +1,8 @@
 .header {
+    @media (max-width: 1000px) {
+
+     padding: 16px;
+	}
     @media (max-width: 800px){
        position: absolute;
        .login-btn{
@@ -13,6 +17,7 @@
     width: 100%;
     z-index: 300;
     height: 60px;
+    // transition: 500ms ease-in;
     display: grid;
     padding: 16px 32px;
     align-items: center;

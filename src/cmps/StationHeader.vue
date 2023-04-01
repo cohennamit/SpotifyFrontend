@@ -16,14 +16,14 @@
       </div>
     </div>
     <div class="station-details-header-info">
-      <span>Playlist</span>
+      <span class="playlist">Playlist</span>
       <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
-      <!-- <div>
+       <!-- <div>
         <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }}
           <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
         </span>
-        <p v-else @click="onOpenEditModal">{{ station.userDesc }}</p>
       </div> -->
+        <p class="user-desc" @click="onOpenEditModal">{{ station.userDesc }}</p>
       <RouterLink :to="station.isAddedByUser ? '/library':'/station' " class="by-user">
         <div v-if="!station.isAddedByUser" class="headphones-icon" v-html="getSvg('smallHeadphones')" ></div>
         <p>

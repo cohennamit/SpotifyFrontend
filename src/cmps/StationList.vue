@@ -1,38 +1,60 @@
 <template>
-    <h2>{{greetings}}</h2>
+  <h2>{{ greetings }}</h2>
   <section class="station-list-top-content-container">
-    <RouterLink to="/liked" class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png"
-        alt="" />
+    <RouterLink
+      @mouseover="this.$store.dispatch('setCurrColor', 'rgb(28, 11, 59)')"
+      to="/liked"
+      class="top-content"
+    >
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/20_arpepb.png"
+        alt=""
+      />
       <!-- <div class="top-content-content-internal-wrapper"> -->
       <h1>Liked Songs</h1>
       <!-- </div> -->
     </RouterLink>
-    <route class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/16_emxov7.jpg"
-        alt="" />
-      <h1>All the Brilliant Things</h1>
-    </route>
-    <route @click="goToClickedStation('Jericho Jackson')" class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg"
-        alt="" />
+    <RouterLink to="/station/6423e736d6a1082554c7b0a2" class="top-content">
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1680351517/Michael_Jackson_n5zdz3.jpg"
+        alt=""
+      />
+      <h1>Michael Jackson</h1>
+    </RouterLink>
+    <RouterLink to="/station/64230edcad4901b53baf3616" class="top-content">
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/18_pc62j8.jpg"
+        alt=""
+      />
       <h1>Jericho Jackson</h1>
-    </route>
-    <route class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/17_awapkm.jpg"
-        alt="" />
-      <h1>DJ Muggs</h1>
-    </route>
-    <route class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553985/19_y8ts6r.jpg"
-        alt="" />
-      <h1>Boldy James</h1>
-    </route>
-    <route class="top-content">
-      <img class="top-content-img" src="https://res.cloudinary.com/dixcbkuih/image/upload/v1679553986/22_mxixz2.jpg"
-        alt="" />
-      <h1>Super Tecmo Bo</h1>
-    </route>
+    </RouterLink>
+    <RouterLink to="/station/642449f17a15edb9bc1cc997" class="top-content">
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1680351679/Dennis_2_ck0cjn.jpg"
+        alt=""
+      />
+      <h1>Dennis Lloyd</h1>
+    </RouterLink>
+    <RouterLink to="/station/64244ddb66db8ebc64929aec" class="top-content">
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1680100374/Bigggie_lz2get.jpg"
+        alt=""
+      />
+      <h1>The Notorious B.I.G</h1>
+    </RouterLink>
+    <RouterLink to="/station/6424467cfe9a97782b5bc3c0" class="top-content">
+      <img
+        class="top-content-img"
+        src="https://res.cloudinary.com/dixcbkuih/image/upload/v1680351763/Eminem_2_uqxudw.jpg"
+        alt=""
+      />
+      <h1>Eminem</h1>
+    </RouterLink>
   </section>
   <article>
     <h1 class="station-list-text">Made For You</h1>
@@ -86,7 +108,7 @@ export default {
       }
     },
   },
-  created() { },
+  created() {},
   components: {
     StationPreview,
   },

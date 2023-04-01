@@ -1,10 +1,19 @@
-    <template>
-    <ul class="station-list library">
-        <Routerlink to="/liked" class="liked-songs">
-            Liked Songs
-        </Routerlink>
-        <StationPreview v-if="stations" v-for="station in stations" :key="station._id" :station="station" />
-    </ul>
+<template>
+    <section class="library">
+        <h1>Playlists</h1>
+        <ul class="station-list library-list">
+            <RouterLink to="/liked" class="liked-songs">
+                <h1 class="liked-songs-title">
+                    Liked Songs
+                </h1>
+                <h3 class="liked-songs-amount">
+                    {{ loggedinUser.likedSongs.length }}
+                    liked songs
+                </h3>
+            </RouterLink>
+            <StationPreview v-if="stations" v-for="station in stations" :key="station._id" :station="station" />
+        </ul>
+    </section>
 </template>
 
 <script>
