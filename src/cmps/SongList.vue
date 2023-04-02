@@ -11,13 +11,17 @@
         <div></div>
       </div>
     </div>
-    <SongPreview v-for="(song, index) in station.songs" @removeSong="removeSong" @setSong="setSong"
-      @setStation="setStation" @setActiveSong="setActiveSong" :activeSongIdx="activeSongIdx" :song="song"
-      :station="station" :index="index" />
+    <Container orientation="vertical" @drop="onDrop">
+      <Draggable v-for="(song, index) in station.songs" :key="song._id">
+        <SongPreview @removeSong="removeSong" @setSong="setSong" @setStation="setStation" @setActiveSong="setActiveSong"
+          :activeSongId="activeSongId" :song="song" :station="station" :index="index" />
+      </Draggable>
+    </Container>
   </ul>
 </template>
 
 <script>
+import { Container, Draggable } from "vue3-smooth-dnd";
 import SongPreview from './SongPreview.vue';
 import { svgService } from '../services/svg.service.js';
 export default {
@@ -31,7 +35,7 @@ export default {
   emits: ['removeSong', 'setSong', 'setStation'],
   data() {
     return {
-      activeSongIdx: -1,
+      activeSongId: '',
     };
   },
   methods: {
@@ -41,8 +45,8 @@ export default {
     removeSong(songId) {
       this.$emit('removeSong', songId)
     },
-    setActiveSong(idx) {
-      this.activeSongIdx = idx
+    setActiveSong(id) {
+      this.activeSongId = id
     },
     setSong(song) {
       this.$emit('setSong', song)
@@ -50,6 +54,24 @@ export default {
     setStation(station) {
       this.$emit('setStation', station)
     },
+    onDrop(dropResult) {
+      this.station.songs = this.applyDrag(this.station.songs, dropResult);
+    },
+    applyDrag(arr, dragResult) {
+      const { removedIndex, addedIndex, payload } = dragResult;
+
+      if (removedIndex === null && addedIndex === null) return arr;
+      const result = [...arr];
+      let itemToAdd = payload;
+
+      if (removedIndex !== null) {
+        itemToAdd = result.splice(removedIndex, 1)[0];
+      }
+      if (addedIndex !== null) {
+        result.splice(addedIndex, 0, itemToAdd);
+      }
+      return result;
+    }
   },
   computed: {
     hasSongs() {
@@ -65,6 +87,8 @@ export default {
   created() { },
   components: {
     SongPreview,
+    Container,
+    Draggable
   },
 };
 </script>

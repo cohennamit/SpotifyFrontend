@@ -55,8 +55,8 @@ export default {
         index: {
             type: Number,
         },
-        activeSongIdx: {
-            type: Number
+        activeSongId: {
+            type: String
         }
     },
     created() {
@@ -73,7 +73,7 @@ export default {
             this.$emit('removeSong', this.song._id)
         },
         getSvg(iconName) {
-            if (this.isHover || this.activeSongIdx === this.index) return svgService.getSvg(iconName)
+            if (this.isHover || this.activeSongId === this.song._id) return svgService.getSvg(iconName)
             else if (iconName === 'playSong') return this.index + 1
         },
         setSong() {
@@ -84,7 +84,7 @@ export default {
             eventBus.emit('onTogglePlay')
         },
         handleClick() {
-            this.$emit('setActiveSong', this.index)
+            this.$emit('setActiveSong', this.song._id)
         },
         likeSong() {
             const user = this.$store.getters.loggedinUser
@@ -122,13 +122,13 @@ export default {
             if (res >= 0) return true
             return false
         },
-        isPlaying(){
+        isPlaying() {
             return this.$store.getters.isPlaying
         },
         getClass() {
             return {
                 'hover': this.isHover || this.isActive,
-                'active': this.activeSongIdx === this.index,
+                'active': this.activeSongId === this.song._id,
                 'not-custom': !this.station.isAddedByUser,
                 'custom': this.station.isAddedByUser
             }

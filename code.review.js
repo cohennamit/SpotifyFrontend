@@ -4,7 +4,7 @@ function stateChange(event) {
         this.$store.commit({ type: 'play' })
     }
     //event.data = 0 (song has ended)
-    if (event.data === 0) {
+    else if (event.data === 0) {
         this.$store.commit({ type: 'pause' })
         //resets the interval that counts the duration of the song
         clearInterval(this.intervalId)
