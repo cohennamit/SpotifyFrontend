@@ -4,8 +4,8 @@
       <span>{{isLogin ? 'Login':'Sign up'}}</span>
     </section>
     <div class="login-signup-wrapper">
-      <p>To continue, {{isLogin?'continue':'sign up'}} to Spotify.</p>
-      <section class="login-out-src">
+      <p>To continue, {{isLogin?'login':'sign up'}} to Satisfy.</p>
+      <!-- <section class="login-out-src">
         <div class="login-out-src-btn facebook">
           <div>
             <span>{{isLogin?'CONTINUE':'SIGN UP'}} WITH FACEBOOK
@@ -24,7 +24,7 @@
           <span>OR</span>
           <hr />
         </div>
-      </section>
+      </section> -->
       <!-- <div v-if="loggedinUser">
       <h3>
         Loggedin User:

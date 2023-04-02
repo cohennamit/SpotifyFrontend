@@ -12,10 +12,18 @@
     <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
-      <img :src="loggedInUser.imgUrl" />
+      <div class="user-icon-container">
+        <div class="user-icon" v-html="getSvg('user')"></div>
+      </div>
       <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.username }}
+        {{ loggedInUser.fullname }}
       </RouterLink>
+      <div @click="isUserOption" class="arrow-down-icon-container">
+        <div class="arrow-down-icon" v-html="getSvg('arrowDownFill')" ></div>
+      </div>
+      <ul class="user-options-modal">
+        <li @click="doLogout">Logout</li>
+      </ul>
     </section>
     <section v-else class="login-btn">
       <RouterLink class="login-span" to="/login">Login</RouterLink>
@@ -49,6 +57,10 @@ export default {
         // url.searchParams.set('query',query)
         this.$router.replace({ name: 'Search', query: { query } });
       }
+    },
+    doLogout() {
+      this.$store.dispatch({ type: 'logout' })
+      this.$router.push('/')
     },
   },
   computed: {

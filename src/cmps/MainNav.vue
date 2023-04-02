@@ -1,6 +1,6 @@
 <template>
   <section class="main-nav">
-    <RouterLink @mouseover="this.$store.dispatch('setCurrColor', 'black')" to="/" class="main-nav-logo">
+    <RouterLink to="/" class="main-nav-logo">
       <div class="headphones-icon" v-html="getSvg('headphones')"></div>
       <h1>Satisfy</h1>
     </RouterLink>
@@ -26,11 +26,7 @@
         </div>
         <span> Create Playlist </span>
       </button>
-      <RouterLink
-        @mouseover="this.$store.dispatch('setCurrColor', 'rgb(28, 11, 59)')"
-        class="liked-songs-btn"
-        to="/liked"
-      >
+      <RouterLink class="liked-songs-btn" to="/liked">
         <div class="btn-liked">
           <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
         </div>
@@ -59,7 +55,6 @@ export default {
   data() {
     return {
       currentRoute: '',
-      userStations: null,
     };
   },
   methods: {
@@ -70,22 +65,18 @@ export default {
       try {
         const newStation = stationService.getEmptyStation();
         const addedStation = await this.$store.dispatch({ type: 'addStation', newStation });
-        this.setUserStations()
+        this.$store.commit({type: 'addUserStation', addedStation})
         this.$router.push(`/station/${addedStation._id}`);
       } catch (err) {
         console.log(err, 'Can not add station');
       }
     },
-    async setUserStations(){
-      const user = this.$store.getters.loggedinUser;
-    try {
-      this.userStations = await stationService.getUserStations(user._id);
-    } catch (err) {
-      console.log('Failed to get loggedinUser stations');
-    }
-    }
+
   },
   computed: {
+    userStations(){
+      return this.$store.getters.userStations
+    },
     isHome() {
       if (this.$route.name === 'StationIndex') return true;
       else return false;
@@ -100,7 +91,11 @@ export default {
     },
   },
   async created() {
-    this.setUserStations()
+    try{
+      await this.$store.dispatch({type:'setUserStations'})
+    }catch(err){
+      console.log('failed to get userStations in MainNav',err)
+    }
   },
   watch: {
     $route: {

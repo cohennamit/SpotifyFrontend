@@ -1,18 +1,22 @@
 .header {
     @media (max-width: 1000px) {
 
-     padding: 16px;
-	}
-    @media (max-width: 800px){
-       position: absolute;
-       .login-btn{
-        width: 20px;
-        background-color: pink;
-     }
+        padding: 16px;
     }
+
+    @media (max-width: 800px) {
+        position: absolute;
+
+        .login-btn {
+            width: 20px;
+            background-color: pink;
+        }
+    }
+
     .header>* {
         opacity: 1;
     }
+
     grid-area: 1/2;
     width: 100%;
     z-index: 300;
@@ -23,6 +27,7 @@
     align-items: center;
     grid-auto-flow: column;
     grid-auto-columns: 120px minmax(200px, 364px) 1fr;
+
     button {
         cursor: pointer;
     }
@@ -63,22 +68,45 @@
 
     .loggedin-user {
         display: flex;
-        align-items: center;
-        justify-content: space-around;
         background-color: black;
         margin-inline-end: 3px;
         height: 32px;
-        width: 90px;
-        padding: 2px 8px;
+        /* width: 90px; */
+        padding: 2px;
         border-radius: 1em;
         align-self: center;
         justify-self: end;
+        gap: 9px;
+        padding-inline-end: 11px;
+        align-items: center;
+        padding-block: 17.1px;
+
+        .user-icon-container {
+            display: flex;
+            background-color: #535353;
+            border-radius: 100%;
+            padding-inline: 7px;
+            padding-block: 5px;
+
+            .user-icon {
+                height: 16px;
+                margin-block-end: 5px;
+            }
+        }
+        .arrow-down-icon-container{
+            margin-inline-start: 1px;
+            padding-block-end: 5px;
+            .arrow-down-icon{
+                height: 16px;
+            }
+        }
         span {
             margin-inline-start: -10px;
             color: whitesmoke;
             background-color: $clr2;
             border-radius: 50%;
         }
+
         img {
             margin-inline-start: -17px;
             margin-inline-end: 5px;
@@ -86,23 +114,29 @@
             height: 2em;
             border-radius: 50%;
         }
+
         a {
             color: whitesmoke;
-            margin-inline-start: -10px;
+            // margin-inline-start: -10px;
+            font-size: 0.875em;
         }
+
         a:hover {
             text-decoration: none;
         }
     }
+
     nav {
         background-color: $clr4;
         padding: 5px 0;
     }
+
     nav a:not(:first-child) {
         border-top: 1px solid $clr1;
         padding: 0 5px;
         margin: 10px;
     }
+
     nav .active {
         color: $clr1;
     }

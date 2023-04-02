@@ -1,6 +1,6 @@
-import { userService } from '../services/user.service'
+import { userService } from '../services/user.service.js'
 import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
-
+import { stationService } from '../services/station.service.js'
 // var localLoggedinUser = null
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null)
 
@@ -12,6 +12,7 @@ export const userStore = {
         userStations: null
     },
     getters: {
+        userStations({userStations}){return userStations},
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
         watchedUser({ watchedUser }) { return watchedUser }
@@ -46,9 +47,29 @@ export const userStore = {
             const likedSongs = state.loggedinUser.likedSongs
             const index = likedSongs.findIndex((s => s._id === song._id))
             state.loggedinUser.likedSongs.splice(index, 1)
-        }
+        },
+        setUserStations(state,{userStations}){
+            state.userStations = userStations
+        },
+        removeUserStation(state, { userStationId }) {
+            // state.stations = state.stations.filter((station) => station._id !== stationId);
+            const idx = state.userStations.findIndex((userStation) => userStation._id === userStationId);
+            if(idx < 0) return
+            state.userStations.splice(idx, 1);
+          },
+          addUserStation(state,{addedStation}){
+                state.userStations.push(addedStation);
+          }
     },
     actions: {
+        async setUserStations({commit,state}){
+          try {
+            const userStations = await stationService.getUserStations(state.loggedinUser._id);
+            commit({type:'setUserStations', userStations})
+          } catch (err) {
+            console.log('Failed to get loggedinUser stations');
+          }
+          },
         async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred)

@@ -1,6 +1,9 @@
 
 
 .station-details {
+    .liked-songs{
+        // background-color: rgb(80, 56, 160);
+    }
     &-header {
         display: flex;
         gap: 23px;
@@ -10,12 +13,13 @@
             display: flex;
             flex-direction: column;
             width: 39vw;
+            
             .by-user {
                 font-size: 1vw;
                 display: flex;
                 margin-block-end: -4px;
                 gap: 8px;
-
+                align-items: center;
                 .headphones-icon {
                     margin-block-end: -2px;
 

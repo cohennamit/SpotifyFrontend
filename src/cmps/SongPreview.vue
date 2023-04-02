@@ -4,8 +4,8 @@
         <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
-
             <div class="song-preview-img">
+
                 <img :src="song.imgUrl" />
             </div>
 
@@ -115,6 +115,7 @@ export default {
     computed: {
         isLiked() {
             const user = this.$store.getters.loggedinUser
+            console.log(user)
             if (!user) return false
             const userLikedSongs = user.likedSongs
             const res = userLikedSongs.findIndex(song => song._id === this.song._id)
