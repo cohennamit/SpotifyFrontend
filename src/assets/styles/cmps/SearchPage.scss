@@ -3,14 +3,27 @@
 }
 
  .labels-list{
-
 	@media (max-width: 1000px) {
-
 		width: calc(100dvw - 240px);
 	}
+    @media (max-width: 600px) {
+	grid-template-columns: repeat(2,minmax(160px,1fr));
+	.label-container{
+		aspect-ratio: 1.8/1;
+		padding: 0.5em;
+		img{
+			right: -10px;
+			height: 80px;
+			width: 80px;
+		}
+	}
+}
+
 	@media (max-width: 800px) {
 		width: 100%;
-        padding-left: 16px;;
+		padding-left: 0;
+	padding-right: 0;
+        // padding-left: 16px;
 		
 	}
 	@media (min-width: 1257px){
@@ -37,6 +50,7 @@
 	cursor: pointer;
 	img{
 		right: 0;
+		border-radius: 8px;
 		transform: rotate(25deg) translate(18%,-2%);
 		height: 100px;
 		position: absolute;

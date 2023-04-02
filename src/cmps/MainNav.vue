@@ -1,16 +1,23 @@
 <template>
   <section class="main-nav">
-    <RouterLink @mouseover="this.$store.dispatch('setCurrColor', 'black')" to="/" class="main-nav-logo">
+    <RouterLink to="/" class="main-nav-logo">
       <div class="headphones-icon" v-html="getSvg('headphones')"></div>
       <h1>Satisfy</h1>
     </RouterLink>
     <section class="nav">
-      <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
-        to="/station">
+      <RouterLink
+        class="btn-nav"
+        @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
+        to="/station"
+      >
         <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div>
         <span> Home </span>
       </RouterLink>
-      <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })" to="/search">
+      <RouterLink
+        class="btn-nav"
+        @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
+        to="/search"
+      >
         <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div>
         <span> Search </span>
       </RouterLink>
@@ -40,7 +47,11 @@
     <hr />
     <section class="user-playlists">
       <ul class="playlist-links">
-        <RouterLink class="user-station" v-for="userStation in userStations" :to="'/station/' + userStation._id">
+        <RouterLink
+          class="user-station"
+          v-for="userStation in userStations"
+          :to="'/station/' + userStation._id"
+        >
           {{ userStation.title }}
         </RouterLink>
       </ul>
@@ -70,20 +81,20 @@ export default {
       try {
         const newStation = stationService.getEmptyStation();
         const addedStation = await this.$store.dispatch({ type: 'addStation', newStation });
-        this.setUserStations()
+        this.setUserStations();
         this.$router.push(`/station/${addedStation._id}`);
       } catch (err) {
         console.log(err, 'Can not add station');
       }
     },
-    async setUserStations(){
+    async setUserStations() {
       const user = this.$store.getters.loggedinUser;
-    try {
-      this.userStations = await stationService.getUserStations(user._id);
-    } catch (err) {
-      console.log('Failed to get loggedinUser stations');
-    }
-    }
+      try {
+        this.userStations = await stationService.getUserStations(user._id);
+      } catch (err) {
+        console.log('Failed to get loggedinUser stations');
+      }
+    },
   },
   computed: {
     isHome() {
@@ -100,7 +111,7 @@ export default {
     },
   },
   async created() {
-    this.setUserStations()
+    this.setUserStations();
   },
   watch: {
     $route: {

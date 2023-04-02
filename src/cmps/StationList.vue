@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ greetings }}</h2>
+  <h2 class="greeting">{{ greetings }}</h2>
   <section class="station-list-top-content-container">
     <RouterLink
       @mouseover="this.$store.dispatch('setCurrColor', 'rgb(28, 11, 59)')"
@@ -93,7 +93,7 @@ export default {
       return this.$store.getters.labels;
     },
     defaultStations() {
-      return this.stations.filter((station) => !station.isAddedByUser);
+      return this.stations.filter((station) => !station.isAddedByUser).splice(5, 100);
     },
     greetings() {
       const now = new Date();

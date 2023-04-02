@@ -12,7 +12,6 @@
         <p>Playlist name is required.</p>
       </div>
       <div class="edit-modal-body">
-
         <div class="edit-modal-img">
           <article class="choose-photo">
             <div class="pencil-icon" v-html="getSvg('pencil')"></div>
@@ -81,7 +80,7 @@ export default {
     const image = this.$refs.image;
     // const fac = new FastAverageColor();
     image.addEventListener('load', () => {
-      // const color = fac.getColor(image);
+      const color = fac.getColor(image, { algorithm: 'dominant' });
       // console.log(color);
     });
   },
