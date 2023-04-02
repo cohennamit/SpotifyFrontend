@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="song-search-list">
     <ul v-if="songs" :class="setSearchClass" class="song-search-results-wrap">
       <SongSearchPreview v-for="(song, index) in songs" @addSong="addSong" @setSong="setSong" :song="song" :key="index" />
     </ul>
