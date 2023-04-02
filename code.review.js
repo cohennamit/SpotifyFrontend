@@ -21,7 +21,7 @@ function stateChange(event) {
             this.$store.commit({ type: 'setNextSong' })
         }
         //set the song player to set the next song
-        this.$refs.songPlayer.playVideo()
+        this.$refs.songPlayer.playSong()
         this.$store.commit({ type: 'play' })
         //sets the song player to play the next song
         this.onReady()
@@ -35,6 +35,6 @@ function onReady() {
         this.currentTime = this.$refs.songPlayer.getCurrentTime()
     }, 1000)
     //plays the song    
-    this.$refs.songPlayer.playVideo()
+    this.$refs.songPlayer.playSong()
     this.$store.commit({ type: 'play' })
 }
