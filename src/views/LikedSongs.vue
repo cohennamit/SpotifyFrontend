@@ -1,7 +1,7 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
-  <section v-if="isLikedSongs" class="station-details">
-    <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
+  <section  class="station-details">
+    <StationHeader class="liked-songs" @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
     </div>
@@ -9,9 +9,9 @@
     <hr />
     <div class="placeholder"></div>
   </section>
-  <section v-else>
+  <!-- <section class="no-liked-songs" v-else>
     <h1>You don't have any liked songs yet...</h1>
-  </section>
+  </section> -->
 </template>
 
 <script>
@@ -77,10 +77,10 @@ export default {
     },
   },
   computed: {
-    isLikedSongs() {
-      console.log('this.station.songs', this.station.songs);
-      return this.station.songs.length > 0;
-    },
+    // isLikedSongs() {
+    //   console.log('this.station.songs', this.station.songs);
+    //   return this.station.songs.length > 0;
+    // },
     // async getStation() {
     //   const { stationId } = this.$route.params;
     //   // console.log('create',stationId)

@@ -120,6 +120,7 @@ export const stationStore = {
       try {
         station = await stationService.save(station);
         context.commit(getActionUpdateStation(station));
+        context.dispatch({type:'setUserStations'})
         console.log('station from updateStation:', station);
         return station;
       } catch (err) {
@@ -141,7 +142,7 @@ export const stationStore = {
       try {
         await stationService.remove(stationId);
         context.commit(getActionRemoveStation(stationId));
-        // context.dispatch({type:'loadStations', filterBy:context.state.filterBy})
+        context.dispatch({type:'setUserStations'})
       } catch (err) {
         console.log('stationStore: Error in removeStation', err);
         throw err;

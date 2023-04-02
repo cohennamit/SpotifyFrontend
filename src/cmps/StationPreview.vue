@@ -6,9 +6,10 @@
         <PlayBtn v-if="station.songs.length" :station="station" class="play-btn img-wrapper-play-btn" />
       </div>
       <p>{{ station.title }}</p>
-      <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"
+      <span>{{shortenedTitle(station.userDesc)}}</span>
+      <!-- <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"
       >{{ d }} <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
-    </span>
+    </span> -->
   </section>
 </template>
 
@@ -35,9 +36,9 @@ export default {
 
   computed: {
     shortenedTitle() {
-      const maxLength = 30;
+      const maxLength = 50;
       return function (title) {
-        return title.length > maxLength ? title.slice(0, maxLength) + 'and more' : title;
+        return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
       };
     },
   },

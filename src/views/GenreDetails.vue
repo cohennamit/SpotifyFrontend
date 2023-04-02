@@ -1,6 +1,6 @@
 <template>
     <ul class="station-list genre">
-        <StationPreview v-if="stations" v-for="station in labeledStations" :key="station._id" :station="station" />
+        <StationPreview v-if="stations" v-for="station in stations" :key="station._id" :station="station" />
     </ul>
 </template>
 
@@ -38,8 +38,9 @@ export default {
         },
     },
     async created() {
+        
         try {
-            this.stations = await stationService.query()
+            this.stations = await stationService.query({label: this.label})
             console.log(this.stations)
         } catch (err) {
             console.log('Failed to get loggedinUser stations')

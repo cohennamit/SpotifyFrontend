@@ -58,10 +58,7 @@ export default {
     },
   },
   methods: {
-    doLogout() {
-      this.$store.dispatch({ type: 'logout' })
-      this.$router.push('/')
-    },
+
   }
 }
 </script>

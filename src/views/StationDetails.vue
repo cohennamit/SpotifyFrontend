@@ -90,6 +90,7 @@ export default {
     },
     onRemoveStation() {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
+      // this.$store.commit({ type:'removeUserStation'})
       this.$router.push('/station');
     },
     addSong(song) {
