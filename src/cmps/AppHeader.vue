@@ -18,15 +18,22 @@
       <RouterLink :to="`/user/${loggedInUser._id}`">
         {{ loggedInUser.username }}
       </RouterLink>
-      <div @click="isUserOption" class="arrow-down-icon-container">
-        <div class="arrow-down-icon" v-html="getSvg('arrowDownFill')" ></div>
+      
+      <div class="arrow-down-icon-container">
+        <div  @click="openUserOptions" class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
       </div>
-      <ul class="user-options-modal">
+      <ul v-if="isUserOptionsShown" class="user-options-menu">
         <li @click="doLogout">Logout</li>
       </ul>
     </section>
-    <section v-else class="login-btn">
-      <RouterLink class="login-span" to="/login">Login</RouterLink>
+
+    <section v-else class="loginSignup">
+      <div class="signup-btn">
+        <RouterLink class="signup-span" to="/signup">Sign up</RouterLink>
+      </div>
+      <div class="login-btn">
+        <RouterLink class="login-span" to="/login">Log in</RouterLink>
+      </div>
     </section>
   </header>
 </template>
@@ -37,6 +44,11 @@ import SongSearchList from './SongSearchList.vue';
 import SongSearch from './SongSearch.vue';
 export default {
   methods: {
+    openUserOptions(event){
+      console.log('hey');
+      event.stopPropagation()
+      this.$store.commit({type:'handleUserOptions'})
+    },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
@@ -64,6 +76,9 @@ export default {
     },
   },
   computed: {
+    isUserOptionsShown() {
+      return this.$store.getters.isUserOptionsShown
+    },
     headerColor() {
       const opacity = 1 - this.$store.getters.opacity;
       return this.$store.getters.currColor.replace('rgb', 'rgba').replace(')', `, ${opacity})`);

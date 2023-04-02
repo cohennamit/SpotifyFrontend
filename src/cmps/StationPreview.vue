@@ -1,12 +1,12 @@
 
 <template >
-    <section @click="goToDetails" class="station-preview">
+    <section v-show="station.title !== 'Chill Out'" @click="goToDetails" class="station-preview">
       <div class="img-wrapper">
         <img v-if="station.imgUrl" :src="station.imgUrl" />
         <PlayBtn v-if="station.songs.length" :station="station" class="play-btn img-wrapper-play-btn" />
       </div>
       <p>{{ station.title }}</p>
-      <span>{{shortenedTitle(station.userDesc)}}</span>
+      <!-- <span>{{shortenedTitle(staion.userDesc)}}</span> -->
       <!-- <span v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc"
       >{{ d }} <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
     </span> -->
