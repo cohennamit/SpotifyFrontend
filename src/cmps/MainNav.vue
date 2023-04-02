@@ -5,12 +5,19 @@
       <h1>Satisfy</h1>
     </RouterLink>
     <section class="nav">
-      <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
-        to="/station">
+      <RouterLink
+        class="btn-nav"
+        @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: false })"
+        to="/station"
+      >
         <div class="icon" v-html="isHome ? getSvg('homeFull') : getSvg('home')"></div>
         <span> Home </span>
       </RouterLink>
-      <RouterLink class="btn-nav" @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })" to="/search">
+      <RouterLink
+        class="btn-nav"
+        @click="$store.commit({ type: 'toggleFilterShown', isFilterShown: true })"
+        to="/search"
+      >
         <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div>
         <span> Search </span>
       </RouterLink>
@@ -36,7 +43,11 @@
     <hr />
     <section class="user-playlists">
       <ul class="playlist-links">
-        <RouterLink class="user-station" v-for="userStation in userStations" :to="'/station/' + userStation._id">
+        <RouterLink
+          class="user-station"
+          v-for="userStation in userStations"
+          :to="'/station/' + userStation._id"
+        >
           {{ userStation.title }}
         </RouterLink>
       </ul>

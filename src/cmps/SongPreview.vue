@@ -1,6 +1,6 @@
 <template>
-    <article :class="getClass"  class="song-preview-main" @click="handleClick"
-        @mouseover="isHover = true" @mouseleave="isHover = false">
+    <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
+        @mouseleave="isHover = false">
         <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
@@ -29,9 +29,9 @@
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
-                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon"
-                    v-html="getSvg('trash')"></span>
-                <span v-else></span>
+                <!-- <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon" -->
+                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
+                <!-- <span v-else></span> -->
             </div>
         </div>
     </article>
@@ -121,6 +121,9 @@ export default {
             const res = userLikedSongs.findIndex(song => song._id === this.song._id)
             if (res >= 0) return true
             return false
+        },
+        isPlaying(){
+            return this.$store.getters.isPlaying
         },
         getClass() {
             return {

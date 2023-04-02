@@ -5,6 +5,7 @@
         grid-row: 2;
 
         .liked-songs {
+            min-height: 275px;
             background: linear-gradient(135deg, #450af5, #c4efd9);
             
             grid-column: 1/3;

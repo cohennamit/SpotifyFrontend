@@ -16,7 +16,7 @@
         <div class="user-icon" v-html="getSvg('user')"></div>
       </div>
       <RouterLink :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
+        {{ loggedInUser.username }}
       </RouterLink>
       <div @click="isUserOption" class="arrow-down-icon-container">
         <div class="arrow-down-icon" v-html="getSvg('arrowDownFill')" ></div>

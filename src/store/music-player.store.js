@@ -86,6 +86,9 @@ export const musicPlayerStore = {
         },
         setStation({ commit }, { station }) {
             commit({ type: 'setCurrentStation', station })
+        },
+        pauseResume({commit}){
+            commit({type:'pauseResume'})
         }
     }
 }
