@@ -4,8 +4,8 @@
       <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
         <div class="icon" v-html="getSvg('arrowLeft')"></div>
       </button>
-      <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
-        <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
+      <button title="Go Forward" @click="goForward" class="header-btn btn-next header-nav-btn">
+        <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
@@ -71,8 +71,8 @@ export default {
       }
     },
     doLogout() {
-      this.$store.dispatch({ type: 'logout' })
-      this.$router.push('/')
+      this.$store.dispatch({ type: 'logout' });
+      this.$router.push('/');
     },
   },
   computed: {

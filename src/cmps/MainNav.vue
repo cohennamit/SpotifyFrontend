@@ -68,6 +68,9 @@ export default {
       currentRoute: '',
     };
   },
+  mounted() {
+    this.$store.dispatch('setCurrColor', 'rgb(0,0,0)');
+  },
   methods: {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
@@ -76,17 +79,16 @@ export default {
       try {
         const newStation = stationService.getEmptyStation();
         const addedStation = await this.$store.dispatch({ type: 'addStation', newStation });
-        this.$store.commit({type: 'addUserStation', addedStation})
+        this.$store.commit({ type: 'addUserStation', addedStation });
         this.$router.push(`/station/${addedStation._id}`);
       } catch (err) {
         console.log(err, 'Can not add station');
       }
     },
-
   },
   computed: {
-    userStations(){
-      return this.$store.getters.userStations
+    userStations() {
+      return this.$store.getters.userStations;
     },
     isHome() {
       if (this.$route.name === 'StationIndex') return true;
@@ -102,10 +104,10 @@ export default {
     },
   },
   async created() {
-    try{
-      await this.$store.dispatch({type:'setUserStations'})
-    }catch(err){
-      console.log('failed to get userStations in MainNav',err)
+    try {
+      await this.$store.dispatch({ type: 'setUserStations' });
+    } catch (err) {
+      console.log('failed to get userStations in MainNav', err);
     }
   },
   watch: {

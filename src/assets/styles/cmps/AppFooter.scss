@@ -15,16 +15,18 @@
             position: absolute;
             bottom: 110px;
             right: 4.5em;
-            fill: red;
+            // fill: red;
         }
 
 .song-info{
 position: absolute;
 z-index: 200;
-bottom: 90px;
+bottom: 70px;
 // background-color: pink;
 background-color: rgba(0, 0, 0,0.98);
 width: 90vw;
+margin-inline-start: 5vw;
+margin-inline-end: 5vw;
 border-radius: 8px;
 img {
     border-top-left-radius: 8px;

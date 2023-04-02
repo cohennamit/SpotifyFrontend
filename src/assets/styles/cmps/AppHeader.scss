@@ -7,16 +7,18 @@
     @media (max-width: 800px) {
 
         // height: 40px;
-        .login-btn,
-        .header-btn .header-nav-btn {
-            position: absolute;
-            display: none;
-            opacity: 0;
-        }
-
-
+         .login-btn, .header-btn .header-nav-btn, .loggedin-user{
+     display: none;
+     opacity: 0;
+     }
+     position: absolute;
+     }
+     @media (max-width: 600px) {
+    .btn-next{
+        display: none;
+        opacity: 0;
     }
-
+}
     .header>* {
         opacity: 1;
     }
