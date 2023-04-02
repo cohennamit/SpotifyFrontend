@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     goToDetails() {
+      this.$store.dispatch({ type: 'setStation', station: this.station })
       this.$router.push(`/station/${this.station._id}`);
     },
     handleHover() {
