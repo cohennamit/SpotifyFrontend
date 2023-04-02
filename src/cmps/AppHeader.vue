@@ -8,19 +8,27 @@
         <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
+    <PlayBtn :station="currStation" v-if="showPlayBtn" />
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
     <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
-      <div class="user-icon-container">
-        <div class="user-icon" v-html="getSvg('user')"></div>
+
+      <div class="user-img-container" v-if="loggedInUser.imgUrl">
+        <img  :src="loggedInUser.imgUrl" />
       </div>
+
+      <div v-else class="user-icon-container">
+        <div class="user-icon" v-html="getSvg('user')"></div>
+
+      </div>
+
       <RouterLink :to="`/user/${loggedInUser._id}`">
         {{ loggedInUser.username }}
       </RouterLink>
-      
+
       <div class="arrow-down-icon-container">
-        <div  @click="openUserOptions" class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
+        <div @click="openUserOptions" class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
       </div>
       <ul v-if="isUserOptionsShown" class="user-options-menu">
         <li @click="doLogout">Logout</li>
@@ -42,12 +50,13 @@
 import { svgService } from '../services/svg.service.js';
 import SongSearchList from './SongSearchList.vue';
 import SongSearch from './SongSearch.vue';
+import PlayBtn from './PlayBtn.vue';
 export default {
   methods: {
-    openUserOptions(event){
+    openUserOptions(event) {
       console.log('hey');
       event.stopPropagation()
-      this.$store.commit({type:'handleUserOptions'})
+      this.$store.commit({ type: 'handleUserOptions' })
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
@@ -76,6 +85,12 @@ export default {
     },
   },
   computed: {
+    currStation() {
+      return this.$store.getters.currentStation
+    },
+    showPlayBtn() {
+      return this.$route.params.stationId
+    },
     isUserOptionsShown() {
       return this.$store.getters.isUserOptionsShown
     },
@@ -98,6 +113,7 @@ export default {
   components: {
     SongSearchList,
     SongSearch,
+    PlayBtn
   },
 };
 </script>

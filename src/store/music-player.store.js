@@ -69,7 +69,7 @@ export const musicPlayerStore = {
     },
     actions: {
         setSong({ commit }, { song }) {
-            console.log('store actions',song);
+            console.log('store actions', song);
             commit({ type: 'setCurrentSong', song })
         },
         setNextSong({ commit }) {
@@ -86,9 +86,10 @@ export const musicPlayerStore = {
         },
         setStation({ commit }, { station }) {
             commit({ type: 'setCurrentStation', station })
+            // commit({ type: 'setCurrentSong', song: station.songs[0] })
         },
-        pauseResume({commit}){
-            commit({type:'pauseResume'})
+        pauseResume({ commit }) {
+            commit({ type: 'pauseResume' })
         }
     }
 }

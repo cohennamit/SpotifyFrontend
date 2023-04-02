@@ -2,7 +2,7 @@
     <section class="library">
         <h1>Playlists</h1>
         <ul class="station-list library-list">
-            <RouterLink to="/liked" class="liked-songs">
+            <article @click="$router.push('/liked')" class="liked-songs">
                 <h1 class="liked-songs-title">
                     Liked Songs
                 </h1>
@@ -10,7 +10,8 @@
                     {{ loggedinUser.likedSongs.length }}
                     liked songs
                 </h3>
-            </RouterLink>
+                <PlayBtn :station="{_id:'likedSongs'}" />
+            </article>
             <StationPreview v-if="stations" v-for="station in stations" :key="station._id" :station="station" />
         </ul>
     </section>
@@ -20,6 +21,7 @@
 import StationPreview from '../cmps/StationPreview.vue';
 import { stationService } from '../services/station.service';
 
+import PlayBtn from '../cmps/PlayBtn.vue';
 export default {
     name: '',
     data() {
@@ -49,7 +51,8 @@ export default {
         }
     },
     components: {
-        StationPreview
+        StationPreview,
+        PlayBtn
     },
 }
 </script>
