@@ -1,7 +1,7 @@
 <template>
-  <span class="label-list-text">Browse all</span>
+  <!-- <span>Browse all</span> -->
 
-  <SongSearchList v-if="songs" :songs="songs" />
+  <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list">
     <article
@@ -45,15 +45,14 @@ export default {
         if (query) {
           this.songs = await getSongs(query);
         }
+        this.isSearchPage = this.$route.path === '/search' ? true : false;
       },
       immediate: true,
     },
-    '$route': {
+    $route: {
       handler() {
         const { path } = this.$route;
-        console.log(path)
         if (path === '/search') this.songs = null;
-        this.isSearchPage = path === '/search' ? true : false;
       },
       immediate: true,
     },

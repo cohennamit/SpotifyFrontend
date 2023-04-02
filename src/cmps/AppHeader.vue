@@ -4,8 +4,8 @@
       <button title="Go Back" @click="goBack" class="header-btn header-nav-btn">
         <div class="icon" v-html="getSvg('arrowLeft')"></div>
       </button>
-      <button title="Go Forward" @click="goForward" class="header-btn header-nav-btn">
-        <div class="header-btn icon" v-html="getSvg('arrowRight')"></div>
+      <button title="Go Forward" @click="goForward" class="header-btn btn-next header-nav-btn">
+        <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
@@ -19,7 +19,7 @@
         {{ loggedInUser.username }}
       </RouterLink>
       <div @click="isUserOption" class="arrow-down-icon-container">
-        <div class="arrow-down-icon" v-html="getSvg('arrowDownFill')" ></div>
+        <div class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
       </div>
       <ul class="user-options-modal">
         <li @click="doLogout">Logout</li>
@@ -59,8 +59,8 @@ export default {
       }
     },
     doLogout() {
-      this.$store.dispatch({ type: 'logout' })
-      this.$router.push('/')
+      this.$store.dispatch({ type: 'logout' });
+      this.$router.push('/');
     },
   },
   computed: {

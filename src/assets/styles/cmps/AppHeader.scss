@@ -5,14 +5,18 @@
 	}
     @media (max-width: 800px){
         // height: 40px;
-         .login-btn, .header-btn .header-nav-btn{
-display: none;
-opacity: 0;
-        }
-       position: absolute;
-       
+         .login-btn, .header-btn .header-nav-btn, .loggedin-user{
+     display: none;
+     opacity: 0;
+     }
+     position: absolute;
+     }
+     @media (max-width: 600px) {
+    .btn-next{
+        display: none;
+        opacity: 0;
     }
-
+}
     .header>* {
         opacity: 1;
     }
@@ -61,8 +65,8 @@ opacity: 0;
             
         }
         position: absolute;
-    width: 90px;
-    right: 16px;
+         width: 90px;
+         right: 16px;
         display: flex;
         justify-self: end;
         align-self: center;
@@ -73,9 +77,9 @@ opacity: 0;
         height: 32px;
         // width: 90px;
         margin-inline-end: 3px;
-    }
+         }
 
-    .loggedin-user {
+       .loggedin-user {
         display: flex;
         background-color: black;
         margin-inline-end: 3px;
