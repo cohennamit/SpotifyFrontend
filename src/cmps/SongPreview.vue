@@ -1,7 +1,7 @@
 <template>
     <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
         @mouseleave="isHover = false">
-        <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong(), setStation()"></div>
+        <div v-html="playBtnSvg" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
             <div class="song-preview-img">
@@ -113,14 +113,21 @@ export default {
         // }
     },
     computed: {
+        playBtnSvg() {
+            if (this.isPlaying && this.currSong._id === this.song._id ){
+                return this.getSvg('pause')
+            }else return this.getSvg('playSong')
+        },
         isLiked() {
             const user = this.$store.getters.loggedinUser
-            console.log(user)
             if (!user) return false
             const userLikedSongs = user.likedSongs
             const res = userLikedSongs.findIndex(song => song._id === this.song._id)
             if (res >= 0) return true
             return false
+        },
+        currSong(){
+            return this.$store.getters.currentSong
         },
         isPlaying() {
             return this.$store.getters.isPlaying
