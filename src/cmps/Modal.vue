@@ -1,6 +1,6 @@
 <template>
-  <section class="modal-wrapper">
-    <section class="edit-modal">
+  <section class="modal-wrapper"></section>
+    <section class="edit-modal" @click.stop>
       <div class="edit-modal-header">
         <h1>Edit details</h1>
         <button class="edit-modal-header-exit-btn" @click="onCloseEditModal">
@@ -50,7 +50,6 @@
         <button class="edit-modal-body-save-btn" @click="saveStation">Save</button>
       </div>
     </section>
-  </section>
 </template>
 
 <script>
@@ -89,8 +88,8 @@ export default {
     // image.removeEventListener('load');
   },
   methods: {
-    onCloseEditModal(event) {
-      this.$emit('onCloseEditModal');
+    onCloseEditModal(){
+      this.$store.commit({type:'closeStationEdit'})
     },
     saveStation() {
       if (!this.stationTitle) return;

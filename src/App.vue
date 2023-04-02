@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-container">
+  <div @click="closeModals"  class="layout-container">
     <AppHeader />
     <MainNav />
     <AppFooter />
@@ -45,6 +45,11 @@ export default {
     },
   },
   methods: {
+    closeModals(){
+      this.$store.commit({type:'closeUserOptions'})
+      this.$store.commit({type:'closeStationOptions'})
+      this.$store.commit({type:'closeStationEdit'})
+    },
     handleScroll() {
       const appMain = this.$refs.appMain;
       const scrollTop = appMain.scrollTop;

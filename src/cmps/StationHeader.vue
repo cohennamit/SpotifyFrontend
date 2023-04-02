@@ -17,13 +17,13 @@
     </div>
     <div class="station-details-header-info">
       <span class="playlist">Playlist</span>
-      <h1 class="station-details-header-title" @click="onOpenEditModal">{{ station.title }}</h1>
+      <h1 class="station-details-header-title" @click="handleStationEdit($event)">{{ station.title }}</h1>
       <!-- <div>
         <span v-if="station.desc" v-for="(d, idx) in station.desc" :key="idx" class="station-preview-desc">{{ d }}
           <span v-if="idx < 2">{{ ',' }} {{ '&nbsp;' }} </span>
         </span>
       </div> -->
-      <p class="user-desc" @click="onOpenEditModal">{{ station.userDesc }}</p>
+      <p class="user-desc" @click="handleStationEdit($event)">{{ station.userDesc }}</p>
       <RouterLink :to="station.isAddedByUser ? '/library' : '/station'" class="by-user">
         <div
           v-if="!station.isAddedByUser"
@@ -43,7 +43,7 @@
   <Modal
     @updateImgUrl="updateImgUrl"
     @onCloseEditModal="onCloseEditModal"
-    v-if="isEdit"
+    v-if="isStationEditShown"
     :station="station"
   />
 </template>
@@ -65,7 +65,6 @@ export default {
   emits: ['onCloseEditModal', 'updateImgUrl'],
   data() {
     return {
-      isEdit: false,
       loggedInUser: null,
     };
   },
@@ -84,10 +83,10 @@ export default {
   //   image.removeEventListener('load');
   // },
   methods: {
-    onOpenEditModal() {
-      //TODO : CHECK IF ADDED BY USER AND IF NOT REMOVE CURSOR
-      if (!this.station.isAddedByUser) return;
-      this.isEdit = true;
+    handleStationEdit(event) {
+      event.stopPropagation()
+      // if (!this.station.isAddedByUser) return;
+      this.$store.commit({type:'handleStationEdit'})
     },
     onCloseEditModal() {
       this.isEdit = false;
@@ -101,7 +100,11 @@ export default {
     },
   },
 
-  computed: {},
+  computed: {
+    isStationEditShown(){
+      return this.$store.getters.isStationEditShown  
+    }
+  },
   created() {
     this.loggedInUser = this.$store.getters.loggedinUser;
   },

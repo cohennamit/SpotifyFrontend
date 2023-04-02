@@ -1,18 +1,18 @@
 <template>
   <!-- <div class="header-placeholder"></div> -->
-  <section @click="closeStationOptions" v-if="station" class="station-details">
+  <section v-if="station" class="station-details">
     <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
       <div
-        @click="openStationOptions($event)"
-        @blur="closeStationOptions"
+        v-if="station.isAddedByUser"
+        @click="handleStationOptions($event)"
         class="options-icon"
         v-html="getSvg('playlistOptions')"
       ></div>
-      <ul ref="modalContainer" class="options-menu" v-if="isOptionsShown">
-        <li v-if="station.isAddedByUser" @click="onOpenEditModal($event)">Edit</li>
-        <li v-if="station.isAddedByUser" @click="onRemoveStation($event)">Delete</li>
+      <ul ref="modalContainer" class="options-menu"  v-if="isStationOptionsShown">
+        <li  @click="onOpenEditModal($event)">Edit</li>
+        <li  @click="onRemoveStation($event)">Delete</li>
       </ul>
     </div>
     <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
@@ -55,20 +55,19 @@ export default {
   data() {
     return {
       station: null,
-      isOptionsShown: false,
       songs: null,
       isEdit: false,
     };
   },
   methods: {
-    onOpenEditModal() {
-      if (!this.station.isAddedByUser) return;
-      this.isEdit = true;
+    onOpenEditModal(event){
+      event.stopPropagation()
+      this.$store.commit({type:'openStationEdit'})
     },
-    onCloseEditModal() {
-      this.isEdit = false;
+    handleStationOptions(event){
+      event.stopPropagation()
+      this.$store.commit({type:'handleStationOptions'})
     },
-
     async fetchSongs(query) {
       this.songs = await getSongs(query);
     },
@@ -81,14 +80,8 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
-    openStationOptions(event) {
-      event.stopPropagation();
-      this.isOptionsShown = true;
-    },
-    closeStationOptions(event) {
-      this.isOptionsShown = false;
-    },
-    onRemoveStation() {
+    onRemoveStation(event) {
+      event.stopPropagation()
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
       // this.$store.commit({ type:'removeUserStation'})
       this.$router.push('/station');
@@ -113,6 +106,9 @@ export default {
     },
   },
   computed: {
+    isStationOptionsShown(){
+      return this.$store.getters.isStationOptionsShown
+    }
     // async getStation() {
     //   const { stationId } = this.$route.params;
     //   // console.log('create',stationId)
