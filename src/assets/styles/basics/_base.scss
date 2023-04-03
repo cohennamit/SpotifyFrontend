@@ -89,3 +89,43 @@ a {
         background: #7c7b7bf5;
     }
 }
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+  
+  .ball {
+    @media (max-width:800px) {
+           margin-block-start: 100px;
+   }
+    width: 16px;
+    height: 16px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: white;
+    animation: grow-shrink 1s ease-in-out infinite;
+  }
+  
+  .ball:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .ball:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes grow-shrink {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  

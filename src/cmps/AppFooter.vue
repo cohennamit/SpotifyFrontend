@@ -1,11 +1,6 @@
 <template>
   <section class="footer">
-    <section
-      :style="{ backgroundColor: this.$store.getters.currColor }"
-      ref="song-info"
-      v-if="videoId"
-      class="song-info"
-    >
+    <section :style="{ backgroundColor: this.$store.getters.currColor }" ref="song-info" v-if="videoId" class="song-info">
       <img :src="imgUrl" alt="" />
       <div class="song-info-name">
         <span class="title">{{ shortenedTitle(songTitle) }}</span>
@@ -20,14 +15,8 @@
     <section v-else>
       <div class="placeholder"></div>
     </section>
-    <YouTube
-      v-if="videoId"
-      hidden
-      :src="'https://www.youtube.com/watch?v=' + videoId"
-      ref="youtube"
-      @ready="onReady"
-      @state-change="onStateChange"
-    />
+    <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" @ready="onReady"
+      @state-change="onStateChange" />
     <section class="mid-section">
       <section class="footer-btns">
         <button @click="onShuffle" class="footer-btn">
@@ -50,11 +39,7 @@
       <div class="music-bar">
         <span class="duration-span">{{ formatTime(currentTime) }}</span>
         <div class="progress-bar" @click="findProgress($event)" ref="progressBar">
-          <div
-            class="progress-bar-fill"
-            :style="{ width: progressBarWidth + '%' }"
-            ref="progressBarFill"
-          ></div>
+          <div class="progress-bar-fill" :style="{ width: progressBarWidth + '%' }" ref="progressBarFill"></div>
         </div>
         <span class="duration-span">{{ formatTime(duration) }}</span>
       </div>
@@ -64,15 +49,8 @@
         <button @click="toggleMute" class="btn-mute">
           <div class="icon" v-html=" isMuted ? getSvg('volume0') : getSvg('volume100') "></div>
         </button>
-        <input
-          class="footer-volume volume-slider"
-          type="range"
-          min="0"
-          max="100"
-          step="1"
-          id="volume-slider"
-          v-model="volume"
-        />
+        <input class="footer-volume volume-slider" type="range" min="0" max="100" step="1" id="volume-slider"
+          v-model="volume" />
       </section>
     </div>
   </section>
@@ -83,6 +61,7 @@ import { svgService } from '../services/svg.service.js';
 import { eventBus } from '../services/event-bus.service.js';
 import { defineComponent } from 'vue';
 import YouTube from 'vue3-youtube';
+import { socketService } from '../services/socket.service';
 
 // export default defineComponent({
 export default {
@@ -112,6 +91,7 @@ export default {
         this.currentTime = this.$refs.youtube.getCurrentTime();
       }, 1000);
       this.$refs.youtube.playVideo();
+      // this.volume = 0;
       this.$store.commit({ type: 'play' });
     },
     getSvg(iconName) {
@@ -120,14 +100,21 @@ export default {
     onPauseResume() {
       this.$refs.youtube.playVideo();
       if (!this.videoId) return;
-      this.isPlaying = !this.isPlaying;
-
-      if (!this.isPlaying) {
-        this.$store.commit({ type: 'play' });
-      } else {
-        this.$refs.youtube.pauseVideo();
-        this.$store.commit({ type: 'pause' });
-      }
+      // this.isPlaying = !this.isPlaying;
+      if (!this.isPlaying) this.playVideo()
+      else this.pauseVideo()
+    },
+    pauseVideo() {
+      console.log('pauseVideo');
+      this.$refs.youtube.pauseVideo();
+      this.$store.commit({ type: 'pause' });
+      socketService.emit('onPauseVideo', {})
+    },
+    playVideo() {
+      console.log('playVideo');
+      this.$refs.youtube.playVideo();
+      this.$store.commit({ type: 'play' });
+      socketService.emit('onPlayVideo', {})
     },
     // onPauseResume() {
     //     this.$store.commit({ type: 'pauseResume' })
@@ -149,6 +136,9 @@ export default {
       if (this.isMuted) this.volume = 40;
       else this.volume = 0;
       this.isMuted = !this.isMuted;
+    },
+    mute() {
+      this.volume = 0
     },
     onStateChange(event) {
       // this.currentTime = 0
@@ -249,6 +239,19 @@ export default {
   },
   created() {
     this.unSub = eventBus.on('onTogglePlay', this.onPauseResume);
+    socketService.on('setSong', async ({ song, station }) => {
+      await this.$store.dispatch({ type: 'playSong', data: { song, station } })
+      this.volume = 0
+      this.$refs.youtube.setVolume(0)
+    })
+    socketService.on('playVideo', () => {
+      this.$refs.youtube.playVideo();
+      this.$store.commit({ type: 'play' });
+    })
+    socketService.on('pauseVideo', () => {
+      this.$store.commit({ type: 'pause' });
+      this.$refs.youtube.pauseVideo();
+    })
   },
   unmounted() {
     this.unSub();

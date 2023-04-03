@@ -1,6 +1,7 @@
+
+
 .station-preview{
-       *{
-       }
+       
        span {
         padding: 0;
         line-height: 0px;
@@ -16,6 +17,7 @@
     transition: 300ms;
     padding: 1em;
     border-radius: 8px;
+
     @media (max-width: 800px){
         
         p{

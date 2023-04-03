@@ -2,11 +2,15 @@
     @media (min-width: 800px) {
         .song-info {
             background-color: transparent !important;
+
         }
 
     }
 
     @media (max-width: 800px) {
+        .song-info{
+
+        }
         height: 0px;
 
         .footer-btns,

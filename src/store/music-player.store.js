@@ -1,3 +1,4 @@
+import { eventBus } from '../services/event-bus.service.js'
 import { utilService } from '../services/util.service.js'
 export const musicPlayerStore = {
     state: {
@@ -67,6 +68,16 @@ export const musicPlayerStore = {
         }
     },
     actions: {
+        async playSong({ commit }, { data }) {
+            return new Promise((resolve, reject) => {
+                commit({ type: 'setCurrentSong', song: data.song })
+                commit({ type: 'setCurrentStation', station: data.station })
+                eventBus.emit('onTogglePlay')
+                setTimeout(() => {
+                    resolve()
+                }, 2000)
+            })
+        },
         setSong({ commit }, { song }) {
             commit({ type: 'setCurrentSong', song })
         },
