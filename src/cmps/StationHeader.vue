@@ -33,8 +33,8 @@
         </span>
       </RouterLink>
     </div>
+    <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isStationEditShown" :station="station" />
   </header>
-  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isStationEditShown" :station="station" />
 </template>
 
 <script>
@@ -73,7 +73,7 @@ export default {
   methods: {
     handleStationEdit(event) {
       event.stopPropagation()
-      // if (!this.station.isAddedByUser) return;
+      if (!this.station.isAddedByUser) return;
       this.$store.commit({ type: 'handleStationEdit' })
     },
     onCloseEditModal() {
