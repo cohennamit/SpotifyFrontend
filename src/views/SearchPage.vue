@@ -1,6 +1,4 @@
 <template>
-  <!-- <span>Browse all</span> -->
-
   <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list">
