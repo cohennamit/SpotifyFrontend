@@ -29,9 +29,9 @@
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
-                <!-- <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon" -->
-                <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span>
-                <!-- <span v-else></span> -->
+                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" class="trash-icon"></span>
+                <!-- <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span> -->
+                <span v-else></span>
             </div>
         </div>
     </article>
@@ -114,9 +114,9 @@ export default {
     },
     computed: {
         playBtnSvg() {
-            if (this.isPlaying && this.currSong._id === this.song._id ){
+            if (this.isPlaying && this.currSong._id === this.song._id) {
                 return this.getSvg('pause')
-            }else return this.getSvg('playSong')
+            } else return this.getSvg('playSong')
         },
         isLiked() {
             const user = this.$store.getters.loggedinUser
@@ -126,7 +126,7 @@ export default {
             if (res >= 0) return true
             return false
         },
-        currSong(){
+        currSong() {
             return this.$store.getters.currentSong
         },
         isPlaying() {
