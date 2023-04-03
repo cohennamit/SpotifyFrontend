@@ -1,19 +1,22 @@
 <template>
-  <!-- <span>Browse all</span> -->
-
+  
   <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
 
-  <section v-else class="labels-list">
+  <section class="labels-container" v-else>
+  <span>Browse all</span>
+  <section class="labels-list">
+
     <article
-      class="label-container"
-      :class="getRandomColorClass(index)"
-      v-for="(label, index) in labels"
-      @click="setLabel(label)"
+    class="label-container"
+    :class="getRandomColorClass(index)"
+    v-for="(label, index) in labels"
+    @click="setLabel(label)"
     >
-      <img :src="label.imgUrl" />
-      <span>{{ label.name }}</span>
-    </article>
-  </section>
+    <img :src="label.imgUrl" />
+    <span>{{ label.name }}</span>
+  </article>
+</section>
+</section>
 </template>
 
 <script>
