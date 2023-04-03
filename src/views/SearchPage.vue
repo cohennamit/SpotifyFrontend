@@ -1,21 +1,34 @@
 <template>
+  <!-- <section v-if="isLoading">
+    <div class="loader">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+    </div>
+  </section> -->
 
-  <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
+<<<<<<< HEAD
+  <SongSearchList v-if="songs" @setSong="setSong" :songs="songs" />
+
+  <section v-else class="labels-list-container">
+=======
+  <SongSearchList class="search-page-search-list" @setSong="setSong" v-if="songs" :songs="songs" />
   
   <section v-else class="labels-list-container" >
+>>>>>>> 3c1f4cd9daa6243093eed24459b50c60d00736dd
     <h1>Browse all</h1>
     <div class="labels-list">
       <article
-      class="label-container"
-      :class="getRandomColorClass(index)"
-      v-for="(label, index) in labels"
-      @click="setLabel(label)"
-      :key="index"
-    >
-    <img :src="label.imgUrl" />
-    <h2>{{ label.name }}</h2>
-  </article>
-</div>
+        class="label-container"
+        :class="getRandomColorClass(index)"
+        v-for="(label, index) in labels"
+        @click="setLabel(label)"
+        :key="index"
+      >
+        <img :src="label.imgUrl" />
+        <h2>{{ label.name }}</h2>
+      </article>
+    </div>
   </section>
 </template>
 
@@ -30,7 +43,11 @@ export default {
   data() {
     return {
       songs: null,
+      isLoading: true,
     };
+  },
+  created() {
+    this.isLoading = true;
   },
   mounted() {
     this.$store.dispatch('setCurrColor', 'rgb(0,0,0)');

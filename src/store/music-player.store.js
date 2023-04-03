@@ -24,7 +24,6 @@ export const musicPlayerStore = {
             state.isPlaying = false
         },
         setCurrentSong(state, { song }) {
-            console.log('store setCurrentSong', song);
             state.currentSong = (song) ? { ...song } : null
         },
         pauseResume(state) {
@@ -80,7 +79,6 @@ export const musicPlayerStore = {
             })
         },
         setSong({ commit }, { song }) {
-            console.log('store actions', song);
             commit({ type: 'setCurrentSong', song })
         },
         setNextSong({ commit }) {

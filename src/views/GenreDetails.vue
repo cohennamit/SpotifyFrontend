@@ -24,8 +24,6 @@ export default {
     computed: {
         labeledStations() {
             const filteredStations =  this.stations.filter((station) => !station.isAddedByUser);
-            // const labeledStations = filteredStations.filter(station=> station.label.includes(this.label))
-            console.log(filteredStations)
             return labeledStations
         },
     },
@@ -41,7 +39,6 @@ export default {
         
         try {
             this.stations = await stationService.query({label: this.label})
-            console.log(this.stations)
         } catch (err) {
             console.log('Failed to get loggedinUser stations')
         }

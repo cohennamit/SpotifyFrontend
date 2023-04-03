@@ -23,7 +23,6 @@ window.cs = stationService
 
 
 async function query(filterBy = { owner: '' }) {
-    console.log('filterBy from query', filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
     // var stations = await storageService.query(STORAGE_KEY)
@@ -41,7 +40,6 @@ async function getUserStations(userId) {
     return await query({ owner: userId })
 }
 async function getLabelStations(labelName) {
-    console.log(labelName)
     return await query({ label: labelName })
 }
 function getById(stationId) {

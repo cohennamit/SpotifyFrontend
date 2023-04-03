@@ -1,6 +1,13 @@
 <template>
+  <section v-if="isLoading">
+    <div class="loader">
+      <div class="ball"></div>
+      <div class="ball"></div>
+      <div class="ball"></div>
+    </div>
+  </section>
   <!-- <div class="header-placeholder"></div> -->
-  <section v-if="station" class="station-details">
+  <section v-else-if="station" class="station-details">
     <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
@@ -10,12 +17,18 @@
         class="options-icon"
         v-html="getSvg('playlistOptions')"
       ></div>
-      <ul ref="modalContainer" class="options-menu"  v-if="isStationOptionsShown">
-        <li  @click="onOpenEditModal($event)">Edit</li>
-        <li  @click="onRemoveStation($event)">Delete</li>
+      <ul ref="modalContainer" class="options-menu" v-if="isStationOptionsShown">
+        <li @click="onOpenEditModal($event)">Edit</li>
+        <li @click="onRemoveStation($event)">Delete</li>
       </ul>
     </div>
-    <SongList v-if="station" @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
+    <SongList
+      v-if="station"
+      @setSong="setSong"
+      @setStation="setStation"
+      @removeSong="removeSong"
+      :station="station"
+    />
     <section v-if="station.isAddedByUser" class="song-search-header">
       <h1>Let's find something for your playlist</h1>
       <SongSearch @setSearch="fetchSongs" class="station-details-search" />
@@ -57,16 +70,20 @@ export default {
       station: null,
       songs: null,
       isEdit: false,
+      isLoading: true,
     };
   },
+  created() {
+    this.isLoading = true;
+  },
   methods: {
-    onOpenEditModal(event){
-      event.stopPropagation()
-      this.$store.commit({type:'openStationEdit'})
+    onOpenEditModal(event) {
+      event.stopPropagation();
+      this.$store.commit({ type: 'openStationEdit' });
     },
-    handleStationOptions(event){
-      event.stopPropagation()
-      this.$store.commit({type:'handleStationOptions'})
+    handleStationOptions(event) {
+      event.stopPropagation();
+      this.$store.commit({ type: 'handleStationOptions' });
     },
     async fetchSongs(query) {
       this.songs = await getSongs(query);
@@ -81,7 +98,7 @@ export default {
       return svgService.getSvg(iconName);
     },
     onRemoveStation(event) {
-      event.stopPropagation()
+      event.stopPropagation();
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
       // this.$store.commit({ type:'removeUserStation'})
       this.$router.push('/station');
@@ -106,9 +123,9 @@ export default {
     },
   },
   computed: {
-    isStationOptionsShown(){
-      return this.$store.getters.isStationOptionsShown
-    }
+    isStationOptionsShown() {
+      return this.$store.getters.isStationOptionsShown;
+    },
     // async getStation() {
     //   const { stationId } = this.$route.params;
     //   // console.log('create',stationId)
@@ -122,9 +139,15 @@ export default {
   },
   watch: {
     '$route.params': {
-      handler() {
+      async handler() {
         const { stationId } = this.$route.params;
-        stationService.getById(stationId).then((station) => (this.station = station));
+        try {
+          const station = await stationService.getById(stationId);
+          this.station = station;
+          this.isLoading = false; // set isLoading to false
+        } catch (error) {
+          console.log('Error fetching station: ', error);
+        }
       },
       immediate: true,
     },

@@ -23,7 +23,6 @@ export const modalStore = {
         },
         handleStationEdit(state) {
             state.isStationEditShown = !state.isStationEditShown
-            console.log(state.isStationEditShown);
         },
         closeUserOptions(state){
             state.isUserOptionsShown = false

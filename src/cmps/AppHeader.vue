@@ -8,7 +8,11 @@
         <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
-    <PlayBtn :style="{ opacity: 1 - this.$store.getters.opacity - 3 }" :station="currStation" v-if="showPlayBtn" />
+    <PlayBtn
+      :style="{ opacity: 1 - this.$store.getters.opacity - 3 }"
+      :station="currStation"
+      v-if="showPlayBtn"
+    />
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
     <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
@@ -58,7 +62,6 @@ export default {
   },
   methods: {
     openUserOptions(event) {
-      console.log('hey');
       event.stopPropagation();
       this.$store.commit({ type: 'handleUserOptions' });
     },
