@@ -3,7 +3,6 @@
     <ul v-if="songs" :class="setSearchClass" class="song-search-results-wrap">
       <SongSearchPreview v-for="(song, index) in songs" @addSong="addSong" @setSong="setSong" :song="song" :key="index" />
     </ul>
-    <div v-if="!songs" class="no-songs">No Songs</div>
   </section>
 </template>
 
@@ -45,12 +44,13 @@ export default {
   methods: {
     addSong(song) {
       this.$emit('addSong', song);
+      const idx = this.songs.findIndex(songToFind=> songToFind._id === song._id)
+      this.songs.splice(idx,1)
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
     setSong(song) {
-      console.log('list',song);
       this.$emit('setSong',song)
     },
   },

@@ -7,7 +7,15 @@
       class="song-info"
     >
       <img :src="imgUrl" alt="" />
-      <h3>{{ shortenedTitle(songTitle) }}</h3>
+      <div class="song-info-name">
+        <span class="title">{{ shortenedTitle(songTitle) }}</span>
+        <span class="artist">{{ songArtist }}</span>
+        <div 
+          class="play-pause-icon-mobile"
+          @click="onPauseResume"
+          v-html="isPlaying ? getSvg('pause') : getSvg('resume')"
+        ></div>
+      </div>
     </section>
     <section v-else>
       <div class="placeholder"></div>
@@ -20,11 +28,6 @@
       @ready="onReady"
       @state-change="onStateChange"
     />
-    <div
-      class="play-pause-icon-mobile"
-      @click="onPauseResume"
-      v-html="isPlaying ? getSvg('pause') : getSvg('resume')"
-    ></div>
     <section class="mid-section">
       <section class="footer-btns">
         <button @click="onShuffle" class="footer-btn">
@@ -59,7 +62,7 @@
     <div class="music-settings-container">
       <section class="music-settings">
         <button @click="toggleMute" class="btn-mute">
-          <div class="icon" v-html="getSvg('volume100')"></div>
+          <div class="icon" v-html=" isMuted ? getSvg('volume0') : getSvg('volume100') "></div>
         </button>
         <input
           class="footer-volume volume-slider"
@@ -139,10 +142,10 @@ export default {
       this.isRepeating = !this.isRepeating;
     },
     onShuffle() {
+      if (!this.videoId) return;
       this.isShuffling = !this.isShuffling;
     },
     toggleMute() {
-      if (!this.videoId) return;
       if (this.isMuted) this.volume = 40;
       else this.volume = 0;
       this.isMuted = !this.isMuted;
@@ -182,10 +185,10 @@ export default {
       const progressBarFill = this.$refs.progressBarFill;
 
       // calculate the position of the click on the progress bar
+
       const progressBarWidth = progressBar.offsetWidth;
       const clickedPosition = ev.pageX - progressBar.offsetLeft;
       const progressPercentage = clickedPosition / progressBarWidth;
-
       // calculate the time to seek to
       const newTime = this.duration * progressPercentage;
 
@@ -196,6 +199,9 @@ export default {
       // update the width of the progress bar fill
       progressBarFill.style.width = progressPercentage * 100 + '%';
     },
+    isMuted(){
+      return this.volume === 0 
+    }
   },
   watch: {
     volume(newVolume) {
@@ -212,7 +218,6 @@ export default {
     // },
     videoId() {
       return this.$store.getters.currentSong.videoId;
-      console.log();
     },
     imgUrl() {
       return this.$store.getters.currentSong.imgUrl;
@@ -220,11 +225,14 @@ export default {
     songTitle() {
       return this.$store.getters.currentSong.title;
     },
+    songArtist(){
+      return this.$store.getters.currentSong.artist;
+    },
     isShuffleActive() {
       return this.isShuffling ? 'active' : '';
     },
     shortenedTitle() {
-      const maxLength = 20;
+      const maxLength = 16;
       return function (title) {
         return title.length > maxLength ? title.slice(0, maxLength) + '...' : title;
       };

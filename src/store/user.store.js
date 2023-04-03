@@ -1,8 +1,6 @@
 import { userService } from '../services/user.service.js'
 import { socketService, SOCKET_EMIT_USER_WATCH, SOCKET_EVENT_USER_UPDATED } from '../services/socket.service'
 import { stationService } from '../services/station.service.js'
-// var localLoggedinUser = null
-// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null)
 
 export const userStore = {
     state: {
@@ -19,8 +17,6 @@ export const userStore = {
     },
     mutations: {
         setLoggedinUser(state, { user }) {
-            console.log('user from setloggedinuser', user)
-            // Yaron: needed this workaround as for score not reactive from birth
             state.loggedinUser = (user) ? { ...user } : null
         },
         setWatchedUser(state, { user }) {
@@ -39,11 +35,9 @@ export const userStore = {
             state.loggedinUser.score = score
         },
         addLikedSong(state, { song }) {
-            console.log('state.loggedinUser', state.loggedinUser)
             state.loggedinUser.likedSongs.push(song)
         },
         removeLikedSong(state, { song }) {
-            console.log('state.loggedinUser', state.loggedinUser)
             const likedSongs = state.loggedinUser.likedSongs
             const index = likedSongs.findIndex((s => s._id === song._id))
             state.loggedinUser.likedSongs.splice(index, 1)
@@ -131,9 +125,7 @@ export const userStore = {
         },
         async updateUser({ commit }, { user }) {
             try {
-                console.log('user', user)
                 await userService.update(user)
-                console.log('user', user)
                 commit({ type: 'setLoggedinUser', user })
             } catch (err) {
                 console.log('userStore: Error in updateUser', err)
@@ -165,7 +157,6 @@ export const userStore = {
         async removeLikedSong({ state, commit, dispatch }, { song }) {
             try {
                 commit({ type: 'removeLikedSong', song })
-                console.log('state.loggedinUser', state.loggedinUser)
                 dispatch({ type: 'updateUser', user: { ...state.loggedinUser } })
             } catch (err) {
                 console.log('userStore: Had a problem liking a song', err);

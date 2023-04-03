@@ -9,10 +9,8 @@
 
       <div class="img-container">
         <img v-if="station.imgUrl" ref="image" :src="station.imgUrl" alt="" crossorigin="anonymous" />
-        <img
-          v-else
-          src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg"
-        />
+        <img v-else
+          src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg" />
       </div>
     </div>
     <div class="station-details-header-info">
@@ -25,27 +23,18 @@
       </div> -->
       <p class="user-desc" @click="handleStationEdit($event)">{{ station.userDesc }}</p>
       <RouterLink :to="station.isAddedByUser ? '/library' : '/station'" class="by-user">
-        <div
-          v-if="!station.isAddedByUser"
-          class="headphones-icon"
-          v-html="getSvg('smallHeadphones')"
-        ></div>
-        <p>
+        <div v-if="!station.isAddedByUser" class="headphones-icon" v-html="getSvg('smallHeadphones')"></div>
+        <p class="username">
           {{ station.isAddedByUser ? loggedInUser.fullname : 'Satisfy' }}
         </p>
         <span>
-          <p class="songs-count">{{ station.songs.length }} songs</p>
-          <p class="songs-total-duration"></p>
+          <p class="songs-count">{{ station.songs.length }} songs,</p>
+          <p v-if="getStationDuration" class="songs-total-duration">{{ getStationDuration }}</p>
         </span>
       </RouterLink>
     </div>
   </header>
-  <Modal
-    @updateImgUrl="updateImgUrl"
-    @onCloseEditModal="onCloseEditModal"
-    v-if="isStationEditShown"
-    :station="station"
-  />
+  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isStationEditShown" :station="station" />
 </template>
 
 <script>
@@ -74,7 +63,6 @@ export default {
     image.addEventListener('load', () => {
       const color = fac.getColor(image, { algorithm: 'dominant' });
       this.$store.dispatch('setCurrColor', color.rgb);
-      // console.log(color.rgb);
     });
     // this.$store.dispatch('setCurrColor', `rgb(0, 0, 0)`);
   },
@@ -86,7 +74,7 @@ export default {
     handleStationEdit(event) {
       event.stopPropagation()
       // if (!this.station.isAddedByUser) return;
-      this.$store.commit({type:'handleStationEdit'})
+      this.$store.commit({ type: 'handleStationEdit' })
     },
     onCloseEditModal() {
       this.isEdit = false;
@@ -101,10 +89,28 @@ export default {
   },
 
   computed: {
-    isStationEditShown(){
-      return this.$store.getters.isStationEditShown  
+    isStationEditShown() {
+      return this.$store.getters.isStationEditShown
+    },
+    getStationDuration() {
+      const totalSeconds = this.station.songs.reduce((total, song) => {
+        const [minutes, seconds] = song.duration.split(':').map(Number);
+        return total + minutes * 60 + seconds;
+      }, 0);
+      if(!totalSeconds)return false
+      else if (totalSeconds < 3600) {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        return `${minutes} min ${seconds} sec`;
+      } else {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        return `${hours} hour ${minutes} min`;
+      }
     }
+
   },
+
   created() {
     this.loggedInUser = this.$store.getters.loggedinUser;
   },

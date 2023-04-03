@@ -37,7 +37,6 @@ export default {
     };
   },
   mounted() {
-    console.log('mounted');
 
     this.$store.dispatch('setCurrColor', 'rgb(28, 11, 59)');
   },
@@ -108,9 +107,7 @@ export default {
     PlayBtn,
   },
   created() {
-    console.log('this.$store.getters.loggedinUser', this.$store.getters.loggedinUser.likedSongs);
     this.station.songs = [...this.$store.getters.loggedinUser.likedSongs];
-    console.log('this.station', this.station);
   },
 };
 </script>

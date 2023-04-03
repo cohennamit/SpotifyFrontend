@@ -45,7 +45,6 @@ export default {
     async created() {
         try {
             this.stations = await stationService.getUserStations(this.loggedinUser._id)
-            console.log(this.stations)
         } catch (err) {
             console.log('Failed to get loggedinUser stations')
         }

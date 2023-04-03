@@ -56,7 +56,6 @@ async function update(user) {
     const { _id, likedSongs, stations } = user
     await httpService.put(`user/${_id}`, user)
     // Handle case in which admin updates other user's details
-    console.log('user', user)
     if (getLoggedinUser()._id === user._id) {
         saveLocalUser(user)
     }

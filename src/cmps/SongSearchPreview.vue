@@ -6,26 +6,26 @@
                 <article class="play-song-btn">
                     <div v-html="getSvg('playSong')" class="play-song-icon" @click="setSong"></div>
                 </article>
-                <img :src="song.snippet.thumbnails.medium.url" alt="" />
+                <img :src="song.imgUrl" alt="" />
             </div>
 
 
             <div>
-                <h3>{{ shortenedTitle(song.snippet.title) }}</h3>
-                <h6 class="song-search-preview-artist" :class="getClass">Artist</h6>
+                <h3>{{ songTitle }}</h3>
+                <h6 class="song-search-preview-artist" :class="getClass">{{song.artist}}</h6>
             </div>
 
         </div>
 
         <p :class="getClass" class="song-search-preview-album">
-            <!-- {{song.album}} -->
+            {{song.album}}
         </p>
 
         <div>
             <button v-if="!isSearchPage" class="song-search-preview-add-btn" @click="addSong">Add</button>
         </div>
 
-        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + song.id.songId" frameborder="0"
+        <iframe hidden width="60" height="15" :src="'https://www.youtube.com/embed/' + song.videoId" frameborder="0"
             allowfullscreen></iframe>
     </section>
 </template>
@@ -50,24 +50,13 @@ export default {
     },
     methods: {
         addSong() {
-            const song = stationService.getEmptySong();
-            const { snippet, id } = { ...this.song };
-            song.title = snippet.title;
-            song.videoId = id.videoId;
-            song.imgUrl = snippet.thumbnails.medium.url;
-            // song.duration = song.contentDetails.duration;
-            this.$emit('addSong', song);
+            this.$emit('addSong', this.song);
         },
         getSvg(iconName) {
             return svgService.getSvg(iconName)
         },
         setSong() {
-            const song = stationService.getEmptySong();
-            const { snippet, id } = { ...this.song };
-            song.title = snippet.title;
-            song.videoId = id.videoId;
-            song.imgUrl = snippet.thumbnails.medium.url;
-            this.$emit('setSong', song)
+            this.$emit('setSong', this.song)
         },
     },
     computed: {
@@ -82,6 +71,34 @@ export default {
                 return title.length > maxLength ? title.slice(0, maxLength) + '...' : title
             }
         },
+        songTitle() {
+            // const pattern = /(.+)\s-\s(.+)(?:\s\[[^\]]*\])?\s\(/;
+            const pattern = /^(.+?)\s*[-–]\s*(.+?)(?:\s+\[(.+?)\])?$/i;
+
+
+            const matches = pattern.exec(this.song.title);
+            if (matches) {
+                const songTitle = matches[2]
+                // verification second round
+                const regex = /^(.+)\s+\(.+\)$/;
+                const match = songTitle.match(regex);
+                if (match) {
+                    return match[1].trim();
+                }
+                return songTitle
+            } else {
+                return this.song.title
+            }
+        },
+        // songArtist() {
+        //     const pattern = /^(.+?)\s*[-–]\s*(.+?)(?:\s+\[(.+?)\])?$/i;
+        //     const matches = pattern.exec(this.song.title);
+        //     if (matches) {
+        //         const songArtist = matches[1]
+        //         this.song.artist=songArtist
+        //        return  songArtist
+        //     }
+        // },
     },
 
     watch: {
@@ -93,6 +110,8 @@ export default {
             immediate: true,
         },
 
+    },
+    created(){
     }
 
 }
