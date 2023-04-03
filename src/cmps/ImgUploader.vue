@@ -3,7 +3,7 @@
     <!-- <img v-if="imgUrl" :src="imgUrl" :style="{ maxWidth: '232px', float: 'right' }" /> -->
     <!-- <label for="imgUpload">{{ uploadMsg }}</label> -->
     <!-- <pre>{{  }}</pre> -->
-    <input type="file" @change="uploadImg" accept="img/*" id="imgUpload" />
+    <input type="file" @change="uploadImg" accept="img/*" id="imgUpload" multiple/>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import { uploadService } from '../services/upload.service'
 
 export default {
-  emits:['updateImgUrl'],
+  emits: ['updateImgUrl'],
   data() {
     return {
       imgUrl: null,
@@ -28,6 +28,7 @@ export default {
       this.imgUrl = secure_url
       this.height = height
       this.width = width
+      console.log(this.imgUrl);
       this.$emit('updateImgUrl', this.imgUrl)
     }
   },
