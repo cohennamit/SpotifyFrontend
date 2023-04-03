@@ -1,4 +1,10 @@
 .footer {
+    @media (min-width: 800px) {
+        .song-info{
+            background-color: transparent !important;
+        }
+
+    }
     @media (max-width: 800px) {
         height: 0px;
         .footer-btns, .footer-btns * ,.mid-section, .mid-section *, input ,.music-settings-container, .music-settings-container *  .music-bar .music-settings, .progress-bar {
@@ -13,8 +19,8 @@
             // opacity: 1 !important;
             display: block;
             position: absolute;
-            bottom: 110px;
-            right: 4.5em;
+            bottom: 90px;
+            right: 3em;
             // fill: red;
         }
 
@@ -22,12 +28,23 @@
 position: absolute;
 z-index: 200;
 bottom: 70px;
-// background-color: pink;
-background-color: rgba(0, 0, 0,0.98);
 width: 90vw;
 margin-inline-start: 5vw;
 margin-inline-end: 5vw;
 border-radius: 8px;
+.song-info::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+// opacity: 0.96;
+
 img {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
