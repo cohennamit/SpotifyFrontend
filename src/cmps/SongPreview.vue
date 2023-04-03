@@ -5,7 +5,6 @@
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
             <div class="song-preview-img">
-
                 <img :src="song.imgUrl" />
             </div>
 
@@ -24,11 +23,11 @@
 
         <div class="column-4">{{ songAddedAt }}</div>
         <div class="column-5">
-            <div>{{ song.duration }}</div>
-            <div class="song-preview-preferences">
+            <div :class="station.isAddedByUser? 'song-preview-preferences custom-heart' :'song-preview-preferences'">
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
+                <div>{{ song.duration }}</div>
                 <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" v-html="getSvg('trash')" class="trash-icon"></span>
                 <!-- <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span> -->
                 <span v-else></span>
