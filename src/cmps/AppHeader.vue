@@ -8,11 +8,7 @@
         <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
-    <PlayBtn
-      :style="{ opacity: 1 - this.$store.getters.opacity - 3 }"
-      :station="currStation"
-      v-if="showPlayBtn"
-    />
+    <PlayBtn :style="{ opacity: 1 - this.$store.getters.opacity - 3 }" :station="currStation" v-if="showPlayBtn" />
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
     <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
@@ -120,20 +116,6 @@ export default {
   watch: {
     $route: {
       handler() {
-<<<<<<< HEAD
-        const { path } = this.$route
-        if (path === '/login') {
-          this.isShowLogin = false
-          this.isShowSignUp = false
-        }
-        else if (path === '/signup') {
-          this.isShowLogin = true
-          this.isShowSignUp = false
-        }
-        else {
-          this.isShowLogin = true
-          this.isShowSignUp = true
-=======
         const { path } = this.$route;
         if (path === '/login') {
           this.isShowLogin = false;
@@ -144,7 +126,6 @@ export default {
         } else {
           this.isShowLogin = true;
           this.isShowSignUp = true;
->>>>>>> f4ae7bac940c1e67d3493e2a37895aa82d0ce781
         }
       },
       immediate: true,
