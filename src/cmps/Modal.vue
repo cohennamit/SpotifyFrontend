@@ -11,7 +11,7 @@
         <div class="icon" v-html="getSvg('exclMark')"></div>
         <p>Playlist name is required.</p>
       </div>
-      <div class="edit-modal-body">
+      <form  @submit="saveStation" class="edit-modal-body">
         <div class="edit-modal-img">
           <article class="choose-photo">
             <div class="pencil-icon" v-html="getSvg('pencil')"></div>
@@ -47,8 +47,8 @@
           class="edit-modal-body-input"
           type="text"
         />
-        <button class="edit-modal-body-save-btn" @click="saveStation">Save</button>
-      </div>
+        <button class="edit-modal-body-save-btn">Save</button>
+      </form>
     </section>
 </template>
 
@@ -80,7 +80,6 @@ export default {
     // const fac = new FastAverageColor();
     image.addEventListener('load', () => {
       const color = fac.getColor(image, { algorithm: 'dominant' });
-      // console.log(color);
     });
   },
   unmounted() {

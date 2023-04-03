@@ -30,8 +30,6 @@ export default {
       return this.$store.getters.loggedinUser
     },
     getSvg() {
-      console.log('1',this.currStation)
-      console.log('2',this.station)
 
       if (this.isPlaying && this.currStation._id === this.station._id) {
         return svgService.getSvg('pauseLarge')

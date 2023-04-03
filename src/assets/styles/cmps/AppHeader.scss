@@ -1,4 +1,14 @@
 .header {
+    grid-area: 1/2;
+    width: 100%;
+    z-index: 300;
+    height: 70px;
+    // transition: 500ms ease-in;
+    display: grid;
+    padding: 16px 32px;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-auto-columns: 120px minmax(200px, 364px) 1fr;
     @media (max-width: 1000px) {
 
         padding: 16px;
@@ -20,6 +30,10 @@
             display: none;
             opacity: 0;
         }
+        .loggedin-user{
+                position: absolute;
+                right: 16px;
+        }
     }
 
     .header>* {
@@ -32,16 +46,6 @@
      width: 50px;
     }
 
-    grid-area: 1/2;
-    width: 100%;
-    z-index: 300;
-    height: 70px;
-    // transition: 500ms ease-in;
-    display: grid;
-    padding: 16px 32px;
-    align-items: center;
-    grid-auto-flow: column;
-    grid-auto-columns: 120px minmax(200px, 364px) 1fr;
 
     button {
         cursor: pointer;

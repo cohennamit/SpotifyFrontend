@@ -58,7 +58,6 @@ export default {
   },
   methods: {
     openUserOptions(event) {
-      console.log('hey');
       event.stopPropagation();
       this.$store.commit({ type: 'handleUserOptions' });
     },
