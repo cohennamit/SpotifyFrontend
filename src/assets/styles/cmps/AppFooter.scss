@@ -2,10 +2,15 @@
     @media (min-width: 800px) {
         .song-info{
             background-color: transparent !important;
+
         }
 
     }
+   
     @media (max-width: 800px) {
+        .song-info{
+
+        }
         height: 0px;
         .footer-btns, .footer-btns * ,.mid-section, .mid-section *, input ,.music-settings-container, .music-settings-container *  .music-bar .music-settings, .progress-bar {
           display: none;     
@@ -21,7 +26,7 @@
             position: absolute;
             bottom: 90px;
             right: 3em;
-            // fill: red;
+            fill: white;
         }
 
 .song-info{
