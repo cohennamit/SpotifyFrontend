@@ -79,6 +79,18 @@ export default {
         'label-container-10',
         'label-container-11',
         'label-container-12',
+        'label-container-13',
+        'label-container-14',
+        'label-container-15',
+        'label-container-16',
+        'label-container-17',
+        'label-container-18',
+        'label-container-19',
+        'label-container-20',
+        'label-container-21',
+        'label-container-22',
+        'label-container-23',
+        'label-container-24',
       ];
       const randomIdx = utilService.getRandomIntInclusive(0, colors.length - 1);
       return colors[randomIdx];

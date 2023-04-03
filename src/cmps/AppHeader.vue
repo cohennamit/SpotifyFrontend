@@ -8,19 +8,21 @@
         <div class="header-btn btn-prev icon" v-html="getSvg('arrowRight')"></div>
       </button>
     </section>
-    <PlayBtn :station="currStation" v-if="showPlayBtn" />
+    <PlayBtn
+      :style="{ opacity: 1 - this.$store.getters.opacity - 3 }"
+      :station="currStation"
+      v-if="showPlayBtn"
+    />
     <SongSearch class="header-search" @setSearch="setSearch" v-if="isSearch" />
     <div v-else class="header-search-placeholder"></div>
     <!-- <SongSearchList class="station-details-search" @setFilter="setFilter" /> -->
     <section class="loggedin-user" v-if="loggedInUser">
-
       <div class="user-img-container" v-if="loggedInUser.imgUrl">
         <img :src="loggedInUser.imgUrl" />
       </div>
 
       <div v-else class="user-icon-container">
         <div class="user-icon" v-html="getSvg('user')"></div>
-
       </div>
 
       <RouterLink :to="`/user/${loggedInUser._id}`">
@@ -39,7 +41,7 @@
       <div v-if="isShowSignUp" class="signup-btn">
         <RouterLink class="signup-span" to="/signup">Sign up</RouterLink>
       </div>
-      <div v-if="isShowLogin"  class="login-btn">
+      <div v-if="isShowLogin" class="login-btn">
         <RouterLink class="login-span" to="/login">Log in</RouterLink>
       </div>
     </section>
@@ -55,14 +57,14 @@ export default {
   data() {
     return {
       isShowLogin: true,
-      isShowSignUp: true
-    }
+      isShowSignUp: true,
+    };
   },
   methods: {
     openUserOptions(event) {
       console.log('hey');
-      event.stopPropagation()
-      this.$store.commit({ type: 'handleUserOptions' })
+      event.stopPropagation();
+      this.$store.commit({ type: 'handleUserOptions' });
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
@@ -92,13 +94,13 @@ export default {
   },
   computed: {
     currStation() {
-      return this.$store.getters.currentStation
+      return this.$store.getters.currentStation;
     },
     showPlayBtn() {
-      return this.$route.params.stationId
+      return this.$route.params.stationId;
     },
     isUserOptionsShown() {
-      return this.$store.getters.isUserOptionsShown
+      return this.$store.getters.isUserOptionsShown;
     },
     headerColor() {
       const opacity = 1 - this.$store.getters.opacity;
@@ -116,29 +118,27 @@ export default {
     },
   },
   watch: {
-    '$route': {
+    $route: {
       handler() {
-        const { path } = this.$route
-        if (path === '/login'){
-          this.isShowLogin = false
-          this.isShowSignUp = false
-        } 
-        else if (path === '/signup') {
-          this.isShowLogin = true
-          this.isShowSignUp = false
-        }
-        else {
-          this.isShowLogin = true
-          this.isShowSignUp = true
+        const { path } = this.$route;
+        if (path === '/login') {
+          this.isShowLogin = false;
+          this.isShowSignUp = false;
+        } else if (path === '/signup') {
+          this.isShowLogin = true;
+          this.isShowSignUp = false;
+        } else {
+          this.isShowLogin = true;
+          this.isShowSignUp = true;
         }
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   components: {
     SongSearchList,
     SongSearch,
-    PlayBtn
+    PlayBtn,
   },
 };
 </script>
