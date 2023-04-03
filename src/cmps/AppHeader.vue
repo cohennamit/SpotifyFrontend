@@ -15,7 +15,7 @@
     <section class="loggedin-user" v-if="loggedInUser">
 
       <div class="user-img-container" v-if="loggedInUser.imgUrl">
-        <img  :src="loggedInUser.imgUrl" />
+        <img :src="loggedInUser.imgUrl" />
       </div>
 
       <div v-else class="user-icon-container">
@@ -36,10 +36,10 @@
     </section>
 
     <section v-else class="loginSignup">
-      <div class="signup-btn">
+      <div v-if="isShowSignUp" class="signup-btn">
         <RouterLink class="signup-span" to="/signup">Sign up</RouterLink>
       </div>
-      <div class="login-btn">
+      <div v-if="isShowLogin"  class="login-btn">
         <RouterLink class="login-span" to="/login">Log in</RouterLink>
       </div>
     </section>
@@ -52,6 +52,12 @@ import SongSearchList from './SongSearchList.vue';
 import SongSearch from './SongSearch.vue';
 import PlayBtn from './PlayBtn.vue';
 export default {
+  data() {
+    return {
+      isShowLogin: true,
+      isShowSignUp: true
+    }
+  },
   methods: {
     openUserOptions(event) {
       console.log('hey');
@@ -109,7 +115,26 @@ export default {
       else return false;
     },
   },
-
+  watch: {
+    '$route': {
+      handler() {
+        const { path } = this.$route
+        if (path === '/login'){
+          this.isShowLogin = false
+          this.isShowSignUp = false
+        } 
+        else if (path === '/signup') {
+          this.isShowLogin = true
+          this.isShowSignUp = false
+        }
+        else {
+          this.isShowLogin = true
+          this.isShowSignUp = true
+        }
+      },
+      immediate: true
+    }
+  },
   components: {
     SongSearchList,
     SongSearch,

@@ -15,7 +15,7 @@
         <li  @click="onRemoveStation($event)">Delete</li>
       </ul>
     </div>
-    <SongList @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
+    <SongList v-if="station" @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
     <section v-if="station.isAddedByUser" class="song-search-header">
       <h1>Let's find something for your playlist</h1>
       <SongSearch @setSearch="fetchSongs" class="station-details-search" />

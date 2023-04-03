@@ -1,6 +1,4 @@
 <template>
-  <!-- <span>Browse all</span> -->
-
   <SongSearchList @setSong="setSong" v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list">
@@ -9,6 +7,7 @@
       :class="getRandomColorClass(index)"
       v-for="(label, index) in labels"
       @click="setLabel(label)"
+      :key="index"
     >
       <img :src="label.imgUrl" />
       <span>{{ label.name }}</span>
