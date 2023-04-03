@@ -1,16 +1,26 @@
 .label-list-text {
 	padding-top: 64px;
 }
-
-.labels-list {
-	@media (max-width: 1000px) {
-		width: calc(100dvw - 240px);
+.labels-list-container{
+	grid-row: 2;
+	h1{
+		letter-spacing: -1px;
+	}
+	h2{
+		margin: 0;
+		font-size: 24px;
+		font-family: 'Circular Black';
+		letter-spacing: -1.2px;	}
+	.labels-list {
+		@media (max-width: 1000px) {
+			width: calc(100dvw - 240px);
 	}
 
 	@media (max-width: 600px) {
 		grid-template-columns: repeat(2, minmax(160px, 1fr));
 
 		.label-container {
+			font-size: 20px;
 			aspect-ratio: 1.8/1;
 			padding: 0.5em;
 
@@ -33,17 +43,17 @@
 	@media (min-width: 1257px) {
 		grid-template-columns: repeat(auto-fill, minmax(169px, 1fr));
 	}
-
+	
 	padding-top: 15px;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 	gap: 24px;
-	grid-row: 2;
 	width: calc(100dvw - 270px);
 	padding-block-end: 15em;
 	padding-inline-end: 0.9em;
-
-
+	
+	
+}
 }
 
 .labels-container {
@@ -59,7 +69,7 @@
 .label-container {
 	font-size: "Circular Bold";
 	aspect-ratio: 1;
-	padding: 1em;
+	padding: 1.1em;
 	overflow: hidden;
 	position: relative;
 	border-radius: 8px;
@@ -128,5 +138,48 @@
 }
 
 .label-container-12 {
-	background-color: #4F3750;
+	background-color: #E80F5B;
 }
+.label-container-13 {
+	background-color: #8C1932;
+	}
+	
+	.label-container-14 {
+	background-color: #27856A;
+	}
+	
+	.label-container-15 {
+	background-color: #148A09;
+	}
+	
+	.label-container-16 {
+	background-color: #A56752;
+	}
+	
+	.label-container-17 {
+	background-color: #8C1932;
+	}
+	
+	.label-container-18 {
+	background-color: #477D95;
+	}
+	
+	.label-container-19 {
+	background-color: #FF7F00;
+	}
+	
+	.label-container-20 {
+	background-color: #6B4C0F;
+	}
+	
+	.label-container-21 {
+	background-color: #9E2B0E;
+	}
+	
+	.label-container-22 {
+	background-color: #F51634;
+	}
+	
+	.label-container-23 {
+	background-color: #537AA1;
+	}
