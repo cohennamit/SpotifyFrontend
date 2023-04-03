@@ -120,8 +120,19 @@
         //     text-overflow: ellipsis;
         // }
     }
-
     &-preferences {
+        position: absolute;
+        display: flex; 
+        /* justify-content: space-between; */
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -37%);
+        gap: 14px;
+        .heart-icon {
+            padding-block-start: 1.4px;
+        }
+    }
+    .custom-heart{
         position: absolute;
         display: flex;
         justify-content: space-between;
@@ -129,10 +140,6 @@
         left: 50%;
         transform: translate(-50%, -37%);
         gap: 65px;
-
-        .heart-icon {
-            padding-block-start: 1.4px;
-        }
     }
 
     span:first-of-type {
