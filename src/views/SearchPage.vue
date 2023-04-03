@@ -9,6 +9,7 @@
       :class="getRandomColorClass(index)"
       v-for="(label, index) in labels"
       @click="setLabel(label)"
+      :key="index"
     >
       <img :src="label.imgUrl" />
       <span>{{ label.name }}</span>

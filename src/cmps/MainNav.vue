@@ -47,6 +47,7 @@
           class="user-station"
           v-for="userStation in userStations"
           :to="'/station/' + userStation._id"
+          :key="userStation._id"
         >
           {{ userStation.title }}
         </RouterLink>
