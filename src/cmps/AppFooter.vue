@@ -5,11 +5,8 @@
       <div class="song-info-name">
         <span class="title">{{ shortenedTitle(songTitle) }}</span>
         <span class="artist">{{ songArtist }}</span>
-        <div 
-          class="play-pause-icon-mobile"
-          @click="onPauseResume"
-          v-html="isPlaying ? getSvg('pause') : getSvg('resume')"
-        ></div>
+        <div class="play-pause-icon-mobile" @click="onPauseResume"
+          v-html="isPlaying ? getSvg('pause') : getSvg('resume')"></div>
       </div>
     </section>
     <section v-else>
@@ -47,7 +44,7 @@
     <div class="music-settings-container">
       <section class="music-settings">
         <button @click="toggleMute" class="btn-mute">
-          <div class="icon" v-html=" isMuted ? getSvg('volume0') : getSvg('volume100') "></div>
+          <div class="icon" v-html="getSvg('volume100')"></div>
         </button>
         <input class="footer-volume volume-slider" type="range" min="0" max="100" step="1" id="volume-slider"
           v-model="volume" />
@@ -68,7 +65,7 @@ export default {
   components: { YouTube },
   data() {
     return {
-      volume: 40,
+      volume: 50,
       volumeSvg: '',
       isRepeating: true,
       playerVars: {
@@ -189,8 +186,8 @@ export default {
       // update the width of the progress bar fill
       progressBarFill.style.width = progressPercentage * 100 + '%';
     },
-    isMuted(){
-      return this.volume === 0 
+    isMuted() {
+      return this.volume === 0
     }
   },
   watch: {
@@ -215,7 +212,7 @@ export default {
     songTitle() {
       return this.$store.getters.currentSong.title;
     },
-    songArtist(){
+    songArtist() {
       return this.$store.getters.currentSong.artist;
     },
     isShuffleActive() {
