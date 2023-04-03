@@ -1,14 +1,9 @@
 <template>
-  <div @click="closeModals"  class="layout-container">
+  <div @click="closeModals" class="layout-container">
     <AppHeader />
     <MainNav />
     <AppFooter />
-    <div
-      @scroll="handleScroll"
-      class="app-main"
-      ref="appMain"
-      :style="{ backgroundImage: backgroundColor }"
-    >
+    <div @scroll="handleScroll" class="app-main" ref="appMain" :style="{ backgroundImage: backgroundColor }">
       <RouterView />
       <UserMsg />
     </div>
@@ -17,12 +12,15 @@
 
 <script>
 import { userService } from './services/user.service';
+import { socketService } from './services/socket.service';
+
 import { store } from './store/store';
 
 import AppHeader from './cmps/AppHeader.vue';
 import MainNav from './cmps/MainNav.vue';
 import AppFooter from './cmps/AppFooter.vue';
 import UserMsg from './cmps/UserMsg.vue';
+import { showSuccessMsg } from './services/event-bus.service';
 
 export default {
   created() {
@@ -45,10 +43,10 @@ export default {
     },
   },
   methods: {
-    closeModals(){
-      this.$store.commit({type:'closeUserOptions'})
-      this.$store.commit({type:'closeStationOptions'})
-      this.$store.commit({type:'closeStationEdit'})
+    closeModals() {
+      this.$store.commit({ type: 'closeUserOptions' })
+      this.$store.commit({ type: 'closeStationOptions' })
+      this.$store.commit({ type: 'closeStationEdit' })
     },
     handleScroll() {
       const appMain = this.$refs.appMain;

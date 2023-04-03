@@ -74,6 +74,7 @@ export const userStore = {
             try {
                 const user = await userService.login(userCred)
                 commit({ type: 'setLoggedinUser', user })
+                socketService.login(user._id)
                 return user
             } catch (err) {
                 console.log('userStore: Error in login', err)
@@ -84,6 +85,7 @@ export const userStore = {
             try {
                 const user = await userService.signup(userCred)
                 commit({ type: 'setLoggedinUser', user })
+                socketService.login(user._id)
                 return user
             } catch (err) {
                 console.log('userStore: Error in signup', err)
@@ -95,6 +97,7 @@ export const userStore = {
             try {
                 await userService.logout()
                 commit({ type: 'setLoggedinUser', user: null })
+                socketService.logout()
             } catch (err) {
                 console.log('userStore: Error in logout', err)
                 throw err
