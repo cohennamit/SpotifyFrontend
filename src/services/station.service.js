@@ -22,7 +22,7 @@ export const stationService = {
 window.cs = stationService
 
 
-async function query(filterBy = { owner:''}) {
+async function query(filterBy = { owner: '' }) {
     console.log('filterBy from query', filterBy)
     return httpService.get(STORAGE_KEY, filterBy)
 
@@ -40,9 +40,9 @@ async function query(filterBy = { owner:''}) {
 async function getUserStations(userId) {
     return await query({ owner: userId })
 }
-async function getLabelStations(labelName){
+async function getLabelStations(labelName) {
     console.log(labelName)
-    return await query({label: labelName})
+    return await query({ label: labelName })
 }
 function getById(stationId) {
     // return storageService.get(STORAGE_KEY, stationId)
@@ -121,7 +121,7 @@ function getLabels() {
         },
         {
             name: 'Rap',
-            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679476992/Spotify/Rap_q7jmtn.jpg',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508657/Rap_gvt5v2.jpg',
         },
         {
             name: 'K-Pop',
@@ -154,30 +154,136 @@ function getLabels() {
         },
         {
             name: 'Jazz',
-            imgUrl: '',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506736/Jazz_iw4fm5.jpg',
         },
-        // 'Hip-Hop',
-        // 'Rock',
-        // 'Latin',
-        // 'Charts',
-        // 'Dance/Electronic',
+        {
+            name: 'Metal',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Metal_w1buqt.jpg',
+        },
+        {
+            name: 'Love',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Love_bwlqni.jpg',
+        },
+        {
+            name: 'Party',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Party_ooyycb.jpg',
+        },
+        {
+            name: 'Country',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Country_dge4yg.jpg',
+        },
+        {
+            name: 'Chill',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Chille_hsbqrb.jpg',
+        },
+        {
+            name: 'Workout',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Workout.jps_g8fy8e.jpg',
+        },
+        {
+            name: 'Indie',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506736/Indie_armukg.jpg',
+        },
+        {
+            name: 'Gaming',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Gaming_vqkmtl.jpg',
+        },
+        {
+            name: 'Folk & Acoustic',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Folk_Acoustic_uakdhs.jpg',
+        },
+        {
+            name: 'Soul',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Soul_ifrei8.jpg',
+        },
+        {
+            name: 'Instrumental',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506726/Instrumental_e8yilu.jpg',
+        },
+        {
+            name: 'Summer',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506727/Summer_arx3vn.jpg',
+        },
+        {
+            name: 'Fresh Finds',
+            imgUrl: 'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680506727/Fresh-Finds_fdtshe.jpg',
+        },
+        {
+            name: 'New releases',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508657/New-Releases_esi5dj.jpg'
+        },
+        {
+            name: 'Hip-Hop',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679476992/Spotify/Rap_q7jmtn.jpg'
+        },
+        {
+            name: 'At Home',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508657/At-Home_hy6fix.jpg'
+        },
+        {
+            name: 'Decades',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508657/Decades_km4zfg.jpg'
+        },
+        {
+            name: 'Wellness',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Wellness_op6kps.jpg'
+        },
+        {
+            name: 'Trending',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508663/Trending_hq0xgz.jpg'
+        },
+        {
+            name: 'TV & Movies',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508663/TV_Movies_hcfma7.jpg'
+        },
+        {
+            name: 'Classical',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Classical_pmhtq5.jpg'
+        },
+        {   
+            name: 'Kids & Family',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Kids_Family_zfdzcs.jpg'
+        },
+        {
+            name: 'Punk',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Punk_ome0im.jpg'
+        },
+        {
+            name: 'Blues',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Blues_q32smi.jpg'
+        },
+        {
+            name: 'Afro',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508664/Afro_qom9g5.jpg'
+        },
+        {
+            name: 'Travel',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508663/Travel_ysfll5.jpg'
+        },
+        {
+            name: 'Tastemaker',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508663/Tastemaker_qecwsj.png'
+        },
+        {
+            name: 'Caribbean',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508657/Decades_km4zfg.jpg'
+        },
+        {
+            name: 'Cooking & Dining',
+            imgUrl:'https://res.cloudinary.com/dmmsf57ko/image/upload/v1680508663/Cooking_Dining_k6r9jh.jpg'
+        },
 
-        // 'Indie',
-        // 'Workout',
-        // 'Country',
-        // 'R&B',
-        // 'Chill',
-        // 'Party',
-        // 'Love',
-        // 'Metal',
-        // 'Jazz',
-        // 'Anime',
-        // 'Gaming',
-        // 'Folk & Acoustic',
-        // 'Soul',
-        // 'Instrumental',
-        // 'Summer',
-        // 'Fresh Finds'
+
+
+
+
+        
+        
+        
+        
+        
+        
+        
     ];
 }
 
