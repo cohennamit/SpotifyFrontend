@@ -118,11 +118,11 @@ export default {
       return svgService.getSvg(iconName);
     },
     onPauseResume() {
+      this.$refs.youtube.playVideo();
       if (!this.videoId) return;
       this.isPlaying = !this.isPlaying;
 
       if (!this.isPlaying) {
-        this.$refs.youtube.playVideo();
         this.$store.commit({ type: 'play' });
       } else {
         this.$refs.youtube.pauseVideo();
