@@ -15,7 +15,7 @@
     <section class="loggedin-user" v-if="loggedInUser">
 
       <div class="user-img-container" v-if="loggedInUser.imgUrl">
-        <img :src="loggedInUser.imgUrl" />
+        <img class="header-img" :src="loggedInUser.imgUrl" />
       </div>
 
       <div v-else class="user-icon-container">
@@ -39,7 +39,7 @@
       <div v-if="isShowSignUp" class="signup-btn">
         <RouterLink class="signup-span" to="/signup">Sign up</RouterLink>
       </div>
-      <div v-if="isShowLogin"  class="login-btn">
+      <div v-if="isShowLogin" class="login-btn">
         <RouterLink class="login-span" to="/login">Log in</RouterLink>
       </div>
     </section>
@@ -119,10 +119,10 @@ export default {
     '$route': {
       handler() {
         const { path } = this.$route
-        if (path === '/login'){
+        if (path === '/login') {
           this.isShowLogin = false
           this.isShowSignUp = false
-        } 
+        }
         else if (path === '/signup') {
           this.isShowLogin = true
           this.isShowSignUp = false
