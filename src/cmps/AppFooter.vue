@@ -17,8 +17,6 @@
     </section>
     <YouTube v-if="videoId" hidden :src="'https://www.youtube.com/watch?v=' + videoId" ref="youtube" @ready="onReady"
       @state-change="onStateChange" />
-    <div class="play-pause-icon-mobile" @click="onPauseResume" v-html="isPlaying ? getSvg('pause') : getSvg('resume')">
-    </div>
     <section class="mid-section">
       <section class="footer-btns">
         <button @click="onShuffle" class="footer-btn">
@@ -100,6 +98,7 @@ export default {
       return svgService.getSvg(iconName);
     },
     onPauseResume() {
+      this.$refs.youtube.playVideo();
       if (!this.videoId) return;
       // this.isPlaying = !this.isPlaying;
       if (!this.isPlaying) this.playVideo()
