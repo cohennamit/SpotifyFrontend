@@ -44,7 +44,7 @@
     <div class="music-settings-container">
       <section class="music-settings">
         <button @click="toggleMute" class="btn-mute">
-          <div class="icon" v-html="getSvg('volume100')"></div>
+          <div class="icon" v-html="isMuted ? getSvg('volume0') : getSvg('volume100')"></div>
         </button>
         <input class="footer-volume volume-slider" type="range" min="0" max="100" step="1" id="volume-slider"
           v-model="volume" />
@@ -130,7 +130,8 @@ export default {
       this.isShuffling = !this.isShuffling;
     },
     toggleMute() {
-      if (this.isMuted) this.volume = 40;
+      if (!this.videoId) return
+      if (this.isMuted) this.volume = 50;
       else this.volume = 0;
       this.isMuted = !this.isMuted;
     },
@@ -186,12 +187,10 @@ export default {
       // update the width of the progress bar fill
       progressBarFill.style.width = progressPercentage * 100 + '%';
     },
-    isMuted() {
-      return this.volume === 0
-    }
   },
   watch: {
     volume(newVolume) {
+      if (!this.videoId) return
       this.$refs.youtube.setVolume(newVolume);
       // if (newVolume > 75) this.volumeSvg = 'volume100'
       // else if (newVolume > 25 && newVolume < 75) this.volumeSvg = 'volume75'

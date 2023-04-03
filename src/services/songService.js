@@ -1,5 +1,5 @@
 import { utilService } from "./util.service"
-const API_KEY = 'AIzaSyDbyQ-7zcRW17m0QTsNElDm5gF5ZQSQxZo'
+const API_KEY = 'AIzaSyB7wZAHarlAh16VDGqEckGq7n5m-Opr4ok'
 
 export async function getSongs(query) {
     const API = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&maxResults=10&key=${API_KEY}`
