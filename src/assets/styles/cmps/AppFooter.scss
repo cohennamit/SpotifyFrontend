@@ -8,9 +8,8 @@
     }
 
     @media (max-width: 800px) {
-        .song-info{
+        .song-info {}
 
-        }
         height: 0px;
 
         .footer-btns,
@@ -46,7 +45,7 @@
             margin-inline-end: 5vw;
             border-radius: 8px;
 
-            
+
             .song-info::after {
                 content: '';
                 position: absolute;
@@ -81,14 +80,17 @@
     background-color: #333;
     background-color: rgb(24, 24, 24);
     text-align: center;
+
     .song-info-name {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        .title{
+
+        .title {
             font-size: 14px;
         }
-        .artist{
+
+        .artist {
             font-size: 11px;
             color: #B3B3B3;
         }
@@ -244,8 +246,6 @@
 
 .play-pause-icon-mobile {
     display: none;
-    width: 20px;
-    height: 20px;
 }
 
 .progress-bar {

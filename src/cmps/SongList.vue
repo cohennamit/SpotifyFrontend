@@ -3,7 +3,7 @@
     <div v-if="hasSongs" :class="getClass" class="song-preview-main song-preview-header">
       <div>#</div>
       <div class="title">Title</div>
-      <div class="album">Album</div>
+      <div v-if="!station.isAddedByUser" class="album">Album</div>
       <div class="date-added">Date Added</div>
       <div>
         <div></div>

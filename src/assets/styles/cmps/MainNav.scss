@@ -7,18 +7,25 @@ $secondary-color: #aaa;
         display: grid;
         grid-row: 3;
         grid-column: 1/-1;
-      .actions, span, hr, .main-nav-logo,
-       .playlist-links{
+
+        .actions,
+        span,
+        hr,
+        .main-nav-logo,
+        .playlist-links {
             display: none;
         }
-      .nav{
-      grid-template-columns: 0.33fr 0.33fr 0.33fr;  
-      justify-content: space-evenly;
-   }
-   a {
-    justify-self: center;
-   }
+
+        .nav {
+            grid-template-columns: 0.33fr 0.33fr 0.33fr;
+            justify-content: space-evenly;
+        }
+
+        a {
+            justify-self: center;
+        }
     }
+
     z-index: 310;
     font-size: 0.8125rem;
     min-width: 185px;
@@ -28,6 +35,7 @@ $secondary-color: #aaa;
     padding-inline-start: 25px;
     padding-inline-end: 20px;
     grid-row: 1 / 4;
+
     &-logo {
         display: flex;
         align-items: center;
@@ -61,6 +69,14 @@ $secondary-color: #aaa;
     }
 
     .user-playlists {
+        overflow: scroll;
+        height: 261px;
+        padding-block-end: 30px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
         a {
             color: rgb(170, 170, 170);
         }
@@ -72,6 +88,22 @@ $secondary-color: #aaa;
     }
 }
 
+.user-station{
+    display: flex;
+    fill: #1db954;
+    gap: 38px;
+    align-items: center;
+    &-title{
+        width: 151px;
+    }
+    .played-station-icon{
+        height: 17px;
+        svg{
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
 .icon {
     display: grid;
     align-items: center;
@@ -106,10 +138,12 @@ hr {
     font-size: 0.8125rem;
     margin-block-start: 11px;
     overflow: auto;
+
     // height: 100%;
-a{
-    font-size: 14px;
-}
+    a {
+        font-size: 14px;
+    }
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -129,10 +163,11 @@ a{
 .create-playlist-btn,
 .liked-songs-btn {
 
- span{
-    letter-spacing: 1px;
-    font-size: 13px;
- }
+    span {
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+
     display: flex;
     align-items: center;
     gap: 16px;
@@ -189,7 +224,7 @@ ul {
 }
 
 .actions {
-    
+
     display: flex;
     flex-direction: column;
     margin-block-start: 38px;

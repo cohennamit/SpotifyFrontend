@@ -10,6 +10,7 @@
   <SongSearchList class="search-page-search-list" @setSong="setSong" v-if="songs" :songs="songs" />
 
   <section v-else class="labels-list-container">
+    >>>>>>> 3c1f4cd9daa6243093eed24459b50c60d00736dd
     <h1>Browse all</h1>
     <div class="labels-list">
       <article

@@ -6,6 +6,7 @@
 
 <script>
 import { eventBus } from '../services/event-bus.service';
+import { socketService } from '../services/socket.service';
 import { svgService } from '../services/svg.service.js';
 export default {
   name: 'Play Btn',
@@ -19,9 +20,11 @@ export default {
       const song = this.station._id === 'likedSongs' ?
         this.loggedinUser.likedSongs[0] :
         this.station.songs[0]
-      this.$store.dispatch({ type: 'setSong', song })
-      this.$store.dispatch({ type: 'setStation', station: this.station })
-      eventBus.emit('onTogglePlay')
+      // this.$store.dispatch({ type: 'setSong', song })
+      // this.$store.dispatch({ type: 'setStation', station: this.station })
+      // eventBus.emit('onTogglePlay')
+      socketService.emit('playSong', { song, station: this.station })
+      this.$store.dispatch({ type: 'playSong', data: { song, station: this.station } })
     },
 
   },

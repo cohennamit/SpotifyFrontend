@@ -79,7 +79,7 @@ h2{
 		display: flex;
 		flex-shrink: 2;
 		align-items: center;
-		background-color: #282727;
+		background-color: hsla(0,0%,100%,.1);
 		border-radius: 4px;
 		height: 64px;
 	}
@@ -96,7 +96,7 @@ h2{
 		transition: 300ms;
 
 		&:hover {
-			background-color: #515151
+			background-color: hsla(0,0%,100%,.2);
 		}
 	}
 }
