@@ -16,10 +16,12 @@
             </div>
 
         </div>
-
-        <p :class="getClass" class="song-search-preview-album">
-            {{song.album}}
+        <p>
+            
         </p>
+        <!-- <p :class="getClass" class="song-search-preview-album">
+            {{song.album}}
+        </p> -->
 
         <div>
             <button v-if="!isSearchPage" class="song-search-preview-add-btn" @click="addSong">Add</button>

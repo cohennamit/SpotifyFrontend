@@ -1,7 +1,10 @@
 <template>
     <article :class="getClass" class="song-preview-main" @click="handleClick" @mouseover="isHover = true"
         @mouseleave="isHover = false">
-        <div v-html="playBtnSvg" class="play-song-icon" @click="setSong(), setStation()"></div>
+        <div class="played-song-gif" @click="setSong(), setStation()" v-if="isPlaying && currSong._id === song._id" >
+            <img src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1680551630/equaliser-animated-green.f5eb96f2_pu9wsp.gif" alt="">
+        </div>
+        <div v-else v-html="playBtnSvg" :class="getPlayedSongClass" class="play-song-icon" @click="setSong(), setStation()"></div>
         <!-- <span v-if="isHover">5</span> -->
         <div class="song-preview-content">
             <div class="song-preview-img">
@@ -9,7 +12,7 @@
             </div>
 
             <div class="song-preview-name">
-                <span class="song-preview-name-title">
+                <span :class="getPlayedSongClass" class="song-preview-name-title">
                     {{ shortenedTitle(songTitle) }}
                 </span>
                 <span :class="getClass">
@@ -19,16 +22,17 @@
 
         </div>
         <!-- <p>{{ song.album }}</p> -->
-        <div class="column-3" :class="getClass">{{ song.album }}</div>
+        <div v-if="!station.isAddedByUser" class="column-3" :class="getClass">{{ song.album }}</div>
 
         <div class="column-4">{{ songAddedAt }}</div>
         <div class="column-5">
-            <div :class="station.isAddedByUser? 'song-preview-preferences custom-heart' :'song-preview-preferences'">
+            <div :class="station.isAddedByUser ? 'song-preview-preferences custom-heart' : 'song-preview-preferences'">
                 <span @click="isLiked ? unlikeSong() : likeSong()" :class="getClass" class="heart-icon">
                     <div v-html="isLiked ? getSvg('heartFull') : getSvg('heart')"></div>
                 </span>
                 <div>{{ song.duration }}</div>
-                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" v-html="getSvg('trash')" class="trash-icon"></span>
+                <span v-if="station.isAddedByUser" :class="getClass" @click="removeSong" v-html="getSvg('trash')"
+                    class="trash-icon"></span>
                 <!-- <span :class="getClass" @click="removeSong" class="trash-icon" v-html="getSvg('trash')"></span> -->
                 <span v-else></span>
             </div>
@@ -73,7 +77,7 @@ export default {
         },
         getSvg(iconName) {
             if (this.isHover || this.activeSongId === this.song._id) return svgService.getSvg(iconName)
-            else if (iconName === 'playSong') return this.index + 1
+            else if (iconName === 'playSongSmall') return this.index + 1
         },
         setSong() {
             this.$emit('setSong', this.song)
@@ -98,18 +102,18 @@ export default {
         //         const response = await fetch(
         //             `https://api.deezer.com/search?q=without me`
         //         )
-        //          const {data} = response.json
         //         console.log(response)
         //     } catch (err) {
         //         console.log('cant find song', err)
         //     }
         // }
+        //          const {data} = response.json
     },
     computed: {
         playBtnSvg() {
             if (this.isPlaying && this.currSong._id === this.song._id) {
-                return this.getSvg('pause')
-            } else return this.getSvg('playSong')
+                return this.getSvg('pauseSmall')
+            } else return this.getSvg('playSongSmall')
         },
         isLiked() {
             const user = this.$store.getters.loggedinUser
@@ -128,7 +132,7 @@ export default {
         getClass() {
             return {
                 'hover': this.isHover || this.isActive,
-                'active': this.activeSongId === this.song._id,
+                'active': this.activeSongId  === this.song._id,
                 'not-custom': !this.station.isAddedByUser,
                 'custom': this.station.isAddedByUser
             }
@@ -173,6 +177,11 @@ export default {
                 return this.song.title
             }
         },
+        getPlayedSongClass() {
+            return {
+                'played': this.isPlaying && this.currSong._id === this.song._id   
+            }
+        }
         // songArtist() {
         //     const pattern = /^(.+?)\s*[-–]\s*(.+?)(?:\s+\[(.+?)\])?$/i;
         //     const matches = pattern.exec(this.song.title);

@@ -3,6 +3,7 @@
     <!-- <img v-if="imgUrl" :src="imgUrl" :style="{ maxWidth: '232px', float: 'right' }" /> -->
     <!-- <label for="imgUpload">{{ uploadMsg }}</label> -->
     <!-- <pre>{{  }}</pre> -->
+    
     <input type="file" @change="uploadImg" accept="img/*" id="imgUpload" multiple/>
   </div>
 </template>
