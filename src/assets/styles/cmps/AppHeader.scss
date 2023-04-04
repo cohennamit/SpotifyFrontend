@@ -10,7 +10,7 @@
     grid-auto-flow: column;
     grid-auto-columns: 120px minmax(200px, 364px) 1fr;
     @media (max-width: 1000px) {
-
+        
         padding: 16px;
     }
 
@@ -40,8 +40,12 @@
         opacity: 1;
     }
     .play-btn{
+        @media (min-width: 600px) {
+            margin-inline-start: 105px;
+            
+        }
      position: absolute;
-     margin-inline-start: 75px;
+     margin-inline-start: 64px;
      height: 50px;
      width: 50px;
     }
