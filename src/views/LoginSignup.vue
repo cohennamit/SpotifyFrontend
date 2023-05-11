@@ -147,8 +147,8 @@ export default {
         return
       }
       try {
-        await this.$store.dispatch({ type: 'setUserStations' })
         await this.$store.dispatch({ type: "login", userCred: this.loginCred })
+        await this.$store.dispatch({ type: 'setUserStations' })
         this.$router.push('/')
       } catch (err) {
         console.log(err)
