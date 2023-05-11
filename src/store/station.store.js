@@ -36,13 +36,11 @@ export const stationStore = {
 
     isFilterShown: false,
     currentRoute: '',
-    // labels: stationService.getLabels(),
     filterBy: {
       labels: '',
       sort: 'name',
     },
     labels: stationService.getLabels(),
-    // labels: []
   },
   getters: {
     currColor: (state) => {

@@ -14,10 +14,10 @@
         <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div>
         <span> Search </span>
       </RouterLink>
-      <RouterLink class="btn-nav" to="/library">
+      <button class="btn-nav" @click="onRouterLibrary">
         <div class="icon" v-html="isLibrary ? getSvg('libraryFull') : getSvg('library')"></div>
-        <span> Your Library </span>
-      </RouterLink>
+        <span> Your Library </span> 
+      </button>
     </section>
     <section class="actions">
       <button @click="onCreateStation" class="create-playlist-btn">
@@ -26,12 +26,12 @@
         </div>
         <span> Create Playlist </span>
       </button>
-      <RouterLink class="liked-songs-btn" to="/liked">
+      <button class="liked-songs-btn" @click="onRouterLiked">
         <div class="btn-liked">
           <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
         </div>
         <span> Liked Songs </span>
-      </RouterLink>
+      </button>
     </section>
     <hr />
     <section class="user-playlists">
@@ -68,7 +68,16 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
+    onRouterLibrary(){
+      if(!this.loggedinUser)return console.log('user is not loggedin')//TODO: ADD CONTINUE AS GUEST MODAL
+      return this.$router.push('/library')
+    },
+    onRouterLiked(){
+      if(!this.loggedinUser)return console.log('user is not loggedin')//TODO: ADD CONTINUE AS GUEST MODAL
+      return this.$router.push('/liked')
+    },
     async onCreateStation() {
+      if(!this.loggedinUser)return  //TODO: ADD CONTINUE AS GUEST MODAL 
       try {
         const newStation = stationService.getEmptyStation();
         const addedStation = await this.$store.dispatch({ type: 'addStation', newStation });

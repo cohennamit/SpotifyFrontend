@@ -19,6 +19,7 @@ export const modalStore = {
             state.isUserOptionsShown = !state.isUserOptionsShown
         },
         handleStationOptions(state) {
+            console.log('gotin');
             state.isStationOptionsShown = !state.isStationOptionsShown
         },
         handleStationEdit(state) {

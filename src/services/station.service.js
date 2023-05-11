@@ -78,7 +78,7 @@ function getEmptyStation() {
         title: 'My Playlist',
         userDesc: '',
         imgUrl:
-            'https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg',
+            'https://res.cloudinary.com/dmmsf57ko/image/upload/v1683826469/WhatsApp_Image_2023-05-11_at_20.32.48_ybb9ov.jpg',
         songs: [],
         isAddedByUser: true,
     }
