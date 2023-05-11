@@ -11,44 +11,24 @@
     <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
-      <div
-        v-if="station.isAddedByUser"
-        @click="handleStationOptions($event)"
-        class="options-icon"
-        v-html="getSvg('playlistOptions')"
-      ></div>
+      <div v-if="station.isAddedByUser" @click="handleStationOptions($event)" class="options-icon"
+        v-html="getSvg('playlistOptions')"></div>
       <ul ref="modalContainer" class="options-menu" v-if="isStationOptionsShown">
         <li @click="onOpenEditModal($event)">Edit</li>
         <li @click="onRemoveStation($event)">Delete</li>
       </ul>
     </div>
-    <SongList
-      v-if="station"
-      @setSong="setSong"
-      @setStation="setStation"
-      @removeSong="removeSong"
-      :station="station"
-    />
+    <SongList v-if="station" @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
     <section v-if="station.isAddedByUser" class="song-search-header">
       <h1>Let's find something for your playlist</h1>
       <SongSearch @setSearch="fetchSongs" class="station-details-search" />
     </section>
-    <SongSearchList
-      v-if="station.isAddedByUser"
-      :songs="songs"
-      class="search-results-list"
-      @setSong="setSong"
-      @addSong="addSong"
-    />
+    <SongSearchList v-if="station.isAddedByUser" :songs="songs" class="search-results-list" @setSong="setSong"
+      @addSong="addSong" />
     <hr />
     <div class="placeholder"></div>
   </section>
-  <Modal
-    @updateImgUrl="updateImgUrl"
-    @onCloseEditModal="onCloseEditModal"
-    v-if="isEdit"
-    :station="station"
-  />
+  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
 </template>
 
 <script>
