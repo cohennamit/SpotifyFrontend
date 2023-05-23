@@ -1,36 +1,17 @@
 <template>
-  <section v-if="user">
+  <section class="user-details" v-if="user">
     <h1>{{ user.fullname }}'s Profile</h1>
-    <h3>Nickname - {{ user.username }}</h3>
-    <section v-if="isMe">
-      <button @click="doLogout">Logout</button>
-    </section>
     <img style="max-width: 200px; border-radius: 50%;" :src="user.imgUrl" />
-    <ul>
-      <li v-for="review in user.givenReviews" :key="review._id">
-        {{ review.txt }}
-        <RouterLink :to="`/user/${review.aboutUser._id}`">
-          About {{ review.aboutUser.fullname }}
-        </RouterLink>
-      </li>
-    </ul>
+    <h3>Nickname - {{ user.username }}</h3>
 
-    <details>
-      <summary>Full JSON</summary>
-      <pre>{{ user }}</pre>
-    </details>
+    <button class="logout-btn" @click="doLogout">Logout</button>
+
   </section>
 </template>
-
 <script>
 
 export default {
-  data() {
-    return {
-    }
-  },
-  async created() {
-  },
+
   watch: {
     userId: {
       handler() {
@@ -53,7 +34,10 @@ export default {
     },
   },
   methods: {
-
+    doLogout() {
+      this.$store.dispatch({ type: 'logout' });
+      this.$router.push('/');
+    },
   }
 }
 </script>
