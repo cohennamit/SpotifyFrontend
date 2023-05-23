@@ -3,10 +3,9 @@
     <h1>User Details - Fullname {{ user.fullname }}</h1>
     <h3>Nickname - {{ user.username }}</h3>
     <section v-if="isMe">
-      <h4>Its me</h4>
       <button @click="doLogout">Logout</button>
     </section>
-    <img style="max-width: 200px;" :src="user.imgUrl" />
+    <img style="max-width: 200px; border-radius: 50%;" :src="user.imgUrl" />
     <ul>
       <li v-for="review in user.givenReviews" :key="review._id">
         {{ review.txt }}
