@@ -24,17 +24,13 @@
 </template>
 
 <script>
-// import {userService} from '../services/user.service'
 
 export default {
   data() {
     return {
-      // user: null
     }
   },
   async created() {
-    // const user = await userService.getById(id)
-    // this.user = user
   },
   watch: {
     userId: {

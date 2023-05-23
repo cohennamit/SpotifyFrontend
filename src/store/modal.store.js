@@ -1,43 +1,53 @@
-// import { storageService } from '../services/async-storage.service';
-// import { stationService } from '../services/station.service';
-// import { stationService } from '../services/station.service'
-
-
 export const modalStore = {
     state: {
         isUserOptionsShown: false,
         isStationOptionsShown: false,
-        isStationEditShown: false
+        isStationEditShown: false,
+        isLibraryLogErrShown: false,
+        isCreatePlaylistLogErrShown: false,
+        isLikedLogErrShown: false
     },
     getters: {
         isUserOptionsShown({ isUserOptionsShown }) { return isUserOptionsShown },
         isStationOptionsShown({ isStationOptionsShown }) { return isStationOptionsShown },
         isStationEditShown({ isStationEditShown }) { return isStationEditShown },
+        isLibraryLogErrShown({ isLibraryLogErrShown }) { return isLibraryLogErrShown },
+        isCreatePlaylistLogErrShown({ isCreatePlaylistLogErrShown }) { return isCreatePlaylistLogErrShown },
+        isLikedLogErrShown({ isLikedLogErrShown }) { return isLikedLogErrShown }
     },
     mutations: {
-        handleUserOptions(state) {
-            state.isUserOptionsShown = !state.isUserOptionsShown
+        openUserOptions(state) {
+            this.commit('closeModals')
+            state.isUserOptionsShown = true
         },
-        handleStationOptions(state) {
-            console.log('gotin');
-            state.isStationOptionsShown = !state.isStationOptionsShown
-        },
-        handleStationEdit(state) {
-            state.isStationEditShown = !state.isStationEditShown
-        },
-        closeUserOptions(state) {
-            state.isUserOptionsShown = false
-        },
-        closeStationOptions(state) {
-            state.isStationOptionsShown = false
-        },
-        closeStationEdit(state) {
-            state.isStationEditShown = false
+        openStationOptions(state) {
+            this.commit('closeModals')
+            state.isStationOptionsShown = true
         },
         openStationEdit(state) {
+            this.commit('closeModals')
             state.isStationEditShown = true
-        }
-
+        },
+        openLibraryLogErr(state) {
+            this.commit('closeModals')
+            state.isLibraryLogErrShown = true
+        },
+        openCreatePlaylistLogErr(state) {
+            this.commit('closeModals')
+            state.isCreatePlaylistLogErrShown = true
+        },
+        openLikedLogErr(state) {
+            this.commit('closeModals')
+            state.isLikedLogErrShown = true
+        },
+        closeModals(state) {
+            state.isUserOptionsShown = false
+            state.isStationOptionsShown = false
+            state.isStationEditShown = false
+            state.isLibraryLogErrShown = false
+            state.isCreatePlaylistLogErrShown = false
+            state.isLikedLogErrShown = false
+        },
     },
 
 };

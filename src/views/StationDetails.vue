@@ -6,16 +6,15 @@
       <div class="ball"></div>
     </div>
   </section>
-  <!-- <div class="header-placeholder"></div> -->
   <section v-else-if="station" class="station-details">
     <StationHeader @updateImgUrl="updateImgUrl" :station="station" />
     <div class="station-details-body">
       <PlayBtn :station="station" />
-      <div v-if="station.isAddedByUser" @click="handleStationOptions($event)" class="options-icon"
+      <div v-if="station.isAddedByUser" @click.stop="openStationOptions" class="options-icon"
         v-html="getSvg('playlistOptions')"></div>
       <ul ref="modalContainer" class="options-menu" v-if="isStationOptionsShown">
-        <li @click="onOpenEditModal($event)">Edit</li>
-        <li @click="onRemoveStation($event)">Delete</li>
+        <li @click.stop="onOpenEdit">Edit</li>
+        <li @click.stop="onRemoveStation">Delete</li>
       </ul>
     </div>
     <SongList v-if="station" @setSong="setSong" @setStation="setStation" @removeSong="removeSong" :station="station" />
@@ -28,16 +27,15 @@
     <hr />
     <div class="placeholder"></div>
   </section>
-  <Modal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
+  <StationEditModal @updateImgUrl="updateImgUrl" @onCloseEditModal="onCloseEditModal" v-if="isEdit" :station="station" />
 </template>
 
 <script>
-//TODO: LINE 2-4 CHANGE IMG TO BE CHOSEN BY USER & CONNECT USER LINE 9
 import { stationService } from '../services/station.service.js';
 import { svgService } from '../services/svg.service.js';
 import { getSongs } from '../services/songService.js';
 
-import Modal from '../cmps/Modal.vue';
+import StationEditModal from '../cmps/StationEditModal.vue';
 import StationHeader from '../cmps/StationHeader.vue';
 import SongList from '../cmps/SongList.vue';
 import SongSearchList from '../cmps/SongSearchList.vue';
@@ -57,13 +55,11 @@ export default {
     this.isLoading = true;
   },
   methods: {
-    onOpenEditModal(event) {
-      event.stopPropagation();
+    onOpenEdit() {
       this.$store.commit({ type: 'openStationEdit' });
     },
-    handleStationOptions(event) {
-      event.stopPropagation();
-      this.$store.commit({ type: 'handleStationOptions' });
+    openStationOptions() {
+      this.$store.commit({ type: 'openStationOptions' });
     },
     async fetchSongs(query) {
       this.songs = await getSongs(query);
@@ -77,10 +73,8 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName);
     },
-    onRemoveStation(event) {
-      event.stopPropagation();
+    onRemoveStation() {
       this.$store.dispatch({ type: 'removeStation', stationId: this.station._id });
-      // this.$store.commit({ type:'removeUserStation'})
       this.$router.push('/station');
     },
     addSong(song) {
@@ -106,16 +100,6 @@ export default {
     isStationOptionsShown() {
       return this.$store.getters.isStationOptionsShown;
     },
-    // async getStation() {
-    //   const { stationId } = this.$route.params;
-    //   // console.log('create',stationId)
-    //   try {
-    //     const station = await stationService.getById(stationId);
-    //     this.station = station;
-    //   } catch (error) {
-    //     console.log('Error fetching station: ', error);
-    //   }
-    // },
   },
   watch: {
     '$route.params': {
@@ -124,7 +108,7 @@ export default {
         try {
           const station = await stationService.getById(stationId);
           this.station = station;
-          this.isLoading = false; // set isLoading to false
+          this.isLoading = false; 
         } catch (error) {
           console.log('Error fetching station: ', error);
         }
@@ -138,7 +122,7 @@ export default {
     SongSearchList,
     PlayBtn,
     SongSearch,
-    Modal,
+    StationEditModal,
   },
 };
 </script>

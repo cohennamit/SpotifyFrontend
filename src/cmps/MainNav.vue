@@ -14,23 +14,26 @@
         <div class="icon nav-search" v-html="isSearch ? getSvg('search') : getSvg('emptySearch')"></div>
         <span> Search </span>
       </RouterLink>
-      <button class="btn-nav" @click="onRouterLibrary">
+      <button class="btn-nav btn-nav-library" @click.stop="onRouterLibrary">
         <div class="icon" v-html="isLibrary ? getSvg('libraryFull') : getSvg('library')"></div>
         <span> Your Library </span> 
+        <LoginErrModal v-if="isLibraryLogErrShown" :loginErrType="'library-err'" :title="'Enjoy Your Library'" :body="'Log in to see saved songs, podcasts, artists, and playlists in Your Library.'"/>
       </button>
     </section>
     <section class="actions">
-      <button @click="onCreateStation" class="create-playlist-btn">
+      <button @click.stop="onCreateStation" class="create-playlist-btn">
         <div class="btn-create">
           <div class="icon create-icon" v-html="getSvg('createPlaylist')"></div>
         </div>
         <span> Create Playlist </span>
+        <LoginErrModal v-if="isCreatePlaylistLogErrShown" :loginErrType="'create-playlist-err'" :title="'Create a playlist'" :body="'Log in to create and share playlists.'"/>
       </button>
-      <button class="liked-songs-btn" @click="onRouterLiked">
+      <button class="liked-songs-btn" @click.stop="onRouterLiked">
         <div class="btn-liked">
           <div class="icon" v-html="getSvg('likedSongsHeart')"></div>
         </div>
         <span> Liked Songs </span>
+        <LoginErrModal v-if="isLikedLogErrShown" :loginErrType="'liked-err'" :title="'Enjoy your Liked Songs'" :body="'Log in to see all the songs you’ve liked in one easy playlist.'"/>
       </button>
     </section>
     <hr />
@@ -54,6 +57,7 @@
 <script>
 import { svgService } from '../services/svg.service.js';
 import { stationService } from '../services/station.service.js';
+import LoginErrModal from './loginErrModal.vue';
 export default {
   name: '',
   data() {
@@ -69,15 +73,17 @@ export default {
       return svgService.getSvg(iconName);
     },
     onRouterLibrary(){
-      if(!this.loggedinUser)return console.log('user is not loggedin')//TODO: ADD CONTINUE AS GUEST MODAL
+      if(!this.loggedinUser){
+       return this.$store.commit({ type: 'openLibraryLogErr' })//TODO: ADD CONTINUE AS GUEST MODAL
+      } 
       return this.$router.push('/library')
     },
     onRouterLiked(){
-      if(!this.loggedinUser)return console.log('user is not loggedin')//TODO: ADD CONTINUE AS GUEST MODAL
+      if(!this.loggedinUser)return this.$store.commit({ type: 'openLikedLogErr' })//TODO: ADD CONTINUE AS GUEST MODAL
       return this.$router.push('/liked')
     },
     async onCreateStation() {
-      if(!this.loggedinUser)return  //TODO: ADD CONTINUE AS GUEST MODAL 
+      if(!this.loggedinUser)return this.$store.commit({ type: 'openCreatePlaylistLogErr' })  //TODO: ADD CONTINUE AS GUEST MODAL 
       try {
         const newStation = stationService.getEmptyStation();
         const addedStation = await this.$store.dispatch({ type: 'addStation', newStation });
@@ -89,6 +95,16 @@ export default {
     },
   },
   computed: {
+    isLibraryLogErrShown() {
+      return this.$store.getters.isLibraryLogErrShown;
+    },
+    isCreatePlaylistLogErrShown() {
+      return this.$store.getters.isCreatePlaylistLogErrShown;
+    },
+    isLikedLogErrShown() {
+      console.log(this.$store.getters.isLikedLogErrShown)
+      return this.$store.getters.isLikedLogErrShown
+    },
     currentStation() {
       return this.$store.getters.currentStation
     },
@@ -131,7 +147,7 @@ export default {
       immediate: true,
     },
   },
-  components: {},
+  components: { LoginErrModal },
 };
 </script>
 
