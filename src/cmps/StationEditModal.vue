@@ -3,7 +3,7 @@
     <section class="edit-modal" @click.stop>
       <div class="edit-modal-header">
         <h1>Edit details</h1>
-        <button class="edit-modal-header-exit-btn" @click="onCloseEditModal">
+        <button class="edit-modal-header-exit-btn" @click="onCloseStationEdit">
           <div class="x-icon" v-html="getSvg('x')"></div>
         </button>
       </div>
@@ -66,7 +66,7 @@ export default {
       // required: true
     },
   },
-  emits: ['onCloseEditModal', 'updateImgUrl'],
+  emits: ['onCloseStationEdit', 'updateImgUrl'],
   data() {
     return {
       // isNameInputEmpty: false,
@@ -87,15 +87,15 @@ export default {
     // image.removeEventListener('load');
   },
   methods: {
-    onCloseEditModal(){
-      this.$store.commit({type:'closeStationEdit'})
+    onCloseStationEdit(){
+      this.$store.commit({type:'closeModals'})
     },
     saveStation() {
       if (!this.stationTitle) return;
       this.station.title = this.stationTitle;
       this.station.userDesc = this.stationUserDesc;
       this.$store.dispatch({ type: 'updateStation', station: this.station });
-      this.onCloseEditModal();
+      this.onCloseStationEdit();
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);

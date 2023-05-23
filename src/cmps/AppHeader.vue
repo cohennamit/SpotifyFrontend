@@ -28,7 +28,7 @@
       </RouterLink>
 
       <div class="arrow-down-icon-container">
-        <div @click="openUserOptions" class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
+        <div @click.stop="openUserOptions" class="arrow-down-icon" v-html="getSvg('arrowDownFill')"></div>
       </div>
       <ul v-if="isUserOptionsShown" class="user-options-menu">
         <li @click="doLogout">Logout</li>
@@ -61,9 +61,8 @@ export default {
     };
   },
   methods: {
-    openUserOptions(event) {
-      event.stopPropagation();
-      this.$store.commit({ type: 'handleUserOptions' });
+    openUserOptions() {
+      this.$store.commit({ type: 'openUserOptions' });
     },
     getSvg(iconName) {
       return svgService.getSvg(iconName);
