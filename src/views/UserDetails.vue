@@ -1,6 +1,6 @@
 <template>
   <section v-if="user">
-    <h1>User Details - Fullname {{ user.fullname }}</h1>
+    <h1>{{ user.fullname }}'s Profile</h1>
     <h3>Nickname - {{ user.username }}</h3>
     <section v-if="isMe">
       <button @click="doLogout">Logout</button>
