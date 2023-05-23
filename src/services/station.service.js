@@ -96,8 +96,8 @@ function getEmptySong() {
         duration: 0,
         addedAt: Date.now(),
     };
+    
 }
-
 function getLabels() {
     return [
         {

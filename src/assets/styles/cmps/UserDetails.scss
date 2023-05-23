@@ -10,7 +10,12 @@
         cursor: pointer;
         &:hover{
             transform: scale(1.05);
-
         }
     }
+}
+.user-details-img{
+    img,.choose-photo{
+        border-radius: 50%;
+    }
+
 }

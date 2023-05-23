@@ -1,7 +1,29 @@
 <template>
   <section class="user-details" v-if="user">
     <h1>{{ user.fullname }}'s Profile</h1>
-    <img style="max-width: 200px; border-radius: 50%;" :src="user.imgUrl" />
+
+    <div class="edit-modal-img user-details-img">
+          <article class="choose-photo">
+            <div class="pencil-icon" v-html="getSvg('pencil')"></div>
+            <span>Choose Photo</span>
+            <ImgUploader @updateImgUrl="updateImgUrl" />
+          </article>
+
+          <div class="img-container">
+            <img
+              v-if="user.imgUrl"
+              ref="image"
+              :src="user.imgUrl"
+              alt=""
+              crossorigin="anonymous"
+            />
+            <img
+              v-else
+              src="https://res.cloudinary.com/dmmsf57ko/image/upload/v1679567005/Spotify/WhatsApp_Image_2023-03-23_at_12.22.38_jexkcy.jpg"
+            />
+          </div>
+        </div>
+    <!-- <img style="max-width: 200px; border-radius: 50%;" :src="user.imgUrl" /> -->
     <h3>Nickname - {{ user.username }}</h3>
 
     <button class="logout-btn" @click="doLogout">Logout</button>
@@ -9,7 +31,8 @@
   </section>
 </template>
 <script>
-
+import ImgUploader from '../cmps/ImgUploader.vue'
+import { svgService } from '../services/svg.service'
 export default {
 
   watch: {
@@ -38,6 +61,12 @@ export default {
       this.$store.dispatch({ type: 'logout' });
       this.$router.push('/');
     },
+         getSvg(iconName) {
+    return svgService.getSvg(iconName)
+  }
+  },
+  components:{
+    ImgUploader
   }
 }
 </script>
