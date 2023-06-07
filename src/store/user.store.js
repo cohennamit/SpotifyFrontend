@@ -1,5 +1,5 @@
 import { userService } from '../services/user.service.js'
-import { socketService} from '../services/socket.service'
+import { socketService } from '../services/socket.service'
 import { stationService } from '../services/station.service.js'
 
 export const userStore = {
@@ -10,7 +10,7 @@ export const userStore = {
         userStations: null
     },
     getters: {
-        userStations({userStations}){return userStations},
+        userStations({ userStations }) { return userStations },
         users({ users }) { return users },
         loggedinUser({ loggedinUser }) { return loggedinUser },
         watchedUser({ watchedUser }) { return watchedUser }
@@ -39,27 +39,27 @@ export const userStore = {
             const index = likedSongs.findIndex((s => s._id === song._id))
             state.loggedinUser.likedSongs.splice(index, 1)
         },
-        setUserStations(state,{userStations}){
+        setUserStations(state, { userStations }) {
             state.userStations = userStations
         },
         removeUserStation(state, { userStationId }) {
             const idx = state.userStations.findIndex((userStation) => userStation._id === userStationId);
-            if(idx < 0) return
+            if (idx < 0) return
             state.userStations.splice(idx, 1);
-          },
-          addUserStation(state,{addedStation}){
-                state.userStations.push(addedStation);
-          }
+        },
+        addUserStation(state, { addedStation }) {
+            state.userStations.push(addedStation);
+        }
     },
     actions: {
-        async setUserStations({commit,state}){
-          try {
-            const userStations = await stationService.getUserStations(state.loggedinUser._id);
-            commit({type:'setUserStations', userStations})
-          } catch (err) {
-            console.log('Failed to get loggedinUser stations');
-          }
-          },
+        async setUserStations({ commit, state }) {
+            try {
+                const userStations = await stationService.getUserStations(state.loggedinUser._id);
+                commit({ type: 'setUserStations', userStations })
+            } catch (err) {
+                console.log('Failed to get loggedinUser stations');
+            }
+        },
         async login({ commit }, { userCred }) {
             try {
                 const user = await userService.login(userCred)
@@ -122,6 +122,7 @@ export const userStore = {
             }
         },
         async updateUser({ commit }, { user }) {
+            console.log('inside UpdateUser')
             try {
                 await userService.update(user)
                 commit({ type: 'setLoggedinUser', user })
